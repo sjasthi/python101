@@ -1,5 +1,5 @@
 # python_23
-Online Python Programming class taught by Dr. Siva Jasthi.  Classes are on every Sunday from September to May.
+Online Python Programming class taught by Dr. Siva Jasthi  (http://www.jasthi.com).  Classes are on every Sunday from September to May.
 
 Registered students should enroll in the google classroom to see the power points, lecture notes, sample programs, tools and references.
 
