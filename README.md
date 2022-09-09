@@ -14,7 +14,7 @@ Here are the topics covered in this class.
 7. Lists and Tuples
 8. More About Strings
 9. Dictionaries and Sets
-10.Classes and Object-Oriented Programming
-11.Inheritance
-12.Recursion 
-13.GUI Programming
+10. Classes and Object-Oriented Programming
+11. Inheritance
+12. Recursion 
+13. GUI Programming
