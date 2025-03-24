@@ -1,4 +1,4 @@
-# python_23
+# python_101
 Online Python Programming class taught by Dr. Siva Jasthi  (http://www.jasthi.com).  Classes are on every Sunday from September to May.
 
 Registered students should enroll in the google classroom to see the power points, lecture notes, sample programs, tools and references.
@@ -14,7 +14,4 @@ Here are the topics covered in this class.
 7. Lists and Tuples
 8. More About Strings
 9. Dictionaries and Sets
-10. Classes and Object-Oriented Programming
-11. Inheritance
-12. Recursion 
-13. GUI Programming
+
