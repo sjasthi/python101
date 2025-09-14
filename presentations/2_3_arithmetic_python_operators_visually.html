@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Arithmetic Operators</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: white;
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .section h2 {
+            color: #4a5568;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+        }
+
+        .operators-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .operator-card {
+            border-radius: 12px;
+            padding: 20px;
+            color: white;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .operator-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+        }
+
+        .operator-card.addition {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+
+        .operator-card.subtraction {
+            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+        }
+
+        .operator-card.multiplication {
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+        }
+
+        .operator-card.division {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            color: #4a5568;
+        }
+
+        .operator-card.floor-division {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .operator-card.modulo {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+
+        .operator-card.exponentiation {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            color: #8b4513;
+        }
+
+        .operator-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .operator-symbol {
+            font-size: 3rem;
+            font-weight: bold;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px 15px;
+            border-radius: 10px;
+        }
+
+        .operator-info h3 {
+            font-size: 1.4rem;
+            margin-bottom: 5px;
+        }
+
+        .operator-description {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .examples {
+            margin-top: 15px;
+        }
+
+        .example {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 8px 12px;
+            border-radius: 6px;
+            margin: 5px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .example-result {
+            background: rgba(255, 255, 255, 0.3);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+
+        .calculator-section {
+            background: linear-gradient(135deg, #2d3748 0%, #1a202c 100%);
+            color: white;
+        }
+
+        .calculator-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .calculator {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 25px;
+        }
+
+        .display {
+            background: #000;
+            color: #0f0;
+            padding: 20px;
+            border-radius: 10px;
+            font-family: 'Courier New', monospace;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            min-height: 120px;
+            border: 2px solid #0f0;
+        }
+
+        .input-row {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 15px;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .number-input {
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        .operator-select {
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            background: #667eea;
+            color: white;
+            cursor: pointer;
+        }
+
+        .calculate-btn {
+            background: #48bb78;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 10px 0;
+            width: 100%;
+        }
+
+        .calculate-btn:hover {
+            background: #38a169;
+            transform: translateY(-2px);
+        }
+
+        .operation-history {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .history-item {
+            padding: 8px 12px;
+            margin: 5px 0;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 6px;
+            font-family: 'Courier New', monospace;
+        }
+
+        .data-types-demo {
+            background: linear-gradient(135deg, #ffeef8 0%, #f0e6ff 100%);
+            color: #4a5568;
+        }
+
+        .type-examples {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .type-card {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .type-card h4 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .demo-code {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            margin: 10px 0;
+            white-space: pre-wrap;
+        }
+
+        .precedence-demo {
+            background: linear-gradient(135deg, #e8f5e8 0%, #f0f8ff 100%);
+            color: #2d5016;
+        }
+
+        .precedence-table {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        th {
+            background: #667eea;
+            color: white;
+            font-weight: bold;
+        }
+
+        .priority-1 { background: #fed7d7; }
+        .priority-2 { background: #fef5e7; }
+        .priority-3 { background: #f0fff4; }
+
+        .interactive-examples {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .example-button {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .example-button:hover {
+            background: #5a67d8;
+            transform: scale(1.05);
+        }
+
+        .visual-calculation {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+        }
+
+        .step {
+            margin: 10px 0;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+            border-left: 4px solid #48bb78;
+        }
+
+        @media (max-width: 768px) {
+            .calculator-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .input-row {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+
+            .operators-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🧮 Python Arithmetic Operators</h1>
+        
+        <div class="section">
+            <h2>All Arithmetic Operators</h2>
+            <p>Python provides seven arithmetic operators for mathematical calculations:</p>
+            
+            <div class="operators-grid">
+                <div class="operator-card addition" onclick="demonstrateOperator('+')">
+                    <div class="operator-header">
+                        <div class="operator-symbol">+</div>
+                        <div class="operator-info">
+                            <h3>Addition</h3>
+                            <div class="operator-description">Adds two numbers together</div>
+                        </div>
+                    </div>
+                    <div class="examples">
+                        <div class="example">5 + 3 <span class="example-result">8</span></div>
+                        <div class="example">2.5 + 1.5 <span class="example-result">4.0</span></div>
+                        <div class="example">"Hello" + " World" <span class="example-result">Hello World</span></div>
+                    </div>
+                </div>
+                
+                <div class="operator-card subtraction" onclick="demonstrateOperator('-')">
+                    <div class="operator-header">
+                        <div class="operator-symbol">−</div>
+                        <div class="operator-info">
+                            <h3>Subtraction</h3>
+                            <div class="operator-description">Subtracts second number from first</div>
+                        </div>
+                    </div>
+                    <div class="examples">
+                        <div class="example">10 - 4 <span class="example-result">6</span></div>
+                        <div class="example">7.5 - 2.3 <span class="example-result">5.2</span></div>
+                        <div class="example">0 - 5 <span class="example-result">-5</span></div>
+                    </div>
+                </div>
+                
+                <div class="operator-card multiplication" onclick="demonstrateOperator('*')">
+                    <div class="operator-header">
+                        <div class="operator-symbol">×</div>
+                        <div class="operator-info">
+                            <h3>Multiplication</h3>
+                            <div class="operator-description">Multiplies two numbers</div>
+                        </div>
+                    </div>
+                    <div class="examples">
+                        <div class="example">6 * 7 <span class="example-result">42</span></div>
+                        <div class="example">3.14 * 2 <span class="example-result">6.28</span></div>
+                        <div class="example">"Hi" * 3 <span class="example-result">HiHiHi</span></div>
+                    </div>
+                </div>
+                
+                <div class="operator-card division" onclick="demonstrateOperator('/')">
+                    <div class="operator-header">
+                        <div class="operator-symbol">÷</div>
+                        <div class="operator-info">
+                            <h3>Division</h3>
+                            <div class="operator-description">Divides first number by second</div>
+                        </div>
+                    </div>
+                    <div class="examples">
+                        <div class="example">15 / 3 <span class="example-result">5.0</span></div>
+                        <div class="example">7 / 2 <span class="example-result">3.5</span></div>
+                        <div class="example">10 / 4 <span class="example-result">2.5</span></div>
+                    </div>
+                </div>
+                
+                <div class="operator-card floor-division" onclick="demonstrateOperator('//')">
+                    <div class="operator-header">
+                        <div class="operator-symbol">//</div>
+                        <div class="operator-info">
+                            <h3>Floor Division</h3>
+                            <div class="operator-description">Divides and rounds down to integer</div>
+                        </div>
+                    </div>
+                    <div class="examples">
+                        <div class="example">15 // 4 <span class="example-result">3</span></div>
+                        <div class="example">7 // 2 <span class="example-result">3</span></div>
+                        <div class="example">9 // 3 <span class="example-result">3</span></div>
+                    </div>
+                </div>
+                
+                <div class="operator-card modulo" onclick="demonstrateOperator('%')">
+                    <div class="operator-header">
+                        <div class="operator-symbol">%</div>
+                        <div class="operator-info">
+                            <h3>Modulo</h3>
+                            <div class="operator-description">Returns remainder after division</div>
+                        </div>
+                    </div>
+                    <div class="examples">
+                        <div class="example">15 % 4 <span class="example-result">3</span></div>
+                        <div class="example">10 % 3 <span class="example-result">1</span></div>
+                        <div class="example">8 % 2 <span class="example-result">0</span></div>
+                    </div>
+                </div>
+                
+                <div class="operator-card exponentiation" onclick="demonstrateOperator('**')">
+                    <div class="operator-header">
+                        <div class="operator-symbol">**</div>
+                        <div class="operator-info">
+                            <h3>Exponentiation</h3>
+                            <div class="operator-description">Raises first number to power of second</div>
+                        </div>
+                    </div>
+                    <div class="examples">
+                        <div class="example">2 ** 3 <span class="example-result">8</span></div>
+                        <div class="example">5 ** 2 <span class="example-result">25</span></div>
+                        <div class="example">9 ** 0.5 <span class="example-result">3.0</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section calculator-section">
+            <h2>🎮 Interactive Calculator</h2>
+            <p>Try different operations and see the results in real-time:</p>
+            
+            <div class="calculator-grid">
+                <div class="calculator">
+                    <div class="display" id="calculatorDisplay">
+                        Ready to calculate!
+                        <br>Enter numbers and select an operator.
+                    </div>
+                    
+                    <div class="input-row">
+                        <input type="number" id="num1" class="number-input" placeholder="First number" value="10">
+                        <select id="operatorSelect" class="operator-select">
+                            <option value="+">+ Addition</option>
+                            <option value="-">− Subtraction</option>
+                            <option value="*">× Multiplication</option>
+                            <option value="/">÷ Division</option>
+                            <option value="//">// Floor Division</option>
+                            <option value="%">% Modulo</option>
+                            <option value="**">** Exponentiation</option>
+                        </select>
+                        <input type="number" id="num2" class="number-input" placeholder="Second number" value="3">
+                    </div>
+                    
+                    <button class="calculate-btn" onclick="calculate()">⚡ Calculate</button>
+                    
+                    <div class="interactive-examples">
+                        <button class="example-button" onclick="loadExample('basic')">Basic Math</button>
+                        <button class="example-button" onclick="loadExample('decimals')">Decimals</button>
+                        <button class="example-button" onclick="loadExample('powers')">Powers</button>
+                        <button class="example-button" onclick="loadExample('remainders')">Remainders</button>
+                    </div>
+                </div>
+                
+                <div class="calculator">
+                    <h3>📝 Operation History</h3>
+                    <div class="operation-history" id="operationHistory">
+                        <div class="history-item">History will appear here...</div>
+                    </div>
+                    <button class="calculate-btn" onclick="clearHistory()" style="background: #e53e3e;">🗑️ Clear History</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="section data-types-demo">
+            <h2>🔢 Data Types & Operators</h2>
+            <p>See how arithmetic operators work with different data types:</p>
+            
+            <div class="type-examples">
+                <div class="type-card">
+                    <h4>🔢 Integers (int)</h4>
+                    <div class="demo-code">a = 15
+b = 4
+
+print(a + b)    # 19
+print(a - b)    # 11
+print(a * b)    # 60
+print(a / b)    # 3.75
+print(a // b)   # 3
+print(a % b)    # 3
+print(a ** b)   # 50625</div>
+                </div>
+                
+                <div class="type-card">
+                    <h4>📊 Floats (float)</h4>
+                    <div class="demo-code">x = 7.5
+y = 2.0
+
+print(x + y)    # 9.5
+print(x - y)    # 5.5
+print(x * y)    # 15.0
+print(x / y)    # 3.75
+print(x // y)   # 3.0
+print(x % y)    # 1.5
+print(x ** y)   # 56.25</div>
+                </div>
+                
+                <div class="type-card">
+                    <h4>🔀 Mixed Types</h4>
+                    <div class="demo-code">int_num = 10
+float_num = 3.5
+
+print(int_num + float_num)   # 13.5
+print(int_num * float_num)   # 35.0
+print(int_num / float_num)   # 2.857...
+print(int_num // float_num)  # 2.0
+
+# Result is always float when mixed</div>
+                </div>
+                
+                <div class="type-card">
+                    <h4>📝 Strings (special cases)</h4>
+                    <div class="demo-code">text = "Python"
+number = 3
+
+# Addition (concatenation)
+print("Hello " + "World")  # Hello World
+
+# Multiplication (repetition)  
+print(text * number)       # PythonPythonPython
+print("-" * 10)           # ----------
+
+# Other operators don't work with strings!</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section precedence-demo">
+            <h2>🎯 Operator Precedence (Order of Operations)</h2>
+            <p>Python follows mathematical order of operations. Higher precedence operators are calculated first:</p>
+            
+            <div class="precedence-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Precedence</th>
+                            <th>Operator</th>
+                            <th>Description</th>
+                            <th>Example</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="priority-1">
+                            <td>1 (Highest)</td>
+                            <td>**</td>
+                            <td>Exponentiation</td>
+                            <td>2 ** 3 ** 2 = 2 ** (3 ** 2) = 512</td>
+                        </tr>
+                        <tr class="priority-2">
+                            <td>2</td>
+                            <td>*, /, //, %</td>
+                            <td>Multiplication, Division, Floor Division, Modulo</td>
+                            <td>2 + 3 * 4 = 2 + 12 = 14</td>
+                        </tr>
+                        <tr class="priority-3">
+                            <td>3 (Lowest)</td>
+                            <td>+, -</td>
+                            <td>Addition, Subtraction</td>
+                            <td>5 + 2 - 1 = 7 - 1 = 6</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="visual-calculation" id="precedenceDemo">
+                <h4>📐 Step-by-Step Example:</h4>
+                <div id="precedenceSteps">
+                    Click "Show Precedence" to see how Python calculates: 2 + 3 * 4 ** 2 - 1
+                </div>
+                <button class="calculate-btn" onclick="showPrecedence()" style="background: #667eea; margin-top: 15px;">
+                    📐 Show Precedence Example
+                </button>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>💡 Key Points</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+                <div style="background: #e8f4f8; padding: 20px; border-radius: 10px;">
+                    <h4>🎯 Always Float Division</h4>
+                    <p>The <code>/</code> operator always returns a float, even when dividing evenly:</p>
+                    <div class="demo-code">print(6 / 2)    # 2.0 (not 2)
+print(type(6/2))  # &lt;class 'float'&gt;</div>
+                </div>
+                
+                <div style="background: #f0e8f8; padding: 20px; border-radius: 10px;">
+                    <h4>🔄 Type Mixing</h4>
+                    <p>When mixing integers and floats, the result is always a float:</p>
+                    <div class="demo-code">print(5 + 2.0)    # 7.0
+print(10 * 3.5)   # 35.0
+print(type(5+2.0)) # &lt;class 'float'&gt;</div>
+                </div>
+                
+                <div style="background: #e8f8e8; padding: 20px; border-radius: 10px;">
+                    <h4>⚠️ Division by Zero</h4>
+                    <p>Dividing by zero causes an error:</p>
+                    <div class="demo-code">print(5 / 0)     # ZeroDivisionError
+print(5 // 0)    # ZeroDivisionError
+print(5 % 0)     # ZeroDivisionError</div>
+                </div>
+                
+                <div style="background: #f8f0e8; padding: 20px; border-radius: 10px;">
+                    <h4>📐 Use Parentheses</h4>
+                    <p>Use parentheses to control order of operations:</p>
+                    <div class="demo-code">print(2 + 3 * 4)      # 14
+print((2 + 3) * 4)    # 20
+print(2 ** 3 * 4)     # 32
+print(2 ** (3 * 4))   # 4096</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let history = [];
+
+        function calculate() {
+            const num1 = parseFloat(document.getElementById('num1').value) || 0;
+            const num2 = parseFloat(document.getElementById('num2').value) || 0;
+            const operator = document.getElementById('operatorSelect').value;
+            
+            let result;
+            let operation = `${num1} ${operator} ${num2}`;
+            
+            try {
+                switch(operator) {
+                    case '+':
+                        result = num1 + num2;
+                        break;
+                    case '-':
+                        result = num1 - num2;
+                        break;
+                    case '*':
+                        result = num1 * num2;
+                        break;
+                    case '/':
+                        if (num2 === 0) throw new Error("Cannot divide by zero!");
+                        result = num1 / num2;
+                        break;
+                    case '//':
+                        if (num2 === 0) throw new Error("Cannot divide by zero!");
+                        result = Math.floor(num1 / num2);
+                        break;
+                    case '%':
+                        if (num2 === 0) throw new Error("Cannot modulo by zero!");
+                        result = num1 % num2;
+                        break;
+                    case '**':
+                        result = Math.pow(num1, num2);
+                        break;
+                    default:
+                        throw new Error("Unknown operator");
+                }
+                
+                const display = document.getElementById('calculatorDisplay');
+                display.innerHTML = `
+                    <div style="color: #0ff; font-size: 1.4rem; margin-bottom: 10px;">
+                        ${operation} = ${result}
+                    </div>
+                    <div style="color: #888; font-size: 0.9rem;">
+                        Result type: ${typeof result}<br>
+                        ${getOperatorExplanation(operator, num1, num2, result)}
+                    </div>
+                `;
+                
+                addToHistory(operation, result);
+                
+            } catch (error) {
+                document.getElementById('calculatorDisplay').innerHTML = `
+                    <div style="color: #f00; font-size: 1.2rem;">
+                        Error: ${error.message}
+                    </div>
+                    <div style="color: #888; margin-top: 10px;">
+                        Please check your inputs and try again.
+                    </div>
+                `;
+            }
+        }
+
+        function getOperatorExplanation(op, a, b, result) {
+            const explanations = {
+                '+': `Added ${a} and ${b} together`,
+                '-': `Subtracted ${b} from ${a}`,
+                '*': `Multiplied ${a} by ${b}`,
+                '/': `Divided ${a} by ${b} (always returns float)`,
+                '//': `Floor division: ${a} ÷ ${b} = ${a/b}, rounded down to ${result}`,
+                '%': `Remainder when ${a} is divided by ${b}`,
+                '**': `${a} raised to the power of ${b}`
+            };
+            return explanations[op] || '';
+        }
+
+        function addToHistory(operation, result) {
+            history.unshift({operation, result});
+            if (history.length > 10) history.pop();
+            
+            const historyDiv = document.getElementById('operationHistory');
+            historyDiv.innerHTML = history.map(item => 
+                `<div class="history-item">${item.operation} = ${item.result}</div>`
+            ).join('');
+        }
+
+        function clearHistory() {
+            history = [];
+            document.getElementById('operationHistory').innerHTML = 
+                '<div class="history-item">History cleared!</div>';
+        }
+
+        function loadExample(type) {
+            const examples = {
+                basic: {num1: 15, op: '+', num2: 7},
+                decimals: {num1: 3.14, op: '*', num2: 2},
+                powers: {num1: 2
