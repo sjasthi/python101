@@ -1,0 +1,12 @@
+
+[1] How to access google colab
+Search for google colab and open the colab
+
+[2] How to take screen shots using "Snipping Tool"
+Watch this video
+
+https://www.youtube.com/watch?v=jRu2exEPFiI
+
+[3] How to access Python Tutor?
+www.pythontutor.com
+
