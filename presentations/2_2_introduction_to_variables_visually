@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Variables and Assignment</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #4CAF50, #45a049);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            margin: 0;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .step {
+            margin: 40px 0;
+            padding: 30px;
+            border: 2px solid #e0e0e0;
+            border-radius: 15px;
+            background: #fafafa;
+            transition: all 0.3s ease;
+        }
+        
+        .step:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+        
+        .step-title {
+            font-size: 1.4em;
+            font-weight: bold;
+            color: #2196F3;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .step-number {
+            background: #2196F3;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-weight: bold;
+        }
+        
+        .code-example {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 16px;
+            margin: 15px 0;
+            border-left: 4px solid #4CAF50;
+        }
+        
+        .visual-box {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            margin: 20px 0;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            border: 2px dashed #2196F3;
+        }
+        
+        .variable-box {
+            background: linear-gradient(135deg, #FF6B6B, #ff5252);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 10px;
+            font-weight: bold;
+            font-size: 18px;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .variable-box:hover {
+            transform: scale(1.05);
+        }
+        
+        .value-box {
+            background: linear-gradient(135deg, #4ECDC4, #44a08d);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 10px;
+            font-weight: bold;
+            font-size: 18px;
+            box-shadow: 0 4px 15px rgba(78, 205, 196, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .value-box:hover {
+            transform: scale(1.05);
+        }
+        
+        .arrow {
+            font-size: 30px;
+            color: #9C27B0;
+            font-weight: bold;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        .type-indicator {
+            font-size: 12px;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 8px;
+            border-radius: 4px;
+            margin-top: 5px;
+        }
+        
+        .memory-diagram {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            color: white;
+        }
+        
+        .memory-slot {
+            background: rgba(255,255,255,0.1);
+            border: 2px solid rgba(255,255,255,0.3);
+            padding: 10px;
+            margin: 5px;
+            border-radius: 5px;
+            display: inline-block;
+            min-width: 80px;
+            text-align: center;
+        }
+        
+        .interactive-demo {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            padding: 30px;
+            border-radius: 15px;
+            margin: 30px 0;
+        }
+        
+        .demo-controls {
+            text-align: center;
+            margin: 20px 0;
+        }
+        
+        button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 0 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+        
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+        }
+        
+        .key-points {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 30px 0;
+        }
+        
+        .key-points h3 {
+            color: #d84315;
+            margin-top: 0;
+        }
+        
+        .key-points ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .key-points li {
+            background: rgba(255,255,255,0.7);
+            margin: 10px 0;
+            padding: 12px 15px;
+            border-radius: 8px;
+            border-left: 4px solid #ff5722;
+        }
+        
+        .key-points li:before {
+            content: "✓";
+            color: #4CAF50;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🐍 Python Variables & Assignment</h1>
+            <p>Understanding how variables store and reference data</p>
+        </div>
+        
+        <div class="content">
+            <!-- Step 1: Basic Concept -->
+            <div class="step">
+                <div class="step-title">
+                    <div class="step-number">1</div>
+                    What is a Variable?
+                </div>
+                <p>A variable is like a <strong>labeled box</strong> that stores data. The assignment operator <code>=</code> puts data into that box.</p>
+                
+                <div class="visual-box">
+                    <div class="variable-box">
+                        age
+                        <div class="type-indicator">variable name</div>
+                    </div>
+                    <div class="arrow">=</div>
+                    <div class="value-box">
+                        25
+                        <div class="type-indicator">int value</div>
+                    </div>
+                </div>
+                
+                <div class="code-example">age = 25</div>
+                <p><strong>Translation:</strong> "Create a box labeled 'age' and put the number 25 inside it."</p>
+            </div>
+
+            <!-- Step 2: Different Data Types -->
+            <div class="step">
+                <div class="step-title">
+                    <div class="step-number">2</div>
+                    Variables Hold Different Types of Data
+                </div>
+                
+                <div class="visual-box">
+                    <div class="variable-box">
+                        name
+                        <div class="type-indicator">string variable</div>
+                    </div>
+                    <div class="arrow">=</div>
+                    <div class="value-box">
+                        "Alice"
+                        <div class="type-indicator">str value</div>
+                    </div>
+                </div>
+                
+                <div class="visual-box">
+                    <div class="variable-box">
+                        height
+                        <div class="type-indicator">float variable</div>
+                    </div>
+                    <div class="arrow">=</div>
+                    <div class="value-box">
+                        5.6
+                        <div class="type-indicator">float value</div>
+                    </div>
+                </div>
+                
+                <div class="visual-box">
+                    <div class="variable-box">
+                        is_student
+                        <div class="type-indicator">boolean variable</div>
+                    </div>
+                    <div class="arrow">=</div>
+                    <div class="value-box">
+                        True
+                        <div class="type-indicator">bool value</div>
+                    </div>
+                </div>
+                
+                <div class="code-example">
+name = "Alice"<br>
+height = 5.6<br>
+is_student = True
+                </div>
+            </div>
+
+            <!-- Step 3: Variables Can Change -->
+            <div class="step">
+                <div class="step-title">
+                    <div class="step-number">3</div>
+                    Variables Can Be Reassigned
+                </div>
+                <p>The same variable can hold different values over time. The <code>=</code> operator <strong>replaces</strong> the old value.</p>
+                
+                <div class="memory-diagram">
+                    <h4>Memory Over Time:</h4>
+                    <div>
+                        <strong>Initially:</strong>
+                        <div class="memory-slot">score<br>100</div>
+                    </div>
+                    <div style="margin: 15px 0;">
+                        <strong>After reassignment:</strong>
+                        <div class="memory-slot">score<br>85</div>
+                    </div>
+                </div>
+                
+                <div class="code-example">
+score = 100    # score holds 100<br>
+score = 85     # score now holds 85 (100 is gone)
+                </div>
+            </div>
+
+            <!-- Step 4: Using Variables in Expressions -->
+            <div class="step">
+                <div class="step-title">
+                    <div class="step-number">4</div>
+                    Using Variables in Arithmetic
+                </div>
+                <p>Variables can be used in calculations. Python retrieves their values and performs the operations.</p>
+                
+                <div class="visual-box">
+                    <div class="variable-box">x = 10</div>
+                    <div class="variable-box">y = 3</div>
+                </div>
+                
+                <div class="visual-box">
+                    <div class="variable-box">
+                        result
+                    </div>
+                    <div class="arrow">=</div>
+                    <div class="value-box">
+                        x + y → 13
+                        <div class="type-indicator">10 + 3 = 13</div>
+                    </div>
+                </div>
+                
+                <div class="code-example">
+x = 10<br>
+y = 3<br>
+result = x + y    # result gets 13<br>
+difference = x - y    # difference gets 7
+                </div>
+            </div>
+
+            <!-- Step 5: Interactive Demo -->
+            <div class="interactive-demo">
+                <h3>🎮 Interactive Assignment Demo</h3>
+                <p>Click the buttons to see variables change in real-time!</p>
+                
+                <div class="demo-controls">
+                    <button onclick="setNumber()">Set number = 42</button>
+                    <button onclick="addToNumber()">Add 10 to number</button>
+                    <button onclick="resetDemo()">Reset</button>
+                </div>
+                
+                <div id="demo-display" class="visual-box">
+                    <div class="variable-box">
+                        number
+                    </div>
+                    <div class="arrow">=</div>
+                    <div class="value-box" id="current-value">
+                        undefined
+                    </div>
+                </div>
+                
+                <div id="code-display" class="code-example">
+# Click a button to see the assignment!
+                </div>
+            </div>
+
+            <!-- Key Points -->
+            <div class="key-points">
+                <h3>🎯 Key Takeaways</h3>
+                <ul>
+                    <li>Variables are named containers that store data values</li>
+                    <li>The assignment operator <code>=</code> puts values into variables</li>
+                    <li>Variables can be reassigned - new values replace old ones</li>
+                    <li>Variable names are on the left, values on the right of <code>=</code></li>
+                    <li>Variables can hold different data types: int, float, str, bool</li>
+                    <li>Variables can be used in expressions and calculations</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentNumber;
+        
+        function updateDisplay(value, code) {
+            document.getElementById('current-value').textContent = value;
+            document.getElementById('code-display').innerHTML = code;
+            currentNumber = value;
+        }
+        
+        function setNumber() {
+            updateDisplay(42, 'number = 42');
+        }
+        
+        function addToNumber() {
+            if (currentNumber !== undefined) {
+                const newValue = currentNumber + 10;
+                updateDisplay(newValue, `number = number + 10  # ${currentNumber} + 10 = ${newValue}`);
+            } else {
+                alert('Set a number first!');
+            }
+        }
+        
+        function resetDemo() {
+            updateDisplay('undefined', '# Click a button to see the assignment!');
+            currentNumber = undefined;
+        }
+    </script>
+</body>
+</html>
