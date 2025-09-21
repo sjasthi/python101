@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Arithmetic Operators - Interactive Guide</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .operator-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .operator-card {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 25px;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .operator-card:hover {
+            border-color: #667eea;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.2);
+        }
+
+        .operator-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .operator-title {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .operator-symbol {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .operator-description {
+            color: #666;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .example-section {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            border-left: 4px solid #667eea;
+        }
+
+        .input-group {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+            align-items: center;
+        }
+
+        .input-group input {
+            padding: 10px;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            font-size: 1rem;
+            width: 80px;
+            text-align: center;
+            transition: border-color 0.3s ease;
+        }
+
+        .input-group input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .operator-display {
+            font-family: 'Courier New', monospace;
+            font-weight: bold;
+            color: #667eea;
+            font-size: 1.2rem;
+            margin: 0 10px;
+        }
+
+        .result {
+            background: #e8f5e8;
+            border: 2px solid #28a745;
+            border-radius: 8px;
+            padding: 10px;
+            font-family: 'Courier New', monospace;
+            font-weight: bold;
+            color: #155724;
+            min-width: 100px;
+            text-align: center;
+        }
+
+        .quiz-section {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 15px;
+            padding: 30px;
+            margin-top: 40px;
+        }
+
+        .quiz-title {
+            font-size: 1.8rem;
+            color: #333;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .quiz-question {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .quiz-input {
+            padding: 12px;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            font-size: 1rem;
+            width: 120px;
+            margin-left: 10px;
+        }
+
+        .check-btn {
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-left: 10px;
+            transition: transform 0.2s ease;
+        }
+
+        .check-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .feedback {
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+
+        .correct {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .incorrect {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .code-block {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            margin: 15px 0;
+            position: relative;
+            overflow-x: auto;
+        }
+
+        .python-keyword {
+            color: #ed8936;
+        }
+
+        .python-number {
+            color: #68d391;
+        }
+
+        .python-operator {
+            color: #f687b3;
+        }
+
+        @media (max-width: 768px) {
+            .operator-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .input-group {
+                flex-wrap: wrap;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🐍 Python Arithmetic Operators</h1>
+            <p>Master the building blocks of mathematical operations in Python</p>
+        </div>
+
+        <div class="content">
+            <div class="operator-grid" id="operatorGrid">
+                <!-- Operators will be dynamically generated -->
+            </div>
+
+            <div class="quiz-section">
+                <h2 class="quiz-title">🧠 Test Your Knowledge</h2>
+                <div id="quizContainer">
+                    <!-- Quiz questions will be dynamically generated -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const operators = [
+            {
+                symbol: '+',
+                name: 'Addition',
+                description: 'Adds two numbers together. The most basic arithmetic operation.',
+                example: 'result = 5 + 3  # Returns 8'
+            },
+            {
+                symbol: '-',
+                name: 'Subtraction',
+                description: 'Subtracts the second number from the first number.',
+                example: 'result = 10 - 4  # Returns 6'
+            },
+            {
+                symbol: '*',
+                name: 'Multiplication',
+                description: 'Multiplies two numbers together.',
+                example: 'result = 6 * 7  # Returns 42'
+            },
+            {
+                symbol: '/',
+                name: 'Division',
+                description: 'Divides the first number by the second. Always returns a float.',
+                example: 'result = 15 / 3  # Returns 5.0'
+            },
+            {
+                symbol: '//',
+                name: 'Floor Division',
+                description: 'Divides and rounds down to the nearest integer.',
+                example: 'result = 17 // 5  # Returns 3'
+            },
+            {
+                symbol: '%',
+                name: 'Modulus',
+                description: 'Returns the remainder after division.',
+                example: 'result = 17 % 5  # Returns 2'
+            },
+            {
+                symbol: '**',
+                name: 'Exponentiation',
+                description: 'Raises the first number to the power of the second.',
+                example: 'result = 2 ** 3  # Returns 8'
+            }
+        ];
+
+        function createOperatorCard(operator) {
+            const card = document.createElement('div');
+            card.className = 'operator-card';
+            
+            card.innerHTML = `
+                <div class="operator-title">
+                    <span class="operator-symbol">${operator.symbol}</span>
+                    ${operator.name}
+                </div>
+                <div class="operator-description">${operator.description}</div>
+                <div class="example-section">
+                    <div class="code-block">${highlightPythonCode(operator.example)}</div>
+                    <div class="input-group">
+                        <input type="number" id="input1_${operator.symbol.replace(/[^a-zA-Z0-9]/g, '')}" placeholder="5" value="5">
+                        <span class="operator-display">${operator.symbol}</span>
+                        <input type="number" id="input2_${operator.symbol.replace(/[^a-zA-Z0-9]/g, '')}" placeholder="3" value="3">
+                        <span class="operator-display">=</span>
+                        <div class="result" id="result_${operator.symbol.replace(/[^a-zA-Z0-9]/g, '')}">8</div>
+                    </div>
+                </div>
+            `;
+            
+            return card;
+        }
+
+        function highlightPythonCode(code) {
+            return code
+                .replace(/\b(result|def|return|if|else|for|while|in|import|from|as)\b/g, '<span class="python-keyword">$1</span>')
+                .replace(/\b(\d+\.?\d*)\b/g, '<span class="python-number">$1</span>')
+                .replace(/([+\-*/%=<>!&|^~]|\*\*|\/\/|==|!=|<=|>=|<<|>>)/g, '<span class="python-operator">$1</span>');
+        }
+
+        function calculateResult(symbol, num1, num2) {
+            switch(symbol) {
+                case '+': return num1 + num2;
+                case '-': return num1 - num2;
+                case '*': return num1 * num2;
+                case '/': return num2 !== 0 ? (num1 / num2) : 'Error: Division by zero';
+                case '//': return num2 !== 0 ? Math.floor(num1 / num2) : 'Error: Division by zero';
+                case '%': return num2 !== 0 ? (num1 % num2) : 'Error: Division by zero';
+                case '**': return Math.pow(num1, num2);
+                default: return 'Error';
+            }
+        }
+
+        function setupEventListeners() {
+            operators.forEach(operator => {
+                const cleanSymbol = operator.symbol.replace(/[^a-zA-Z0-9]/g, '');
+                const input1 = document.getElementById(`input1_${cleanSymbol}`);
+                const input2 = document.getElementById(`input2_${cleanSymbol}`);
+                const result = document.getElementById(`result_${cleanSymbol}`);
+                
+                function updateResult() {
+                    const num1 = parseFloat(input1.value) || 0;
+                    const num2 = parseFloat(input2.value) || 0;
+                    const calculatedResult = calculateResult(operator.symbol, num1, num2);
+                    
+                    if (typeof calculatedResult === 'number') {
+                        result.textContent = Number.isInteger(calculatedResult) ? 
+                            calculatedResult : calculatedResult.toFixed(2);
+                    } else {
+                        result.textContent = calculatedResult;
+                    }
+                }
+                
+                input1.addEventListener('input', updateResult);
+                input2.addEventListener('input', updateResult);
+            });
+        }
+
+        function generateQuizQuestions() {
+            const questions = [
+                { question: "7 + 3 = ?", answer: 10, operator: "+" },
+                { question: "15 - 8 = ?", answer: 7, operator: "-" },
+                { question: "6 * 4 = ?", answer: 24, operator: "*" },
+                { question: "20 / 4 = ?", answer: 5, operator: "/" },
+                { question: "17 // 5 = ?", answer: 3, operator: "//" },
+                { question: "17 % 5 = ?", answer: 2, operator: "%" },
+                { question: "3 ** 4 = ?", answer: 81, operator: "**" }
+            ];
+
+            const quizContainer = document.getElementById('quizContainer');
+            
+            questions.forEach((q, index) => {
+                const questionDiv = document.createElement('div');
+                questionDiv.className = 'quiz-question';
+                questionDiv.innerHTML = `
+                    <span style="font-size: 1.2rem; font-weight: bold;">${q.question}</span>
+                    <input type="number" class="quiz-input" id="quiz_${index}" placeholder="Your answer">
+                    <button class="check-btn" onclick="checkAnswer(${index}, ${q.answer})">Check</button>
+                    <div class="feedback" id="feedback_${index}" style="display: none;"></div>
+                `;
+                quizContainer.appendChild(questionDiv);
+            });
+        }
+
+        function checkAnswer(questionIndex, correctAnswer) {
+            const userInput = document.getElementById(`quiz_${questionIndex}`);
+            const feedback = document.getElementById(`feedback_${questionIndex}`);
+            const userAnswer = parseFloat(userInput.value);
+            
+            feedback.style.display = 'block';
+            
+            if (userAnswer === correctAnswer) {
+                feedback.className = 'feedback correct';
+                feedback.textContent = '🎉 Correct! Well done!';
+            } else {
+                feedback.className = 'feedback incorrect';
+                feedback.textContent = `❌ Incorrect. The correct answer is ${correctAnswer}.`;
+            }
+        }
+
+        // Initialize the page
+        function init() {
+            const operatorGrid = document.getElementById('operatorGrid');
+            
+            operators.forEach(operator => {
+                operatorGrid.appendChild(createOperatorCard(operator));
+            });
+            
+            setupEventListeners();
+            generateQuizQuestions();
+        }
+
+        // Wait for DOM to be fully loaded
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html>
