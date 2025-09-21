@@ -246,6 +246,10 @@
             color: #f687b3;
         }
 
+        .python-comment {
+            color: #a0aec0;
+        }
+
         @media (max-width: 768px) {
             .operator-grid {
                 grid-template-columns: 1fr;
@@ -292,49 +296,70 @@
                 symbol: '+',
                 name: 'Addition',
                 description: 'Adds two numbers together. The most basic arithmetic operation.',
-                example: 'result = 5 + 3  # Returns 8'
+                example: 'result = 5 + 3  # Returns 8',
+                defaultA: 5,
+                defaultB: 3
             },
             {
                 symbol: '-',
                 name: 'Subtraction',
                 description: 'Subtracts the second number from the first number.',
-                example: 'result = 10 - 4  # Returns 6'
+                example: 'result = 10 - 4  # Returns 6',
+                defaultA: 10,
+                defaultB: 4
             },
             {
                 symbol: '*',
                 name: 'Multiplication',
                 description: 'Multiplies two numbers together.',
-                example: 'result = 6 * 7  # Returns 42'
+                example: 'result = 6 * 7  # Returns 42',
+                defaultA: 6,
+                defaultB: 7
             },
             {
                 symbol: '/',
                 name: 'Division',
                 description: 'Divides the first number by the second. Always returns a float.',
-                example: 'result = 15 / 3  # Returns 5.0'
+                example: 'result = 15 / 3  # Returns 5.0',
+                defaultA: 15,
+                defaultB: 3
             },
             {
                 symbol: '//',
                 name: 'Floor Division',
                 description: 'Divides and rounds down to the nearest integer.',
-                example: 'result = 17 // 5  # Returns 3'
+                example: 'result = 17 // 5  # Returns 3',
+                defaultA: 17,
+                defaultB: 5
             },
             {
                 symbol: '%',
                 name: 'Modulus',
                 description: 'Returns the remainder after division.',
-                example: 'result = 17 % 5  # Returns 2'
+                example: 'result = 17 % 5  # Returns 2',
+                defaultA: 17,
+                defaultB: 5
             },
             {
                 symbol: '**',
                 name: 'Exponentiation',
                 description: 'Raises the first number to the power of the second.',
-                example: 'result = 2 ** 3  # Returns 8'
+                example: 'result = 2 ** 3  # Returns 8',
+                defaultA: 2,
+                defaultB: 3
             }
         ];
 
+        function highlightPythonCode(code) {
+            return code; // Return plain text for now
+        }
+
         function createOperatorCard(operator) {
+            const cleanSymbol = operator.symbol.replace(/[^a-zA-Z0-9]/g, '');
             const card = document.createElement('div');
             card.className = 'operator-card';
+            
+            const defaultResult = calculateResult(operator.symbol, operator.defaultA, operator.defaultB);
             
             card.innerHTML = `
                 <div class="operator-title">
@@ -345,23 +370,16 @@
                 <div class="example-section">
                     <div class="code-block">${highlightPythonCode(operator.example)}</div>
                     <div class="input-group">
-                        <input type="number" id="input1_${operator.symbol.replace(/[^a-zA-Z0-9]/g, '')}" placeholder="5" value="5">
+                        <input type="number" id="input1_${cleanSymbol}" value="${operator.defaultA}">
                         <span class="operator-display">${operator.symbol}</span>
-                        <input type="number" id="input2_${operator.symbol.replace(/[^a-zA-Z0-9]/g, '')}" placeholder="3" value="3">
+                        <input type="number" id="input2_${cleanSymbol}" value="${operator.defaultB}">
                         <span class="operator-display">=</span>
-                        <div class="result" id="result_${operator.symbol.replace(/[^a-zA-Z0-9]/g, '')}">8</div>
+                        <div class="result" id="result_${cleanSymbol}">${typeof defaultResult === 'number' ? (Number.isInteger(defaultResult) ? defaultResult : defaultResult.toFixed(2)) : defaultResult}</div>
                     </div>
                 </div>
             `;
             
             return card;
-        }
-
-        function highlightPythonCode(code) {
-            return code
-                .replace(/\b(result|def|return|if|else|for|while|in|import|from|as)\b/g, '<span class="python-keyword">$1</span>')
-                .replace(/\b(\d+\.?\d*)\b/g, '<span class="python-number">$1</span>')
-                .replace(/([+\-*/%=<>!&|^~]|\*\*|\/\/|==|!=|<=|>=|<<|>>)/g, '<span class="python-operator">$1</span>');
         }
 
         function calculateResult(symbol, num1, num2) {
