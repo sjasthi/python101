@@ -13,8 +13,8 @@ Create a Python program that:
 # Name: _______________
 
 # Step 1: Get input from user
-number1 = float(input("Enter first number: "))
-number2 = float(input("Enter second number: "))
+number1 = int(input("Enter first number: "))
+number2 = int(input("Enter second number: "))
 
 # Step 2: Perform operations and store results
 addition_result = _______________
@@ -45,11 +45,11 @@ print(f"___ ** ___ = ___") # Complete this line
 ```
 Enter first number: 10
 Enter second number: 3
-10.0 + 3.0 = 13.0
-10.0 - 3.0 = 7.0
-10.0 * 3.0 = 30.0
-10.0 / 3.0 = 3.3333333333333335
-10.0 // 3.0 = 3.0
-10.0 % 3.0 = 1.0
-10.0 ** 3.0 = 1000.0
+10 + 3 = 13
+10 - 3 = 7
+10 * 3 = 30
+10 / 3 = 3.3333333333333335
+10 // 3 = 3
+10 % 3 = 1
+10 ** 3 = 1000
 ```
