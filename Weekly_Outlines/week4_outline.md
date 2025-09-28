@@ -29,11 +29,11 @@
 ## 📅 Due Dates
 
 ### Due Today
-- ✅ **Lab 4** (Programming Assignment 11)
+- ✅ **Lab 4** (Programming Assignment 12)
 - ✅ **Quiz 4**
 
 ### Due by End of Week (Saturday 10/4)
-- 📝 **Assignment 1**
+- 📝 **Assignment 1 (Programming Assignments 13 and 14)**
 
 ## 🎯 Learning Objectives
 By the end of this week, students should be able to:
