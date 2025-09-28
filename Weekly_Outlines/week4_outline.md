@@ -18,10 +18,10 @@
 
 #### In-Class Activities
 - **Problems 1-10:** Practice exercises to be completed during class
-- **Programming Assignment 12:** Instructor demonstration
+- **Programming Assignment 11:** Instructor demonstration
 
 #### Lab Assignment
-- **Programming Assignment 11:** Lab 4 (student completion)
+- **Programming Assignment 12:** Lab 4 (student completion)
 
 #### Individual Assignments
 - **Programming Assignments 13 & 14:** Individual problem-solving exercises
