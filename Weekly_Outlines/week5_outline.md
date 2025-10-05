@@ -7,11 +7,11 @@
 ## Recap
 
 ### 1. What Did We Learn So Far?
-- **Variables and Data Types** (strings, integers, floats)
+- **google colab** (for seeing the code in action)
+- **python tutuor** (for writing and keeping python code)
+- **Variables and Data Types** (strings, integers, floats, doubles)
 - **Basic Operations** (arithmetic, string concatenation)
-- **Input/Output** (print(), input())
-- **Loops** (for loops, while loops)
-- **Working with sequences** (lists, ranges)
+- **Input/Output** (print(), input(), type())
 
 ---
 
