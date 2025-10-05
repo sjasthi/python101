@@ -7,11 +7,13 @@
 ## Recap
 
 ### 1. What Did We Learn So Far?
-- **google colab** (for seeing the code in action)
-- **python tutuor** (for writing and keeping python code)
-- **Variables and Data Types** (strings, integers, floats, doubles)
-- **Basic Operations** (arithmetic, string concatenation)
-- **Input/Output** (print(), input(), type())
+- **Python Tutor** (for visualizing the code in action)
+- **google colab** (for writing the code)
+- **Variables and Data Types** (strings, integers, floats, booleans)
+- **Basic Operations** (arithmetic opreators and assignment operator)
+- **Input/Output** (print(), input()(), type() functions)
+- **Data Conversions** (int(), float(), str())
+
 
 ---
 
@@ -34,11 +36,18 @@
 
 ## Review
 
-### 4. Chapter 3 Concepts Notebook
+### 4. Chapter 3: Conditions and Boolean Logic
+📖 **Review Chapter 3 from the textbook**
+
+### 5. Chapter 3: Presentation
+📊 **Boolean Logic (and, or, not)**  
+[3_1_boolean_logic_and_or_not.pdf](https://github.com/sjasthi/python101/blob/main/presentations/3_1_boolean_logic_and_or_not.pdf)
+
+### 6. Chapter 3 Concepts Notebook
 📘 **Conditions & Boolean Logic Concepts**  
 [ch3_concepts_conditions_boolean_logic.ipynb](https://github.com/sjasthi/python101/blob/main/ch3_concepts_conditions_boolean_logic.ipynb)
 
-### 5. Chapter 3 Skeleton Notebook
+### 7. Chapter 3 Skeleton Notebook
 📝 **Programming Exercises**  
 [ch3_skeleton_conditions_programming_exercises.ipynb](https://github.com/sjasthi/python101/blob/main/skeletons_programming_assignments/ch3_skeleton_conditions_programming_exercises.ipynb)
 
@@ -46,11 +55,11 @@
 
 ## What is Due Today?
 
-### 6. Quiz 5 (Conditions)
+### 8. Quiz 5 (Conditions)
 - **Due Date:** October 5, 2025 ⏰
 - **Topic:** Boolean logic and conditional statements
 
-### 7. Lab 5 (Conditions)
+### 9. Lab 5 (Conditions)
 - **Due Date:** October 5, 2025 ⏰
 - **Focus:** Hands-on practice with if/else statements
 
@@ -58,7 +67,7 @@
 
 ## What is Due Next Week?
 
-### 8. Assignment 2 (Roulette Wheel Colors)
+### 10. Assignment 2 (Roulette Wheel Colors)
 - **Due Date:** October 18, 2025 📅
 - **Description:** Apply conditional logic to determine roulette wheel colors
 
