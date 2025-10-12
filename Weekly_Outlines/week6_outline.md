@@ -22,14 +22,17 @@
 
 ## Outline for Today
 
-### 3. Conditions (if .. else, elif)
+### Conditions (if .. else, elif)
 - Basic `if` statements
 - `if-else` structure
 - `elif` for multiple conditions
 
-### 4. Nested conditionals
+### Nested conditionals
 - if statements inside if
 
+### Short Circuit Evaluation
+- and (first False = False)
+- or (first True = True)
 ---
 
 ## Review
