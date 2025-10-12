@@ -13,6 +13,8 @@
 - **Basic Operations** (arithmetic opreators and assignment operator)
 - **Input/Output** (print(), input()(), type() functions)
 - **Data Conversions** (int(), float(), str())
+- 
+- **Booleans** (True False)
 - **Boolean Logic** (and or not)
 - **Conditions** (if..else, elif)
 
