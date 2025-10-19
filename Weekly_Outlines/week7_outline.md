@@ -81,7 +81,7 @@ We will continue our exploration of iterations with:
 ### Quiz 7
 - **Topic:** While Loops and Iteration Basics
 - **Location:** Google Classroom → Week 7 folder
-- **Points:** TBD
+- **Points:** 10
 - **Note:** Complete the quiz after reviewing the presentation and notebook
 
 ### Lab 7: While Loops
