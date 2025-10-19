@@ -53,7 +53,7 @@ By the end of this week, you will be able to:
 
 ---
 
-## 🔄 Review: Week 7 Concepts
+## 📄 Review: Week 7 Concepts
 
 Make sure you're comfortable with:
 - Basic while loops
@@ -87,7 +87,10 @@ These concepts will be built upon in this week's material!
 - **Note:** Complete the quiz after reviewing the presentation and notebook
 
 ### Lab 8: For Loops and Nested Loops
-- **Assignment:** TBD
+- **Assignment:** [Lab 8: For Loops](https://github.com/sjasthi/python101/blob/main/Labs/python101_lab8_for_loops.ipynb)
+- **Points:** 10
+- **Focus:** Practice implementing for loops, working with the `range()` function, and creating nested loop structures
+- **Location:** Submit to Google Classroom → Week 8 folder
 
 ---
 
