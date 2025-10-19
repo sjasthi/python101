@@ -12,7 +12,7 @@
 | 6 | Oct 12, 2025 | Oct 18, 2025 | 3.2. conditions (contd.) 3.3. Short Circuit Evaluation | Assignment 2 | Lab 6 | Quiz 6 |
 | 7 | Oct 19, 2025 | Oct 25, 2025 | 4.1. iterations, random number generation, while | | Lab 7 | Quiz 7 |
 | 8 | Oct 26, 2025 | Nov 1, 2025 | 4.2. iterations - while, break, continue, range | | Lab 8 | Quiz 8 |
-| 9 | Nov 2, 2025 | Nov 8, 2025 | 4.2. iterations - range, for_loops, extending for loops | Assignment 3 | Lab 9 | Quiz 9 |
+| 9 | Nov 2, 2025 | Nov 8, 2025 | 4.3. iterations - range, for_loops, extending for loops | Assignment 3 | Lab 9 | Quiz 9 |
 | 10 | Nov 9, 2025 | Nov 15, 2025 | 5.1. functions: basics | | Lab 10 | Quiz 10 |
 | 11 | Nov 16, 2025 | Nov 22, 2025 | 5.2. functions: positional, keyword, and optional args | Assignment 4 | Lab 11 | Quiz 11 |
 | — | Nov 23, 2025 | Nov 29, 2025 | **Thanksgiving Break** | | | |
