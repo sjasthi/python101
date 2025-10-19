@@ -68,8 +68,11 @@ We will continue our exploration of iterations with:
 ### Presentation
 [4_1_Iterations_while_for_loops.pdf](https://github.com/sjasthi/python101/blob/main/presentations/4_1_Iterations_while_for_loops.pdf)
 
-### Colab Notebook
+### Colab Notebook (Concepts)
 [Chapter 4 Concepts: Random, Range Function, While and For Loops](https://github.com/sjasthi/python101/blob/main/ch4_concepts_random_range_function_while_and_for_loops.ipynb)
+
+### Colab Notebook (Programming Assignments)
+[Chapter 4 Skeleton: Programming Assignments](https://github.com/sjasthi/python101/blob/main/ch4_skeleton_random_range_function_while_and_for_loops.ipynb)
 
 ---
 
