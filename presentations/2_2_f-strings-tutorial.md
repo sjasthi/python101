@@ -62,6 +62,44 @@ This outputs: `The area of the rectangle is 50 square units.`
 
 The expression `length * width` gets evaluated first, and then the result appears in your string. This capability allows you to perform calculations directly within your formatted strings, keeping your code concise.
 
+## Formatting Tables With F-Strings
+
+When you display data in columns, you'll want your output to align properly. F-strings let you control both the width of each column and the number of decimal places for numbers. This makes your data much easier to read.
+
+Here's how you format a table of product prices:
+
+```python
+product1 = "Apple"
+price1 = 1.5
+quantity1 = 10
+
+product2 = "Banana"
+price2 = 0.75
+quantity2 = 15
+
+product3 = "Orange"
+price3 = 2.0
+quantity3 = 8
+
+print(f"{'Product':<10} {'Price':>8} {'Quantity':>10}")
+print(f"{product1:<10} ${price1:>7.2f} {quantity1:>10}")
+print(f"{product2:<10} ${price2:>7.2f} {quantity2:>10}")
+print(f"{product3:<10} ${price3:>7.2f} {quantity3:>10}")
+```
+
+This produces a neatly aligned table:
+
+```
+Product       Price   Quantity
+Apple        $  1.50         10
+Banana       $  0.75         15
+Orange       $  2.00          8
+```
+
+Let's break down the formatting syntax. The `<10` means "left-align and use 10 characters of space." The `>8` means "right-align and use 8 characters." For prices, `.2f` specifies two decimal places for floating-point numbers. You combine these with `>7.2f` to get right-aligned numbers with consistent decimal formatting.
+
+This alignment technique helps you present financial data, measurements, or any tabular information in a professional format that's much easier for users to scan and understand.
+
 ## Why Choose F-Strings?
 
 F-strings offer you three key advantages:
