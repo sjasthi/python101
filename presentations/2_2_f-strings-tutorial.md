@@ -11,7 +11,7 @@ An f-string, short for "formatted string literal," lets you embed expressions di
 Let's start with a practical example. Suppose you want to greet a user by name:
 
 ```python
-name = "Alice"
+name = "Lisa"
 greeting = f"Hello, {name}!"
 print(greeting)
 ```
