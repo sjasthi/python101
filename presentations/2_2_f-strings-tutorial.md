@@ -16,7 +16,7 @@ greeting = f"Hello, {name}!"
 print(greeting)
 ```
 
-When you run this code, you'll see `Hello, Alice!` printed to your console. The `{name}` placeholder gets replaced with the value of the `name` variable. This reads more naturally than older string concatenation like `"Hello, " + name + "!"`, which requires multiple quotation marks and plus signs.
+When you run this code, you'll see `Hello, Lisa!` printed to your console. The `{name}` placeholder gets replaced with the value of the `name` variable. This reads more naturally than older string concatenation like `"Hello, " + name + "!"`, which requires multiple quotation marks and plus signs.
 
 ## Working With Multiple Variables
 
