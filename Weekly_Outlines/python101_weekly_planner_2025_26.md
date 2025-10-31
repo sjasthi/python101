@@ -16,7 +16,7 @@
 | 10 | Nov 9, 2025 | Nov 15, 2025 | 5.1. functions: basics | | Lab 10 | Quiz 10 |
 | 11 | Nov 16, 2025 | Nov 22, 2025 | 5.2. functions: positional, keyword, and optional args | Assignment 4 | Lab 11 | Quiz 11 |
 | — | Nov 23, 2025 | Nov 29, 2025 | **Thanksgiving Break** | | | |
-| — | Nov 30, 2025 | Dec 6, 2025 | **New Year Break** | | | |
+| — | Nov 30, 2025 | Dec 6, 2025 | **Thanksgiving Break** | | | |
 | 12 | Dec 7, 2025 | Dec 13, 2025 | 5.3. functions: variable args and kwargs | | Lab 12 | Quiz 12 |
 | 13 | Dec 14, 2025 | Dec 20, 2025 | 5.4. functions: variable scope | Assignment 5 | Lab 13 | Quiz 13 |
 | — | Dec 21, 2025 | Dec 27, 2025 | **Christmas Break** | | | |
