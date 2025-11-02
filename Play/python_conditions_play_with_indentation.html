@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Indentation Practice - Learn and Help</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+        }
+
+        .intro {
+            background: #f0f7ff;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            border-left: 5px solid #667eea;
+        }
+
+        .intro h2 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .intro ul {
+            margin-left: 20px;
+            line-height: 1.8;
+        }
+
+        .example-container {
+            margin-bottom: 40px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .example-header {
+            background: #667eea;
+            color: white;
+            padding: 15px 20px;
+            font-size: 1.3em;
+            font-weight: bold;
+        }
+
+        .example-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+        }
+
+        .code-section {
+            padding: 20px;
+            border-right: 2px solid #ddd;
+        }
+
+        .code-section:last-child {
+            border-right: none;
+        }
+
+        .section-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+            padding: 8px;
+            border-radius: 5px;
+            font-size: 1.1em;
+        }
+
+        .incorrect-title {
+            background: #ffe6e6;
+            color: #c93a3a;
+        }
+
+        .correct-title {
+            background: #e6f7e6;
+            color: #2d862d;
+        }
+
+        .code-box {
+            background: #f8f9fa;
+            border: 2px solid #dee2e6;
+            border-radius: 8px;
+            padding: 15px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            line-height: 1.6;
+            white-space: pre;
+            overflow-x: auto;
+            margin-bottom: 15px;
+        }
+
+        .incorrect-code {
+            border-color: #f8d7da;
+            background: #fff5f5;
+        }
+
+        .correct-code {
+            border-color: #d4edda;
+            background: #f0fff0;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 200px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            padding: 15px;
+            border: 2px solid #667eea;
+            border-radius: 8px;
+            resize: vertical;
+            line-height: 1.6;
+        }
+
+        .button-group {
+            margin-top: 15px;
+            display: flex;
+            gap: 10px;
+        }
+
+        button {
+            padding: 12px 25px;
+            font-size: 16px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .check-btn {
+            background: #667eea;
+            color: white;
+        }
+
+        .check-btn:hover {
+            background: #5568d3;
+            transform: translateY(-2px);
+        }
+
+        .reset-btn {
+            background: #6c757d;
+            color: white;
+        }
+
+        .reset-btn:hover {
+            background: #5a6268;
+            transform: translateY(-2px);
+        }
+
+        .feedback {
+            margin-top: 15px;
+            padding: 15px;
+            border-radius: 8px;
+            font-weight: bold;
+            display: none;
+        }
+
+        .feedback.success {
+            background: #d4edda;
+            color: #155724;
+            border: 2px solid #c3e6cb;
+            display: block;
+        }
+
+        .feedback.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 2px solid #f5c6cb;
+            display: block;
+        }
+
+        .feedback.info {
+            background: #d1ecf1;
+            color: #0c5460;
+            border: 2px solid #bee5eb;
+            display: block;
+        }
+
+        .explanation {
+            background: #fff9e6;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            border-left: 4px solid #ffc107;
+        }
+
+        .explanation h4 {
+            color: #856404;
+            margin-bottom: 10px;
+        }
+
+        .explanation ul {
+            margin-left: 20px;
+            line-height: 1.8;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        @media (max-width: 968px) {
+            .example-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .code-section {
+                border-right: none;
+                border-bottom: 2px solid #ddd;
+            }
+            
+            .code-section:last-child {
+                border-bottom: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🐍 Python Indentation Practice</h1>
+        <p class="subtitle">Learn and Help - www.learnandhelp.com</p>
+
+        <div class="intro">
+            <h2>Why Indentation Matters in Python</h2>
+            <ul>
+                <li><strong>Python uses indentation to define code blocks</strong> - unlike other languages that use curly braces { }</li>
+                <li><strong>Standard practice:</strong> Use 4 spaces for each level of indentation</li>
+                <li><strong>Be consistent:</strong> Don't mix tabs and spaces</li>
+                <li><strong>Common mistake:</strong> Forgetting to indent code inside if, else, elif blocks</li>
+            </ul>
+        </div>
+
+        <!-- Example 1: Simple IF -->
+        <div class="example-container">
+            <div class="example-header">Example 1: Simple IF Statement</div>
+            <div class="example-content">
+                <div class="code-section">
+                    <div class="section-title incorrect-title">❌ Incorrect Indentation</div>
+                    <div class="code-box incorrect-code">age = 18
+if age >= 18:
+print("You can vote!")
+print("Congratulations!")</div>
+                    
+                    <div class="section-title" style="background: #e3f2fd; color: #1565c0;">✏️ Fix It Here:</div>
+                    <textarea id="answer1">age = 18
+if age >= 18:
+print("You can vote!")
+print("Congratulations!")</textarea>
+                    
+                    <div class="button-group">
+                        <button class="check-btn" onclick="checkAnswer(1)">Check My Answer</button>
+                        <button class="reset-btn" onclick="resetAnswer(1)">Reset</button>
+                    </div>
+                    
+                    <div id="feedback1" class="feedback"></div>
+                </div>
+
+                <div class="code-section">
+                    <div class="section-title correct-title">✅ Correct Indentation</div>
+                    <div class="code-box correct-code" id="correct1">age = 18
+if age >= 18:
+    print("You can vote!")
+    print("Congratulations!")</div>
+                    
+                    <div class="explanation">
+                        <h4>Key Points:</h4>
+                        <ul>
+                            <li>The <code>if</code> statement ends with a colon (:)</li>
+                            <li>All code inside the if block must be indented (4 spaces)</li>
+                            <li>Both print statements are part of the if block</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Example 2: IF-ELSE -->
+        <div class="example-container">
+            <div class="example-header">Example 2: IF-ELSE Statement</div>
+            <div class="example-content">
+                <div class="code-section">
+                    <div class="section-title incorrect-title">❌ Incorrect Indentation</div>
+                    <div class="code-box incorrect-code">temperature = 75
+if temperature > 80:
+print("It's hot outside!")
+print("Stay hydrated")
+else:
+print("It's nice weather")
+print("Enjoy your day!")</div>
+                    
+                    <div class="section-title" style="background: #e3f2fd; color: #1565c0;">✏️ Fix It Here:</div>
+                    <textarea id="answer2">temperature = 75
+if temperature > 80:
+print("It's hot outside!")
+print("Stay hydrated")
+else:
+print("It's nice weather")
+print("Enjoy your day!")</textarea>
+                    
+                    <div class="button-group">
+                        <button class="check-btn" onclick="checkAnswer(2)">Check My Answer</button>
+                        <button class="reset-btn" onclick="resetAnswer(2)">Reset</button>
+                    </div>
+                    
+                    <div id="feedback2" class="feedback"></div>
+                </div>
+
+                <div class="code-section">
+                    <div class="section-title correct-title">✅ Correct Indentation</div>
+                    <div class="code-box correct-code" id="correct2">temperature = 75
+if temperature > 80:
+    print("It's hot outside!")
+    print("Stay hydrated")
+else:
+    print("It's nice weather")
+    print("Enjoy your day!")</div>
+                    
+                    <div class="explanation">
+                        <h4>Key Points:</h4>
+                        <ul>
+                            <li><code>else</code> is at the same level as <code>if</code> (no indentation)</li>
+                            <li>Code inside both if and else blocks must be indented</li>
+                            <li><code>else</code> also ends with a colon (:)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Example 3: IF-ELIF-ELSE -->
+        <div class="example-container">
+            <div class="example-header">Example 3: IF-ELIF-ELSE Statement</div>
+            <div class="example-content">
+                <div class="code-section">
+                    <div class="section-title incorrect-title">❌ Incorrect Indentation</div>
+                    <div class="code-box incorrect-code">score = 85
+if score >= 90:
+print("Grade: A")
+print("Excellent!")
+elif score >= 80:
+print("Grade: B")
+print("Good job!")
+else:
+print("Keep trying!")
+print("You can do better!")</div>
+                    
+                    <div class="section-title" style="background: #e3f2fd; color: #1565c0;">✏️ Fix It Here:</div>
+                    <textarea id="answer3">score = 85
+if score >= 90:
+print("Grade: A")
+print("Excellent!")
+elif score >= 80:
+print("Grade: B")
+print("Good job!")
+else:
+print("Keep trying!")
+print("You can do better!")</textarea>
+                    
+                    <div class="button-group">
+                        <button class="check-btn" onclick="checkAnswer(3)">Check My Answer</button>
+                        <button class="reset-btn" onclick="resetAnswer(3)">Reset</button>
+                    </div>
+                    
+                    <div id="feedback3" class="feedback"></div>
+                </div>
+
+                <div class="code-section">
+                    <div class="section-title correct-title">✅ Correct Indentation</div>
+                    <div class="code-box correct-code" id="correct3">score = 85
+if score >= 90:
+    print("Grade: A")
+    print("Excellent!")
+elif score >= 80:
+    print("Grade: B")
+    print("Good job!")
+else:
+    print("Keep trying!")
+    print("You can do better!")</div>
+                    
+                    <div class="explanation">
+                        <h4>Key Points:</h4>
+                        <ul>
+                            <li><code>elif</code> (else if) is at the same level as <code>if</code></li>
+                            <li>Each condition block (if, elif, else) must have indented code</li>
+                            <li>You can have multiple elif statements</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Example 4: IF-ELIF-ELIF-ELSE -->
+        <div class="example-container">
+            <div class="example-header">Example 4: IF-ELIF-ELIF-ELSE Statement (Multiple Conditions)</div>
+            <div class="example-content">
+                <div class="code-section">
+                    <div class="section-title incorrect-title">❌ Incorrect Indentation</div>
+                    <div class="code-box incorrect-code">grade = 'B'
+if grade == 'A':
+print("Outstanding!")
+print("GPA: 4.0")
+elif grade == 'B':
+print("Great work!")
+print("GPA: 3.0")
+elif grade == 'C':
+print("Good effort!")
+print("GPA: 2.0")
+else:
+print("Need improvement")
+print("Study harder!")</div>
+                    
+                    <div class="section-title" style="background: #e3f2fd; color: #1565c0;">✏️ Fix It Here:</div>
+                    <textarea id="answer4">grade = 'B'
+if grade == 'A':
+print("Outstanding!")
+print("GPA: 4.0")
+elif grade == 'B':
+print("Great work!")
+print("GPA: 3.0")
+elif grade == 'C':
+print("Good effort!")
+print("GPA: 2.0")
+else:
+print("Need improvement")
+print("Study harder!")</textarea>
+                    
+                    <div class="button-group">
+                        <button class="check-btn" onclick="checkAnswer(4)">Check My Answer</button>
+                        <button class="reset-btn" onclick="resetAnswer(4)">Reset</button>
+                    </div>
+                    
+                    <div id="feedback4" class="feedback"></div>
+                </div>
+
+                <div class="code-section">
+                    <div class="section-title correct-title">✅ Correct Indentation</div>
+                    <div class="code-box correct-code" id="correct4">grade = 'B'
+if grade == 'A':
+    print("Outstanding!")
+    print("GPA: 4.0")
+elif grade == 'B':
+    print("Great work!")
+    print("GPA: 3.0")
+elif grade == 'C':
+    print("Good effort!")
+    print("GPA: 2.0")
+else:
+    print("Need improvement")
+    print("Study harder!")</div>
+                    
+                    <div class="explanation">
+                        <h4>Key Points:</h4>
+                        <ul>
+                            <li>You can chain multiple <code>elif</code> statements</li>
+                            <li>All elif statements align with the initial if</li>
+                            <li>Only ONE block of code will execute (the first true condition)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Example 5: Nested IF -->
+        <div class="example-container">
+            <div class="example-header">Example 5: Nested IF Statements (IF inside IF-ELSE)</div>
+            <div class="example-content">
+                <div class="code-section">
+                    <div class="section-title incorrect-title">❌ Incorrect Indentation</div>
+                    <div class="code-box incorrect-code">age = 20
+has_license = True
+if age >= 18:
+print("You are an adult")
+if has_license:
+print("You can drive!")
+else:
+print("Get your license first")
+else:
+print("Too young to drive")
+if age >= 16:
+print("You can get a learner's permit")
+else:
+print("Wait a few more years")</div>
+                    
+                    <div class="section-title" style="background: #e3f2fd; color: #1565c0;">✏️ Fix It Here:</div>
+                    <textarea id="answer5">age = 20
+has_license = True
+if age >= 18:
+print("You are an adult")
+if has_license:
+print("You can drive!")
+else:
+print("Get your license first")
+else:
+print("Too young to drive")
+if age >= 16:
+print("You can get a learner's permit")
+else:
+print("Wait a few more years")</textarea>
+                    
+                    <div class="button-group">
+                        <button class="check-btn" onclick="checkAnswer(5)">Check My Answer</button>
+                        <button class="reset-btn" onclick="resetAnswer(5)">Reset</button>
+                    </div>
+                    
+                    <div id="feedback5" class="feedback"></div>
+                </div>
+
+                <div class="code-section">
+                    <div class="section-title correct-title">✅ Correct Indentation</div>
+                    <div class="code-box correct-code" id="correct5">age = 20
+has_license = True
+if age >= 18:
+    print("You are an adult")
+    if has_license:
+        print("You can drive!")
+    else:
+        print("Get your license first")
+else:
+    print("Too young to drive")
+    if age >= 16:
+        print("You can get a learner's permit")
+    else:
+        print("Wait a few more years")</div>
+                    
+                    <div class="explanation">
+                        <h4>Key Points:</h4>
+                        <ul>
+                            <li><strong>Nested if statements</strong> require additional indentation</li>
+                            <li>First level: 4 spaces, Second level: 8 spaces</li>
+                            <li>The inner if-else is part of the outer if block</li>
+                            <li>Each level of nesting adds 4 more spaces</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // Store original incorrect code for reset
+        const originalCode = {
+            1: `age = 18
+if age >= 18:
+print("You can vote!")
+print("Congratulations!")`,
+            2: `temperature = 75
+if temperature > 80:
+print("It's hot outside!")
+print("Stay hydrated")
+else:
+print("It's nice weather")
+print("Enjoy your day!")`,
+            3: `score = 85
+if score >= 90:
+print("Grade: A")
+print("Excellent!")
+elif score >= 80:
+print("Grade: B")
+print("Good job!")
+else:
+print("Keep trying!")
+print("You can do better!")`,
+            4: `grade = 'B'
+if grade == 'A':
+print("Outstanding!")
+print("GPA: 4.0")
+elif grade == 'B':
+print("Great work!")
+print("GPA: 3.0")
+elif grade == 'C':
+print("Good effort!")
+print("GPA: 2.0")
+else:
+print("Need improvement")
+print("Study harder!")`,
+            5: `age = 20
+has_license = True
+if age >= 18:
+print("You are an adult")
+if has_license:
+print("You can drive!")
+else:
+print("Get your license first")
+else:
+print("Too young to drive")
+if age >= 16:
+print("You can get a learner's permit")
+else:
+print("Wait a few more years")`
+        };
+
+        // Store correct answers
+        const correctAnswers = {
+            1: `age = 18
+if age >= 18:
+    print("You can vote!")
+    print("Congratulations!")`,
+            2: `temperature = 75
+if temperature > 80:
+    print("It's hot outside!")
+    print("Stay hydrated")
+else:
+    print("It's nice weather")
+    print("Enjoy your day!")`,
+            3: `score = 85
+if score >= 90:
+    print("Grade: A")
+    print("Excellent!")
+elif score >= 80:
+    print("Grade: B")
+    print("Good job!")
+else:
+    print("Keep trying!")
+    print("You can do better!")`,
+            4: `grade = 'B'
+if grade == 'A':
+    print("Outstanding!")
+    print("GPA: 4.0")
+elif grade == 'B':
+    print("Great work!")
+    print("GPA: 3.0")
+elif grade == 'C':
+    print("Good effort!")
+    print("GPA: 2.0")
+else:
+    print("Need improvement")
+    print("Study harder!")`,
+            5: `age = 20
+has_license = True
+if age >= 18:
+    print("You are an adult")
+    if has_license:
+        print("You can drive!")
+    else:
+        print("Get your license first")
+else:
+    print("Too young to drive")
+    if age >= 16:
+        print("You can get a learner's permit")
+    else:
+        print("Wait a few more years")`
+        };
+
+        function normalizeWhitespace(code) {
+            // Normalize line endings and trim
+            return code.trim().replace(/\r\n/g, '\n');
+        }
+
+        function checkAnswer(exampleNum) {
+            const textarea = document.getElementById(`answer${exampleNum}`);
+            const feedback = document.getElementById(`feedback${exampleNum}`);
+            const userAnswer = normalizeWhitespace(textarea.value);
+            const correct = normalizeWhitespace(correctAnswers[exampleNum]);
+
+            if (userAnswer === correct) {
+                feedback.className = 'feedback success';
+                feedback.innerHTML = '🎉 Perfect! Your indentation is correct! Great job!';
+            } else {
+                feedback.className = 'feedback error';
+                feedback.innerHTML = '❌ Not quite right. Check your indentation carefully. Remember: use 4 spaces for each level of indentation. Compare your code with the correct version on the right.';
+            }
+        }
+
+        function resetAnswer(exampleNum) {
+            const textarea = document.getElementById(`answer${exampleNum}`);
+            const feedback = document.getElementById(`feedback${exampleNum}`);
+            
+            textarea.value = originalCode[exampleNum];
+            feedback.className = 'feedback';
+            feedback.style.display = 'none';
+        }
+    </script>
+</body>
+</html>
