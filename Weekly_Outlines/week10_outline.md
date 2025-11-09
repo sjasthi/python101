@@ -105,6 +105,10 @@ Students should be able to:
 - Call a function and use its return value
 - Explain the difference between void and value-returning functions
 
+## What is due today?
+- Quiz 10 - Please see Week 10 folder in google classroom
+- Lab 10 - Please see Week 10 folder in google classroom
+  
 ## Next Week Preview
 Week 11 will explore different types of function arguments: formal vs actual arguments, positional arguments, keyword arguments, and default values.
 
