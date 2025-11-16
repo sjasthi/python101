@@ -58,6 +58,16 @@ By the end of this week, students will be able to:
 
 💻 [Functions Programming Assignments](https://github.com/sjasthi/python101/blob/main/colab_notebooks/ch5_skeleton_functions_programming_assignments.ipynb)
 
+### Interactive Playbook
+🎮 [Play with Positional, Keyword and Optional Arguments](https://github.com/sjasthi/python101/blob/main/Quizzes/functions_positional_keyword_optional_arguments_interactive_playbook.html)
+
+### Quiz 11 (10 points; due today)
+📝 Take the Quiz and submit the screenshot of your final score  
+[Quiz 11 - Functions: Positional, Keyword, and Optional Arguments](https://github.com/sjasthi/python101/blob/main/Quizzes/functions_positional_keyword_optional_arguments_interactive_playbook.html)
+
+### Lab 11 (10 points; due 22 Nov)
+🔬 [Lab 11 - Function Arguments Experimentation](https://github.com/sjasthi/python101/blob/main/Labs/python101_lab11_functions_positional_keyword_optional_arguments.ipynb)
+
 ## Key Concepts to Remember
 
 ### 1. Formal vs Actual Arguments
@@ -140,39 +150,6 @@ book4 = book_info("ML Guide", "Alice Lee", year=2023, genre="Technical")
    # ✅ CORRECT:
    result = add(5, 3)
    ```
-
-## Practice Exercises
-
-### Exercise 1: Create a flexible greeting function
-Write a function that takes a name (required), a greeting (default: "Hello"), and a punctuation (default: "!").
-
-### Exercise 2: Calculate grade with bonus
-Create a function that calculates a final grade given:
-- Base score (required)
-- Attendance bonus (default: 0)
-- Extra credit (default: 0)
-
-### Exercise 3: Format contact information
-Write a function that formats contact info with:
-- Name (required)
-- Phone (required)
-- Email (default: "N/A")
-- Address (default: "N/A")
-
-## Activities
-- Complete exercises in the Colab notebooks
-- Refactor previous week's functions to use default values
-- Practice calling functions using different argument styles
-- Debug code with argument errors
-
-## Assessment
-Students should be able to:
-- Identify formal vs actual arguments in code
-- Write functions with a mix of required and optional parameters
-- Call functions using positional, keyword, or mixed arguments
-- Debug common argument-related errors
-- Explain when to use each type of argument
-
 ## Next Week Preview
 Week 12 will cover variable scope (local vs global), functions returning multiple values, and handling variable numbers of arguments (*args and **kwargs).
 
