@@ -1,4 +1,4 @@
-# Week 11: Function Arguments - Positional, Keyword, and Default Values
+# Week 11: Function Arguments - Positional, Keyword, and Optional Arguments
 
 ## Overview
 This week builds upon Week 10's introduction to functions by diving deeper into how arguments are passed to functions. Students will learn about formal vs actual arguments, positional arguments, keyword arguments, and how to use default values to make functions more flexible.
@@ -34,7 +34,7 @@ By the end of this week, students will be able to:
 - Improved code readability
 - Benefits of using keyword arguments
 
-### 4. Default Values (Optional Arguments)
+### 4. Optional Arguments (Default Values)
 - Defining parameters with default values
 - Making arguments optional
 - Syntax: `def function_name(param1, param2=default_value):`
