@@ -63,6 +63,10 @@ By the end of this week, students will be able to:
 
 💻 [Functions Programming Assignments](https://github.com/sjasthi/python101/blob/main/colab_notebooks/ch5_skeleton_functions_programming_assignments.ipynb)
 
+### Quizzes
+🎯 [Variable Scope Interactive Quiz](https://github.com/sjasthi/python101/blob/main/Quizzes/functions_variable_scope_quiz.html)
+- **Instructions:** Review the 6 Variable Scope Rules on the first page, complete all 12 quiz questions, and submit a screenshot of your final score to Google Classroom.
+
 ## Key Concepts to Remember
 
 ### 1. Local vs Global Variables
@@ -257,6 +261,7 @@ Create a function that takes any number of grades and returns min, max, and aver
 
 ## Activities
 - Complete all scope exercises in the Colab notebooks
+- **Complete the Variable Scope Interactive Quiz and submit screenshot to Google Classroom**
 - Debug scope-related errors in sample code
 - Write functions using *args and **kwargs
 - Practice returning multiple values from functions
