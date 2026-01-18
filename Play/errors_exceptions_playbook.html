@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🐛 Python Errors & Exceptions Interactive Playbook</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        h1 {
+            color: #667eea;
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 1.2em;
+        }
+
+        .tab-container {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .tab {
+            padding: 12px 24px;
+            background: #f0f0f0;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s;
+            font-weight: bold;
+        }
+
+        .tab:hover {
+            background: #e0e0e0;
+            transform: translateY(-2px);
+        }
+
+        .tab.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .content-section {
+            display: none;
+            animation: fadeIn 0.5s;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .error-type {
+            background: #f8f9fa;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 12px;
+            border-left: 5px solid #667eea;
+        }
+
+        .error-type h3 {
+            color: #764ba2;
+            margin-bottom: 10px;
+        }
+
+        .code-box {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+            position: relative;
+        }
+
+        .code-box pre {
+            margin: 0;
+        }
+
+        .error-message {
+            background: #fee;
+            color: #c00;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+            font-family: monospace;
+            border-left: 3px solid #c00;
+        }
+
+        .success-message {
+            background: #efe;
+            color: #0a0;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+            font-family: monospace;
+            border-left: 3px solid #0a0;
+        }
+
+        .interactive-demo {
+            background: white;
+            border: 2px solid #667eea;
+            padding: 20px;
+            border-radius: 12px;
+            margin: 15px 0;
+        }
+
+        .demo-controls {
+            display: flex;
+            gap: 10px;
+            margin: 15px 0;
+            flex-wrap: wrap;
+        }
+
+        input[type="text"], input[type="number"] {
+            padding: 10px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            flex: 1;
+            min-width: 200px;
+        }
+
+        button.run-btn {
+            padding: 10px 25px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: transform 0.2s;
+        }
+
+        button.run-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .output-box {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 10px;
+            min-height: 50px;
+            font-family: monospace;
+        }
+
+        .tip-box {
+            background: #fff3cd;
+            border: 2px solid #ffc107;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+        }
+
+        .tip-box strong {
+            color: #856404;
+        }
+
+        .analogy {
+            background: linear-gradient(135deg, #e0f7fa 0%, #b2ebf2 100%);
+            padding: 20px;
+            border-radius: 12px;
+            margin: 15px 0;
+            border-left: 5px solid #00acc1;
+        }
+
+        .analogy-title {
+            font-weight: bold;
+            color: #00838f;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        .exception-flow {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .flow-step {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            border: 2px solid #667eea;
+            position: relative;
+        }
+
+        .flow-step::after {
+            content: '⬇';
+            position: absolute;
+            bottom: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 20px;
+            color: #667eea;
+        }
+
+        .flow-step:last-child::after {
+            display: none;
+        }
+
+        .emoji {
+            font-size: 1.5em;
+            margin-right: 10px;
+        }
+
+        .progress-bar {
+            background: #f0f0f0;
+            height: 8px;
+            border-radius: 10px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            transition: width 0.5s;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🐛 Python Errors & Exceptions</h1>
+        <p class="subtitle">Learn to catch bugs like a pro! 🕷️</p>
+
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressBar" style="width: 0%"></div>
+        </div>
+
+        <div class="tab-container">
+            <button class="tab active" onclick="showSection('intro')">🎯 Introduction</button>
+            <button class="tab" onclick="showSection('syntax')">📝 Syntax Errors</button>
+            <button class="tab" onclick="showSection('logical')">🤔 Logical Errors</button>
+            <button class="tab" onclick="showSection('runtime')">⚡ Runtime Errors</button>
+            <button class="tab" onclick="showSection('exceptions')">🛡️ Exception Handling</button>
+            <button class="tab" onclick="showSection('practice')">🎮 Practice</button>
+        </div>
+
+        <!-- Introduction Section -->
+        <div id="intro" class="content-section active">
+            <h2>🎯 Welcome to Error Detective Academy!</h2>
+            
+            <div class="analogy">
+                <div class="analogy-title">🍕 The Pizza Delivery Analogy</div>
+                <p>Imagine ordering a pizza:</p>
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li><strong>Syntax Error:</strong> You write the address wrong on the order form (can't even send it!)</li>
+                    <li><strong>Logical Error:</strong> You order pineapple when you meant pepperoni (order goes through, but wrong result!)</li>
+                    <li><strong>Runtime Error:</strong> The delivery driver gets a flat tire halfway to your house (starts fine, fails during execution)</li>
+                </ul>
+            </div>
+
+            <div class="error-type">
+                <h3>Types of Errors We'll Learn:</h3>
+                <ol style="margin-left: 20px;">
+                    <li><strong>Syntax Errors:</strong> Like spelling mistakes - Python can't even understand your code</li>
+                    <li><strong>Logical Errors:</strong> Code runs but gives wrong answers - the sneakiest bugs!</li>
+                    <li><strong>Runtime Errors:</strong> Code starts running but crashes - like a car breaking down</li>
+                    <li><strong>Exception Handling:</strong> Your safety net to catch errors gracefully</li>
+                </ol>
+            </div>
+
+            <div class="tip-box">
+                <strong>💡 Pro Tip:</strong> The best programmers make mistakes all the time! The difference is they know how to find and fix them quickly.
+            </div>
+        </div>
+
+        <!-- Syntax Errors Section -->
+        <div id="syntax" class="content-section">
+            <h2>📝 Syntax Errors: Grammar Police of Python</h2>
+
+            <div class="analogy">
+                <div class="analogy-title">📚 English Class Analogy</div>
+                <p>A syntax error in Python is like forgetting a period at the end of a sentence or forgetting to close your quotation marks. Python's "grammar police" won't let your code run at all!</p>
+            </div>
+
+            <div class="error-type">
+                <h3><span class="emoji">❌</span>Common Syntax Errors</h3>
+                
+                <p><strong>1. Missing Parentheses:</strong></p>
+                <div class="code-box">
+<pre>print('Hello World'   <span style="color: #ff6b6b"># ❌ Missing closing parenthesis</span></pre>
+                </div>
+                <div class="error-message">SyntaxError: incomplete input</div>
+
+                <p style="margin-top: 15px;"><strong>✅ Fix it:</strong></p>
+                <div class="code-box">
+<pre>print('Hello World')  <span style="color: #51cf66"># ✅ Proper closing parenthesis</span></pre>
+                </div>
+
+                <p style="margin-top: 20px;"><strong>2. Using break Outside a Loop:</strong></p>
+                <div class="code-box">
+<pre>x = 10
+if x == 10:
+    break  <span style="color: #ff6b6b"># ❌ break can only be used inside loops!</span></pre>
+                </div>
+                <div class="error-message">SyntaxError: 'break' outside loop</div>
+            </div>
+
+            <div class="interactive-demo">
+                <h3>🎮 Try It: Syntax Detective</h3>
+                <p>Find and fix the syntax error in this code:</p>
+                <div class="code-box">
+<pre id="syntaxCode">name = input('What is your name?'
+print(name</pre>
+                </div>
+                <div class="demo-controls">
+                    <input type="text" id="syntaxFix" placeholder="Type the corrected code here...">
+                    <button class="run-btn" onclick="checkSyntaxFix()">Check Answer</button>
+                </div>
+                <div class="output-box" id="syntaxOutput"></div>
+            </div>
+        </div>
+
+        <!-- Logical Errors Section -->
+        <div id="logical" class="content-section">
+            <h2>🤔 Logical Errors: The Sneaky Bugs</h2>
+
+            <div class="analogy">
+                <div class="analogy-title">🧮 Math Test Analogy</div>
+                <p>Imagine you're solving 5 + 3, but you write down 6 instead of 8. Your handwriting is perfect, you followed all the rules, but the answer is wrong. That's a logical error!</p>
+            </div>
+
+            <div class="error-type">
+                <h3><span class="emoji">🎭</span>Common Logical Errors</h3>
+                
+                <p><strong>1. Swapped Even/Odd Logic:</strong></p>
+                <div class="code-box">
+<pre>num = 7
+if num % 2 == 0:
+    print(num, "is odd.")   <span style="color: #ff6b6b"># ❌ Logic is backwards!</span>
+else:
+    print(num, "is even.")</pre>
+                </div>
+                <div class="error-message">Output: 7 is even. (WRONG!)</div>
+
+                <p style="margin-top: 15px;"><strong>✅ Fix it:</strong></p>
+                <div class="code-box">
+<pre>num = 7
+if num % 2 == 0:
+    print(num, "is even.")  <span style="color: #51cf66"># ✅ Correct logic</span>
+else:
+    print(num, "is odd.")</pre>
+                </div>
+                <div class="success-message">Output: 7 is odd. (CORRECT!)</div>
+            </div>
+
+            <div class="interactive-demo">
+                <h3>🎮 Detective Challenge: Find the Bug</h3>
+                <p>This code is supposed to find the maximum number, but it doesn't work with negative numbers. Why?</p>
+                <div class="code-box">
+<pre>numbers = [-4, -5, -6]
+max_val = 0
+for num in numbers:
+    if num > max_val:
+        max_val = num
+print(max_val)</pre>
+                </div>
+                <p style="margin-top: 10px;"><strong>What's the output?</strong></p>
+                <div class="demo-controls">
+                    <input type="text" id="logicalAnswer" placeholder="What number will it print?">
+                    <button class="run-btn" onclick="checkLogicalAnswer()">Check</button>
+                </div>
+                <div class="output-box" id="logicalOutput"></div>
+            </div>
+        </div>
+
+        <!-- Runtime Errors Section -->
+        <div id="runtime" class="content-section">
+            <h2>⚡ Runtime Errors: When Things Go Boom!</h2>
+
+            <div class="analogy">
+                <div class="analogy-title">🚗 Road Trip Analogy</div>
+                <p>Your car starts fine (code syntax is correct), but then you run out of gas on the highway (runtime error). Everything was good until something unexpected happened!</p>
+            </div>
+
+            <div class="error-type">
+                <h3><span class="emoji">💥</span>Common Runtime Errors</h3>
+                
+                <p><strong>1. NameError - Using undefined variables:</strong></p>
+                <div class="code-box">
+<pre>a, b = 5, 10
+print(a, b, c)  <span style="color: #ff6b6b"># ❌ What is 'c'? Never defined!</span></pre>
+                </div>
+                <div class="error-message">NameError: name 'c' is not defined</div>
+
+                <p style="margin-top: 15px;"><strong>2. ValueError - Wrong type of value:</strong></p>
+                <div class="code-box">
+<pre>age = int("hello")  <span style="color: #ff6b6b"># ❌ Can't convert "hello" to a number!</span></pre>
+                </div>
+                <div class="error-message">ValueError: invalid literal for int() with base 10: 'hello'</div>
+
+                <p style="margin-top: 15px;"><strong>3. ZeroDivisionError - Dividing by zero:</strong></p>
+                <div class="code-box">
+<pre>result = 100 / 0  <span style="color: #ff6b6b"># ❌ Math says NO!</span></pre>
+                </div>
+                <div class="error-message">ZeroDivisionError: division by zero</div>
+
+                <p style="margin-top: 15px;"><strong>4. TypeError - Wrong operation for the type:</strong></p>
+                <div class="code-box">
+<pre>print(5 + "hello")  <span style="color: #ff6b6b"># ❌ Can't add number and string!</span></pre>
+                </div>
+                <div class="error-message">TypeError: unsupported operand type(s) for +: 'int' and 'str'</div>
+
+                <p style="margin-top: 15px;"><strong>5. IndexError - Index out of range:</strong></p>
+                <div class="code-box">
+<pre>nums = [1, 2, 3]
+print(nums[5])  <span style="color: #ff6b6b"># ❌ Only indices 0, 1, 2 exist!</span></pre>
+                </div>
+                <div class="error-message">IndexError: list index out of range</div>
+            </div>
+
+            <div class="interactive-demo">
+                <h3>🎮 Error Simulator</h3>
+                <p>Try dividing 100 by 0 and see what happens!</p>
+                <div class="demo-controls">
+                    <button class="run-btn" onclick="simulateDivisionByZero()">Divide 100 by 0</button>
+                    <button class="run-btn" onclick="simulateDivisionByLetter()">Divide 100 by "hello"</button>
+                </div>
+                <div class="output-box" id="divideOutput"></div>
+            </div>
+        </div>
+
+        <!-- Exception Handling Section -->
+        <div id="exceptions" class="content-section">
+            <h2>🛡️ Exception Handling: Your Safety Net</h2>
+
+            <div class="analogy">
+                <div class="analogy-title">🎪 Trapeze Artist Analogy</div>
+                <p>A trapeze artist has a safety net below. If they fall (error happens), the net catches them instead of them hitting the ground. That's what try-except does for your code!</p>
+            </div>
+
+            <div class="error-type">
+                <h3><span class="emoji">🎯</span>The Try-Except Structure</h3>
+                
+                <div class="exception-flow">
+                    <div class="flow-step">
+                        <strong>TRY Block:</strong> "Let me try this risky code..."
+                        <div class="code-box" style="margin-top: 10px;">
+<pre>try:
+    x = int(input("Enter a number: "))
+    result = 100 / x
+    print("Result:", result)</pre>
+                        </div>
+                    </div>
+
+                    <div class="flow-step">
+                        <strong>EXCEPT Block:</strong> "Oops! If something goes wrong, do this instead..."
+                        <div class="code-box" style="margin-top: 10px;">
+<pre>except ZeroDivisionError:
+    print("Can't divide by zero!")
+except ValueError:
+    print("That's not a valid number!")</pre>
+                        </div>
+                    </div>
+
+                    <div class="flow-step">
+                        <strong>ELSE Block (Optional):</strong> "If nothing went wrong, also do this..."
+                        <div class="code-box" style="margin-top: 10px;">
+<pre>else:
+    print("Success! Thanks for the valid input.")</pre>
+                        </div>
+                    </div>
+
+                    <div class="flow-step">
+                        <strong>FINALLY Block (Optional):</strong> "No matter what happens, do this..."
+                        <div class="code-box" style="margin-top: 10px;">
+<pre>finally:
+    print("Thank you for using this program!")</pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tip-box">
+                <strong>💡 Remember:</strong>
+                <ul style="margin-left: 20px; margin-top: 5px;">
+                    <li>try: Required - code that might fail</li>
+                    <li>except: Required - what to do if it fails</li>
+                    <li>else: Optional - runs if try succeeds</li>
+                    <li>finally: Optional - always runs, no matter what</li>
+                </ul>
+            </div>
+
+            <div class="interactive-demo">
+                <h3>🎮 Exception Handler Playground</h3>
+                <p>Enter a number and watch exception handling in action!</p>
+                <div class="demo-controls">
+                    <input type="text" id="exceptionInput" placeholder="Enter a number">
+                    <button class="run-btn" onclick="testException()">Test Exception Handler</button>
+                </div>
+                <div class="output-box" id="exceptionOutput"></div>
+            </div>
+        </div>
+
+        <!-- Practice Section -->
+        <div id="practice" class="content-section">
+            <h2>🎮 Practice Zone: Master Your Skills!</h2>
+
+            <div class="error-type">
+                <h3>Challenge 1: Identify the Error Type</h3>
+                <p>What error will this code produce?</p>
+                <div class="code-box">
+<pre>x = int("hello")</pre>
+                </div>
+                <div class="demo-controls">
+                    <select id="challenge1" style="padding: 10px; border-radius: 8px; flex: 1;">
+                        <option value="">Select error type...</option>
+                        <option value="syntax">SyntaxError</option>
+                        <option value="value">ValueError</option>
+                        <option value="type">TypeError</option>
+                        <option value="name">NameError</option>
+                    </select>
+                    <button class="run-btn" onclick="checkChallenge1()">Check</button>
+                </div>
+                <div class="output-box" id="challenge1Output"></div>
+            </div>
+
+            <div class="error-type">
+                <h3>Challenge 2: Code Tracing</h3>
+                <p>What will this code print?</p>
+                <div class="code-box">
+<pre>x = 10
+try:
+    x = 10/0
+except:
+    pass
+
+print(x)</pre>
+                </div>
+                <div class="demo-controls">
+                    <input type="text" id="challenge2" placeholder="What will it print?" style="padding: 10px; border-radius: 8px; flex: 1;">
+                    <button class="run-btn" onclick="checkChallenge2()">Check</button>
+                </div>
+                <div class="output-box" id="challenge2Output"></div>
+            </div>
+
+            <div class="error-type">
+                <h3>Challenge 3: Which Block Always Runs?</h3>
+                <p>Which block executes no matter what happens in try-except?</p>
+                <div class="demo-controls">
+                    <select id="challenge3" style="padding: 10px; border-radius: 8px; flex: 1;">
+                        <option value="">Select answer...</option>
+                        <option value="try">try</option>
+                        <option value="except">except</option>
+                        <option value="else">else</option>
+                        <option value="finally">finally</option>
+                    </select>
+                    <button class="run-btn" onclick="checkChallenge3()">Check</button>
+                </div>
+                <div class="output-box" id="challenge3Output"></div>
+            </div>
+
+            <div class="error-type">
+                <h3>Challenge 4: Understanding Exception Flow</h3>
+                <p>What will happen if NO exception occurs in a try block?</p>
+                <div class="demo-controls">
+                    <select id="challenge4" style="padding: 10px; border-radius: 8px; flex: 1;">
+                        <option value="">Select answer...</option>
+                        <option value="except">The except block will run</option>
+                        <option value="else">The else block will run (if present)</option>
+                        <option value="stop">The program will stop</option>
+                        <option value="error">An error will occur</option>
+                    </select>
+                    <button class="run-btn" onclick="checkChallenge4()">Check</button>
+                </div>
+                <div class="output-box" id="challenge4Output"></div>
+            </div>
+
+            <div class="error-type">
+                <h3>Challenge 5: Advanced Code Tracing</h3>
+                <p>What will this code print?</p>
+                <div class="code-box">
+<pre>x = 5
+try:
+    x = x // 2
+except:
+    print(x, end='')
+else:
+    print(x+1, end='')
+finally:
+    print(x, end='')
+
+print(x)</pre>
+                </div>
+                <div class="demo-controls">
+                    <input type="text" id="challenge5" placeholder="What output?" style="padding: 10px; border-radius: 8px; flex: 1;">
+                    <button class="run-btn" onclick="checkChallenge5()">Check</button>
+                </div>
+                <div class="output-box" id="challenge5Output"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentSection = 'intro';
+        let completedSections = new Set();
+
+        function showSection(sectionId) {
+            // Hide all sections
+            document.querySelectorAll('.content-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Remove active class from all tabs
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Show selected section
+            document.getElementById(sectionId).classList.add('active');
+            
+            // Add active class to clicked tab
+            event.target.classList.add('active');
+            
+            currentSection = sectionId;
+            completedSections.add(sectionId);
+            updateProgress();
+        }
+
+        function updateProgress() {
+            const totalSections = 6;
+            const progress = (completedSections.size / totalSections) * 100;
+            document.getElementById('progressBar').style.width = progress + '%';
+        }
+
+        function checkSyntaxFix() {
+            const answer = document.getElementById('syntaxFix').value.toLowerCase();
+            const output = document.getElementById('syntaxOutput');
+            
+            if (answer.includes("input('what is your name?')") && answer.includes("print(name)")) {
+                output.innerHTML = "🎉 Correct! You found both missing parentheses!<br>✅ Proper syntax: name = input('What is your name?')<br>✅ And: print(name)";
+                output.style.background = '#d4edda';
+                output.style.color = '#155724';
+            } else {
+                output.innerHTML = "❌ Not quite! Hint: Look for missing closing parentheses on BOTH lines.";
+                output.style.background = '#f8d7da';
+                output.style.color = '#721c24';
+            }
+        }
+
+        function checkLogicalAnswer() {
+            const answer = document.getElementById('logicalAnswer').value.trim();
+            const output = document.getElementById('logicalOutput');
+            
+            if (answer === '0') {
+                output.innerHTML = "🎯 Correct! It prints 0 (which is wrong!)<br><br>🐛 <strong>The Bug:</strong> max_val starts at 0, and all numbers in the list are negative. Since -4, -5, and -6 are all less than 0, max_val never gets updated!<br><br>✅ <strong>Fix:</strong> Initialize max_val to numbers[0] instead of 0.";
+                output.style.background = '#d4edda';
+                output.style.color = '#155724';
+            } else {
+                output.innerHTML = "❌ Try again! What happens when you compare -4, -5, -6 with 0?";
+                output.style.background = '#f8d7da';
+                output.style.color = '#721c24';
+            }
+        }
+
+        function simulateDivisionByZero() {
+            const output = document.getElementById('divideOutput');
+            
+            output.innerHTML = `
+                <strong>🔴 ZeroDivisionError: division by zero</strong><br><br>
+                💥 <strong>What happened?</strong><br>
+                Python tried to calculate 100 / 0, but division by zero is mathematically undefined!<br><br>
+                📚 <strong>Why this matters:</strong><br>
+                In math class, you learned you can't divide by zero. Python enforces this rule too!<br><br>
+                ✅ <strong>How to fix it:</strong><br>
+                Use try-except to catch this error and handle it gracefully.
+            `;
+            output.style.background = '#f8d7da';
+            output.style.color = '#721c24';
+            output.style.border = '2px solid #dc3545';
+            output.style.padding = '15px';
+        }
+
+        function simulateDivisionByLetter() {
+            const output = document.getElementById('divideOutput');
+            
+            output.innerHTML = `
+                <strong>🔴 TypeError: unsupported operand type(s) for /: 'int' and 'str'</strong><br><br>
+                💥 <strong>What happened?</strong><br>
+                Python tried to divide 100 (a number) by "hello" (text). You can't divide by words!<br><br>
+                📚 <strong>Why this matters:</strong><br>
+                Numbers and strings are different types. You can't do math operations between them directly.<br><br>
+                ✅ <strong>How to fix it:</strong><br>
+                Make sure both values are numbers before dividing, or convert the string to a number first.
+            `;
+            output.style.background = '#f8d7da';
+            output.style.color = '#721c24';
+            output.style.border = '2px solid #dc3545';
+            output.style.padding = '15px';
+        }
+
+        function testException() {
+            const input = document.getElementById('exceptionInput').value;
+            const output = document.getElementById('exceptionOutput');
+            let messages = [];
+            
+            messages.push('<strong>🔄 TRYING to run code...</strong>');
+            
+            try {
+                const num = parseInt(input);
+                
+                if (isNaN(num)) {
+                    throw new Error('ValueError');
+                }
+                
+                if (num === 0) {
+                    throw new Error('ZeroDivisionError');
+                }
+                
+                const result = 100 / num;
+                messages.push(`✅ TRY block succeeded: 100 / ${num} = ${result.toFixed(2)}`);
+                messages.push(`✅ ELSE block: Success! Thanks for the valid input.`);
+            } catch (e) {
+                if (e.message === 'ValueError') {
+                    messages.push(`❌ EXCEPT ValueError caught: "${input}" is not a valid number!`);
+                } else if (e.message === 'ZeroDivisionError') {
+                    messages.push(`❌ EXCEPT ZeroDivisionError caught: Can't divide by zero!`);
+                }
+            } finally {
+                messages.push(`✨ FINALLY block: Thank you for using this program! (runs no matter what)`);
+            }
+            
+            output.innerHTML = messages.join('<br>');
+            output.style.background = '#e7f3ff';
+            output.style.color = '#004085';
+        }
+
+        function checkChallenge1() {
+            const answer = document.getElementById('challenge1').value;
+            const output = document.getElementById('challenge1Output');
+            
+            if (answer === 'value') {
+                output.innerHTML = "🎉 Correct! It's a ValueError because \"hello\" cannot be converted to an integer.<br><br><strong>Remember:</strong> ValueError occurs when a function receives the right type but an inappropriate value.";
+                output.style.background = '#d4edda';
+                output.style.color = '#155724';
+            } else if (answer) {
+                output.innerHTML = "❌ Not quite! Think about what happens when you try to convert text that's not a number into an integer.";
+                output.style.background = '#f8d7da';
+                output.style.color = '#721c24';
+            }
+        }
+
+        function checkChallenge2() {
+            const answer = document.getElementById('challenge2').value.trim();
+            const output = document.getElementById('challenge2Output');
+            
+            if (answer === '10') {
+                output.innerHTML = "🎉 Correct! It prints 10<br><br><strong>Why?</strong><br>1. x starts as 10<br>2. 10/0 causes ZeroDivisionError<br>3. except catches it but does nothing (pass)<br>4. x is still 10, so it prints 10";
+                output.style.background = '#d4edda';
+                output.style.color = '#155724';
+            } else if (answer) {
+                output.innerHTML = "❌ Try again! Trace through the code:<br>- What is x before the try block?<br>- Does the division succeed?<br>- What happens in except with 'pass'?<br>- What value does x have at print(x)?";
+                output.style.background = '#f8d7da';
+                output.style.color = '#721c24';
+            }
+        }
+
+        function checkChallenge3() {
+            const answer = document.getElementById('challenge3').value;
+            const output = document.getElementById('challenge3Output');
+            
+            if (answer === 'finally') {
+                output.innerHTML = "🎉 Correct! The finally block ALWAYS executes, whether an exception occurs or not.<br><br><strong>Remember:</strong><br>- try: required<br>- except: runs if error occurs<br>- else: runs if NO error occurs<br>- finally: ALWAYS runs";
+                output.style.background = '#d4edda';
+                output.style.color = '#155724';
+            } else if (answer) {
+                output.innerHTML = "❌ Not quite! Think about which block is like saying 'no matter what happens, do this'";
+                output.style.background = '#f8d7da';
+                output.style.color = '#721c24';
+            }
+        }
+
+        function checkChallenge4() {
+            const answer = document.getElementById('challenge4').value;
+            const output = document.getElementById('challenge4Output');
+            
+            if (answer === 'else') {
+                output.innerHTML = "🎉 Correct! The else block runs ONLY when no exception occurs in the try block.<br><br><strong>Flow when NO exception:</strong><br>1. try block succeeds ✅<br>2. except block is skipped ⏭️<br>3. else block runs (if present) ✅<br>4. finally block runs (if present) ✅";
+                output.style.background = '#d4edda';
+                output.style.color = '#155724';
+            } else if (answer) {
+                output.innerHTML = "❌ Try again! Remember: else is the 'success' block that runs when everything in try goes well.";
+                output.style.background = '#f8d7da';
+                output.style.color = '#721c24';
+            }
+        }
+
+        function checkChallenge5() {
+            const answer = document.getElementById('challenge5').value.trim();
+            const output = document.getElementById('challenge5Output');
+            
+            if (answer === '322') {
+                output.innerHTML = "🎉 Outstanding! The answer is 322<br><br><strong>Step-by-step:</strong><br>1. x = 5<br>2. try: x = 5 // 2 → x becomes 2<br>3. No error, so except is skipped<br>4. else: print(x+1, end='') → prints 3<br>5. finally: print(x, end='') → prints 2<br>6. print(x) → prints 2<br><br>Output: 322";
+                output.style.background = '#d4edda';
+                output.style.color = '#155724';
+            } else if (answer) {
+                output.innerHTML = "❌ Not quite! Trace carefully:<br>- Start: x = 5<br>- After x // 2: x = ?<br>- else prints: x+1 (with no newline)<br>- finally prints: x (with no newline)<br>- Last print: x (with newline)<br><br>Remember: end='' means no newline after print!";
+                output.style.background = '#f8d7da';
+                output.style.color = '#721c24';
+            }
+        }
+
+        // Initialize progress
+        completedSections.add('intro');
+        updateProgress();
+    </script>
+</body>
+</html>
