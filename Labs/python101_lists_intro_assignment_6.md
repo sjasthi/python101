@@ -57,9 +57,8 @@ Visit [https://codingbat.com/python/List-1](https://codingbat.com/python/List-1)
 ### Step 1: Set Up CodingBat Account (5 minutes)
 
 1. Go to [https://codingbat.com](https://codingbat.com)
-2. Click "Create Account" (or log in if you already have one)
-3. Navigate to **Python → List-1**
-4. You should see all 12 problems listed
+2. Navigate to **Python → List-1**
+3. You should see all 12 problems listed
 
 ### Step 2: Solve Each Problem (Main Work)
 
@@ -205,31 +204,6 @@ Before submitting, verify that you have:
 
 ---
 
-## 🆘 Getting Help
-
-If you need help:
-
-1. **Review the lessons** - Go back to the List Methods playbook
-2. **Read the problem carefully** - Make sure you understand what it's asking
-3. **Check the examples** - CodingBat provides example inputs/outputs
-4. **Use the hints** - Many problems have hints available
-5. **Test with simple cases** - Try the examples given in the problem
-6. **Ask during class** - Bring your questions to class
-7. **Email me** - If you're stuck, reach out!
-
-**Remember:** The goal is to LEARN, not just to finish. Take your time and understand each problem! 🧠
-
----
-
-## 📚 Resources
-
-- **CodingBat List-1 Problems:** [https://codingbat.com/python/List-1](https://codingbat.com/python/List-1)
-- **Google Colab:** [https://colab.research.google.com](https://colab.research.google.com)
-- **Python List Documentation:** [https://docs.python.org/3/tutorial/datastructures.html](https://docs.python.org/3/tutorial/datastructures.html)
-- **List Methods Playbook:** (Refer to the interactive HTML playbook from class)
-- **Lab Notebook:** (Refer to the practice lab we completed)
-
----
 
 ## 🎓 Learning Objectives
 
@@ -243,48 +217,13 @@ By completing this assignment, you will:
 ✅ Gain confidence in writing Python functions  
 ✅ Learn to test your code thoroughly  
 
----
-
-## 📅 Important Dates
-
-- **Assigned:** ________________
-- **Due Date:** ________________
-- **Late Submission:** -10% per day (up to 3 days, after that 0 points)
-
----
-
-## ⚠️ Academic Integrity
-
-- You **MAY** discuss problems with classmates
-- You **MAY** ask for help understanding a problem
-- You **MUST** write your own code
-- You **MUST NOT** copy code from other students
-- You **MUST NOT** use AI tools to solve the problems for you
-
-**Remember:** The purpose is to learn! Copying doesn't help you understand.
-
----
-
-## 🌟 Extra Challenge (No Extra Points - Just for Fun!)
-
-After completing all 12 problems, try these:
-
-1. Go to **List-2** section on CodingBat and try some harder problems
-2. Create your own list problem and solution
-3. Explain your favorite problem to a classmate
-4. See if you can solve any problem in multiple ways
 
 ---
 
 ## 📧 Questions?
 
-If you have any questions about this assignment:
-- Ask during class
-- Email me at [your email]
-- Post in Google Classroom discussion
-
 **Good luck, and happy coding! 🐍✨**
 
 ---
 
-*Assignment created for Python 101 - Metro State University - Learn and Help Program*
+*Assignment created for Python 101  - Learn and Help Program*
