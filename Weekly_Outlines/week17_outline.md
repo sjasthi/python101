@@ -107,27 +107,15 @@ By the end of this week, students will be able to:
 
 ---
 
-
-  
 - **Materials**:
   - Presentation: [7_2_and_7_3_python_lists_map_filter_reduce_plus.md](https://github.com/sjasthi/python101/blob/main/presentations/7_2_and_7_3_python_lists_map_filter_reduce_plus.md)
   - Colab Notebook: [ch7_concepts_list_intro_1.ipynb](https://github.com/sjasthi/python101/blob/main/colab_notebooks/ch7_concepts_list_intro_1.ipynb)
   
-  - Interactive Playbook (Lists & Strings tab)
-- [Interactive Playbook & Quiz](https://github.com/sjasthi/python101/blob/main/Quizzes/lists_map_filter_reduce_traversals_playbook_and_quiz.html)
+  - Interactive Playbook (Lists & Strings tab)  [Interactive Playbook & Quiz](https://github.com/sjasthi/python101/blob/main/Quizzes/lists_map_filter_reduce_traversals_playbook_and_quiz.html)
 
   - Lab Assignment: [python101_map_filter_reduce_list_traversals.ipynb](https://github.com/sjasthi/python101/blob/main/Labs/python101_map_filter_reduce_list_traversals.ipynb)
 
   - Assignment: [Programming Assignment 6](https://github.com/sjasthi/python101/blob/main/Labs/python101_lists_intro_assignment_6.md)
-
-
-- **Activities**:
-  - Use split() and join() methods
-  - Create a palindrome checker
-  - Count vowels in text
-  - Begin lab assignment
-  - Complete interactive quiz
-
 ---
 
 ## 🤔 Key Concepts to Remember
