@@ -81,15 +81,7 @@ By the end of this week, students will be able to:
   - `for index, value in enumerate(list):`
   - When to use: Need both index and value
   - Custom start indices
-  
-- **Method 4**: While loops
-  - Manual index control
-  - Conditional traversal
-  
-- **Advanced Patterns**
-  - Reverse traversal
-  - Skipping elements (step)
-  - Parallel traversal with zip()
+
 
 ### 5. Lists and Strings
 - **String to List Conversion**
@@ -127,10 +119,7 @@ By the end of this week, students will be able to:
   - Presentation: [7_2_and_7_3_python_lists_map_filter_reduce_plus.md](https://github.com/sjasthi/python101/blob/main/presentations/7_2_and_7_3_python_lists_map_filter_reduce_plus.md)
   - Colab Notebook: [ch7_concepts_list_intro_1.ipynb](https://github.com/sjasthi/python101/blob/main/colab_notebooks/ch7_concepts_list_intro_1.ipynb)
   
-- **Activities**:
-  - Work through map examples
-  - Create simple lambda functions
-  - Transform lists of numbers and strings
+
 
 ### **Day 2: Filter, Reduce, and Combinations**
 - **Lecture Topics**:
@@ -204,73 +193,22 @@ By the end of this week, students will be able to:
 
 ## 📝 Assignments & Assessments
 
-### **Interactive Playbook & Quiz** (Due: End of Day 5)
+### **Interactive Playbook & Quiz**  
 - **Description**: Complete the interactive playbook with live code examples
 - **Location**: [lists_map_filter_reduce_traversals_playbook_and_quiz.html](https://github.com/sjasthi/python101/blob/main/Quizzes/lists_map_filter_reduce_traversals_playbook_and_quiz.html)
-- **Requirements**:
-  - Work through all 5 concept tabs
-  - Run and experiment with all code examples
-  - Complete the 10-question quiz
-  - **Submit**: Screenshot of final quiz score to Google Classroom
-- **Points**: 20 points
-- **Topics Tested**:
-  - Map, filter, reduce functions
-  - Negative indexing
-  - Membership operators
-  - List traversal methods
-  - String/list conversions
 
-### **Lab Assignment** (Due: End of Week 17)
+
+### **Lab Assignment** 
 - **Description**: Hands-on programming exercises
 - **Location**: [python101_map_filter_reduce_list_traversals.ipynb](https://github.com/sjasthi/python101/blob/main/Labs/python101_map_filter_reduce_list_traversals.ipynb)
-- **Format**: Jupyter Notebook with guided exercises
-- **Submit**: Completed notebook to Google Classroom
-- **Points**: 50 points
 
-### **Programming Assignment 6** (Due: 1 week after Week 17)
+
+### **Programming Assignment 6**  
 - **Description**: Comprehensive assignment combining all concepts
 - **Location**: [python101_lists_intro_assignment_6.md](https://github.com/sjasthi/python101/blob/main/Labs/python101_lists_intro_assignment_6.md)
-- **Submit**: Python file (.py) or Jupyter Notebook (.ipynb) to Google Classroom
-- **Points**: 100 points
-- **Grading Criteria**:
-  - Correct implementation of map, filter, reduce
-  - Proper use of list traversals
-  - Code readability and comments
-  - Testing and validation
+
 
 ---
-
-## 🎓 Tips for Success
-
-### **For Understanding Map, Filter, and Reduce:**
-1. **Start with lambda functions** - Make sure you're comfortable with lambda syntax
-2. **Always convert to list** - Remember `map()` and `filter()` return iterators, use `list()` to see results
-3. **Think step by step** - Break complex operations into separate map, filter, reduce steps
-4. **Import reduce** - Don't forget `from functools import reduce`
-
-### **For Mastering Indexing:**
-1. **Draw it out** - Create visual diagrams showing positive and negative indices
-2. **Remember -1** - The last element is always at index -1, second-to-last is -2, etc.
-3. **Practice slicing** - Use negative indices in slicing operations: `list[-3:]`
-
-### **For List Traversals:**
-1. **Use enumerate when possible** - It's the most Pythonic way to get both index and value
-2. **Choose the right method** - Pick the simplest method that gives you what you need
-3. **Start counting at 1** - Use `enumerate(list, start=1)` for human-readable numbering
-
-### **For Strings and Lists:**
-1. **Remember immutability** - Strings cannot be changed, lists can
-2. **Know your separators** - Use appropriate separators in `split()` and `join()`
-3. **Test edge cases** - What happens with empty strings or single characters?
-
-### **General Study Tips:**
-- ✅ Work through the interactive playbook examples
-- ✅ Modify the example code and see what happens
-- ✅ Practice writing your own lambda functions
-- ✅ Complete all lab exercises before attempting the assignment
-- ✅ Use enumerate whenever you need both index and value
-- ✅ Draw diagrams for negative indexing until it becomes second nature
-
 ---
 
 ## 🔗 All Resources
@@ -346,30 +284,6 @@ words = ['Python', 'is', 'fun']
 sentence = ' '.join(words)  # 'Python is fun'
 ```
 
----
-
-## ❓ Common Questions & Troubleshooting
-
-**Q: Why do I need to use `list()` with map and filter?**  
-A: `map()` and `filter()` return iterator objects, not lists. Use `list()` to convert them to see the actual values.
-
-**Q: I'm getting "reduce is not defined" error. Why?**  
-A: You need to import it first: `from functools import reduce`
-
-**Q: When should I use enumerate vs. range?**  
-A: Use `enumerate()` when you need both index and value. It's more Pythonic and readable.
-
-**Q: Can I use negative indices with strings?**  
-A: Yes! Strings support all the same indexing and slicing operations as lists.
-
-**Q: What's the difference between split() and split(',')?**  
-A: `split()` with no arguments splits on whitespace. `split(',')` splits on commas.
-
-**Q: Can I modify a string using indexing like a list?**  
-A: No, strings are immutable. You must create a new string instead.
-
-
----
 
 ## 🎯 Learning Outcomes Review
 
