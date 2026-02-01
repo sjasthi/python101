@@ -107,76 +107,12 @@ By the end of this week, students will be able to:
 
 ---
 
-## 📅 Weekly Schedule
 
-### **Day 1: Introduction to Map, Filter, and Reduce**
-- **Lecture Topics**:
-  - Introduction to functional programming concepts
-  - The `map()` function - transforming data
-  - Practical examples and use cases
   
 - **Materials**:
   - Presentation: [7_2_and_7_3_python_lists_map_filter_reduce_plus.md](https://github.com/sjasthi/python101/blob/main/presentations/7_2_and_7_3_python_lists_map_filter_reduce_plus.md)
   - Colab Notebook: [ch7_concepts_list_intro_1.ipynb](https://github.com/sjasthi/python101/blob/main/colab_notebooks/ch7_concepts_list_intro_1.ipynb)
   
-
-
-### **Day 2: Filter, Reduce, and Combinations**
-- **Lecture Topics**:
-  - The `filter()` function - selecting data
-  - The `reduce()` function - combining data
-  - Importing from functools
-  - Chaining map, filter, and reduce operations
-  
-- **Materials**:
-  - Continue with presentation
-  - Interactive Playbook: [lists_map_filter_reduce_traversals_playbook_and_quiz.html](https://github.com/sjasthi/python101/blob/main/Quizzes/lists_map_filter_reduce_traversals_playbook_and_quiz.html)
-  
-- **Activities**:
-  - Filter even/odd numbers
-  - Calculate sum and product using reduce
-  - Build a data pipeline combining all three functions
-
-### **Day 3: Negative Indexing and Membership Operators**
-- **Lecture Topics**:
-  - Understanding negative indices (-1, -2, -3, etc.)
-  - Visual representation of indexing
-  - Membership operators: `in` and `not in`
-  - Practical applications and validation
-  
-- **Materials**:
-  - Interactive Playbook (Negative Indexing & Membership tabs)
-  - Colab Notebook examples
-  
-- **Activities**:
-  - Access elements from end of lists
-  - Use negative slicing
-  - Validate user input with membership operators
-  - Check for substrings in text
-
-### **Day 4: List Traversals and Best Practices**
-- **Lecture Topics**:
-  - Four methods of list traversal
-  - When to use each method
-  - The `enumerate()` function
-  - Advanced traversal patterns (reverse, skip, parallel)
-  
-- **Materials**:
-  - Interactive Playbook (List Traversals tab)
-  - Comparison table of methods
-  
-- **Activities**:
-  - Practice all four traversal methods
-  - Use enumerate with custom start
-  - Reverse traverse a list
-  - Traverse two lists simultaneously with zip()
-
-### **Day 5: Lists, Strings, and Lab Work**
-- **Lecture Topics**:
-  - Converting between lists and strings
-  - String traversal techniques
-  - Text processing applications
-  - Review of all week's concepts
   
 - **Materials**:
   - Interactive Playbook (Lists & Strings tab)
@@ -191,25 +127,6 @@ By the end of this week, students will be able to:
 
 ---
 
-## 📝 Assignments & Assessments
-
-### **Interactive Playbook & Quiz**  
-- **Description**: Complete the interactive playbook with live code examples
-- **Location**: [lists_map_filter_reduce_traversals_playbook_and_quiz.html](https://github.com/sjasthi/python101/blob/main/Quizzes/lists_map_filter_reduce_traversals_playbook_and_quiz.html)
-
-
-### **Lab Assignment** 
-- **Description**: Hands-on programming exercises
-- **Location**: [python101_map_filter_reduce_list_traversals.ipynb](https://github.com/sjasthi/python101/blob/main/Labs/python101_map_filter_reduce_list_traversals.ipynb)
-
-
-### **Programming Assignment 6**  
-- **Description**: Comprehensive assignment combining all concepts
-- **Location**: [python101_lists_intro_assignment_6.md](https://github.com/sjasthi/python101/blob/main/Labs/python101_lists_intro_assignment_6.md)
-
-
----
----
 
 ## 🔗 All Resources
 
@@ -219,6 +136,10 @@ By the end of this week, students will be able to:
 ### **Interactive Learning**
 - [Interactive Playbook & Quiz](https://github.com/sjasthi/python101/blob/main/Quizzes/lists_map_filter_reduce_traversals_playbook_and_quiz.html)
 - [Colab Notebook](https://github.com/sjasthi/python101/blob/main/colab_notebooks/ch7_concepts_list_intro_1.ipynb)
+
+### **Lab Assignment** 
+- **Description**: Hands-on programming exercises
+- **Location**: [python101_map_filter_reduce_list_traversals.ipynb](https://github.com/sjasthi/python101/blob/main/Labs/python101_map_filter_reduce_list_traversals.ipynb)
 
 ### **Assignments**
 - [Lab Assignment](https://github.com/sjasthi/python101/blob/main/Labs/python101_map_filter_reduce_list_traversals.ipynb)
