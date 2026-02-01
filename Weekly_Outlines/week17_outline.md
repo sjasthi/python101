@@ -1,4 +1,4 @@
-# Week 17: Advanced List Operations - Map, Filter, Reduce & Traversals
+# Week 17: List Concepts - (1) Map, Filter, and Reduce (2) Traversals
 
 ## 📚 Course Information
 - **Course**: Python 101
