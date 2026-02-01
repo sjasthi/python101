@@ -113,41 +113,20 @@ By the end of this week, students will be able to:
   - Presentation: [7_2_and_7_3_python_lists_map_filter_reduce_plus.md](https://github.com/sjasthi/python101/blob/main/presentations/7_2_and_7_3_python_lists_map_filter_reduce_plus.md)
   - Colab Notebook: [ch7_concepts_list_intro_1.ipynb](https://github.com/sjasthi/python101/blob/main/colab_notebooks/ch7_concepts_list_intro_1.ipynb)
   
-  
-- **Materials**:
   - Interactive Playbook (Lists & Strings tab)
+- [Interactive Playbook & Quiz](https://github.com/sjasthi/python101/blob/main/Quizzes/lists_map_filter_reduce_traversals_playbook_and_quiz.html)
+
   - Lab Assignment: [python101_map_filter_reduce_list_traversals.ipynb](https://github.com/sjasthi/python101/blob/main/Labs/python101_map_filter_reduce_list_traversals.ipynb)
-  
+
+  - Assignment: [Programming Assignment 6](https://github.com/sjasthi/python101/blob/main/Labs/python101_lists_intro_assignment_6.md)
+
+
 - **Activities**:
   - Use split() and join() methods
   - Create a palindrome checker
   - Count vowels in text
   - Begin lab assignment
   - Complete interactive quiz
-
----
-
-
-## 🔗 All Resources
-
-### **Presentation Materials**
-- [Main Presentation](https://github.com/sjasthi/python101/blob/main/presentations/7_2_and_7_3_python_lists_map_filter_reduce_plus.md)
-
-### **Interactive Learning**
-- [Interactive Playbook & Quiz](https://github.com/sjasthi/python101/blob/main/Quizzes/lists_map_filter_reduce_traversals_playbook_and_quiz.html)
-- [Colab Notebook](https://github.com/sjasthi/python101/blob/main/colab_notebooks/ch7_concepts_list_intro_1.ipynb)
-
-### **Lab Assignment** 
-- **Description**: Hands-on programming exercises
-- **Location**: [python101_map_filter_reduce_list_traversals.ipynb](https://github.com/sjasthi/python101/blob/main/Labs/python101_map_filter_reduce_list_traversals.ipynb)
-
-### **Assignments**
-- [Lab Assignment](https://github.com/sjasthi/python101/blob/main/Labs/python101_map_filter_reduce_list_traversals.ipynb)
-- [Programming Assignment 6](https://github.com/sjasthi/python101/blob/main/Labs/python101_lists_intro_assignment_6.md)
-
-### **Additional Resources**
-- Python Documentation: [Built-in Functions](https://docs.python.org/3/library/functions.html)
-- Python Documentation: [functools.reduce](https://docs.python.org/3/library/functools.html#functools.reduce)
 
 ---
 
