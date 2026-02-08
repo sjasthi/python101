@@ -255,16 +255,11 @@ print(reversed_nums)  # [5, 4, 3, 2, 1]
 
 ### ✂️ Removing Last Item
 
-![Stripping Last](images_unpacking_and_slicing/stripping_last.png)
 
 ```python
 list_1 = [1, 2, 3]
 
-# Remove last item
-list_1 = list_1[:len(list_1)-1]
-print(list_1)  # [1, 2]
-
-# Shorter way using negative indexing
+# Remove last item using negative indexing
 list_1 = list_1[:-1]
 print(list_1)  # [1, 2]
 ```
@@ -311,50 +306,22 @@ Try to figure out what each line displays **before** running the code:
 list_1 = ['a', 'b', 'c', 'd', 'e', 'f', 'g']
 
 # Try to predict the output!
-p1 = list_1[:]         # entire list
-p2 = list_1[::1]       # same as above
-p3 = list_1[::-1]      # reversed
+p1 = list_1[:]         # 
+p2 = list_1[::1]       # 
+p3 = list_1[::-1]      # 
 
-p4 = list_1[::2]       # a, c, e, g
-p5 = list_1[::-2]      # g, e, c, a
+p4 = list_1[::2]       # 
+p5 = list_1[::-2]      # 
 
-a1 = list_1[1:2] + list_1[2:5]   # b + c, d, e
-a2 = list_1[2:5] + list_1[1:4]   # c, d, e + b, c, d
+a1 = list_1[1:2] + list_1[2:5]   # 
+a2 = list_1[2:5] + list_1[1:4]   # 
 
-x = list_1[1:4]        # b, c, d
-y = list_1[4:-1]       # e, f
-z = list_1[:2]         # a, b
-p = list_1[:-1]        # a, b, c, d, e, f
-q = list_1[-4:-2]      # d, e
+x = list_1[1:4]        # 
+y = list_1[4:-1]       # 
+z = list_1[:2]         # 
+p = list_1[:-1]        # 
+q = list_1[-4:-2]      # 
 ```
-
----
-
-### 🏆 Challenge: List Operations
-
-Try this HackerRank problem to practice list methods:
-[Python Lists Problem](https://www.hackerrank.com/challenges/python-lists/problem?isFullScreen=true)
-
-![HackerRank Problem](images_unpacking_and_slicing/hackerrank_problem.png)
-
-**Trace through the operations:**
-```
-My_list = []
-insert 0 5     → [5]
-insert 1 10    → [5, 10]
-insert 0 6     → [6, 5, 10]
-print          → [6, 5, 10]
-remove 6       → [5, 10]
-append 9       → [5, 10, 9]
-append 1       → [5, 10, 9, 1]
-sort           → [1, 5, 9, 10]
-print          → [1, 5, 9, 10]
-pop            → [1, 5, 9]
-reverse        → [9, 5, 1]
-print          → [9, 5, 1]
-```
-
----
 
 ## 🎯 Key Takeaways
 
