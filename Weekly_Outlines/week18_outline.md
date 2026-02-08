@@ -39,6 +39,9 @@ https://github.com/sjasthi/python101/blob/main/colab_notebooks/ch7_skeleton_list
 **Playbook and Quiz:**  
 https://github.com/sjasthi/python101/blob/main/Quizzes/python_lists_unpacking_and_slicing_playbook_and_quiz.html
 
+**Lab 18 (Unpacking and Slicing):**  
+https://github.com/sjasthi/python101/blob/main/Labs/python101_unpacking_slicing_lab18.ipynb
+
 ---
 
 ## 🎯 Learning Objectives
