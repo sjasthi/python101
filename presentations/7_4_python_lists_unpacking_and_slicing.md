@@ -24,22 +24,6 @@ Python has many built-in functions that work with lists. Here are some of the mo
 - `sorted()` - Return a sorted copy of the list
 - `list()` - Convert something to a list
 - `type()` - Check what type something is
-
-### Getting Help in Python
-
-You can ask Python for help anytime!
-
-```python
-# What methods are available for lists?
-dir(list)
-help(list)
-
-# Learn more about a specific method
-help(list.remove)
-```
-
-![Getting Help](images_unpacking_and_slicing/asking_help.png)
-
 ---
 
 ## List Unpacking
