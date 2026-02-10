@@ -25,7 +25,7 @@
 | 14 | Jan 11, 2026 | Jan 17, 2026 | 6.1. File I/O: basics | | Lab 14 | Quiz 14 |
 | 15 | Jan 18, 2026 | Jan 24, 2026 | 6.2. Errors and Exceptions | Assignment 6 | Lab 15 | Quiz 15 |
 | 16 | Jan 25, 2026 | Jan 31, 2026 | 7.1. Lists: Introduction and List Operations | | Lab 16 | Quiz 16 |
-| 17 | Feb 1, 2026 | Feb 7, 2026 | 7.2. Lists: Map Filter Reduce 7.3 Lists and Strings | | Lab 17 | Quiz 17 |
+| 17 | Feb 1, 2026 | Feb 7, 2026 | 7.2. Lists: Map Filter Reduce 7. Iterations, Negative Indexing, Membership Operators 7.3 Lists and Strings  | | Lab 17 | Quiz 17 |
 | 18 | Feb 8, 2026 | Feb 14, 2026 | 7.4. Lists: Unpacking and Slicing | Assignment 7 | Lab 18 | Quiz 18 |
 | 19 | Feb 15, 2026 | Feb 21, 2026 | 7.5. Lists: List Comprehension | | Lab 19 | Quiz 19 |
 | 20 | Feb 22, 2026 | Feb 28, 2026 | 7.6. Lists: Mixed and Nested Lists | | Lab 20 | Quiz 20 |
