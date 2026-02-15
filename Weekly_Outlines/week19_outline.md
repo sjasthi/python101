@@ -32,7 +32,7 @@
 
 ### Interactive Playbook & Quiz
 
-- [List Comprehension Playbook and Quiz](https://github.com/sjasthi/python101/blob/main/Labs/python101_lab19_list_comprehension.ipynb)
+- [List Comprehension Playbook and Quiz] (https://github.com/sjasthi/python101/blob/main/Quizzes/7_5_list_comprehension_playbook_and_quiz.html)
 
 ---
 
