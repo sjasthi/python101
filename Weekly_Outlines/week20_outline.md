@@ -1,6 +1,6 @@
 # 🐍 Python 101 — Week 20 Outline
 **Topic: Mixed, Nested & 2D Lists**
-*Learn and Help Program | Metropolitan State University*
+*Learn and Help Program | www.learnandhelp.com*
 
 ---
 
