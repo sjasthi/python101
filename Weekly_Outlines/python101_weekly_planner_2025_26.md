@@ -28,8 +28,8 @@
 | 17 | Feb 1, 2026 | Feb 7, 2026 | 7.2. Lists: Map Filter Reduce 7. Iterations, Negative Indexing, Membership Operators 7.3 Lists and Strings  | | Lab 17 | Quiz 17 |
 | 18 | Feb 8, 2026 | Feb 14, 2026 | 7.4. Lists: Unpacking and Slicing | Assignment 7 | Lab 18 | Quiz 18 |
 | 19 | Feb 15, 2026 | Feb 21, 2026 | 7.5. Lists: List Comprehension | | Lab 19 | Quiz 19 |
-| 20 | Feb 22, 2026 | Feb 28, 2026 | 7.6. Lists: Mixed and Nested Lists | | Lab 20 | Quiz 20 |
-| 21 | Mar 1, 2026 | Mar 7, 2026 | 7.7. Lists: 2-D Lists 7.8. Tuples | Assignment 8 | Lab 21 | Quiz 21 |
+| 20 | Feb 22, 2026 | Feb 28, 2026 | 7.6. Lists: Mixed and Nested Lists  7.7. Lists: 2-D Lists | | Lab 20 | Quiz 20 |
+| 21 | Mar 1, 2026 | Mar 7, 2026 | 7.8. Tuples and Chapter 7 Summary | Assignment 8 | Lab 21 | Quiz 21 |
 | — | Mar 8, 2026 | Mar 14, 2026 | **Spring break - no class** | | | |
 | — | Mar 15, 2026 | Mar 21, 2026 | **Spring break - no class** | | | |
 | 22 | Mar 22, 2026 | Mar 28, 2026 | 8.1. More about strings 8.2. String formatting | | Lab 22 | Quiz 22 |
