@@ -255,4 +255,4 @@ classroom = [
 
 ---
 
-*Python 101 | Metropolitan State University | Learn and Help Program | www.learnandhelp.com*
+*Python 101  | Learn and Help | www.learnandhelp.com*
