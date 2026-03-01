@@ -15,8 +15,6 @@
 
 ---
 
----
-
 ## 2. When Should You Use Tuples?
 
 ![When to Use Tuples](images_tuples/when_to_use_tuples.png)
@@ -35,6 +33,8 @@ periodic_elements = ("Hydrogen", "Helium", "Lithium", "Beryllium", ...)
 ```
 
 Since these values are constant and fixed, tuples are the perfect data structure to use!
+
+---
 
 ## 3. CRUD Operations on Tuples
 
