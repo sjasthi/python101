@@ -86,8 +86,6 @@ The list grows to `[10, 20, 30, 40]`, but the tuple stays as `(10, 20, 30)` and 
 
 ## 4. Tuple Methods — Only Two Are Valid
 
-![Tuple Methods](images_tuples/tuple_methods_only_two.png)
-
 Because tuples are immutable, most list methods are **not available** for tuples. Only **two methods** are valid:
 
 | Method      | Purpose                                          |
