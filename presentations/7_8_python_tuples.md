@@ -134,6 +134,122 @@ The following list methods are **crossed out** because they do **NOT** work on t
 
 ---
 
+## 6. Everything Else Works the Same as Lists!
+
+Even though tuples are immutable, most everyday operations you already know from lists work **exactly the same** with tuples.
+
+### Accessing Elements (Indexing & Slicing)
+
+```python
+students = ("abe", "barb", "chris", "dan", "ellie")
+
+print(students[0])      # abe                    — first element
+print(students[-1])     # ellie                  — last element
+print(students[1:3])    # ('barb', 'chris')       — slicing
+```
+
+### Iterating Over a Tuple
+
+```python
+for student in students:
+    print(student)
+# abe
+# barb
+# chris
+# dan
+# ellie
+```
+
+### Membership Operators (`in` / `not in`)
+
+```python
+print("barb" in students)       # True
+print("anna" not in students)   # True
+```
+
+### Built-in Functions
+
+All the built-in functions you used with lists work on tuples too:
+
+| Function       | Example                        | Result            |
+|----------------|--------------------------------|-------------------|
+| `len()`        | `len(students)`                | `5`               |
+| `min()`        | `min((3, 1, 4, 1, 5))`        | `1`               |
+| `max()`        | `max((3, 1, 4, 1, 5))`        | `5`               |
+| `sum()`        | `sum((3, 1, 4, 1, 5))`        | `14`              |
+| `sorted()`     | `sorted((3, 1, 4, 1, 5))`     | `[1, 1, 3, 4, 5]` |
+
+> 💡 Note: `sorted()` returns a **list**, not a tuple — but it still works on a tuple as input!
+
+---
+
+## 7. Creating a Tuple with Only One Value
+
+This is a common trap! Students often think that wrapping a single value in round brackets makes it a tuple — but it doesn't. Python sees the brackets as just **regular parentheses** (like in maths).
+
+```python
+x = (5)
+print(type(x))      # <class 'int'>   ❌ This is NOT a tuple!
+
+y = ("hello")
+print(type(y))      # <class 'str'>   ❌ This is NOT a tuple either!
+```
+
+### ✅ The Fix — Add a Trailing Comma!
+
+To create a single-element tuple, you **must** add a comma after the value:
+
+```python
+x = (5,)
+print(type(x))      # <class 'tuple'>  ✅ This IS a tuple!
+print(x)            # (5,)
+
+y = ("hello",)
+print(type(y))      # <class 'tuple'>  ✅ This IS a tuple!
+print(y)            # ('hello',)
+```
+
+> ⚠️ **Remember:** It's the **comma** that makes a tuple, not the brackets!
+
+---
+
+## 8. Recreating a Tuple
+
+Even though you can't *modify* a tuple, you **can** assign a brand new tuple to the same variable name. This is called **recreating** the tuple — you're not changing the original tuple, you're replacing it with a whole new one.
+
+### Assigning a New Tuple to the Same Variable
+
+```python
+x = (3, 4)
+print(x)        # (3, 4)
+
+x = (3, 4, 5)   # ✅ x now points to a completely new tuple
+print(x)        # (3, 4, 5)
+```
+
+### Concatenating a Tuple with Itself Using `+`
+
+You can use `+` to join two tuples together and assign the result back to the same variable:
+
+```python
+x = (3, 4)
+x = x + x
+print(x)        # (3, 4, 3, 4)
+```
+
+Or join two different tuples:
+
+```python
+a = (1, 2, 3)
+b = (4, 5, 6)
+c = a + b
+print(c)        # (1, 2, 3, 4, 5, 6)
+```
+
+> 💡 Under the hood, Python is creating a **brand new tuple** each time and pointing the variable to it. The original tuple in memory is never changed — which is why tuples remain truly immutable!
+
+---
+
 ## Summary
 
 | | Lists | Tuples |
