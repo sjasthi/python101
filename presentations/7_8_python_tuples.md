@@ -63,6 +63,27 @@ This will throw a `TypeError` because tuples do not support item assignment.
 
 ---
 
+### Example: You Can't Append to a Tuple
+
+![Cannot Append](images_tuples/cannot_append.png)
+
+```python
+list = [10, 20, 30]
+list.append(40)       # ✅ Works fine for lists
+
+tuple = (10, 20, 30)
+tuple.append(40)      # ❌ ERROR!
+```
+
+**Error:**
+```
+AttributeError: 'tuple' object has no attribute 'append'
+```
+
+The list grows to `[10, 20, 30, 40]`, but the tuple stays as `(10, 20, 30)` and throws an error when you try to append.
+
+---
+
 ## 4. Tuple Methods — Only Two Are Valid
 
 ![Tuple Methods](images_tuples/tuple_methods_only_two.png)
@@ -91,30 +112,10 @@ The following list methods are **crossed out** because they do **NOT** work on t
 
 > 📖 Reference: [W3Schools — Python Tuple Methods](https://www.w3schools.com/python/python_ref_tuple.asp)
 
----
-
-## 5. You Can't Append to a Tuple
-
-![Cannot Append](images_tuples/cannot_append.png)
-
-```python
-list = [10, 20, 30]
-list.append(40)       # ✅ Works fine for lists
-
-tuple = (10, 20, 30)
-tuple.append(40)      # ❌ ERROR!
-```
-
-**Error:**
-```
-AttributeError: 'tuple' object has no attribute 'append'
-```
-
-The list grows to `[10, 20, 30, 40]`, but the tuple stays as `(10, 20, 30)` and throws an error when you try to append.
 
 ---
 
-## 6. When Should You Use Tuples?
+## 5. When Should You Use Tuples?
 
 ![When to Use Tuples](images_tuples/when_to_use_tuples.png)
 
