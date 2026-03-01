@@ -1,4 +1,4 @@
-# Python Tuples
+# Python Tuples 
 
 ## 1. Lists vs Tuples — What's the Difference?
 
