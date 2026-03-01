@@ -2,7 +2,6 @@
 
 ## 1. Lists vs Tuples — What's the Difference?
 
-![Lists vs Tuples Comparison](images_tuples/list_vs_tuples.png)
 
 | Feature              | Lists           | Tuples          |
 |----------------------|-----------------|-----------------|
