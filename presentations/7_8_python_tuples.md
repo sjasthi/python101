@@ -15,7 +15,28 @@
 
 ---
 
-## 2. CRUD Operations on Tuples
+---
+
+## 2. When Should You Use Tuples?
+
+![When to Use Tuples](images_tuples/when_to_use_tuples.png)
+
+Use tuples when your data should **not change**. Great examples include:
+
+- **Days of the week** — there are always 7 days and they never change
+- **Elements of the Periodic Table** — fixed set of elements
+- **Coordinates** (latitude, longitude)
+- **RGB colour values**
+
+```python
+days_of_week = ("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday")
+
+periodic_elements = ("Hydrogen", "Helium", "Lithium", "Beryllium", ...)
+```
+
+Since these values are constant and fixed, tuples are the perfect data structure to use!
+
+## 3. CRUD Operations on Tuples
 
 ![CRUD of Tuples](images_tuples/crud_of_tuples.png)
 
@@ -28,7 +49,7 @@ Tuples only support **Create** and **Read** operations:
 
 ---
 
-## 3. Tuples are Immutable (Unchangeable)
+## 4. Tuples are Immutable (Unchangeable)
 
 ![Cannot Update Tuple](images_tuples/cannot_update.png)
 
@@ -84,7 +105,7 @@ The list grows to `[10, 20, 30, 40]`, but the tuple stays as `(10, 20, 30)` and 
 
 ---
 
-## 4. Tuple Methods — Only Two Are Valid
+## 5. Tuple Methods — Only Two Are Valid
 
 Because tuples are immutable, most list methods are **not available** for tuples. Only **two methods** are valid:
 
@@ -110,27 +131,6 @@ The following list methods are **crossed out** because they do **NOT** work on t
 
 > 📖 Reference: [W3Schools — Python Tuple Methods](https://www.w3schools.com/python/python_ref_tuple.asp)
 
-
----
-
-## 5. When Should You Use Tuples?
-
-![When to Use Tuples](images_tuples/when_to_use_tuples.png)
-
-Use tuples when your data should **not change**. Great examples include:
-
-- **Days of the week** — there are always 7 days and they never change
-- **Elements of the Periodic Table** — fixed set of elements
-- **Coordinates** (latitude, longitude)
-- **RGB colour values**
-
-```python
-days_of_week = ("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday")
-
-periodic_elements = ("Hydrogen", "Helium", "Lithium", "Beryllium", ...)
-```
-
-Since these values are constant and fixed, tuples are the perfect data structure to use!
 
 ---
 
