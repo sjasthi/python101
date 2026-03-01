@@ -44,7 +44,7 @@ Three tabs — Concept, Examples, and Quiz (10 questions). Submit a screenshot o
 | | |
 |---|---|
 | **Speaker** | [Jayanthi Suryanarayana](https://www.linkedin.com/in/jayanthi-suryanarayana-2313841/), Principal AI/ML Solution Engineer at United Health Group |
-| **Date & Time** | Friday, March 7th · 8:00 – 9:00 PM CST |
+| **Date & Time** | Saturday, March 7th · 8:00 – 9:00 PM CST |
 
 **Deliverable:** Attend the seminar and submit a **4-slide PowerPoint presentation** summarizing your key takeaways to Google Classroom.
 
