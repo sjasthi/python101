@@ -9,7 +9,7 @@
 | Indexed              | ✅              | ✅              |
 | Add or Update items  | ✅              | ❌              |
 | Can contain duplicates | ✅            | ✅              |
-| Uses                 | Square Brackets `[ ]` | Round Brackets `( )` |
+| Uses                 | Square Brackets `[ ]` | Round Brackets `(,)` |
 
 > **Key takeaway:** Tuples are like lists, but you **cannot** add or update items once they are created.
 
