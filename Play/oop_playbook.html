@@ -1,0 +1,1394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Python OOP Playbook — Objects, Classes & Beyond</title>
+<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0f1117;
+  --surface: #181b24;
+  --surface2: #1e2230;
+  --accent: #f59e0b;
+  --accent2: #3b82f6;
+  --accent3: #10b981;
+  --accent4: #ef4444;
+  --accent5: #a855f7;
+  --text: #e4e4e7;
+  --text-dim: #9ca3af;
+  --border: #2a2e3a;
+  --code-bg: #141720;
+  --correct: #10b981;
+  --wrong: #ef4444;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ── HEADER ── */
+.header {
+  background: linear-gradient(135deg, #1a1d2e 0%, #0f1117 100%);
+  border-bottom: 1px solid var(--border);
+  padding: 2rem 2rem 0;
+  position: sticky; top: 0; z-index: 100;
+}
+.header-top {
+  display: flex; align-items: center; gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+.header-badge {
+  background: var(--accent);
+  color: #000;
+  font-family: 'Fira Code', monospace;
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 0.25rem 0.6rem;
+  border-radius: 4px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.header h1 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 900;
+  font-size: 1.8rem;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.header p {
+  color: var(--text-dim);
+  font-size: 0.9rem;
+  margin-top: 0.25rem;
+}
+
+/* ── TABS ── */
+.tabs {
+  display: flex; gap: 0; overflow-x: auto;
+  scrollbar-width: none;
+}
+.tabs::-webkit-scrollbar { display: none; }
+.tab-btn {
+  background: none;
+  border: none;
+  color: var(--text-dim);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 0.75rem 1.25rem;
+  cursor: pointer;
+  border-bottom: 3px solid transparent;
+  white-space: nowrap;
+  transition: all 0.2s;
+  position: relative;
+}
+.tab-btn:hover { color: var(--text); }
+.tab-btn.active {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+.tab-btn .tab-num {
+  font-family: 'Fira Code', monospace;
+  font-size: 0.7rem;
+  background: var(--surface2);
+  padding: 0.1rem 0.4rem;
+  border-radius: 3px;
+  margin-right: 0.4rem;
+  vertical-align: middle;
+}
+.tab-btn.active .tab-num {
+  background: var(--accent);
+  color: #000;
+}
+
+/* ── CONTENT ── */
+.content { padding: 2rem; max-width: 960px; margin: 0 auto; }
+.tab-panel { display: none; animation: fadeSlide 0.4s ease; }
+.tab-panel.active { display: block; }
+@keyframes fadeSlide {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ── SECTION CARDS ── */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.75rem;
+  margin-bottom: 1.5rem;
+  position: relative;
+  overflow: hidden;
+}
+.card::before {
+  content: '';
+  position: absolute; top: 0; left: 0;
+  width: 4px; height: 100%;
+  border-radius: 12px 0 0 12px;
+}
+.card.blue::before { background: var(--accent2); }
+.card.amber::before { background: var(--accent); }
+.card.green::before { background: var(--accent3); }
+.card.purple::before { background: var(--accent5); }
+.card.red::before { background: var(--accent4); }
+
+.card h2 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 1.35rem;
+  margin-bottom: 0.75rem;
+}
+.card h3 {
+  font-weight: 700;
+  font-size: 1.05rem;
+  margin: 1rem 0 0.5rem;
+  color: var(--accent);
+}
+.card p, .card li {
+  color: var(--text-dim);
+  line-height: 1.7;
+  font-size: 0.92rem;
+}
+.card ul { padding-left: 1.25rem; margin: 0.5rem 0; }
+.card li { margin-bottom: 0.3rem; }
+
+/* ── CODE BLOCKS ── */
+.code-block {
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  margin: 1rem 0;
+  overflow: hidden;
+}
+.code-header {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 0.5rem 1rem;
+  background: var(--surface2);
+  border-bottom: 1px solid var(--border);
+  font-family: 'Fira Code', monospace;
+  font-size: 0.75rem;
+  color: var(--text-dim);
+}
+.code-header .file-name { color: var(--accent); }
+.copy-btn {
+  background: none; border: 1px solid var(--border);
+  color: var(--text-dim); padding: 0.2rem 0.6rem;
+  border-radius: 4px; cursor: pointer;
+  font-family: 'Fira Code', monospace; font-size: 0.7rem;
+  transition: all 0.2s;
+}
+.copy-btn:hover { border-color: var(--accent); color: var(--accent); }
+pre {
+  padding: 1rem;
+  overflow-x: auto;
+  font-family: 'Fira Code', monospace;
+  font-size: 0.82rem;
+  line-height: 1.65;
+}
+
+/* Syntax highlighting */
+.kw { color: #c084fc; }  /* keywords */
+.fn { color: #60a5fa; }  /* functions */
+.st { color: #34d399; }  /* strings */
+.cm { color: #6b7280; font-style: italic; }  /* comments */
+.nb { color: #f59e0b; }  /* builtins */
+.nu { color: #fb923c; }  /* numbers */
+.op { color: #94a3b8; }  /* operators */
+.cl { color: #f472b6; }  /* class names */
+.sf { color: #e4e4e7; }  /* self */
+.dc { color: #38bdf8; }  /* decorators */
+.er { color: #ef4444; }  /* errors */
+
+/* ── OUTPUT BLOCKS ── */
+.output-block {
+  background: #0c0e14;
+  border: 1px dashed var(--border);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  margin: 0.75rem 0;
+  font-family: 'Fira Code', monospace;
+  font-size: 0.8rem;
+  color: var(--accent3);
+}
+.output-block .label {
+  color: var(--text-dim);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 0.3rem;
+  display: block;
+}
+.output-block .error { color: var(--accent4); }
+
+/* ── CONCEPT TAGS ── */
+.concept-tag {
+  display: inline-block;
+  font-family: 'Fira Code', monospace;
+  font-size: 0.7rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  margin: 0.2rem 0.3rem 0.2rem 0;
+  letter-spacing: 0.5px;
+}
+.concept-tag.key { background: #2d1b69; color: #c084fc; }
+.concept-tag.info { background: #1e3a5f; color: #60a5fa; }
+.concept-tag.warn { background: #422006; color: #f59e0b; }
+.concept-tag.ok { background: #052e16; color: #34d399; }
+
+/* ── CALLOUT ── */
+.callout {
+  display: flex; gap: 0.75rem;
+  background: var(--surface2);
+  border-radius: 8px;
+  padding: 1rem;
+  margin: 1rem 0;
+  border-left: 3px solid var(--accent);
+}
+.callout.tip { border-left-color: var(--accent3); }
+.callout.warning { border-left-color: var(--accent4); }
+.callout .icon { font-size: 1.2rem; flex-shrink: 0; }
+.callout p { font-size: 0.85rem; color: var(--text-dim); line-height: 1.6; }
+
+/* ── COMPARISON TABLE ── */
+.compare-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+  font-size: 0.85rem;
+}
+.compare-table th {
+  background: var(--surface2);
+  padding: 0.6rem 1rem;
+  text-align: left;
+  font-weight: 600;
+  color: var(--accent);
+  border-bottom: 2px solid var(--accent);
+}
+.compare-table td {
+  padding: 0.6rem 1rem;
+  border-bottom: 1px solid var(--border);
+  color: var(--text-dim);
+}
+.compare-table tr:hover td { background: var(--surface2); }
+
+/* ── TRY IT / RUN ── */
+.try-it {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1.25rem;
+  margin: 1rem 0;
+}
+.try-it h4 {
+  font-family: 'Fira Code', monospace;
+  font-size: 0.8rem;
+  color: var(--accent3);
+  margin-bottom: 0.75rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.try-it textarea {
+  width: 100%;
+  min-height: 120px;
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--text);
+  font-family: 'Fira Code', monospace;
+  font-size: 0.82rem;
+  padding: 0.75rem;
+  resize: vertical;
+  line-height: 1.6;
+}
+.try-it textarea:focus { outline: none; border-color: var(--accent2); }
+.run-btn {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  margin-top: 0.75rem;
+  background: var(--accent3);
+  color: #000;
+  border: none;
+  padding: 0.5rem 1.25rem;
+  border-radius: 6px;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.run-btn:hover { filter: brightness(1.1); transform: translateY(-1px); }
+.run-output {
+  margin-top: 0.75rem;
+  padding: 0.75rem;
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-family: 'Fira Code', monospace;
+  font-size: 0.8rem;
+  color: var(--accent3);
+  white-space: pre-wrap;
+  display: none;
+}
+
+/* ── QUIZ ── */
+.quiz-progress {
+  display: flex; gap: 0.35rem;
+  margin-bottom: 1.5rem;
+}
+.quiz-dot {
+  width: 32px; height: 6px;
+  border-radius: 3px;
+  background: var(--surface2);
+  transition: background 0.3s;
+}
+.quiz-dot.current { background: var(--accent); }
+.quiz-dot.correct { background: var(--correct); }
+.quiz-dot.wrong { background: var(--wrong); }
+
+.quiz-question {
+  display: none;
+  animation: fadeSlide 0.35s ease;
+}
+.quiz-question.active { display: block; }
+.quiz-question h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.15rem;
+  margin-bottom: 0.4rem;
+  color: var(--text);
+}
+.quiz-question .q-num {
+  font-family: 'Fira Code', monospace;
+  font-size: 0.75rem;
+  color: var(--accent);
+  margin-bottom: 0.75rem;
+  display: block;
+}
+
+.quiz-options { display: flex; flex-direction: column; gap: 0.6rem; margin-top: 1rem; }
+.quiz-opt {
+  background: var(--surface);
+  border: 2px solid var(--border);
+  border-radius: 10px;
+  padding: 1rem 1.25rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 0.9rem;
+  color: var(--text-dim);
+  display: flex; align-items: flex-start; gap: 0.75rem;
+}
+.quiz-opt:hover { border-color: var(--accent2); color: var(--text); }
+.quiz-opt .opt-letter {
+  font-family: 'Fira Code', monospace;
+  font-weight: 600;
+  font-size: 0.8rem;
+  background: var(--surface2);
+  width: 28px; height: 28px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 6px;
+  flex-shrink: 0;
+  color: var(--text-dim);
+}
+.quiz-opt.selected { border-color: var(--accent2); background: #1e293b; }
+.quiz-opt.correct-answer { border-color: var(--correct); background: #052e16; }
+.quiz-opt.correct-answer .opt-letter { background: var(--correct); color: #000; }
+.quiz-opt.wrong-answer { border-color: var(--wrong); background: #2a0a0a; }
+.quiz-opt.wrong-answer .opt-letter { background: var(--wrong); color: #000; }
+.quiz-opt.disabled { pointer-events: none; }
+
+.quiz-feedback {
+  margin-top: 1rem;
+  padding: 1rem;
+  border-radius: 8px;
+  font-size: 0.88rem;
+  line-height: 1.6;
+  display: none;
+}
+.quiz-feedback.show { display: block; }
+.quiz-feedback.correct { background: #052e16; border: 1px solid var(--correct); color: var(--correct); }
+.quiz-feedback.incorrect { background: #2a0a0a; border: 1px solid var(--wrong); color: var(--wrong); }
+
+.quiz-nav {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-top: 1.5rem;
+}
+.next-btn, .restart-btn {
+  background: var(--accent);
+  color: #000;
+  border: none;
+  padding: 0.6rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: none;
+}
+.next-btn:hover, .restart-btn:hover { filter: brightness(1.1); transform: translateY(-1px); }
+
+.score-card {
+  text-align: center;
+  padding: 2.5rem;
+  display: none;
+}
+.score-card h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+.score-big {
+  font-family: 'Fira Code', monospace;
+  font-size: 4rem;
+  font-weight: 600;
+  margin: 1rem 0;
+}
+.score-card p { color: var(--text-dim); font-size: 1rem; margin-bottom: 1.5rem; }
+
+/* ── DIAGRAM ── */
+.diagram {
+  background: var(--surface2);
+  border-radius: 10px;
+  padding: 1.5rem;
+  margin: 1rem 0;
+  text-align: center;
+  font-family: 'Fira Code', monospace;
+  font-size: 0.82rem;
+  line-height: 1.8;
+  overflow-x: auto;
+}
+.diagram .box {
+  display: inline-block;
+  border: 2px solid var(--accent2);
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  margin: 0.25rem;
+  background: var(--surface);
+}
+.diagram .arrow { color: var(--accent); font-size: 1.2rem; margin: 0 0.5rem; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 700px) {
+  .header { padding: 1.25rem 1rem 0; }
+  .header h1 { font-size: 1.35rem; }
+  .content { padding: 1.25rem; }
+  .card { padding: 1.25rem; }
+  .tab-btn { padding: 0.6rem 0.8rem; font-size: 0.78rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-top">
+    <span class="header-badge">Python 101</span>
+    <div>
+      <h1>Objects &amp; Classes Playbook</h1>
+      <p>Learn and Help Program &bull; Metropolitan State University</p>
+    </div>
+  </div>
+  <div class="tabs" id="tabs">
+    <button class="tab-btn active" data-tab="tab1"><span class="tab-num">01</span>Objects &amp; Classes</button>
+    <button class="tab-btn" data-tab="tab2"><span class="tab-num">02</span>Magic Methods</button>
+    <button class="tab-btn" data-tab="tab3"><span class="tab-num">03</span>Variables</button>
+    <button class="tab-btn" data-tab="tab4"><span class="tab-num">04</span>Methods</button>
+    <button class="tab-btn" data-tab="tab5"><span class="tab-num">05</span>Example</button>
+    <button class="tab-btn" data-tab="tab6"><span class="tab-num">06</span>Quiz</button>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- TAB 1 : OBJECTS & CLASSES                  -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="content">
+<div class="tab-panel active" id="tab1">
+
+  <div class="card blue">
+    <h2>What Is a Class?</h2>
+    <p>A <strong>class</strong> is a blueprint (or template) for creating objects. Think of it like the design plans for a car — the plans describe what features every car will have (color, fuel level, model), but the plans themselves are not a car.</p>
+
+    <div class="callout">
+      <span class="icon">💡</span>
+      <p>A class defines <strong>attributes</strong> (data) and <strong>methods</strong> (actions). An object is a specific instance built from that blueprint.</p>
+    </div>
+
+    <div class="code-block">
+      <div class="code-header">
+        <span class="file-name">class_basics.py</span>
+        <button class="copy-btn" onclick="copyCode(this)">copy</button>
+      </div>
+<pre><span class="cm"># Defining a simple class</span>
+<span class="kw">class</span> <span class="cl">Car</span>:
+    <span class="cm"># The __init__ method runs when an object is created</span>
+    <span class="kw">def</span> <span class="fn">__init__</span>(<span class="sf">self</span>, make, model, color):
+        <span class="sf">self</span>.make  = make     <span class="cm"># instance attribute</span>
+        <span class="sf">self</span>.model = model    <span class="cm"># instance attribute</span>
+        <span class="sf">self</span>.color = color    <span class="cm"># instance attribute</span>
+        <span class="sf">self</span>.fuel  = <span class="nu">0</span>        <span class="cm"># starts empty</span>
+</pre>
+    </div>
+  </div>
+
+  <div class="card amber">
+    <h2>What Is an Object (Instance)?</h2>
+    <p>An <strong>object</strong> is a concrete thing created from the class blueprint. Each object has its own copy of the data.</p>
+
+    <div class="code-block">
+      <div class="code-header">
+        <span class="file-name">creating_objects.py</span>
+        <button class="copy-btn" onclick="copyCode(this)">copy</button>
+      </div>
+<pre><span class="cm"># Creating objects (instances) from the Car class</span>
+my_car   = <span class="cl">Car</span>(<span class="st">"Toyota"</span>, <span class="st">"Camry"</span>, <span class="st">"Blue"</span>)
+your_car = <span class="cl">Car</span>(<span class="st">"Honda"</span>, <span class="st">"Civic"</span>, <span class="st">"Red"</span>)
+
+<span class="nb">print</span>(my_car.make)    <span class="cm"># Toyota</span>
+<span class="nb">print</span>(your_car.color) <span class="cm"># Red</span>
+
+<span class="cm"># Each object is independent</span>
+<span class="nb">print</span>(my_car <span class="kw">is</span> your_car)  <span class="cm"># False</span>
+</pre>
+    </div>
+
+    <div class="output-block">
+      <span class="label">Output</span>
+      Toyota
+Red
+False
+    </div>
+  </div>
+
+  <div class="card green">
+    <h2>The <code>self</code> Parameter</h2>
+    <p>Every method inside a class receives <code>self</code> as its first parameter. It refers to the <strong>specific object</strong> calling the method — it's how each car "knows" its own data.</p>
+
+    <div class="callout tip">
+      <span class="icon">🔑</span>
+      <p><code>self</code> is not a keyword — it's a strong convention. Python automatically passes the calling object as the first argument.</p>
+    </div>
+
+    <div class="code-block">
+      <div class="code-header">
+        <span class="file-name">self_demo.py</span>
+        <button class="copy-btn" onclick="copyCode(this)">copy</button>
+      </div>
+<pre><span class="kw">class</span> <span class="cl">Car</span>:
+    <span class="kw">def</span> <span class="fn">__init__</span>(<span class="sf">self</span>, make, model):
+        <span class="sf">self</span>.make  = make
+        <span class="sf">self</span>.model = model
+
+    <span class="kw">def</span> <span class="fn">describe</span>(<span class="sf">self</span>):
+        <span class="cm"># self.make refers to THIS car's make</span>
+        <span class="kw">return</span> <span class="st">f"</span><span class="st">{</span><span class="sf">self</span>.make<span class="st">}</span> <span class="st">{</span><span class="sf">self</span>.model<span class="st">}</span><span class="st">"</span>
+
+car_a = <span class="cl">Car</span>(<span class="st">"Ford"</span>, <span class="st">"Mustang"</span>)
+car_b = <span class="cl">Car</span>(<span class="st">"Tesla"</span>, <span class="st">"Model 3"</span>)
+
+<span class="nb">print</span>(car_a.describe())  <span class="cm"># Ford Mustang</span>
+<span class="nb">print</span>(car_b.describe())  <span class="cm"># Tesla Model 3</span>
+</pre>
+    </div>
+  </div>
+
+  <div class="card purple">
+    <h2>Analogy: Class vs Object</h2>
+    <div class="diagram">
+      <div class="box" style="border-color: var(--accent);">
+        🏭 <strong>Class = Blueprint</strong><br>
+        Car(make, model, color)
+      </div>
+      <span class="arrow">→</span>
+      <div class="box">🚗 my_car<br>"Toyota Camry Blue"</div>
+      <br>
+      <span class="arrow" style="visibility:hidden">→</span>
+      <span class="arrow">→</span>
+      <div class="box">🚙 your_car<br>"Honda Civic Red"</div>
+      <br>
+      <span class="arrow" style="visibility:hidden">→</span>
+      <span class="arrow">→</span>
+      <div class="box">🚕 taxi<br>"Ford Crown Vic Yellow"</div>
+    </div>
+    <p>One class can produce unlimited objects. Each object holds its own data but shares the same methods.</p>
+  </div>
+
+</div>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- TAB 2 : MAGIC METHODS                      -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="tab-panel" id="tab2">
+
+  <div class="card blue">
+    <h2>What Are Magic Methods?</h2>
+    <p>Magic methods (also called <strong>dunder methods</strong> — short for "double underscore") are special methods Python calls automatically in certain situations. They let you customize how objects behave with built-in operations.</p>
+    <div class="callout">
+      <span class="icon">✨</span>
+      <p>They're "magic" because you never call them directly — Python calls them for you when you use <code>print()</code>, <code>+</code>, <code>len()</code>, etc.</p>
+    </div>
+  </div>
+
+  <div class="card amber">
+    <h2><code>__init__(self, ...)</code> — The Constructor</h2>
+    <p>Called automatically when you create a new object. It initializes the object's attributes.</p>
+    <div class="code-block">
+      <div class="code-header">
+        <span class="file-name">init_method.py</span>
+        <button class="copy-btn" onclick="copyCode(this)">copy</button>
+      </div>
+<pre><span class="kw">class</span> <span class="cl">Car</span>:
+    <span class="kw">def</span> <span class="fn">__init__</span>(<span class="sf">self</span>, make, model, year):
+        <span class="sf">self</span>.make  = make
+        <span class="sf">self</span>.model = model
+        <span class="sf">self</span>.year  = year
+        <span class="sf">self</span>.fuel  = <span class="nu">0</span>
+        <span class="nb">print</span>(<span class="st">f"A new {make} {model} just rolled off the lot!"</span>)
+
+<span class="cm"># __init__ runs automatically here:</span>
+car = <span class="cl">Car</span>(<span class="st">"Toyota"</span>, <span class="st">"Camry"</span>, <span class="nu">2024</span>)
+</pre>
+    </div>
+    <div class="output-block">
+      <span class="label">Output</span>
+      A new Toyota Camry just rolled off the lot!
+    </div>
+  </div>
+
+  <div class="card green">
+    <h2><code>__str__(self)</code> — The Human-Friendly String</h2>
+    <p>Called when you use <code>print()</code> or <code>str()</code> on an object. It returns a <strong>user-friendly</strong> description.</p>
+    <div class="code-block">
+      <div class="code-header">
+        <span class="file-name">str_method.py</span>
+        <button class="copy-btn" onclick="copyCode(this)">copy</button>
+      </div>
+<pre><span class="kw">class</span> <span class="cl">Car</span>:
+    <span class="kw">def</span> <span class="fn">__init__</span>(<span class="sf">self</span>, make, model, year):
+        <span class="sf">self</span>.make  = make
+        <span class="sf">self</span>.model = model
+        <span class="sf">self</span>.year  = year
+
+    <span class="kw">def</span> <span class="fn">__str__</span>(<span class="sf">self</span>):
+        <span class="kw">return</span> <span class="st">f"</span><span class="st">{</span><span class="sf">self</span>.year<span class="st">}</span> <span class="st">{</span><span class="sf">self</span>.make<span class="st">}</span> <span class="st">{</span><span class="sf">self</span>.model<span class="st">}</span><span class="st">"</span>
+
+car = <span class="cl">Car</span>(<span class="st">"Honda"</span>, <span class="st">"Civic"</span>, <span class="nu">2023</span>)
+<span class="nb">print</span>(car)         <span class="cm"># calls __str__ automatically</span>
+<span class="nb">print</span>(<span class="nb">str</span>(car))    <span class="cm"># also calls __str__</span>
+</pre>
+    </div>
+    <div class="output-block">
+      <span class="label">Output</span>
+      2023 Honda Civic
+2023 Honda Civic
+    </div>
+  </div>
+
+  <div class="card purple">
+    <h2><code>__repr__(self)</code> — The Developer String</h2>
+    <p>Called when you type the variable name in the Python shell, or use <code>repr()</code>. It returns a <strong>developer-friendly</strong> representation — ideally one that could recreate the object.</p>
+    <div class="code-block">
+      <div class="code-header">
+        <span class="file-name">repr_method.py</span>
+        <button class="copy-btn" onclick="copyCode(this)">copy</button>
+      </div>
+<pre><span class="kw">class</span> <span class="cl">Car</span>:
+    <span class="kw">def</span> <span class="fn">__init__</span>(<span class="sf">self</span>, make, model, year):
+        <span class="sf">self</span>.make  = make
+        <span class="sf">self</span>.model = model
+        <span class="sf">self</span>.year  = year
+
+    <span class="kw">def</span> <span class="fn">__str__</span>(<span class="sf">self</span>):
+        <span class="kw">return</span> <span class="st">f"</span><span class="st">{</span><span class="sf">self</span>.year<span class="st">}</span> <span class="st">{</span><span class="sf">self</span>.make<span class="st">}</span> <span class="st">{</span><span class="sf">self</span>.model<span class="st">}</span><span class="st">"</span>
+
+    <span class="kw">def</span> <span class="fn">__repr__</span>(<span class="sf">self</span>):
+        <span class="kw">return</span> <span class="st">f"Car('{</span><span class="sf">self</span>.make<span class="st">}', '{</span><span class="sf">self</span>.model<span class="st">}', {</span><span class="sf">self</span>.year<span class="st">})"</span>
+
+car = <span class="cl">Car</span>(<span class="st">"Ford"</span>, <span class="st">"Mustang"</span>, <span class="nu">2024</span>)
+
+<span class="nb">print</span>(<span class="nb">str</span>(car))    <span class="cm"># user-friendly → __str__</span>
+<span class="nb">print</span>(<span class="nb">repr</span>(car))   <span class="cm"># developer-friendly → __repr__</span>
+</pre>
+    </div>
+    <div class="output-block">
+      <span class="label">Output</span>
+      2024 Ford Mustang
+Car('Ford', 'Mustang', 2024)
+    </div>
+  </div>
+
+  <div class="card red">
+    <h2><code>__str__</code> vs <code>__repr__</code> — Quick Comparison</h2>
+    <table class="compare-table">
+      <tr><th>Feature</th><th>__str__</th><th>__repr__</th></tr>
+      <tr><td>Audience</td><td>End users</td><td>Developers</td></tr>
+      <tr><td>Called by</td><td><code>print()</code>, <code>str()</code></td><td>Python shell, <code>repr()</code></td></tr>
+      <tr><td>Goal</td><td>Readable &amp; friendly</td><td>Unambiguous, recreatable</td></tr>
+      <tr><td>Fallback</td><td>Uses __repr__ if missing</td><td>Default: <code>&lt;Car object at 0x...&gt;</code></td></tr>
+    </table>
+    <div class="callout tip">
+      <span class="icon">🎯</span>
+      <p><strong>Rule of thumb:</strong> Always define <code>__repr__</code>. Define <code>__str__</code> only when you want a friendlier output. If only <code>__repr__</code> exists, <code>print()</code> will use it as a fallback.</p>
+    </div>
+  </div>
+
+</div>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- TAB 3 : VARIABLES                          -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="tab-panel" id="tab3">
+
+  <div class="card blue">
+    <h2>Instance Variables</h2>
+    <p><strong>Instance variables</strong> belong to a specific object. Each object gets its own copy, and changing one object's variable does NOT affect others.</p>
+    <span class="concept-tag key">self.variable</span>
+    <span class="concept-tag info">UNIQUE per object</span>
+
+    <div class="code-block">
+      <div class="code-header">
+        <span class="file-name">instance_vars.py</span>
+        <button class="copy-btn" onclick="copyCode(this)">copy</button>
+      </div>
+<pre><span class="kw">class</span> <span class="cl">Car</span>:
+    <span class="kw">def</span> <span class="fn">__init__</span>(<span class="sf">self</span>, make, color):
+        <span class="cm"># Instance variables — unique to each car</span>
+        <span class="sf">self</span>.make  = make
+        <span class="sf">self</span>.color = color
+        <span class="sf">self</span>.fuel  = <span class="nu">0</span>
+
+car1 = <span class="cl">Car</span>(<span class="st">"Toyota"</span>, <span class="st">"Blue"</span>)
+car2 = <span class="cl">Car</span>(<span class="st">"Honda"</span>, <span class="st">"Red"</span>)
+
+<span class="cm"># Each car has its own fuel level</span>
+car1.fuel = <span class="nu">50</span>
+<span class="nb">print</span>(car1.fuel)  <span class="cm"># 50</span>
+<span class="nb">print</span>(car2.fuel)  <span class="cm"># 0  — not affected!</span>
+</pre>
+    </div>
+    <div class="output-block">
+      <span class="label">Output</span>
+      50
+0
+    </div>
+  </div>
+
+  <div class="card amber">
+    <h2>Class Variables</h2>
+    <p><strong>Class variables</strong> are shared by ALL objects of that class. They're defined directly inside the class body (not inside any method). Useful for data that's the same for every instance.</p>
+    <span class="concept-tag warn">Defined at class level</span>
+    <span class="concept-tag ok">SHARED by all objects</span>
+
+    <div class="code-block">
+      <div class="code-header">
+        <span class="file-name">class_vars.py</span>
+        <button class="copy-btn" onclick="copyCode(this)">copy</button>
+      </div>
+<pre><span class="kw">class</span> <span class="cl">Car</span>:
+    <span class="cm"># Class variable — shared by all Car objects</span>
+    total_cars = <span class="nu">0</span>
+    wheels     = <span class="nu">4</span>
+
+    <span class="kw">def</span> <span class="fn">__init__</span>(<span class="sf">self</span>, make, model):
+        <span class="sf">self</span>.make  = make       <span class="cm"># instance variable</span>
+        <span class="sf">self</span>.model = model      <span class="cm"># instance variable</span>
+        <span class="cl">Car</span>.total_cars += <span class="nu">1</span>     <span class="cm"># update the class variable</span>
+
+car1 = <span class="cl">Car</span>(<span class="st">"Toyota"</span>, <span class="st">"Camry"</span>)
+car2 = <span class="cl">Car</span>(<span class="st">"Honda"</span>, <span class="st">"Civic"</span>)
+car3 = <span class="cl">Car</span>(<span class="st">"Ford"</span>, <span class="st">"F-150"</span>)
+
+<span class="nb">print</span>(<span class="cl">Car</span>.total_cars)    <span class="cm"># 3</span>
+<span class="nb">print</span>(car1.wheels)       <span class="cm"># 4</span>
+<span class="nb">print</span>(car2.wheels)       <span class="cm"># 4  — same for all</span>
+</pre>
+    </div>
+    <div class="output-block">
+      <span class="label">Output</span>
+      3
+4
+4
+    </div>
+  </div>
+
+  <div class="card green">
+    <h2>Side-by-Side Comparison</h2>
+    <table class="compare-table">
+      <tr><th>Feature</th><th>Instance Variable</th><th>Class Variable</th></tr>
+      <tr><td>Where defined</td><td>Inside <code>__init__</code> with <code>self.</code></td><td>Directly in the class body</td></tr>
+      <tr><td>Scope</td><td>Unique per object</td><td>Shared by all objects</td></tr>
+      <tr><td>Access</td><td><code>self.var</code> or <code>obj.var</code></td><td><code>ClassName.var</code> or <code>obj.var</code></td></tr>
+      <tr><td>Example</td><td><code>self.color = "Red"</code></td><td><code>wheels = 4</code></td></tr>
+      <tr><td>Use case</td><td>Data unique to each car</td><td>Data common to all cars</td></tr>
+    </table>
+  </div>
+
+  <div class="card red">
+    <h2>⚠️ Common Pitfall</h2>
+    <p>If you assign to an instance with the same name as a class variable, you create a <strong>new instance variable</strong> that shadows the class variable — the class variable itself stays unchanged.</p>
+
+    <div class="code-block">
+      <div class="code-header">
+        <span class="file-name">pitfall.py</span>
+        <button class="copy-btn" onclick="copyCode(this)">copy</button>
+      </div>
+<pre><span class="kw">class</span> <span class="cl">Car</span>:
+    wheels = <span class="nu">4</span>
+
+car1 = <span class="cl">Car</span>()
+car2 = <span class="cl">Car</span>()
+
+<span class="cm"># This creates an INSTANCE variable on car1 only</span>
+car1.wheels = <span class="nu">6</span>
+
+<span class="nb">print</span>(car1.wheels)     <span class="cm"># 6  — instance variable</span>
+<span class="nb">print</span>(car2.wheels)     <span class="cm"># 4  — still the class variable</span>
+<span class="nb">print</span>(<span class="cl">Car</span>.wheels)      <span class="cm"># 4  — class variable unchanged</span>
+</pre>
+    </div>
+    <div class="callout warning">
+      <span class="icon">⚠️</span>
+      <p>To change a class variable for all objects, always use <code>ClassName.variable = value</code>, not <code>self.variable = value</code>.</p>
+    </div>
+  </div>
+
+</div>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- TAB 4 : METHODS                            -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="tab-panel" id="tab4">
+
+  <div class="card blue">
+    <h2>Instance Methods</h2>
+    <p><strong>Instance methods</strong> are the most common type. They take <code>self</code> as the first parameter, which gives them access to instance (and class) variables.</p>
+    <span class="concept-tag key">def method(self)</span>
+    <span class="concept-tag info">Can access self.* and ClassName.*</span>
+
+    <div class="code-block">
+      <div class="code-header">
+        <span class="file-name">instance_methods.py</span>
+        <button class="copy-btn" onclick="copyCode(this)">copy</button>
+      </div>
+<pre><span class="kw">class</span> <span class="cl">Car</span>:
+    <span class="kw">def</span> <span class="fn">__init__</span>(<span class="sf">self</span>, make, model):
+        <span class="sf">self</span>.make  = make
+        <span class="sf">self</span>.model = model
+        <span class="sf">self</span>.fuel  = <span class="nu">0</span>
+
+    <span class="cm"># Instance method: fills up the gas tank</span>
+    <span class="kw">def</span> <span class="fn">fillGas</span>(<span class="sf">self</span>, gallons):
+        <span class="sf">self</span>.fuel += gallons
+        <span class="nb">print</span>(<span class="st">f"Added {gallons} gal. Fuel: {</span><span class="sf">self</span>.fuel<span class="st">} gal"</span>)
+
+    <span class="cm"># Instance method: checks if drivable</span>
+    <span class="kw">def</span> <span class="fn">canDrive</span>(<span class="sf">self</span>):
+        <span class="kw">return</span> <span class="sf">self</span>.fuel > <span class="nu">0</span>
+
+    <span class="cm"># Instance method: drives and uses fuel</span>
+    <span class="kw">def</span> <span class="fn">drive</span>(<span class="sf">self</span>, miles):
+        <span class="kw">if</span> <span class="sf">self</span>.canDrive():
+            fuel_used = miles / <span class="nu">30</span>  <span class="cm"># 30 mpg</span>
+            <span class="sf">self</span>.fuel -= fuel_used
+            <span class="nb">print</span>(<span class="st">f"Drove {miles} mi. Fuel left: {</span><span class="sf">self</span>.fuel<span class="st">:.1f} gal"</span>)
+        <span class="kw">else</span>:
+            <span class="nb">print</span>(<span class="st">"Can't drive — no fuel!"</span>)
+
+car = <span class="cl">Car</span>(<span class="st">"Toyota"</span>, <span class="st">"Camry"</span>)
+car.drive(<span class="nu">10</span>)       <span class="cm"># Can't drive — no fuel!</span>
+car.fillGas(<span class="nu">10</span>)     <span class="cm"># Added 10 gal. Fuel: 10 gal</span>
+car.drive(<span class="nu">90</span>)       <span class="cm"># Drove 90 mi. Fuel left: 7.0 gal</span>
+</pre>
+    </div>
+    <div class="output-block">
+      <span class="label">Output</span>
+      Can't drive — no fuel!
+Added 10 gal. Fuel: 10 gal
+Drove 90 mi. Fuel left: 7.0 gal
+    </div>
+  </div>
+
+  <div class="card amber">
+    <h2>Class Methods</h2>
+    <p><strong>Class methods</strong> use the <code>@classmethod</code> decorator and receive <code>cls</code> (the class itself) instead of <code>self</code>. They can access and modify class variables but NOT instance variables.</p>
+    <span class="concept-tag warn">@classmethod</span>
+    <span class="concept-tag key">def method(cls)</span>
+
+    <div class="code-block">
+      <div class="code-header">
+        <span class="file-name">class_methods.py</span>
+        <button class="copy-btn" onclick="copyCode(this)">copy</button>
+      </div>
+<pre><span class="kw">class</span> <span class="cl">Car</span>:
+    total_cars = <span class="nu">0</span>
+
+    <span class="kw">def</span> <span class="fn">__init__</span>(<span class="sf">self</span>, make, model):
+        <span class="sf">self</span>.make  = make
+        <span class="sf">self</span>.model = model
+        <span class="cl">Car</span>.total_cars += <span class="nu">1</span>
+
+    <span class="dc">@classmethod</span>
+    <span class="kw">def</span> <span class="fn">get_total_cars</span>(cls):
+        <span class="kw">return</span> cls.total_cars
+
+    <span class="dc">@classmethod</span>
+    <span class="kw">def</span> <span class="fn">from_string</span>(cls, car_string):
+        <span class="cm"># Alternative constructor: "Toyota-Camry"</span>
+        make, model = car_string.split(<span class="st">"-"</span>)
+        <span class="kw">return</span> cls(make, model)
+
+car1 = <span class="cl">Car</span>(<span class="st">"Toyota"</span>, <span class="st">"Camry"</span>)
+car2 = <span class="cl">Car</span>.from_string(<span class="st">"Honda-Civic"</span>)  <span class="cm"># using class method</span>
+
+<span class="nb">print</span>(car2.make)                    <span class="cm"># Honda</span>
+<span class="nb">print</span>(<span class="cl">Car</span>.get_total_cars())          <span class="cm"># 2</span>
+</pre>
+    </div>
+    <div class="output-block">
+      <span class="label">Output</span>
+      Honda
+2
+    </div>
+  </div>
+
+  <div class="card green">
+    <h2>Static Methods (Bonus)</h2>
+    <p><strong>Static methods</strong> use <code>@staticmethod</code> and receive neither <code>self</code> nor <code>cls</code>. They're utility functions that live inside the class for organizational purposes.</p>
+
+    <div class="code-block">
+      <div class="code-header">
+        <span class="file-name">static_methods.py</span>
+        <button class="copy-btn" onclick="copyCode(this)">copy</button>
+      </div>
+<pre><span class="kw">class</span> <span class="cl">Car</span>:
+    <span class="dc">@staticmethod</span>
+    <span class="kw">def</span> <span class="fn">mph_to_kph</span>(mph):
+        <span class="kw">return</span> mph * <span class="nu">1.60934</span>
+
+<span class="nb">print</span>(<span class="cl">Car</span>.mph_to_kph(<span class="nu">60</span>))  <span class="cm"># 96.5604</span>
+</pre>
+    </div>
+  </div>
+
+  <div class="card purple">
+    <h2>Method Comparison</h2>
+    <table class="compare-table">
+      <tr><th>Type</th><th>Decorator</th><th>First Param</th><th>Can Access</th></tr>
+      <tr><td>Instance method</td><td>None</td><td><code>self</code></td><td>Instance vars + Class vars</td></tr>
+      <tr><td>Class method</td><td><code>@classmethod</code></td><td><code>cls</code></td><td>Class vars only</td></tr>
+      <tr><td>Static method</td><td><code>@staticmethod</code></td><td>None</td><td>Neither (utility)</td></tr>
+    </table>
+  </div>
+
+</div>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- TAB 5 : FULL EXAMPLE                       -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="tab-panel" id="tab5">
+
+  <div class="card blue">
+    <h2>Complete Car Class — Putting It All Together</h2>
+    <p>Here's a complete <code>Car</code> class that uses everything we've learned: instance variables, class variables, instance methods, class methods, and magic methods.</p>
+
+    <div class="code-block">
+      <div class="code-header">
+        <span class="file-name">car_complete.py</span>
+        <button class="copy-btn" onclick="copyCode(this)">copy</button>
+      </div>
+<pre><span class="kw">class</span> <span class="cl">Car</span>:
+    <span class="cm"># ── Class Variables ──</span>
+    total_cars = <span class="nu">0</span>
+    wheels     = <span class="nu">4</span>
+
+    <span class="cm"># ── Constructor (Magic Method) ──</span>
+    <span class="kw">def</span> <span class="fn">__init__</span>(<span class="sf">self</span>, make, model, year, color):
+        <span class="cm"># Instance variables</span>
+        <span class="sf">self</span>.make  = make
+        <span class="sf">self</span>.model = model
+        <span class="sf">self</span>.year  = year
+        <span class="sf">self</span>.color = color
+        <span class="sf">self</span>.fuel  = <span class="nu">0</span>         <span class="cm"># gallons</span>
+        <span class="sf">self</span>.odometer = <span class="nu">0</span>     <span class="cm"># miles driven</span>
+        <span class="cl">Car</span>.total_cars += <span class="nu">1</span>
+
+    <span class="cm"># ── Magic Methods ──</span>
+    <span class="kw">def</span> <span class="fn">__str__</span>(<span class="sf">self</span>):
+        <span class="kw">return</span> <span class="st">f"{</span><span class="sf">self</span>.year<span class="st">} {</span><span class="sf">self</span>.make<span class="st">} {</span><span class="sf">self</span>.model<span class="st">} ({</span><span class="sf">self</span>.color<span class="st">})"</span>
+
+    <span class="kw">def</span> <span class="fn">__repr__</span>(<span class="sf">self</span>):
+        <span class="kw">return</span> (<span class="st">f"Car('{</span><span class="sf">self</span>.make<span class="st">}', '{</span><span class="sf">self</span>.model<span class="st">}', "</span>
+                <span class="st">f"{</span><span class="sf">self</span>.year<span class="st">}, '{</span><span class="sf">self</span>.color<span class="st">}')"</span>)
+
+    <span class="cm"># ── Instance Methods ──</span>
+    <span class="kw">def</span> <span class="fn">fillGas</span>(<span class="sf">self</span>, gallons):
+        <span class="sf">self</span>.fuel += gallons
+        <span class="nb">print</span>(<span class="st">f"⛽ Filled {gallons} gal → Tank: {</span><span class="sf">self</span>.fuel<span class="st">} gal"</span>)
+
+    <span class="kw">def</span> <span class="fn">canDrive</span>(<span class="sf">self</span>):
+        <span class="kw">return</span> <span class="sf">self</span>.fuel > <span class="nu">0</span>
+
+    <span class="kw">def</span> <span class="fn">drive</span>(<span class="sf">self</span>, miles):
+        <span class="kw">if not</span> <span class="sf">self</span>.canDrive():
+            <span class="nb">print</span>(<span class="st">"🚫 Can't drive — tank is empty!"</span>)
+            <span class="kw">return</span>
+        fuel_needed = miles / <span class="nu">30</span>
+        <span class="kw">if</span> fuel_needed > <span class="sf">self</span>.fuel:
+            actual_miles = <span class="sf">self</span>.fuel * <span class="nu">30</span>
+            <span class="sf">self</span>.odometer += actual_miles
+            <span class="sf">self</span>.fuel = <span class="nu">0</span>
+            <span class="nb">print</span>(<span class="st">f"🚗 Drove {actual_miles:.0f} mi and ran out of gas!"</span>)
+        <span class="kw">else</span>:
+            <span class="sf">self</span>.fuel -= fuel_needed
+            <span class="sf">self</span>.odometer += miles
+            <span class="nb">print</span>(<span class="st">f"🚗 Drove {miles} mi → Fuel: {</span><span class="sf">self</span>.fuel<span class="st">:.1f} gal"</span>)
+
+    <span class="kw">def</span> <span class="fn">status</span>(<span class="sf">self</span>):
+        <span class="nb">print</span>(<span class="st">f"── {</span><span class="sf">self</span><span class="st">} ──"</span>)
+        <span class="nb">print</span>(<span class="st">f"   Fuel: {</span><span class="sf">self</span>.fuel<span class="st">} gal | Odometer: {</span><span class="sf">self</span>.odometer<span class="st">} mi"</span>)
+
+    <span class="cm"># ── Class Method ──</span>
+    <span class="dc">@classmethod</span>
+    <span class="kw">def</span> <span class="fn">get_total_cars</span>(cls):
+        <span class="kw">return</span> <span class="st">f"Total cars on the road: {cls.total_cars}"</span>
+
+    <span class="cm"># ── Static Method ──</span>
+    <span class="dc">@staticmethod</span>
+    <span class="kw">def</span> <span class="fn">mph_to_kph</span>(mph):
+        <span class="kw">return</span> <span class="nb">round</span>(mph * <span class="nu">1.60934</span>, <span class="nu">2</span>)
+
+
+<span class="cm"># ═══════════════════════════════════════════</span>
+<span class="cm"># Let's take our cars for a spin!</span>
+<span class="cm"># ═══════════════════════════════════════════</span>
+
+car1 = <span class="cl">Car</span>(<span class="st">"Toyota"</span>, <span class="st">"Camry"</span>, <span class="nu">2024</span>, <span class="st">"Silver"</span>)
+car2 = <span class="cl">Car</span>(<span class="st">"Tesla"</span>, <span class="st">"Model 3"</span>, <span class="nu">2025</span>, <span class="st">"White"</span>)
+
+<span class="nb">print</span>(car1)              <span class="cm"># __str__</span>
+<span class="nb">print</span>(<span class="nb">repr</span>(car2))        <span class="cm"># __repr__</span>
+
+car1.drive(<span class="nu">50</span>)           <span class="cm"># Can't drive — empty!</span>
+car1.fillGas(<span class="nu">15</span>)         <span class="cm"># Fill up</span>
+car1.drive(<span class="nu">120</span>)          <span class="cm"># Go for a drive</span>
+car1.drive(<span class="nu">400</span>)          <span class="cm"># Run out of gas</span>
+car1.status()
+
+<span class="nb">print</span>(<span class="cl">Car</span>.get_total_cars())
+<span class="nb">print</span>(<span class="st">f"60 mph = {</span><span class="cl">Car</span>.mph_to_kph(<span class="nu">60</span>)<span class="st">} kph"</span>)
+</pre>
+    </div>
+    <div class="output-block">
+      <span class="label">Output</span>
+      2024 Toyota Camry (Silver)
+Car('Tesla', 'Model 3', 2025, 'White')
+🚫 Can't drive — tank is empty!
+⛽ Filled 15 gal → Tank: 15 gal
+🚗 Drove 120 mi → Fuel: 11.0 gal
+🚗 Drove 330 mi and ran out of gas!
+── 2024 Toyota Camry (Silver) ──
+   Fuel: 0 gal | Odometer: 450 mi
+Total cars on the road: 2
+60 mph = 96.56 kph
+    </div>
+  </div>
+
+  <div class="card green">
+    <h2>Concept Map</h2>
+    <div class="diagram">
+      <div class="box" style="border-color: var(--accent); min-width:200px">
+        <strong>🏭 class Car:</strong><br><br>
+        <span style="color:var(--accent)">Class Vars:</span> total_cars, wheels<br>
+        <span style="color:var(--accent2)">Instance Vars:</span> make, model, fuel...<br><br>
+        <span style="color:var(--accent3)">Instance:</span> fillGas() drive() canDrive()<br>
+        <span style="color:var(--accent5)">Class:</span> get_total_cars()<br>
+        <span style="color:var(--accent4)">Static:</span> mph_to_kph()<br>
+        <span style="color:var(--text-dim)">Magic:</span> __init__ __str__ __repr__
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- TAB 6 : QUIZ                               -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="tab-panel" id="tab6">
+
+  <div class="card amber" id="quiz-container">
+    <h2>Test Your Knowledge</h2>
+    <p style="margin-bottom:1rem; color:var(--text-dim)">10 questions covering objects, classes, magic methods, variables, and methods. Good luck!</p>
+
+    <div class="quiz-progress" id="quiz-progress"></div>
+
+    <div id="quiz-area"></div>
+
+    <div class="score-card" id="score-card">
+      <h2>Quiz Complete!</h2>
+      <div class="score-big" id="score-display">0/10</div>
+      <p id="score-msg"></p>
+      <button class="restart-btn" style="display:inline-block" onclick="restartQuiz()">🔄 Try Again</button>
+    </div>
+  </div>
+
+</div>
+</div><!-- end .content -->
+
+<script>
+// ── TAB SWITCHING ──
+const tabBtns = document.querySelectorAll('.tab-btn');
+const panels  = document.querySelectorAll('.tab-panel');
+tabBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    tabBtns.forEach(b => b.classList.remove('active'));
+    panels.forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById(btn.dataset.tab).classList.add('active');
+  });
+});
+
+// ── COPY CODE ──
+function copyCode(btn) {
+  const pre = btn.closest('.code-block').querySelector('pre');
+  const text = pre.innerText;
+  navigator.clipboard.writeText(text).then(() => {
+    btn.textContent = 'copied!';
+    setTimeout(() => btn.textContent = 'copy', 1500);
+  });
+}
+
+// ═══════════════════════════════════════
+// QUIZ ENGINE
+// ═══════════════════════════════════════
+const questions = [
+  {
+    q: "What keyword do you use to define a class in Python?",
+    code: null,
+    options: ["define", "class", "struct", "object"],
+    answer: 1,
+    explanation: "The <code>class</code> keyword is used to define a new class in Python. For example: <code>class Car:</code>"
+  },
+  {
+    q: "What does the <code>__init__</code> method do?",
+    code: null,
+    options: [
+      "Deletes the object when it's no longer needed",
+      "Returns a string representation of the object",
+      "Initializes a new object's attributes when it's created",
+      "Imports the class from another module"
+    ],
+    answer: 2,
+    explanation: "<code>__init__</code> is the constructor — it runs automatically when you create a new object and sets up the initial attribute values."
+  },
+  {
+    q: "What is the output of the following code?",
+    code: `class Car:\n    def __init__(self, make):\n        self.make = make\n    def __str__(self):\n        return f"Car: {self.make}"\n\nc = Car("Honda")\nprint(c)`,
+    options: [
+      "&lt;__main__.Car object at 0x...&gt;",
+      "Car: Honda",
+      "Honda",
+      "Error: __str__ not defined"
+    ],
+    answer: 1,
+    explanation: "<code>print(c)</code> calls the <code>__str__</code> method, which returns <code>\"Car: Honda\"</code>."
+  },
+  {
+    q: "What is the difference between <code>__str__</code> and <code>__repr__</code>?",
+    code: null,
+    options: [
+      "They are identical — both produce the same output",
+      "__str__ is for users (readable); __repr__ is for developers (unambiguous)",
+      "__repr__ is for users; __str__ is for developers",
+      "__str__ only works with integers"
+    ],
+    answer: 1,
+    explanation: "<code>__str__</code> aims for a human-readable format, while <code>__repr__</code> targets developers with an unambiguous representation — ideally one that could recreate the object."
+  },
+  {
+    q: "Which of these is a <em>class variable</em>?",
+    code: `class Car:\n    wheels = 4\n    def __init__(self, make):\n        self.make = make`,
+    options: [
+      "self.make",
+      "wheels",
+      "Both are class variables",
+      "Neither — Python doesn't have class variables"
+    ],
+    answer: 1,
+    explanation: "<code>wheels = 4</code> is defined at the class level and shared by all instances, making it a class variable. <code>self.make</code> is an instance variable — unique to each object."
+  },
+  {
+    q: "What happens if you run <code>car1.wheels = 6</code> where <code>wheels</code> is a class variable set to 4?",
+    code: null,
+    options: [
+      "All Car objects now have wheels = 6",
+      "Only car1 gets wheels = 6; others stay at 4",
+      "Python raises an error",
+      "Nothing happens — class variables are read-only"
+    ],
+    answer: 1,
+    explanation: "Assigning via an instance creates a new <strong>instance variable</strong> that shadows the class variable. Other instances still see the original class variable value of 4."
+  },
+  {
+    q: "What does the <code>@classmethod</code> decorator do?",
+    code: null,
+    options: [
+      "Makes the method accessible only inside the class",
+      "Passes the class (cls) as the first argument instead of self",
+      "Prevents the method from being overridden",
+      "Makes the method run automatically when the class is defined"
+    ],
+    answer: 1,
+    explanation: "A <code>@classmethod</code> receives <code>cls</code> (the class itself) as its first parameter, letting it access and modify class-level data."
+  },
+  {
+    q: "What is the output of this code?",
+    code: `class Car:\n    total = 0\n    def __init__(self, make):\n        self.make = make\n        Car.total += 1\n\na = Car("Toyota")\nb = Car("Honda")\nc = Car("Ford")\nprint(Car.total)`,
+    options: ["0", "1", "3", "Error"],
+    answer: 2,
+    explanation: "Each time <code>__init__</code> runs, it increments <code>Car.total</code> by 1. After creating 3 objects, <code>Car.total</code> is 3."
+  },
+  {
+    q: "Which type of method can access <em>instance</em> variables?",
+    code: null,
+    options: [
+      "Only class methods",
+      "Only static methods",
+      "Only instance methods",
+      "All three types"
+    ],
+    answer: 2,
+    explanation: "Instance methods receive <code>self</code>, giving them access to instance variables. Class methods receive <code>cls</code> (class only), and static methods receive neither."
+  },
+  {
+    q: "What does <code>self</code> refer to inside a method?",
+    code: null,
+    options: [
+      "The class itself",
+      "The specific object calling the method",
+      "The parent class",
+      "The last variable that was defined"
+    ],
+    answer: 1,
+    explanation: "<code>self</code> refers to the specific instance (object) that is calling the method. It lets each object access its own data."
+  }
+];
+
+let currentQ = 0;
+let score = 0;
+let answered = new Array(questions.length).fill(false);
+
+function buildQuiz() {
+  const area = document.getElementById('quiz-area');
+  const prog = document.getElementById('quiz-progress');
+  area.innerHTML = '';
+  prog.innerHTML = '';
+
+  questions.forEach((q, i) => {
+    // progress dots
+    const dot = document.createElement('div');
+    dot.className = 'quiz-dot' + (i === 0 ? ' current' : '');
+    dot.id = 'dot-' + i;
+    prog.appendChild(dot);
+
+    // question
+    const div = document.createElement('div');
+    div.className = 'quiz-question' + (i === 0 ? ' active' : '');
+    div.id = 'q-' + i;
+
+    let codeHtml = '';
+    if (q.code) {
+      codeHtml = `<div class="code-block"><div class="code-header"><span class="file-name">question_${i+1}.py</span></div><pre>${escapeHtml(q.code)}</pre></div>`;
+    }
+
+    div.innerHTML = `
+      <span class="q-num">Question ${i+1} of ${questions.length}</span>
+      <h3>${q.q}</h3>
+      ${codeHtml}
+      <div class="quiz-options">
+        ${q.options.map((opt, oi) => `
+          <div class="quiz-opt" data-q="${i}" data-o="${oi}" onclick="selectOption(this)">
+            <span class="opt-letter">${String.fromCharCode(65+oi)}</span>
+            <span>${opt}</span>
+          </div>
+        `).join('')}
+      </div>
+      <div class="quiz-feedback" id="fb-${i}"></div>
+      <div class="quiz-nav">
+        <div></div>
+        <button class="next-btn" id="next-${i}" onclick="nextQuestion(${i})">
+          ${i < questions.length - 1 ? 'Next →' : 'See Results'}
+        </button>
+      </div>
+    `;
+    area.appendChild(div);
+  });
+}
+
+function escapeHtml(str) {
+  return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+function selectOption(el) {
+  const qi = parseInt(el.dataset.q);
+  const oi = parseInt(el.dataset.o);
+  if (answered[qi]) return;
+  answered[qi] = true;
+
+  const opts = document.querySelectorAll(`.quiz-opt[data-q="${qi}"]`);
+  opts.forEach(o => o.classList.add('disabled'));
+
+  const correct = questions[qi].answer;
+  const fb = document.getElementById('fb-' + qi);
+
+  if (oi === correct) {
+    score++;
+    el.classList.add('correct-answer');
+    fb.className = 'quiz-feedback show correct';
+    fb.innerHTML = '✅ Correct! ' + questions[qi].explanation;
+    document.getElementById('dot-' + qi).classList.add('correct');
+  } else {
+    el.classList.add('wrong-answer');
+    opts[correct].classList.add('correct-answer');
+    fb.className = 'quiz-feedback show incorrect';
+    fb.innerHTML = '❌ Not quite. ' + questions[qi].explanation;
+    document.getElementById('dot-' + qi).classList.add('wrong');
+  }
+
+  document.getElementById('next-' + qi).style.display = 'inline-block';
+}
+
+function nextQuestion(current) {
+  if (current < questions.length - 1) {
+    document.getElementById('q-' + current).classList.remove('active');
+    document.getElementById('q-' + (current + 1)).classList.add('active');
+    document.getElementById('dot-' + (current + 1)).classList.add('current');
+    currentQ = current + 1;
+  } else {
+    document.getElementById('quiz-area').style.display = 'none';
+    document.getElementById('quiz-progress').style.display = 'none';
+    const sc = document.getElementById('score-card');
+    sc.style.display = 'block';
+    document.getElementById('score-display').textContent = `${score}/${questions.length}`;
+    const pct = (score / questions.length) * 100;
+    const msg = document.getElementById('score-msg');
+    if (pct === 100) { msg.textContent = "🏆 Perfect score! You're an OOP master!"; sc.querySelector('.score-big').style.color = 'var(--correct)'; }
+    else if (pct >= 70) { msg.textContent = "🌟 Great job! You've got a solid understanding."; sc.querySelector('.score-big').style.color = 'var(--accent)'; }
+    else if (pct >= 50) { msg.textContent = "📖 Good effort! Review the playbook tabs and try again."; sc.querySelector('.score-big').style.color = 'var(--accent2)'; }
+    else { msg.textContent = "💪 Keep learning! Re-read the tabs and give it another shot."; sc.querySelector('.score-big').style.color = 'var(--accent4)'; }
+  }
+}
+
+function restartQuiz() {
+  currentQ = 0; score = 0;
+  answered = new Array(questions.length).fill(false);
+  document.getElementById('quiz-area').style.display = 'block';
+  document.getElementById('quiz-progress').style.display = 'flex';
+  document.getElementById('score-card').style.display = 'none';
+  buildQuiz();
+}
+
+buildQuiz();
+</script>
+</body>
+</html>
