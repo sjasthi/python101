@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lab Assignment — Python OOP: Pet Shelter Manager</title>
+<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0f1117;
+  --surface: #181b24;
+  --surface2: #1e2230;
+  --accent: #f59e0b;
+  --accent2: #3b82f6;
+  --accent3: #10b981;
+  --accent4: #ef4444;
+  --accent5: #a855f7;
+  --text: #e4e4e7;
+  --text-dim: #9ca3af;
+  --border: #2a2e3a;
+  --code-bg: #141720;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+/* ── HEADER ── */
+.hero {
+  background: linear-gradient(135deg, #1a1d2e 0%, #0f1117 60%);
+  border-bottom: 1px solid var(--border);
+  padding: 2.5rem 2rem 2rem;
+  position: relative;
+  overflow: hidden;
+}
+.hero::after {
+  content: '🐾';
+  position: absolute;
+  right: 2rem; top: 50%;
+  transform: translateY(-50%);
+  font-size: 6rem;
+  opacity: 0.08;
+}
+.hero-badges { display: flex; gap: 0.5rem; margin-bottom: 1rem; flex-wrap: wrap; }
+.badge {
+  font-family: 'Fira Code', monospace;
+  font-size: 0.68rem;
+  font-weight: 600;
+  padding: 0.25rem 0.65rem;
+  border-radius: 4px;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+}
+.badge.gold { background: var(--accent); color: #000; }
+.badge.blue { background: var(--accent2); color: #fff; }
+.badge.green { background: var(--accent3); color: #000; }
+.badge.purple { background: var(--accent5); color: #fff; }
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 900;
+  font-size: 2rem;
+  background: linear-gradient(135deg, var(--accent), #fb923c);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 0.3rem;
+}
+.hero .subtitle { color: var(--text-dim); font-size: 0.95rem; }
+.hero .course { color: var(--text-dim); font-size: 0.82rem; margin-top: 0.75rem; }
+
+/* ── MAIN ── */
+.main { max-width: 860px; margin: 0 auto; padding: 2rem; }
+
+/* ── CARDS ── */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.75rem;
+  margin-bottom: 1.5rem;
+  position: relative;
+  overflow: hidden;
+}
+.card::before {
+  content: '';
+  position: absolute; top: 0; left: 0;
+  width: 4px; height: 100%;
+  border-radius: 12px 0 0 12px;
+}
+.card.blue::before { background: var(--accent2); }
+.card.amber::before { background: var(--accent); }
+.card.green::before { background: var(--accent3); }
+.card.purple::before { background: var(--accent5); }
+.card.red::before { background: var(--accent4); }
+
+.card h2 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 1.3rem;
+  margin-bottom: 0.75rem;
+  display: flex; align-items: center; gap: 0.6rem;
+}
+.card h3 {
+  font-weight: 700;
+  font-size: 1rem;
+  margin: 1.25rem 0 0.5rem;
+  color: var(--accent);
+}
+.card p, .card li {
+  color: var(--text-dim);
+  line-height: 1.75;
+  font-size: 0.9rem;
+}
+.card ul, .card ol { padding-left: 1.25rem; margin: 0.5rem 0; }
+.card li { margin-bottom: 0.35rem; }
+
+/* ── POINTS ── */
+.points {
+  display: inline-flex; align-items: center; gap: 0.3rem;
+  font-family: 'Fira Code', monospace;
+  font-size: 0.72rem;
+  font-weight: 600;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  padding: 0.2rem 0.6rem;
+  border-radius: 5px;
+  color: var(--accent);
+  margin-left: 0.5rem;
+  white-space: nowrap;
+}
+
+/* ── CODE ── */
+.code-block {
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  margin: 1rem 0;
+  overflow: hidden;
+}
+.code-header {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 0.5rem 1rem;
+  background: var(--surface2);
+  border-bottom: 1px solid var(--border);
+  font-family: 'Fira Code', monospace;
+  font-size: 0.72rem;
+  color: var(--text-dim);
+}
+.code-header .file-name { color: var(--accent); }
+.copy-btn {
+  background: none; border: 1px solid var(--border);
+  color: var(--text-dim); padding: 0.2rem 0.6rem;
+  border-radius: 4px; cursor: pointer;
+  font-family: 'Fira Code', monospace; font-size: 0.68rem;
+  transition: all 0.2s;
+}
+.copy-btn:hover { border-color: var(--accent); color: var(--accent); }
+pre {
+  padding: 1rem;
+  overflow-x: auto;
+  font-family: 'Fira Code', monospace;
+  font-size: 0.8rem;
+  line-height: 1.65;
+  color: var(--text);
+}
+
+/* Syntax highlighting */
+.kw { color: #c084fc; }
+.fn { color: #60a5fa; }
+.st { color: #34d399; }
+.cm { color: #6b7280; font-style: italic; }
+.nb { color: #f59e0b; }
+.nu { color: #fb923c; }
+.cl { color: #f472b6; }
+.sf { color: #e4e4e7; }
+.dc { color: #38bdf8; }
+
+/* ── OUTPUT ── */
+.output-block {
+  background: #0c0e14;
+  border: 1px dashed var(--border);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  margin: 0.75rem 0;
+  font-family: 'Fira Code', monospace;
+  font-size: 0.78rem;
+  color: var(--accent3);
+}
+.output-block .label {
+  color: var(--text-dim);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 0.3rem;
+  display: block;
+}
+
+/* ── CALLOUT ── */
+.callout {
+  display: flex; gap: 0.75rem;
+  background: var(--surface2);
+  border-radius: 8px;
+  padding: 1rem;
+  margin: 1rem 0;
+  border-left: 3px solid var(--accent);
+}
+.callout.tip { border-left-color: var(--accent3); }
+.callout.warn { border-left-color: var(--accent4); }
+.callout .icon { font-size: 1.1rem; flex-shrink: 0; }
+.callout p { font-size: 0.85rem; color: var(--text-dim); line-height: 1.65; }
+
+/* ── TABLE ── */
+.rubric-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+  font-size: 0.82rem;
+}
+.rubric-table th {
+  background: var(--surface2);
+  padding: 0.6rem 1rem;
+  text-align: left;
+  font-weight: 600;
+  color: var(--accent);
+  border-bottom: 2px solid var(--accent);
+}
+.rubric-table td {
+  padding: 0.6rem 1rem;
+  border-bottom: 1px solid var(--border);
+  color: var(--text-dim);
+}
+.rubric-table tr:hover td { background: var(--surface2); }
+.rubric-table .pts {
+  font-family: 'Fira Code', monospace;
+  color: var(--accent);
+  font-weight: 600;
+  text-align: center;
+}
+
+/* ── TASK NUMBER ── */
+.task-num {
+  font-family: 'Fira Code', monospace;
+  font-size: 0.68rem;
+  font-weight: 600;
+  background: var(--accent);
+  color: #000;
+  width: 24px; height: 24px;
+  display: inline-flex; align-items: center; justify-content: center;
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+
+/* ── CHECKLIST ── */
+.checklist { list-style: none; padding-left: 0; }
+.checklist li {
+  padding: 0.4rem 0 0.4rem 2rem;
+  position: relative;
+}
+.checklist li::before {
+  content: '☐';
+  position: absolute;
+  left: 0.25rem;
+  color: var(--accent2);
+  font-size: 1rem;
+}
+
+/* ── SEPARATOR ── */
+.sep {
+  border: none;
+  border-top: 1px dashed var(--border);
+  margin: 2rem 0;
+}
+
+/* ── STARTER TEMPLATE TOGGLE ── */
+.toggle-btn {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  color: var(--accent2);
+  padding: 0.5rem 1.2rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 600;
+  font-size: 0.85rem;
+  transition: all 0.2s;
+  display: inline-flex; align-items: center; gap: 0.4rem;
+}
+.toggle-btn:hover { border-color: var(--accent2); background: #1e293b; }
+.collapsible { display: none; margin-top: 1rem; }
+.collapsible.open { display: block; }
+
+/* ── FOOTER ── */
+.footer {
+  text-align: center;
+  padding: 2rem;
+  color: var(--text-dim);
+  font-size: 0.78rem;
+  border-top: 1px solid var(--border);
+}
+
+@media (max-width: 700px) {
+  .hero { padding: 1.5rem 1rem; }
+  .hero h1 { font-size: 1.5rem; }
+  .main { padding: 1.25rem; }
+  .card { padding: 1.25rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════ HEADER ═══════════════════════ -->
+<div class="hero">
+  <div class="hero-badges">
+    <span class="badge gold">Lab Assignment</span>
+    <span class="badge blue">100 Points</span>
+    <span class="badge green">Hands-On</span>
+    <span class="badge purple">All OOP Concepts</span>
+  </div>
+  <h1>🐾 Pet Shelter Manager</h1>
+  <p class="subtitle">Build a complete Python class system to manage a pet adoption shelter</p>
+  <p class="course">Python 101 &bull; Learn and Help Program &bull; Metropolitan State University</p>
+</div>
+
+<!-- ═══════════════════════ MAIN ═══════════════════════ -->
+<div class="main">
+
+  <!-- SCENARIO -->
+  <div class="card blue">
+    <h2>📋 Scenario</h2>
+    <p>You've been hired to build a management system for <strong>Happy Tails Pet Shelter</strong>. The shelter takes in animals, tracks their info, and manages adoptions. Your job is to write a <code>Pet</code> class that models each animal and keeps track of shelter-wide statistics.</p>
+    <div class="callout tip">
+      <span class="icon">🎯</span>
+      <p>This assignment requires you to use <strong>all</strong> the OOP concepts from the playbook: classes, objects, instance variables, class variables, instance methods, class methods, static methods, and magic methods (<code>__init__</code>, <code>__str__</code>, <code>__repr__</code>).</p>
+    </div>
+  </div>
+
+  <hr class="sep">
+
+  <!-- ═══════ PART 1 ═══════ -->
+  <div class="card amber">
+    <h2><span class="task-num">1</span> Define the Pet Class <span class="points">⭐ 15 pts</span></h2>
+    <p>Create a class called <code>Pet</code> with the following <strong>class variables</strong>:</p>
+    <ul>
+      <li><code>total_pets</code> — starts at <code>0</code>, tracks how many Pet objects have been created</li>
+      <li><code>adopted_count</code> — starts at <code>0</code>, tracks how many pets have been adopted</li>
+      <li><code>shelter_name</code> — set to <code>"Happy Tails Shelter"</code></li>
+    </ul>
+
+    <h3>What you're practicing</h3>
+    <p>Class variables, the <code>class</code> keyword, and understanding shared vs. per-object data.</p>
+  </div>
+
+  <!-- ═══════ PART 2 ═══════ -->
+  <div class="card green">
+    <h2><span class="task-num">2</span> Write the <code>__init__</code> Constructor <span class="points">⭐ 15 pts</span></h2>
+    <p>The constructor should accept and store these <strong>instance variables</strong>:</p>
+    <ul>
+      <li><code>name</code> — the pet's name (e.g., <code>"Buddy"</code>)</li>
+      <li><code>species</code> — <code>"Dog"</code>, <code>"Cat"</code>, <code>"Rabbit"</code>, etc.</li>
+      <li><code>age</code> — age in years (can be a float, e.g. <code>0.5</code> for 6 months)</li>
+      <li><code>is_adopted</code> — defaults to <code>False</code></li>
+    </ul>
+    <p>The constructor should also <strong>increment</strong> <code>total_pets</code> by 1 every time a new Pet is created.</p>
+
+    <div class="callout">
+      <span class="icon">💡</span>
+      <p>Remember: <code>self.name</code> is an instance variable (unique per pet). <code>Pet.total_pets</code> is a class variable (shared by all pets). Update the class variable using <code>Pet.total_pets</code>, not <code>self.total_pets</code>.</p>
+    </div>
+  </div>
+
+  <!-- ═══════ PART 3 ═══════ -->
+  <div class="card purple">
+    <h2><span class="task-num">3</span> Add <code>__str__</code> and <code>__repr__</code> <span class="points">⭐ 15 pts</span></h2>
+
+    <h3><code>__str__</code> — User-friendly display</h3>
+    <p>Should return a string like:</p>
+    <div class="output-block">
+      <span class="label">Example __str__ output</span>
+      Buddy (Dog) - Age: 3 years - Status: Available
+    </div>
+    <p>If the pet has been adopted, show <code>"Status: Adopted 🏠"</code> instead of <code>"Status: Available"</code>.</p>
+
+    <h3><code>__repr__</code> — Developer-friendly display</h3>
+    <p>Should return a string that could recreate the object:</p>
+    <div class="output-block">
+      <span class="label">Example __repr__ output</span>
+      Pet('Buddy', 'Dog', 3, False)
+    </div>
+  </div>
+
+  <!-- ═══════ PART 4 ═══════ -->
+  <div class="card blue">
+    <h2><span class="task-num">4</span> Instance Methods <span class="points">⭐ 20 pts</span></h2>
+    <p>Add these three instance methods to your <code>Pet</code> class:</p>
+
+    <h3>a) <code>adopt(owner_name)</code> <span class="points">8 pts</span></h3>
+    <ul>
+      <li>If the pet is already adopted, print: <code>"Buddy has already been adopted!"</code></li>
+      <li>Otherwise, set <code>is_adopted</code> to <code>True</code>, store the <code>owner_name</code> as a new instance variable <code>self.owner</code>, increment the class variable <code>adopted_count</code>, and print: <code>"🎉 Buddy has been adopted by Sarah!"</code></li>
+    </ul>
+
+    <h3>b) <code>get_info()</code> <span class="points">6 pts</span></h3>
+    <ul>
+      <li>Returns a dictionary with the pet's data:<br>
+      <code>{"name": "Buddy", "species": "Dog", "age": 3, "adopted": False}</code></li>
+      <li>If the pet has been adopted, also include <code>"owner": "Sarah"</code></li>
+    </ul>
+
+    <h3>c) <code>celebrate_birthday()</code> <span class="points">6 pts</span></h3>
+    <ul>
+      <li>Increases <code>age</code> by 1</li>
+      <li>Prints: <code>"🎂 Happy Birthday, Buddy! Now 4 years old."</code></li>
+    </ul>
+  </div>
+
+  <!-- ═══════ PART 5 ═══════ -->
+  <div class="card red">
+    <h2><span class="task-num">5</span> Class Method &amp; Static Method <span class="points">⭐ 15 pts</span></h2>
+
+    <h3>a) <code>@classmethod shelter_stats(cls)</code> <span class="points">10 pts</span></h3>
+    <p>Returns a formatted string with shelter-wide statistics:</p>
+    <div class="output-block">
+      <span class="label">Example output</span>
+      📊 Happy Tails Shelter Stats:
+   Total pets: 5 | Adopted: 2 | Available: 3
+    </div>
+
+    <h3>b) <code>@staticmethod is_senior(species, age)</code> <span class="points">5 pts</span></h3>
+    <p>A utility method that returns <code>True</code> if the pet is a senior based on these rules:</p>
+    <ul>
+      <li>Dogs: age ≥ 7</li>
+      <li>Cats: age ≥ 10</li>
+      <li>All others: age ≥ 5</li>
+    </ul>
+  </div>
+
+  <!-- ═══════ PART 6 ═══════ -->
+  <div class="card green">
+    <h2><span class="task-num">6</span> Test Your Class <span class="points">⭐ 20 pts</span></h2>
+    <p>Write a <strong>test script</strong> (in the same file, below the class) that demonstrates ALL features. Your script must:</p>
+    <ol>
+      <li>Create at least <strong>3 Pet objects</strong> with different species <span class="points">4 pts</span></li>
+      <li>Print each pet using <code>print()</code> to show <code>__str__</code> works <span class="points">2 pts</span></li>
+      <li>Print <code>repr()</code> of one pet to show <code>__repr__</code> works <span class="points">2 pts</span></li>
+      <li>Adopt at least <strong>2 pets</strong> — then try adopting one again to show the error message <span class="points">3 pts</span></li>
+      <li>Call <code>celebrate_birthday()</code> on one pet <span class="points">2 pts</span></li>
+      <li>Call <code>get_info()</code> on an adopted and a non-adopted pet, and print both <span class="points">3 pts</span></li>
+      <li>Print the <code>shelter_stats()</code> class method <span class="points">2 pts</span></li>
+      <li>Use <code>is_senior()</code> to check at least 2 pets and print the results <span class="points">2 pts</span></li>
+    </ol>
+  </div>
+
+  <hr class="sep">
+
+  <!-- EXPECTED OUTPUT -->
+  <div class="card amber">
+    <h2>📺 Expected Output (Sample)</h2>
+    <p>Your output doesn't need to match exactly, but it should demonstrate all features. Here's one possible run:</p>
+    <div class="output-block" style="line-height:1.8">
+      <span class="label">Sample Output</span>
+Buddy (Dog) - Age: 3 years - Status: Available
+Whiskers (Cat) - Age: 12 years - Status: Available
+Thumper (Rabbit) - Age: 2 years - Status: Available
+
+Developer view: Pet('Buddy', 'Dog', 3, False)
+
+🎉 Buddy has been adopted by Sarah!
+🎉 Whiskers has been adopted by Mike!
+Buddy has already been adopted!
+
+🎂 Happy Birthday, Thumper! Now 3 years old.
+
+Buddy's info: {'name': 'Buddy', 'species': 'Dog', 'age': 3, 'adopted': True, 'owner': 'Sarah'}
+Thumper's info: {'name': 'Thumper', 'species': 'Rabbit', 'age': 3, 'adopted': False}
+
+📊 Happy Tails Shelter Stats:
+   Total pets: 3 | Adopted: 2 | Available: 1
+
+Is Buddy (Dog, 3) a senior? False
+Is Whiskers (Cat, 12) a senior? True
+    </div>
+  </div>
+
+  <hr class="sep">
+
+  <!-- STARTER TEMPLATE -->
+  <div class="card blue">
+    <h2>🧩 Starter Template</h2>
+    <p>Stuck on how to begin? Click below to reveal a skeleton you can fill in.</p>
+    <button class="toggle-btn" onclick="toggleStarter()">
+      <span id="toggle-icon">▶</span> Show Starter Code
+    </button>
+    <div class="collapsible" id="starter-code">
+      <div class="code-block">
+        <div class="code-header">
+          <span class="file-name">pet_shelter.py</span>
+          <button class="copy-btn" onclick="copyCode(this)">copy</button>
+        </div>
+<pre><span class="kw">class</span> <span class="cl">Pet</span>:
+    <span class="cm"># ── Class Variables (Task 1) ──</span>
+    total_pets    = <span class="nu">____</span>
+    adopted_count = <span class="nu">____</span>
+    shelter_name  = <span class="st">____</span>
+
+    <span class="cm"># ── Constructor (Task 2) ──</span>
+    <span class="kw">def</span> <span class="fn">__init__</span>(<span class="sf">self</span>, name, species, age, is_adopted=<span class="kw">False</span>):
+        <span class="sf">self</span>.name       = ____
+        <span class="sf">self</span>.species    = ____
+        <span class="sf">self</span>.age        = ____
+        <span class="sf">self</span>.is_adopted = ____
+        <span class="cm"># Don't forget to increment total_pets!</span>
+        ____.total_pets += <span class="nu">1</span>
+
+    <span class="cm"># ── Magic Methods (Task 3) ──</span>
+    <span class="kw">def</span> <span class="fn">__str__</span>(<span class="sf">self</span>):
+        status = <span class="st">____</span>  <span class="cm"># "Adopted 🏠" or "Available"</span>
+        <span class="kw">return</span> <span class="st">f"____ (____)  - Age: ____ years - Status: {status}"</span>
+
+    <span class="kw">def</span> <span class="fn">__repr__</span>(<span class="sf">self</span>):
+        <span class="kw">return</span> <span class="st">f"Pet('____', '____', ____, ____)"</span>
+
+    <span class="cm"># ── Instance Methods (Task 4) ──</span>
+    <span class="kw">def</span> <span class="fn">adopt</span>(<span class="sf">self</span>, owner_name):
+        <span class="kw">if</span> <span class="sf">self</span>.is_adopted:
+            <span class="cm"># Already adopted — print message</span>
+            <span class="kw">pass</span>
+        <span class="kw">else</span>:
+            <span class="cm"># Set is_adopted, store owner, update class var, print</span>
+            <span class="kw">pass</span>
+
+    <span class="kw">def</span> <span class="fn">get_info</span>(<span class="sf">self</span>):
+        info = {____}
+        <span class="cm"># If adopted, add owner key</span>
+        <span class="kw">return</span> info
+
+    <span class="kw">def</span> <span class="fn">celebrate_birthday</span>(<span class="sf">self</span>):
+        <span class="cm"># Increase age, print message</span>
+        <span class="kw">pass</span>
+
+    <span class="cm"># ── Class Method (Task 5a) ──</span>
+    <span class="dc">@classmethod</span>
+    <span class="kw">def</span> <span class="fn">shelter_stats</span>(cls):
+        available = ____
+        <span class="kw">return</span> <span class="st">f"📊 {cls.shelter_name} Stats:\n   Total pets: ____ | Adopted: ____ | Available: {available}"</span>
+
+    <span class="cm"># ── Static Method (Task 5b) ──</span>
+    <span class="dc">@staticmethod</span>
+    <span class="kw">def</span> <span class="fn">is_senior</span>(species, age):
+        <span class="cm"># Dogs ≥ 7, Cats ≥ 10, Others ≥ 5</span>
+        <span class="kw">pass</span>
+
+
+<span class="cm"># ═══════════════════════════════════════════════════</span>
+<span class="cm"># TEST SCRIPT (Task 6) — Write your tests below</span>
+<span class="cm"># ═══════════════════════════════════════════════════</span>
+
+<span class="cm"># Step 1: Create at least 3 pets</span>
+
+
+<span class="cm"># Step 2: Print each pet (tests __str__)</span>
+
+
+<span class="cm"># Step 3: Print repr() of one pet (tests __repr__)</span>
+
+
+<span class="cm"># Step 4: Adopt 2 pets, then try adopting one again</span>
+
+
+<span class="cm"># Step 5: Celebrate a birthday</span>
+
+
+<span class="cm"># Step 6: Print get_info() for adopted and non-adopted pet</span>
+
+
+<span class="cm"># Step 7: Print shelter stats</span>
+
+
+<span class="cm"># Step 8: Check is_senior() for 2 pets</span>
+
+</pre>
+      </div>
+    </div>
+  </div>
+
+  <hr class="sep">
+
+  <!-- RUBRIC -->
+  <div class="card purple">
+    <h2>📊 Grading Rubric</h2>
+    <table class="rubric-table">
+      <tr>
+        <th>Task</th>
+        <th>Concept Tested</th>
+        <th style="text-align:center">Points</th>
+      </tr>
+      <tr>
+        <td><strong>1.</strong> Class definition &amp; class variables</td>
+        <td>Class Variables</td>
+        <td class="pts">15</td>
+      </tr>
+      <tr>
+        <td><strong>2.</strong> <code>__init__</code> with instance variables</td>
+        <td>Constructor, Instance Variables</td>
+        <td class="pts">15</td>
+      </tr>
+      <tr>
+        <td><strong>3.</strong> <code>__str__</code> and <code>__repr__</code></td>
+        <td>Magic Methods</td>
+        <td class="pts">15</td>
+      </tr>
+      <tr>
+        <td><strong>4.</strong> adopt(), get_info(), celebrate_birthday()</td>
+        <td>Instance Methods</td>
+        <td class="pts">20</td>
+      </tr>
+      <tr>
+        <td><strong>5.</strong> shelter_stats() and is_senior()</td>
+        <td>Class Method, Static Method</td>
+        <td class="pts">15</td>
+      </tr>
+      <tr>
+        <td><strong>6.</strong> Test script demonstrating all features</td>
+        <td>Object Creation &amp; Integration</td>
+        <td class="pts">20</td>
+      </tr>
+      <tr>
+        <td colspan="2" style="text-align:right; font-weight:700; color:var(--text)">Total</td>
+        <td class="pts" style="font-size:1rem; color:var(--accent);">100</td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- CHECKLIST -->
+  <div class="card green">
+    <h2>✅ Before You Submit</h2>
+    <ul class="checklist">
+      <li>My file is named <code>pet_shelter.py</code></li>
+      <li>My code runs without errors</li>
+      <li>I used <strong>class variables</strong> (total_pets, adopted_count, shelter_name)</li>
+      <li>I used <strong>instance variables</strong> (name, species, age, is_adopted)</li>
+      <li>I wrote <code>__init__</code>, <code>__str__</code>, and <code>__repr__</code> magic methods</li>
+      <li>I wrote <code>adopt()</code>, <code>get_info()</code>, and <code>celebrate_birthday()</code> instance methods</li>
+      <li>I wrote a <code>@classmethod</code> and a <code>@staticmethod</code></li>
+      <li>My test script creates objects and demonstrates every method</li>
+      <li>I updated <code>Pet.total_pets</code> using the class name, not <code>self</code></li>
+      <li>I added comments to explain my code</li>
+    </ul>
+  </div>
+
+  <!-- HINTS -->
+  <div class="card red">
+    <h2>🔑 Helpful Reminders</h2>
+    <div class="callout">
+      <span class="icon">1️⃣</span>
+      <p><strong>self</strong> refers to the specific object. Use <code>self.name</code> to access that pet's name.</p>
+    </div>
+    <div class="callout">
+      <span class="icon">2️⃣</span>
+      <p><strong>cls</strong> refers to the class itself. Use <code>cls.total_pets</code> inside a <code>@classmethod</code>.</p>
+    </div>
+    <div class="callout">
+      <span class="icon">3️⃣</span>
+      <p>To update a class variable, use <code>Pet.total_pets += 1</code> — if you use <code>self.total_pets += 1</code>, it creates an instance variable that shadows the class variable!</p>
+    </div>
+    <div class="callout">
+      <span class="icon">4️⃣</span>
+      <p><code>__str__</code> is for <code>print()</code>. <code>__repr__</code> is for developers. If only <code>__repr__</code> exists, <code>print()</code> uses it as a fallback.</p>
+    </div>
+    <div class="callout">
+      <span class="icon">5️⃣</span>
+      <p>A <code>@staticmethod</code> receives neither <code>self</code> nor <code>cls</code>. It's just a regular function that lives inside the class.</p>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  Python 101 &bull; Learn and Help Program &bull; Metropolitan State University &bull; Objects &amp; Classes Lab
+</div>
+
+<script>
+function toggleStarter() {
+  const el = document.getElementById('starter-code');
+  const icon = document.getElementById('toggle-icon');
+  el.classList.toggle('open');
+  icon.textContent = el.classList.contains('open') ? '▼' : '▶';
+}
+
+function copyCode(btn) {
+  const pre = btn.closest('.code-block').querySelector('pre');
+  navigator.clipboard.writeText(pre.innerText).then(() => {
+    btn.textContent = 'copied!';
+    setTimeout(() => btn.textContent = 'copy', 1500);
+  });
+}
+</script>
+</body>
+</html>
