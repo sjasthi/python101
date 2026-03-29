@@ -12,6 +12,7 @@ You already know **lists** and **tuples**. A **set** is a third type of collecti
 | Can contain duplicates | ✅            | ✅              | ❌              |
 | Mutable              | ✅              | ❌              | ✅              |
 | Uses                 | Square Brackets `[ ]` | Round Brackets `( )` | Curly Braces `{ }` |
+| Constructor          | `list()` or `[]` | `tuple()` or `()` | `set()`           |
 
 > **Key takeaway:** Sets are **unordered**, **unindexed**, and **do not allow duplicate values**. Think of a set like a bag of unique items — you can toss things in and pull things out, but there's no particular order, and no item appears twice.
 
@@ -97,7 +98,66 @@ print(fruits[0:2])  # ❌ TypeError!
 
 ---
 
-## 5. CRUD Operations on Sets
+## 5. Sets Only Support Immutable Data Types
+
+Sets can contain numbers, strings, booleans, and tuples — but **not lists**. Why? Because set items must be **immutable** (unchangeable).
+
+### Why can't you put a list inside a set?
+
+Let's think it through with a scenario:
+
+```python
+A = [1, 2, 3]
+B = [2, 3, 4]
+set_x = {A, B}    # ❌ TypeError: unhashable type: 'list'
+```
+
+**Why does Python block this?** Imagine if it *were* allowed:
+
+```
+set_x = {[1, 2, 3], [2, 3, 4]}    # Assume this works...
+
+B.insert(0, 1)    # Insert 1 at the front of B
+B.remove(4)        # Remove 4 from B
+# Now B → [1, 2, 3]
+
+# set_x → {[1, 2, 3], [1, 2, 3]}  — DUPLICATES! 💥
+# This violates the set rule!
+```
+
+Since lists are **mutable** (you can change them), allowing them in a set could create duplicates — which breaks the whole point of a set.
+
+### But tuples work just fine!
+
+```python
+A = (1, 2, 3)
+B = (2, 3, 4)
+set_x = {A, B}    # ✅ This works!
+print(set_x)       # {(1, 2, 3), (2, 3, 4)}
+```
+
+Tuples are **immutable** — they can't be changed after creation — so there's no risk of accidental duplicates.
+
+> **Key takeaway:** Only items that **cannot be changed** (immutable items) can be added to a set. This includes numbers, strings, booleans, and tuples — but **not lists**.
+
+---
+
+## 6. A Single Set Can Contain Multiple Data Types
+
+A set doesn't have to contain all the same type. You can mix strings, numbers, and booleans in one set:
+
+```python
+# student name, age, email, and is_student_active?
+student_info = {"John Doe", 15, "john.doe@gmail.com", True}
+print(student_info)
+# {'John Doe', 'john.doe@gmail.com', True, 15}  — order may vary!
+```
+
+> ⚠️ **Remember:** The order is **not guaranteed** in sets. Even though you typed the name first, Python may print the items in a completely different order!
+
+---
+
+## 7. CRUD Operations on Sets
 
 Remember the CRUD framework from tuples? Let's see how sets compare:
 
@@ -112,7 +172,7 @@ Remember the CRUD framework from tuples? Let's see how sets compare:
 
 ---
 
-## 6. Adding Items to a Set
+## 8. Adding Items to a Set
 
 ### `add()` — Add a Single Item
 
@@ -144,7 +204,7 @@ print(fruits)    # {'apple', 'banana', 'cherry', 'mango', 'pineapple'}
 
 ---
 
-## 7. Removing Items from a Set
+## 9. Removing Items from a Set
 
 Python gives you several ways to remove items:
 
@@ -197,7 +257,7 @@ print(fruits)    # ❌ NameError: name 'fruits' is not defined
 
 ---
 
-## 8. Looping Through a Set
+## 10. Looping Through a Set
 
 Even though you can't use indexing, you **can** iterate through a set with a `for` loop:
 
@@ -222,7 +282,7 @@ print("grape" not in fruits)    # True
 
 ---
 
-## 9. Built-in Functions Work on Sets
+## 11. Built-in Functions Work on Sets
 
 | Function       | Example                        | Result |
 |----------------|--------------------------------|--------|
@@ -234,74 +294,96 @@ print("grape" not in fruits)    # True
 
 ---
 
-## 10. Set Operations — The Superpower of Sets! 🦸
+## 12. Set Operations — The Superpower of Sets! 🦸
 
 This is where sets truly shine. Sets support powerful **mathematical operations** that make them perfect for comparing groups of data.
 
-### Real-World Scenario — School Clubs
+### Real-World Scenario — Mammals vs Aquatic Animals
 
 ```python
-chess_club = {"abe", "barb", "chris", "dan"}
-math_club  = {"chris", "dan", "ellie", "fran"}
+mammals = {"Tiger", "Camel", "Sheep", "Whale", "Walrus"}
+aquatic = {"Octopus", "Squid", "Crab", "Whale", "Walrus"}
 ```
 
-### Union (`|` or `.union()`) — Everyone in EITHER club
+Notice that **Whale** and **Walrus** appear in both sets — they are mammals that live in water!
+
+### Union (`|` or `.union()`) — All animals from EITHER group
+
+The **union** of two sets A and B is the set containing the elements that are in A, B, or both (A ∪ B).
 
 ```python
-all_students = chess_club | math_club
-print(all_students)
-# {'abe', 'barb', 'chris', 'dan', 'ellie', 'fran'}
+animals = mammals.union(aquatic)
+print(animals)
+# {'Octopus', 'Tiger', 'Sheep', 'Walrus', 'Whale', 'Crab', 'Camel', 'Squid'}
 
-# Same thing using the method:
-all_students = chess_club.union(math_club)
+# Same thing using the | operator:
+animals = mammals | aquatic
+
+# The original sets are NOT modified:
+print(mammals)   # {'Tiger', 'Sheep', 'Walrus', 'Whale', 'Camel'}
+print(aquatic)   # {'Octopus', 'Walrus', 'Crab', 'Whale', 'Squid'}
 ```
 
-### Intersection (`&` or `.intersection()`) — Students in BOTH clubs
+### Intersection (`&` or `.intersection()`) — Animals in BOTH groups
+
+The **intersection** of two sets A and B is the set containing the elements that are common to both sets (A ∩ B).
 
 ```python
-both_clubs = chess_club & math_club
-print(both_clubs)
-# {'chris', 'dan'}
+both = mammals.intersection(aquatic)
+print(both)
+# {'Walrus', 'Whale'}
 
-# Same thing using the method:
-both_clubs = chess_club.intersection(math_club)
+# Same thing using the & operator:
+both = mammals & aquatic
 ```
 
-### Difference (`-` or `.difference()`) — In chess club but NOT math club
+### Difference (`-` or `.difference()`) — In one group but NOT the other
+
+The **difference** of two sets A and B is the set of all elements in A that are not in B (A - B).
 
 ```python
-chess_only = chess_club - math_club
-print(chess_only)
-# {'abe', 'barb'}
+mammals_only = mammals.difference(aquatic)
+print(mammals_only)
+# {'Sheep', 'Tiger', 'Camel'}
 
-math_only = math_club - chess_club
-print(math_only)
-# {'ellie', 'fran'}
+# Same thing using the - operator:
+mammals_only = mammals - aquatic
+
+aquatic_only = aquatic.difference(mammals)
+print(aquatic_only)
+# {'Octopus', 'Squid', 'Crab'}
 ```
 
-### Symmetric Difference (`^` or `.symmetric_difference()`) — In one club but NOT both
+> ⚠️ **Note:** `A - B` is **not** the same as `B - A`! The order matters with difference.
+
+### Symmetric Difference (`^` or `.symmetric_difference()`) — In one group but NOT both
+
+The **symmetric difference** of two sets A and B is the set of elements that are in either A or B, but not in both (A △ B).
 
 ```python
-one_club_only = chess_club ^ math_club
-print(one_club_only)
-# {'abe', 'barb', 'ellie', 'fran'}
+exclusive = mammals.symmetric_difference(aquatic)
+print(exclusive)
+# {'Sheep', 'Octopus', 'Crab', 'Camel', 'Tiger', 'Squid'}
+
+# Same thing using the ^ operator:
+exclusive = mammals ^ aquatic
 ```
 
 ### Visual Summary of Set Operations
 
 ```
-chess_club = {abe, barb, chris, dan}
-math_club  = {chris, dan, ellie, fran}
+mammals = {Tiger, Camel, Sheep, Whale, Walrus}
+aquatic = {Octopus, Squid, Crab, Whale, Walrus}
 
-Union (|)                → {abe, barb, chris, dan, ellie, fran}  — ALL
-Intersection (&)         → {chris, dan}                          — BOTH
-Difference (-)           → {abe, barb}                           — chess only
-Symmetric Difference (^) → {abe, barb, ellie, fran}              — ONE club only
+Union (|)                → {Tiger, Camel, Sheep, Whale, Walrus, Octopus, Squid, Crab}  — ALL
+Intersection (&)         → {Whale, Walrus}                                              — BOTH
+Difference (-)           → {Tiger, Camel, Sheep}                — mammals only
+Symmetric Difference (^) → {Tiger, Camel, Sheep, Octopus, Squid, Crab}  — ONE group only
 ```
 
 ---
 
-## 11. Subset and Superset
+## 13. Subset and Superset
 
 ### `issubset()` — Is every item in set A also in set B?
 
@@ -333,7 +415,7 @@ print(x.isdisjoint(z))   # False — 3 is in both
 
 ---
 
-## 12. Set Methods — Quick Reference
+## 14. Set Methods — Quick Reference
 
 | Method                  | Description                                                    |
 |-------------------------|----------------------------------------------------------------|
@@ -346,8 +428,11 @@ print(x.isdisjoint(z))   # False — 3 is in both
 | `copy()`                | Returns a copy of the set                                      |
 | `union(set2)`           | Returns all items from both sets                               |
 | `intersection(set2)`    | Returns items that exist in both sets                          |
+| `intersection_update(set2)` | Removes items not present in `set2` (modifies in place)   |
 | `difference(set2)`      | Returns items in this set but not in `set2`                    |
+| `difference_update(set2)` | Removes items found in `set2` (modifies in place)            |
 | `symmetric_difference(set2)` | Returns items in either set, but not both                |
+| `symmetric_difference_update(set2)` | Keeps only items in either set, not both (modifies in place) |
 | `issubset(set2)`        | Returns `True` if all items exist in `set2`                    |
 | `issuperset(set2)`      | Returns `True` if this set contains all items of `set2`        |
 | `isdisjoint(set2)`      | Returns `True` if no items in common                           |
@@ -356,7 +441,7 @@ Reference: [https://www.w3schools.com/python/python_ref_set.asp](https://www.w3s
 
 ---
 
-## 13. When to Use Sets?
+## 15. When to Use Sets?
 
 Sets are the perfect choice when:
 
