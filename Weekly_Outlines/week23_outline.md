@@ -13,7 +13,8 @@ Metropolitan State University | Learn and Help Program
 | 3 | 📓 Colab Notebook — Concepts | [ch9_1_concepts_sets.ipynb](https://github.com/sjasthi/python101/blob/main/colab_notebooks/ch9_1_concepts_sets.ipynb) | — |
 | 4 | 📓 Colab Notebook — Exercises | [ch9_skeleton_programming_exercise.ipynb](https://github.com/sjasthi/python101/blob/main/colab_notebooks/ch9_skeleton_programming_exercise.ipynb) | — |
 | 5 | 🎮 Playbook & Quiz | [Sets Interactive Playbook & Quiz](https://github.com/sjasthi/python101/blob/main/Quizzes/9_1_sets_playbook_and_quiz.html) | — |
-| 6 | 📝 Assignment | [Assignment — Sets & Dictionaries](https://github.com/sjasthi/python101/blob/main/Labs/Assignment_Sets_Dictionaries.ipynb) | 25 pts |
+| 6 | 🧪 Lab 23 | [python101_lab23_sets.ipynb](https://github.com/sjasthi/python101/blob/main/Labs/python101_lab23_sets.ipynb) | 10 pts |
+| 7 | 📝 Assignment | [Assignment — Sets & Dictionaries](https://github.com/sjasthi/python101/blob/main/Labs/Assignment_Sets_Dictionaries.ipynb) | 25 pts |
 
 ---
 
@@ -42,6 +43,14 @@ Practice problems covering Sets and Dictionaries.
 **[Sets Playbook & Quiz →](https://github.com/sjasthi/python101/blob/main/Quizzes/9_1_sets_playbook_and_quiz.html)**
 
 Two tabs — Concepts and Quiz (10 questions). Submit a screenshot of your final score to Google Classroom.
+
+---
+
+## 🧪 Lab 23 — Sets *(10 points)*
+
+**[python101_lab23_sets.ipynb →](https://github.com/sjasthi/python101/blob/main/Labs/python101_lab23_sets.ipynb)**
+
+4 coding questions, 2.5 points each. Download the `.ipynb` file and upload your completed notebook to Google Classroom.
 
 ---
 
