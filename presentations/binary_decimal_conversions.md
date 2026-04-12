@@ -44,8 +44,6 @@ In decimal, we count 0, 1, 2, … 9, then carry over to 10. In binary, we only h
 | 18      | 10010  |
 | 19      | 10011  |
 
-📎 *See slides 7–8 and 10 in the presentation for visual dot diagrams and the full reference table.*
-
 ---
 
 ## Place Values in Binary
@@ -66,8 +64,6 @@ In binary, each place is a power of 2:
 ```
 
 Each position in a binary number represents a power of 2, just like each position in a decimal number represents a power of 10.
-
-📎 *See slides 5–6 in the presentation for the Decimal Place Value Chart and Binary Place Value diagram.*
 
 ---
 
@@ -137,8 +133,6 @@ Each position in a binary number represents a power of 2, just like each positio
 
 Resultant decimal number = 0 + 2 + 0 + 8 + 0 + 32 = 42
 ```
-
-📎 *See slide 9 in the presentation for the Binary to Decimal diagram and slide 14 for the step-by-step expansion method.*
 
 ---
 
@@ -222,8 +216,6 @@ Read bottom to top: 1100100
 
 ✅ **Check:** 64 + 32 + 0 + 0 + 4 + 0 + 0 = 100 ✓
 
-📎 *See slides 15–17 in the presentation for visual diagrams of the successive division method.*
-
 ---
 
 ## Python Built-in Functions for Conversion
@@ -272,8 +264,6 @@ print(h, type(h))         # 9 <class 'int'>
 ```
 
 > 💡 **Tip:** The `0b` prefix in Python means "this is a binary number." When converting binary strings to decimal using `int()`, always pass `2` as the second argument to specify the base.
-
-📎 *See slide 20 in the presentation for the full code example.*
 
 ---
 
@@ -364,7 +354,7 @@ Examples:
 - Index + middle + ring = **14** (2 + 4 + 8)
 - All five fingers = **31** (1 + 2 + 4 + 8 + 16)
 
-📎 *See slide 13 in the presentation for finger binary photos. More info: [Finger Binary on Wikipedia](https://en.wikipedia.org/wiki/Finger_binary)*
+📎 * More info: [Finger Binary on Wikipedia](https://en.wikipedia.org/wiki/Finger_binary)*
 
 ---
 
