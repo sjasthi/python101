@@ -83,10 +83,10 @@ Convert the following **decimal** numbers to **binary**. Use the **successive di
 ```
 Decimal: 13
 
-13 ÷ 2 = 6   remainder 1  ← LSB
+13 ÷ 2 = 6   remainder 1  ← LSB (Least Significant Bit)
  6 ÷ 2 = 3   remainder 0
  3 ÷ 2 = 1   remainder 1
- 1 ÷ 2 = 0   remainder 1  ← MSB
+ 1 ÷ 2 = 0   remainder 1  ← MSB (Most Significant Bit)
 
 Read bottom to top → 1101
 ```
