@@ -39,30 +39,6 @@ Four tabs — Concepts, Binary → Decimal, Decimal → Binary, and Quiz (10 ran
 
 ---
 
-## 🎥 Video References
-
-Watch these short videos before class to build your understanding of binary numbers.
-
-| # | Video | Description |
-|---|-------|-------------|
-| 1 | [Binary Numbers — Khan Academy: The Binary Number System](https://www.khanacademy.org/computing/computers-and-internet/xcae6f4a7ff015e7d:digital-information/xcae6f4a7ff015e7d:binary-numbers/v/the-binary-number-system) | Clear introduction to what binary is and how computers use 0s and 1s to represent information. Great starting point. |
-| 2 | [Converting Decimal to Binary — Khan Academy](https://www.khanacademy.org/computing/computers-and-internet/xcae6f4a7ff015e7d:digital-information/xcae6f4a7ff015e7d:binary-numbers/v/converting-decimal-numbers-to-binary) | Step-by-step walkthrough of how to convert decimal numbers to binary using division by 2. |
-| 3 | [Binary Explained in 01100001 Seconds (Basics of Binary)](https://www.youtube.com/watch?v=rsxT4FfRBaM) | A fun, fast-paced explanation of binary with the successive division method. Referenced in the presentation slides. |
-
----
-
-## 🕹️ Online Playgrounds
-
-Practice binary and decimal conversions interactively using these free online tools.
-
-| # | Playground | What You Can Do |
-|---|------------|-----------------|
-| 1 | [CS Unplugged — Interactive Binary Cards](https://www.csunplugged.org/en/resources/binary-cards/) | Flip virtual binary cards on/off to build numbers — just like the dot diagrams in our presentation. Start with 5 cards for an easier intro. |
-| 2 | [RapidTables — Binary/Decimal Converter](https://www.rapidtables.com/convert/number/binary-to-decimal.html) | Type in a binary number and instantly see the decimal result (or switch to decimal-to-binary). Great for checking your hand-written work. |
-| 3 | [Math is Fun — Binary/Decimal Interactive](https://www.mathsisfun.com/binary-decimal-hexadecimal-converter.html) | A clean converter that shows binary, decimal, and hexadecimal side by side. Try typing different numbers and watch all three update. |
-
----
-
 ## 📌 Key Concepts This Week
 
 - **Binary (base-2)** uses only two digits: 0 and 1
@@ -75,4 +51,4 @@ Practice binary and decimal conversions interactively using these free online to
 
 ---
 
-*Python 101 | Learn and Help Program | Metropolitan State University*
+*Python 101 | Learn and Help *
