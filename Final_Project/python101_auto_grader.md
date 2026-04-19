@@ -21,7 +21,7 @@ You will write and run your program in **Google Colab** using a Jupyter Notebook
 ### Setting Up Your Notebook
 
 1. Open [colab.research.google.com](https://colab.research.google.com) and create a new notebook
-2. Rename it: `python101_progress_report.ipynb`
+2. Rename it: `python101_auto_grader.ipynb`
 3. Upload both input CSV files to Colab using the **Files panel** on the left sidebar (click the 📁 folder icon → upload icon)
 4. After uploading, the files will be available at:
    - `/content/python_101_scores.csv`
@@ -187,143 +187,6 @@ Cell 5:  # Step 5 — Build instructor overview HTML
 Cell 6:  # Step 6 — Run everything / write files
 
 Cell 7:  # Step 7 — Download output files
-```
-
----
-
-## 💡 Python Hints
-
-### Reading the scores CSV
-
-```python
-import csv
-
-def parse_scores(filename):
-    with open(filename, newline='', encoding='utf-8-sig') as f:
-        rows = list(csv.reader(f))
-
-    # The first 3 columns are student info, the rest are assignments
-    META_COLS = 3
-
-    header_row = rows[0]   # assignment names
-    date_row   = rows[1]   # due dates
-    points_row = rows[2]   # max points
-
-    # Build a list of assignment dictionaries
-    assignments = []
-    for col in range(META_COLS, len(header_row)):
-        name    = header_row[col].strip()
-        due     = date_row[col].strip()   if col < len(date_row)   else ""
-        pts_str = points_row[col].strip() if col < len(points_row) else ""
-
-        try:
-            max_pts = float(pts_str) if pts_str else None
-        except ValueError:
-            max_pts = None
-
-        assignments.append({"name": name, "due": due, "max_pts": max_pts, "col": col})
-
-    # Build a list of student dictionaries
-    students = []
-    for row in rows[3:]:              # student rows start at index 3
-        if not any(row):              # skip completely empty rows
-            continue
-        last  = row[0].strip() if len(row) > 0 else ""
-        first = row[1].strip() if len(row) > 1 else ""
-        email = row[2].strip() if len(row) > 2 else ""
-
-        scores = {}
-        for a in assignments:
-            col     = a["col"]
-            raw     = row[col].strip() if col < len(row) else ""
-            if raw == "":
-                scores[col] = None          # missing
-            else:
-                try:
-                    scores[col] = float(raw)
-                except ValueError:
-                    scores[col] = None
-
-        students.append({
-            "last": last, "first": first, "email": email, "scores": scores
-        })
-
-    return assignments, students
-```
-
----
-
-### Reading the emails CSV
-
-```python
-def parse_emails(filename):
-    email_map = {}    # { student_email: { parent info } }
-
-    with open(filename, newline='', encoding='utf-8-sig') as f:
-        reader = csv.DictReader(f)
-        for row in reader:
-            key = row["Email Account"].strip()
-            if not key:
-                continue
-
-            p1_name  = (row["Parent1 First Name"] + " " + row["Parent1 Last Name"]).strip()
-            p1_email = row["Parent1 Email"].strip()
-            p2_name  = (row["Parent2 First Name"] + " " + row["Parent2 Last Name"]).strip()
-            p2_email = row["Parent2 Email"].strip()
-
-            email_map[key] = {
-                "p1_name":  p1_name,
-                "p1_email": p1_email,
-                "p2_name":  p2_name,
-                "p2_email": p2_email,
-            }
-
-    return email_map
-```
-
----
-
-### Building a safe output filename
-
-```python
-import re
-
-def make_filename(first, last):
-    combined = f"{first}_{last}".strip("_").lower()
-    combined = re.sub(r'[^a-z0-9]', '_', combined)   # replace special chars with _
-    combined = re.sub(r'_+', '_', combined)           # collapse multiple underscores
-    return f"python101_{combined}.html"
-
-# Example:
-# make_filename("Ali", "Johnson")    → "python101_ali_johnson.html"
-# make_filename("Sam", "")          → "python101_sam.html"
-```
-
----
-
-### Deriving the course name from the filename
-
-```python
-import re
-from pathlib import Path
-
-def get_course_name(filepath):
-    stem = Path(filepath).stem               # "python_101_scores"
-    stem = re.sub(r'_scores$', '', stem)     # "python_101"
-    return stem.replace('_', ' ').title()    # "Python 101"
-
-# Example:
-# get_course_name("/content/python_101_scores.csv")  → "Python 101"
-```
-
----
-
-### Writing an HTML file
-
-```python
-def write_file(filepath, html_content):
-    with open(filepath, "w", encoding="utf-8") as f:
-        f.write(html_content)
 ```
 
 ---
@@ -560,7 +423,7 @@ def build_instructor_html(students, assignments, course_name):
 
 Upload **one file** to Google Classroom under the Final Project assignment:
 
-- **`python101_progress_report.ipynb`** — your completed Colab notebook
+- **`python101_auto_grader.ipynb`** — your completed Colab notebook
 
 > Make sure all cells have been run before you submit, so the output HTML files appear in the Files panel. Your instructor will run your notebook to verify it works.
 
