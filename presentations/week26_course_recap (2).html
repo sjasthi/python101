@@ -1,0 +1,1087 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Python 101 — Course Recap | Week 26</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0f1117;
+    --card-bg: #181c27;
+    --border: rgba(255,255,255,0.07);
+    --text: #e8eaf0;
+    --muted: #8b92aa;
+    --code-bg: #0a0c14;
+
+    --c1:   #4ecca3;  /* teal        – Ch 1    Intro           */
+    --c2:   #f7c948;  /* amber       – Ch 2    Variables       */
+    --c3:   #f4845f;  /* coral       – Ch 3    Conditionals    */
+    --c4:   #7b8cde;  /* periwinkle  – Ch 4    Loops           */
+    --c5:   #a8e063;  /* lime        – Ch 5    Functions       */
+    --c61:  #e879f9;  /* fuchsia     – Ch 6.1  Files           */
+    --c62:  #38bdf8;  /* sky         – Ch 6.2  Exceptions      */
+    --c71:  #fb923c;  /* orange      – Ch 7.1  Lists           */
+    --c72:  #c084fc;  /* violet      – Ch 7.2  Tuples          */
+    --c8:   #34d399;  /* emerald     – Ch 8    Strings         */
+    --c91:  #f472b6;  /* pink        – Ch 9.1  Sets            */
+    --c92:  #fbbf24;  /* gold        – Ch 9.2  Dictionaries    */
+    --c10:  #22d3ee;  /* cyan        – Ch 10   Binary & Bitwise*/
+    --cref: #e2e8f0;  /* white-grey  – References             */
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Nunito', sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  /* ── FIXED TOP BANNER ───────────────────────────────────── */
+  #banner {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 1000;
+    background: rgba(10,12,20,0.96);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border);
+    padding: 9px 20px 10px;
+  }
+
+  .banner-title {
+    font-family: 'Fredoka', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--muted);
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    margin-bottom: 7px;
+  }
+
+  .chapter-index {
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .chapter-index a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 40px;
+    height: 26px;
+    padding: 0 9px;
+    border-radius: 6px;
+    font-family: 'Fredoka', sans-serif;
+    font-size: 12.5px;
+    font-weight: 600;
+    text-decoration: none;
+    border: 1.5px solid transparent;
+    transition: all 0.14s;
+    white-space: nowrap;
+  }
+
+  .chapter-index a:hover { opacity: 0.75; transform: translateY(-1px); }
+
+  .chapter-index a[href="#ch1"]  { background:color-mix(in srgb,var(--c1)   18%,transparent); border-color:var(--c1);  color:var(--c1);  }
+  .chapter-index a[href="#ch2"]  { background:color-mix(in srgb,var(--c2)   18%,transparent); border-color:var(--c2);  color:var(--c2);  }
+  .chapter-index a[href="#ch3"]  { background:color-mix(in srgb,var(--c3)   18%,transparent); border-color:var(--c3);  color:var(--c3);  }
+  .chapter-index a[href="#ch4"]  { background:color-mix(in srgb,var(--c4)   18%,transparent); border-color:var(--c4);  color:var(--c4);  }
+  .chapter-index a[href="#ch5"]  { background:color-mix(in srgb,var(--c5)   18%,transparent); border-color:var(--c5);  color:var(--c5);  }
+  .chapter-index a[href="#ch61"] { background:color-mix(in srgb,var(--c61)  18%,transparent); border-color:var(--c61); color:var(--c61); }
+  .chapter-index a[href="#ch62"] { background:color-mix(in srgb,var(--c62)  18%,transparent); border-color:var(--c62); color:var(--c62); }
+  .chapter-index a[href="#ch71"] { background:color-mix(in srgb,var(--c71)  18%,transparent); border-color:var(--c71); color:var(--c71); }
+  .chapter-index a[href="#ch72"] { background:color-mix(in srgb,var(--c72)  18%,transparent); border-color:var(--c72); color:var(--c72); }
+  .chapter-index a[href="#ch8"]  { background:color-mix(in srgb,var(--c8)   18%,transparent); border-color:var(--c8);  color:var(--c8);  }
+  .chapter-index a[href="#ch91"] { background:color-mix(in srgb,var(--c91)  18%,transparent); border-color:var(--c91); color:var(--c91); }
+  .chapter-index a[href="#ch92"] { background:color-mix(in srgb,var(--c92)  18%,transparent); border-color:var(--c92); color:var(--c92); }
+  .chapter-index a[href="#ch10"] { background:color-mix(in srgb,var(--c10)  18%,transparent); border-color:var(--c10); color:var(--c10); }
+  .chapter-index a[href="#ref"]  { background:color-mix(in srgb,var(--cref) 12%,transparent); border-color:var(--cref); color:var(--cref); }
+
+  /* ── MAIN CONTENT ───────────────────────────────────────── */
+  main {
+    padding-top: 98px;
+    padding-bottom: 60px;
+    max-width: 920px;
+    margin: 0 auto;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .page-heading {
+    text-align: center;
+    margin-bottom: 36px;
+  }
+
+  .page-heading h1 {
+    font-family: 'Fredoka', sans-serif;
+    font-size: 30px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 4px;
+  }
+
+  .page-heading p { color: var(--muted); font-size: 13.5px; }
+
+  /* ── CHAPTER TILE ───────────────────────────────────────── */
+  .chapter {
+    border-radius: 16px;
+    border: 1.5px solid var(--border);
+    background: var(--card-bg);
+    margin-bottom: 26px;
+    overflow: hidden;
+  }
+
+  .ch-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 15px 22px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .ch-badge {
+    font-family: 'Fredoka', sans-serif;
+    font-size: 11.5px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 20px;
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+  }
+
+  .ch-title {
+    font-family: 'Fredoka', sans-serif;
+    font-size: 21px;
+    font-weight: 700;
+    flex: 1;
+  }
+
+  .ch-icon { font-size: 24px; }
+
+  .ch-body {
+    padding: 18px 22px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  .section-label {
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .concept-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .concept-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 7px;
+    font-size: 13px;
+    color: var(--text);
+  }
+
+  .concept-list li::before {
+    content: "▸";
+    flex-shrink: 0;
+    margin-top: 2px;
+    font-size: 10px;
+  }
+
+  pre {
+    background: var(--code-bg);
+    border-radius: 8px;
+    padding: 13px 15px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    line-height: 1.75;
+    overflow-x: auto;
+    white-space: pre;
+    border: 1px solid rgba(255,255,255,0.05);
+  }
+
+  .kw { font-weight: 600; }
+  .cm { color: #6a737d; }
+  .st { color: #a8d8a8; }
+  .nm { color: #f0e68c; }
+  .fn { color: #87ceeb; }
+  .op { color: #dda0dd; }
+
+  table.qr {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12.5px;
+  }
+
+  table.qr th {
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding: 5px 9px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+  }
+
+  table.qr td {
+    padding: 5px 9px;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    vertical-align: top;
+    font-size: 12.5px;
+  }
+
+  table.qr code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11.5px;
+    padding: 1px 5px;
+    border-radius: 4px;
+    background: rgba(255,255,255,0.07);
+  }
+
+  /* per-chapter accent */
+  .ch1  { --accent: var(--c1);  }
+  .ch2  { --accent: var(--c2);  }
+  .ch3  { --accent: var(--c3);  }
+  .ch4  { --accent: var(--c4);  }
+  .ch5  { --accent: var(--c5);  }
+  .ch61 { --accent: var(--c61); }
+  .ch62 { --accent: var(--c62); }
+  .ch71 { --accent: var(--c71); }
+  .ch72 { --accent: var(--c72); }
+  .ch8  { --accent: var(--c8);  }
+  .ch91 { --accent: var(--c91); }
+  .ch92 { --accent: var(--c92); }
+  .ch10 { --accent: var(--c10); }
+  .chref { --accent: var(--cref); }
+
+  .chapter           { border-color: color-mix(in srgb, var(--accent) 28%, transparent); }
+  .ch-header         { background:   color-mix(in srgb, var(--accent)  8%, transparent); }
+  .ch-badge          { background:   color-mix(in srgb, var(--accent) 18%, transparent); color: var(--accent); }
+  .ch-title          { color: var(--accent); }
+  .section-label     { color: var(--accent); }
+  .concept-list li::before { color: var(--accent); }
+
+  footer {
+    text-align: center;
+    color: var(--muted);
+    font-size: 12px;
+    margin-top: 16px;
+  }
+</style>
+</head>
+<body>
+
+<!-- ── STICKY TOP INDEX ──────────────────────────────────── -->
+<div id="banner">
+  <div class="banner-title">Python 101 · Course Recap — Week 26</div>
+  <div class="chapter-index">
+    <a href="#ch1"  title="Ch 1 · Introduction">Ch 1</a>
+    <a href="#ch2"  title="Ch 2 · Variables &amp; Data Types">Ch 2</a>
+    <a href="#ch3"  title="Ch 3 · Conditionals">Ch 3</a>
+    <a href="#ch4"  title="Ch 4 · Loops">Ch 4</a>
+    <a href="#ch5"  title="Ch 5 · Functions">Ch 5</a>
+    <a href="#ch61" title="Ch 6.1 · Files">Ch 6.1</a>
+    <a href="#ch62" title="Ch 6.2 · Exceptions">Ch 6.2</a>
+    <a href="#ch71" title="Ch 7.1 · Lists">Ch 7.1</a>
+    <a href="#ch72" title="Ch 7.2 · Tuples">Ch 7.2</a>
+    <a href="#ch8"  title="Ch 8 · Strings">Ch 8</a>
+    <a href="#ch91" title="Ch 9.1 · Sets">Ch 9.1</a>
+    <a href="#ch92" title="Ch 9.2 · Dictionaries">Ch 9.2</a>
+    <a href="#ch10" title="Ch 10 · Binary &amp; Bitwise">Ch 10</a>
+    <a href="#ref"  title="References">📎 Ref</a>
+  </div>
+</div>
+
+<main>
+  <div class="page-heading">
+    <h1>🐍 Python 101 — Course Recap</h1>
+    <p>Learn and Help Program · <a href="https://www.learnandhelp.com" target="_blank" style="color:var(--muted);text-decoration:underline;">www.learnandhelp.com</a> · Week 26</p>
+  </div>
+
+  <!-- ═══════════════════════ CH 1 ════════════════════════ -->
+  <div id="ch1" class="chapter ch1">
+    <div class="ch-header">
+      <div class="ch-badge">Chapter 1</div>
+      <div class="ch-title">Introduction to Python</div>
+      <div class="ch-icon">🐍</div>
+    </div>
+    <div class="ch-body">
+      <div>
+        <div class="section-label">Key Concepts</div>
+        <ul class="concept-list">
+          <li>Python is a high-level, easy-to-read programming language</li>
+          <li><code>print()</code> displays output to the screen</li>
+          <li>Comments start with <code>#</code> — Python ignores them</li>
+          <li>Code runs line by line, top to bottom</li>
+          <li>Python is case-sensitive: <code>Print</code> ≠ <code>print</code></li>
+          <li>Indentation (4 spaces) defines code blocks</li>
+          <li><code>input()</code> reads text typed by the user</li>
+        </ul>
+      </div>
+      <div>
+        <div class="section-label">Code Snapshot</div>
+        <pre><span class="cm"># My first Python program</span>
+<span class="fn">print</span>(<span class="st">"Hello, World!"</span>)
+<span class="cm"># Output: Hello, World!</span>
+
+<span class="fn">print</span>(<span class="nm">2</span> <span class="op">+</span> <span class="nm">3</span>)       <span class="cm"># Output: 5</span>
+
+<span class="cm"># Ask the user for their name</span>
+name <span class="op">=</span> <span class="fn">input</span>(<span class="st">"Your name? "</span>)
+<span class="fn">print</span>(<span class="st">"Hello,"</span>, name)
+</pre>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════ CH 2 ════════════════════════ -->
+  <div id="ch2" class="chapter ch2">
+    <div class="ch-header">
+      <div class="ch-badge">Chapter 2</div>
+      <div class="ch-title">Variables &amp; Data Types</div>
+      <div class="ch-icon">📦</div>
+    </div>
+    <div class="ch-body">
+      <div>
+        <div class="section-label">Four Main Data Types</div>
+        <table class="qr">
+          <tr><th>Type</th><th>Example</th><th>Notes</th></tr>
+          <tr><td><code>int</code></td>  <td><code>age = 13</code></td>     <td>whole numbers</td></tr>
+          <tr><td><code>float</code></td><td><code>gpa = 3.8</code></td>     <td>decimal numbers</td></tr>
+          <tr><td><code>str</code></td>  <td><code>name = "Ali"</code></td>  <td>text in quotes</td></tr>
+          <tr><td><code>bool</code></td> <td><code>done = True</code></td>   <td><code>True</code> or <code>False</code></td></tr>
+        </table>
+        <ul class="concept-list" style="margin-top:10px">
+          <li>Use <code>type(x)</code> to check the type of any variable</li>
+          <li>Type conversion: <code>int()</code>, <code>float()</code>, <code>str()</code></li>
+          <li>Arithmetic: <code>+ - * / // % **</code></li>
+        </ul>
+      </div>
+      <div>
+        <div class="section-label">Code Snapshot</div>
+        <pre>age   <span class="op">=</span> <span class="nm">13</span>
+gpa   <span class="op">=</span> <span class="nm">3.8</span>
+name  <span class="op">=</span> <span class="st">"Jordan"</span>
+done  <span class="op">=</span> <span class="kw">True</span>
+
+<span class="fn">print</span>(<span class="fn">type</span>(age))    <span class="cm"># &lt;class 'int'&gt;</span>
+<span class="fn">print</span>(<span class="fn">type</span>(gpa))    <span class="cm"># &lt;class 'float'&gt;</span>
+
+<span class="cm"># Type conversion</span>
+<span class="fn">print</span>(<span class="fn">int</span>(<span class="st">"42"</span>))    <span class="cm"># 42</span>
+<span class="fn">print</span>(<span class="nm">10</span> <span class="op">//</span> <span class="nm">3</span>)     <span class="cm"># 3  (floor div)</span>
+<span class="fn">print</span>(<span class="nm">10</span> <span class="op">%</span>  <span class="nm">3</span>)     <span class="cm"># 1  (remainder)</span>
+<span class="fn">print</span>(<span class="nm">2</span> <span class="op">**</span> <span class="nm">8</span>)      <span class="cm"># 256 (power)</span>
+</pre>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════ CH 3 ════════════════════════ -->
+  <div id="ch3" class="chapter ch3">
+    <div class="ch-header">
+      <div class="ch-badge">Chapter 3</div>
+      <div class="ch-title">Conditionals</div>
+      <div class="ch-icon">🔀</div>
+    </div>
+    <div class="ch-body">
+      <div>
+        <div class="section-label">Key Concepts</div>
+        <ul class="concept-list">
+          <li><code>if</code> runs a block only when condition is <code>True</code></li>
+          <li><code>elif</code> checks another condition if the first was <code>False</code></li>
+          <li><code>else</code> runs when no conditions matched</li>
+          <li>Comparison operators: <code>==  !=  &lt;  &gt;  &lt;=  &gt;=</code></li>
+          <li>Logical operators: <code>and</code>, <code>or</code>, <code>not</code></li>
+          <li>Indentation (4 spaces) defines each block</li>
+        </ul>
+      </div>
+      <div>
+        <div class="section-label">Code Snapshot</div>
+        <pre>score <span class="op">=</span> <span class="nm">85</span>
+
+<span class="kw">if</span> score <span class="op">&gt;=</span> <span class="nm">90</span>:
+    <span class="fn">print</span>(<span class="st">"A"</span>)
+<span class="kw">elif</span> score <span class="op">&gt;=</span> <span class="nm">80</span>:
+    <span class="fn">print</span>(<span class="st">"B"</span>)     <span class="cm"># ← this runs</span>
+<span class="kw">elif</span> score <span class="op">&gt;=</span> <span class="nm">70</span>:
+    <span class="fn">print</span>(<span class="st">"C"</span>)
+<span class="kw">else</span>:
+    <span class="fn">print</span>(<span class="st">"Needs help"</span>)
+
+<span class="kw">if</span> score <span class="op">&gt;</span> <span class="nm">60</span> <span class="kw">and</span> score <span class="op">&lt;=</span> <span class="nm">100</span>:
+    <span class="fn">print</span>(<span class="st">"Passing!"</span>)
+</pre>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════ CH 4 ════════════════════════ -->
+  <div id="ch4" class="chapter ch4">
+    <div class="ch-header">
+      <div class="ch-badge">Chapter 4</div>
+      <div class="ch-title">Loops</div>
+      <div class="ch-icon">🔁</div>
+    </div>
+    <div class="ch-body">
+      <div>
+        <div class="section-label">for vs while</div>
+        <table class="qr">
+          <tr><th>Loop</th><th>Use When</th></tr>
+          <tr><td><code>for</code></td>       <td>You know how many times to repeat</td></tr>
+          <tr><td><code>while</code></td>     <td>Repeat until a condition is False</td></tr>
+          <tr><td><code>break</code></td>     <td>Exit the loop early</td></tr>
+          <tr><td><code>continue</code></td>  <td>Skip to the next iteration</td></tr>
+          <tr><td><code>range(n)</code></td>  <td>Generates 0, 1, 2 … n-1</td></tr>
+          <tr><td><code>range(a,b,s)</code></td><td>start, stop, step</td></tr>
+        </table>
+      </div>
+      <div>
+        <div class="section-label">Code Snapshot</div>
+        <pre><span class="cm"># for loop with range</span>
+<span class="kw">for</span> i <span class="kw">in</span> <span class="fn">range</span>(<span class="nm">1</span>, <span class="nm">4</span>):
+    <span class="fn">print</span>(i)        <span class="cm"># 1  2  3</span>
+
+<span class="cm"># for loop over a list</span>
+pets <span class="op">=</span> [<span class="st">"cat"</span>, <span class="st">"dog"</span>, <span class="st">"fish"</span>]
+<span class="kw">for</span> p <span class="kw">in</span> pets:
+    <span class="fn">print</span>(p)
+
+<span class="cm"># while loop</span>
+count <span class="op">=</span> <span class="nm">0</span>
+<span class="kw">while</span> count <span class="op">&lt;</span> <span class="nm">3</span>:
+    <span class="fn">print</span>(count)    <span class="cm"># 0  1  2</span>
+    count <span class="op">+=</span> <span class="nm">1</span>
+</pre>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════ CH 5 ════════════════════════ -->
+  <div id="ch5" class="chapter ch5">
+    <div class="ch-header">
+      <div class="ch-badge">Chapter 5</div>
+      <div class="ch-title">Functions</div>
+      <div class="ch-icon">⚙️</div>
+    </div>
+    <div class="ch-body">
+      <div>
+        <div class="section-label">Key Concepts</div>
+        <ul class="concept-list">
+          <li>Define once with <code>def</code>, call many times</li>
+          <li><strong>Parameters</strong> — inputs listed in the function header</li>
+          <li><strong>Arguments</strong> — values passed when calling</li>
+          <li><code>return</code> sends a value back to the caller</li>
+          <li>No <code>return</code> → function returns <code>None</code></li>
+          <li><strong>Default parameters:</strong> <code>def greet(name="World")</code></li>
+          <li>Variables inside a function are <strong>local</strong> (not visible outside)</li>
+        </ul>
+      </div>
+      <div>
+        <div class="section-label">Code Snapshot</div>
+        <pre><span class="kw">def</span> <span class="fn">greet</span>(name):
+    <span class="fn">print</span>(<span class="st">f"Hello, </span>{name}<span class="st">!"</span>)
+
+<span class="fn">greet</span>(<span class="st">"Ali"</span>)     <span class="cm"># Hello, Ali!</span>
+
+<span class="cm"># Function with return value</span>
+<span class="kw">def</span> <span class="fn">add</span>(a, b):
+    <span class="kw">return</span> a <span class="op">+</span> b
+
+result <span class="op">=</span> <span class="fn">add</span>(<span class="nm">3</span>, <span class="nm">5</span>)
+<span class="fn">print</span>(result)     <span class="cm"># 8</span>
+
+<span class="cm"># Default parameter</span>
+<span class="kw">def</span> <span class="fn">power</span>(base, exp<span class="op">=</span><span class="nm">2</span>):
+    <span class="kw">return</span> base <span class="op">**</span> exp
+
+<span class="fn">print</span>(<span class="fn">power</span>(<span class="nm">4</span>))     <span class="cm"># 16</span>
+<span class="fn">print</span>(<span class="fn">power</span>(<span class="nm">2</span>, <span class="nm">3</span>))  <span class="cm"># 8</span>
+</pre>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════ CH 6.1 ══════════════════════ -->
+  <div id="ch61" class="chapter ch61">
+    <div class="ch-header">
+      <div class="ch-badge">Chapter 6.1</div>
+      <div class="ch-title">Files</div>
+      <div class="ch-icon">📂</div>
+    </div>
+    <div class="ch-body">
+      <div>
+        <div class="section-label">Key Concepts</div>
+        <ul class="concept-list">
+          <li>Use <code>open(filename, mode)</code> to open a file</li>
+          <li>Mode <code>"r"</code> — read &nbsp;·&nbsp; <code>"w"</code> — write &nbsp;·&nbsp; <code>"a"</code> — append</li>
+          <li>Always close files — or use <code>with open(…) as f:</code> (best practice)</li>
+          <li><code>f.read()</code> — returns entire file as one string</li>
+          <li><code>f.readlines()</code> — returns a list of lines</li>
+          <li><code>f.write(text)</code> — writes a string to the file</li>
+          <li><code>"w"</code> overwrites the file; <code>"a"</code> adds to the end</li>
+        </ul>
+      </div>
+      <div>
+        <div class="section-label">Code Snapshot</div>
+        <pre><span class="cm"># Writing to a file</span>
+<span class="kw">with</span> <span class="fn">open</span>(<span class="st">"notes.txt"</span>, <span class="st">"w"</span>) <span class="kw">as</span> f:
+    f.write(<span class="st">"Hello!\n"</span>)
+    f.write(<span class="st">"Python is fun.\n"</span>)
+
+<span class="cm"># Reading a file (all at once)</span>
+<span class="kw">with</span> <span class="fn">open</span>(<span class="st">"notes.txt"</span>, <span class="st">"r"</span>) <span class="kw">as</span> f:
+    content <span class="op">=</span> f.read()
+    <span class="fn">print</span>(content)
+
+<span class="cm"># Reading line by line</span>
+<span class="kw">with</span> <span class="fn">open</span>(<span class="st">"notes.txt"</span>, <span class="st">"r"</span>) <span class="kw">as</span> f:
+    <span class="kw">for</span> line <span class="kw">in</span> f:
+        <span class="fn">print</span>(line.strip())
+</pre>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════ CH 6.2 ══════════════════════ -->
+  <div id="ch62" class="chapter ch62">
+    <div class="ch-header">
+      <div class="ch-badge">Chapter 6.2</div>
+      <div class="ch-title">Exceptions</div>
+      <div class="ch-icon">🚨</div>
+    </div>
+    <div class="ch-body">
+      <div>
+        <div class="section-label">Key Concepts</div>
+        <ul class="concept-list">
+          <li>An <strong>exception</strong> is a runtime error that crashes the program</li>
+          <li><code>try / except</code> catches errors and handles them gracefully</li>
+          <li><code>else</code> block runs only if no exception occurred</li>
+          <li><code>finally</code> always runs — great for cleanup</li>
+          <li><code>raise</code> lets you trigger your own exception</li>
+        </ul>
+        <div class="section-label" style="margin-top:10px">Common Exceptions</div>
+        <table class="qr">
+          <tr><th>Exception</th><th>Caused By</th></tr>
+          <tr><td><code>ValueError</code></td>       <td><code>int("abc")</code></td></tr>
+          <tr><td><code>ZeroDivisionError</code></td><td><code>10 / 0</code></td></tr>
+          <tr><td><code>FileNotFoundError</code></td><td>file doesn't exist</td></tr>
+          <tr><td><code>IndexError</code></td>       <td>index out of range</td></tr>
+          <tr><td><code>KeyError</code></td>         <td>missing dictionary key</td></tr>
+        </table>
+      </div>
+      <div>
+        <div class="section-label">Code Snapshot</div>
+        <pre><span class="cm"># Basic try / except</span>
+<span class="kw">try</span>:
+    num <span class="op">=</span> <span class="fn">int</span>(<span class="fn">input</span>(<span class="st">"Enter a number: "</span>))
+    <span class="fn">print</span>(<span class="nm">10</span> <span class="op">/</span> num)
+<span class="kw">except</span> <span class="fn">ValueError</span>:
+    <span class="fn">print</span>(<span class="st">"That's not a number!"</span>)
+<span class="kw">except</span> <span class="fn">ZeroDivisionError</span>:
+    <span class="fn">print</span>(<span class="st">"Cannot divide by zero!"</span>)
+<span class="kw">else</span>:
+    <span class="fn">print</span>(<span class="st">"Calculation succeeded!"</span>)
+<span class="kw">finally</span>:
+    <span class="fn">print</span>(<span class="st">"Done."</span>)   <span class="cm"># always runs</span>
+</pre>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════ CH 7.1 ══════════════════════ -->
+  <div id="ch71" class="chapter ch71">
+    <div class="ch-header">
+      <div class="ch-badge">Chapter 7.1</div>
+      <div class="ch-title">Lists</div>
+      <div class="ch-icon">📋</div>
+    </div>
+    <div class="ch-body">
+      <div>
+        <div class="section-label">CRUD Operations</div>
+        <table class="qr">
+          <tr><th>Operation</th><th>How</th></tr>
+          <tr><td>Create</td><td><code>x = [1, 2, 3]</code></td></tr>
+          <tr><td>Read</td>  <td><code>x[0]</code> · <code>x[-1]</code> · <code>x[1:3]</code></td></tr>
+          <tr><td>Update</td><td><code>x[0] = 99</code> · <code>x.append(4)</code> · <code>x.insert(i,v)</code></td></tr>
+          <tr><td>Delete</td><td><code>x.remove(val)</code> · <code>x.pop()</code> · <code>x.clear()</code></td></tr>
+        </table>
+        <ul class="concept-list" style="margin-top:10px">
+          <li>Ordered · Indexed (starts at 0) · Allows duplicates · <code>[ ]</code></li>
+          <li><strong>Mutable</strong> — items can be changed after creation</li>
+          <li>Negative index: <code>x[-1]</code> = last item</li>
+          <li>Useful: <code>len()</code>, <code>sort()</code>, <code>sorted()</code>, <code>min()</code>, <code>max()</code></li>
+        </ul>
+      </div>
+      <div>
+        <div class="section-label">Code Snapshot</div>
+        <pre>fruits <span class="op">=</span> [<span class="st">"apple"</span>, <span class="st">"banana"</span>, <span class="st">"cherry"</span>]
+
+<span class="cm"># Read</span>
+<span class="fn">print</span>(fruits[<span class="nm">0</span>])          <span class="cm"># apple</span>
+<span class="fn">print</span>(fruits[<span class="nm">1</span>:<span class="nm">3</span>])        <span class="cm"># ['banana','cherry']</span>
+
+<span class="cm"># Update</span>
+fruits[<span class="nm">0</span>] <span class="op">=</span> <span class="st">"mango"</span>
+fruits.append(<span class="st">"grape"</span>)
+fruits.insert(<span class="nm">1</span>, <span class="st">"kiwi"</span>)
+
+<span class="cm"># Delete</span>
+fruits.remove(<span class="st">"banana"</span>)
+fruits.pop()
+
+<span class="fn">print</span>(<span class="fn">len</span>(fruits))        <span class="cm"># 3</span>
+fruits.sort()              <span class="cm"># sort in-place</span>
+</pre>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════ CH 7.2 ══════════════════════ -->
+  <div id="ch72" class="chapter ch72">
+    <div class="ch-header">
+      <div class="ch-badge">Chapter 7.2</div>
+      <div class="ch-title">Tuples</div>
+      <div class="ch-icon">🔒</div>
+    </div>
+    <div class="ch-body">
+      <div>
+        <div class="section-label">Lists vs Tuples</div>
+        <table class="qr">
+          <tr><th>Feature</th><th>List</th><th>Tuple</th></tr>
+          <tr><td>Ordered</td>      <td>✅</td><td>✅</td></tr>
+          <tr><td>Indexed</td>      <td>✅</td><td>✅</td></tr>
+          <tr><td>Update items</td> <td>✅</td><td>❌</td></tr>
+          <tr><td>Duplicates</td>   <td>✅</td><td>✅</td></tr>
+          <tr><td>Syntax</td>       <td><code>[ ]</code></td><td><code>( )</code></td></tr>
+        </table>
+        <ul class="concept-list" style="margin-top:10px">
+          <li><strong>Immutable</strong> — cannot change after creation (raises TypeError)</li>
+          <li>Only 2 methods: <code>.index(x)</code> and <code>.count(x)</code></li>
+          <li>CRUD: Create ✅ · Read ✅ · Update ❌ · Delete ❌</li>
+          <li>Single-element requires trailing comma: <code>(5,)</code></li>
+        </ul>
+      </div>
+      <div>
+        <div class="section-label">Code Snapshot</div>
+        <pre>days <span class="op">=</span> (<span class="st">"Mon"</span>, <span class="st">"Tue"</span>, <span class="st">"Wed"</span>, <span class="st">"Thu"</span>)
+
+<span class="cm"># Read</span>
+<span class="fn">print</span>(days[<span class="nm">0</span>])            <span class="cm"># Mon</span>
+<span class="fn">print</span>(days[<span class="op">-</span><span class="nm">1</span>])           <span class="cm"># Thu</span>
+<span class="fn">print</span>(<span class="st">"Mon"</span> <span class="kw">in</span> days)      <span class="cm"># True</span>
+
+<span class="cm"># Methods (only 2!)</span>
+<span class="fn">print</span>(days.count(<span class="st">"Mon"</span>))   <span class="cm"># 1</span>
+<span class="fn">print</span>(days.index(<span class="st">"Wed"</span>))   <span class="cm"># 2</span>
+
+<span class="cm"># ❌ Raises TypeError!</span>
+<span class="cm"># days[0] = "Sun"</span>
+
+<span class="cm"># Single-element tuple</span>
+one <span class="op">=</span> (<span class="nm">42</span>,)                <span class="cm"># comma required!</span>
+<span class="fn">print</span>(<span class="fn">type</span>(one))           <span class="cm"># &lt;class 'tuple'&gt;</span>
+</pre>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════ CH 8 ════════════════════════ -->
+  <div id="ch8" class="chapter ch8">
+    <div class="ch-header">
+      <div class="ch-badge">Chapter 8</div>
+      <div class="ch-title">Strings</div>
+      <div class="ch-icon">🔤</div>
+    </div>
+    <div class="ch-body">
+      <div>
+        <div class="section-label">Key Concepts</div>
+        <ul class="concept-list">
+          <li>Strings are sequences of characters — indexed like lists</li>
+          <li>Positive index: left→right starting at 0</li>
+          <li>Negative index: right→left starting at −1</li>
+          <li>Slicing: <code>s[start : stop : step]</code></li>
+          <li>Strings are <strong>immutable</strong> — methods return new strings</li>
+          <li>f-strings: <code>f"Hello {name}, age {age}"</code></li>
+        </ul>
+        <div class="section-label" style="margin-top:10px">Common Methods</div>
+        <table class="qr">
+          <tr><th>Method</th><th>What it does</th></tr>
+          <tr><td><code>.upper()</code></td>       <td>ALL CAPS</td></tr>
+          <tr><td><code>.lower()</code></td>       <td>all lowercase</td></tr>
+          <tr><td><code>.strip()</code></td>       <td>remove leading/trailing whitespace</td></tr>
+          <tr><td><code>.split(",")</code></td>    <td>splits into a list</td></tr>
+          <tr><td><code>.replace(a,b)</code></td>  <td>replaces text</td></tr>
+          <tr><td><code>.find(s)</code></td>       <td>index of s, or −1</td></tr>
+        </table>
+      </div>
+      <div>
+        <div class="section-label">Code Snapshot</div>
+        <pre>lang <span class="op">=</span> <span class="st">"PYTHON"</span>
+<span class="cm">#   P  Y  T  H  O  N</span>
+<span class="cm">#   0  1  2  3  4  5</span>
+<span class="cm">#  -6 -5 -4 -3 -2 -1</span>
+
+<span class="fn">print</span>(lang[<span class="nm">0</span>])         <span class="cm"># P</span>
+<span class="fn">print</span>(lang[<span class="op">-</span><span class="nm">1</span>])        <span class="cm"># N</span>
+<span class="fn">print</span>(lang[<span class="nm">1</span>:<span class="nm">4</span>])       <span class="cm"># YTH</span>
+<span class="fn">print</span>(lang[::<span class="op">-</span><span class="nm">1</span>])      <span class="cm"># NOHTYP (reversed)</span>
+
+msg <span class="op">=</span> <span class="st">"  hello world  "</span>
+<span class="fn">print</span>(msg.strip())    <span class="cm"># "hello world"</span>
+<span class="fn">print</span>(msg.upper())    <span class="cm"># "  HELLO WORLD  "</span>
+
+<span class="cm"># f-string formatting</span>
+age <span class="op">=</span> <span class="nm">13</span>
+<span class="fn">print</span>(<span class="st">f"I am </span>{age}<span class="st"> years old."</span>)
+</pre>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════ CH 9.1 ══════════════════════ -->
+  <div id="ch91" class="chapter ch91">
+    <div class="ch-header">
+      <div class="ch-badge">Chapter 9.1</div>
+      <div class="ch-title">Sets</div>
+      <div class="ch-icon">🔵</div>
+    </div>
+    <div class="ch-body">
+      <div>
+        <div class="section-label">Key Concepts</div>
+        <ul class="concept-list">
+          <li>Unordered · <strong>No duplicates</strong> · Uses <code>{ }</code></li>
+          <li>CRUD: Create ✅ · Read (membership) ✅ · Update ✅ · Delete ✅</li>
+          <li>Cannot index with <code>[ ]</code> — no guaranteed order</li>
+          <li>Very fast membership check: <code>if x in my_set</code></li>
+          <li>Great for removing duplicates from a list</li>
+        </ul>
+        <div class="section-label" style="margin-top:10px">Set Operations</div>
+        <table class="qr">
+          <tr><th>Operation</th><th>Symbol</th><th>Meaning</th></tr>
+          <tr><td>Union</td>        <td><code>|</code></td>  <td>all elements from both</td></tr>
+          <tr><td>Intersection</td> <td><code>&amp;</code></td><td>elements in BOTH sets</td></tr>
+          <tr><td>Difference</td>   <td><code>-</code></td>  <td>in A but not in B</td></tr>
+        </table>
+      </div>
+      <div>
+        <div class="section-label">Code Snapshot</div>
+        <pre><span class="cm"># Duplicates removed automatically!</span>
+nums <span class="op">=</span> {<span class="nm">1</span>, <span class="nm">2</span>, <span class="nm">3</span>, <span class="nm">2</span>, <span class="nm">1</span>}
+<span class="fn">print</span>(nums)            <span class="cm"># {1, 2, 3}</span>
+
+<span class="cm"># Update / Delete</span>
+nums.add(<span class="nm">4</span>)
+nums.discard(<span class="nm">2</span>)
+
+<span class="cm"># Set operations</span>
+a <span class="op">=</span> {<span class="nm">1</span>, <span class="nm">2</span>, <span class="nm">3</span>}
+b <span class="op">=</span> {<span class="nm">2</span>, <span class="nm">3</span>, <span class="nm">4</span>}
+<span class="fn">print</span>(a <span class="op">|</span> b)           <span class="cm"># {1,2,3,4} union</span>
+<span class="fn">print</span>(a <span class="op">&amp;</span> b)           <span class="cm"># {2,3}     intersection</span>
+<span class="fn">print</span>(a <span class="op">-</span> b)           <span class="cm"># {1}       difference</span>
+
+<span class="cm"># Remove duplicates from list</span>
+lst <span class="op">=</span> [<span class="nm">1</span>,<span class="nm">2</span>,<span class="nm">2</span>,<span class="nm">3</span>,<span class="nm">3</span>]
+<span class="fn">print</span>(<span class="fn">list</span>(<span class="fn">set</span>(lst)))  <span class="cm"># [1, 2, 3]</span>
+</pre>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════ CH 9.2 ══════════════════════ -->
+  <div id="ch92" class="chapter ch92">
+    <div class="ch-header">
+      <div class="ch-badge">Chapter 9.2</div>
+      <div class="ch-title">Dictionaries</div>
+      <div class="ch-icon">🗂️</div>
+    </div>
+    <div class="ch-body">
+      <div>
+        <div class="section-label">CRUD Operations</div>
+        <table class="qr">
+          <tr><th>Operation</th><th>How</th></tr>
+          <tr><td>Create</td><td><code>d = {"name":"Ali", "age":13}</code></td></tr>
+          <tr><td>Read</td>  <td><code>d["name"]</code> · <code>d.get("gpa", 0)</code></td></tr>
+          <tr><td>Update</td><td><code>d["age"] = 14</code> · <code>d["gpa"] = 3.9</code></td></tr>
+          <tr><td>Delete</td><td><code>del d["age"]</code> · <code>d.pop("age")</code></td></tr>
+        </table>
+        <ul class="concept-list" style="margin-top:10px">
+          <li>Key-value pairs · Keys must be unique</li>
+          <li>Ordered (Python 3.7+) · Uses <code>{ key: value }</code></li>
+          <li>Iterate: <code>.keys()</code>, <code>.values()</code>, <code>.items()</code></li>
+          <li>Use <code>.get(key)</code> to avoid <code>KeyError</code></li>
+        </ul>
+      </div>
+      <div>
+        <div class="section-label">Code Snapshot</div>
+        <pre>student <span class="op">=</span> {<span class="st">"name"</span>: <span class="st">"Ali"</span>, <span class="st">"age"</span>: <span class="nm">13</span>}
+
+<span class="cm"># Read</span>
+<span class="fn">print</span>(student[<span class="st">"name"</span>])         <span class="cm"># Ali</span>
+<span class="fn">print</span>(student.get(<span class="st">"gpa"</span>, <span class="nm">0</span>))   <span class="cm"># 0</span>
+
+<span class="cm"># Update / Add</span>
+student[<span class="st">"age"</span>]   <span class="op">=</span> <span class="nm">14</span>
+student[<span class="st">"grade"</span>] <span class="op">=</span> <span class="st">"8th"</span>
+
+<span class="cm"># Delete</span>
+<span class="kw">del</span> student[<span class="st">"age"</span>]
+
+<span class="cm"># Loop through key-value pairs</span>
+<span class="kw">for</span> key, val <span class="kw">in</span> student.items():
+    <span class="fn">print</span>(key, <span class="st">"→"</span>, val)
+</pre>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════ CH 10 ═══════════════════════ -->
+  <div id="ch10" class="chapter ch10">
+    <div class="ch-header">
+      <div class="ch-badge">Chapter 10</div>
+      <div class="ch-title">Binary &amp; Bitwise Operations</div>
+      <div class="ch-icon">⚡</div>
+    </div>
+    <div class="ch-body">
+      <div>
+        <div class="section-label">Binary Conversion</div>
+        <ul class="concept-list">
+          <li>Computers store all data as 1s and 0s (binary)</li>
+          <li><strong>Decimal → Binary:</strong> divide by 2, read remainders bottom-up</li>
+          <li><strong>Binary → Decimal:</strong> multiply each bit by its place value (2ⁿ)</li>
+          <li><code>bin(13)</code> → <code>'0b1101'</code></li>
+          <li><code>int("1101", 2)</code> → <code>13</code></li>
+        </ul>
+        <div class="section-label" style="margin-top:10px">Bitwise Operators</div>
+        <table class="qr">
+          <tr><th>Op</th><th>Symbol</th><th>Rule</th></tr>
+          <tr><td>AND</td>        <td><code>&amp;</code></td>  <td>1 only if BOTH bits are 1</td></tr>
+          <tr><td>OR</td>         <td><code>|</code></td>   <td>1 if EITHER bit is 1</td></tr>
+          <tr><td>XOR</td>        <td><code>^</code></td>   <td>1 if bits are DIFFERENT</td></tr>
+          <tr><td>NOT</td>        <td><code>~</code></td>   <td>flips all bits</td></tr>
+          <tr><td>Left Shift</td> <td><code>&lt;&lt;</code></td><td>multiply by 2ⁿ</td></tr>
+          <tr><td>Right Shift</td><td><code>&gt;&gt;</code></td><td>divide by 2ⁿ</td></tr>
+        </table>
+      </div>
+      <div>
+        <div class="section-label">Code Snapshot</div>
+        <pre><span class="cm"># Conversion</span>
+<span class="fn">print</span>(<span class="fn">bin</span>(<span class="nm">13</span>))           <span class="cm"># 0b1101</span>
+<span class="fn">print</span>(<span class="fn">int</span>(<span class="st">"1101"</span>, <span class="nm">2</span>))    <span class="cm"># 13</span>
+
+<span class="cm"># Bitwise examples</span>
+a <span class="op">=</span> <span class="nm">13</span>    <span class="cm"># 1 1 0 1</span>
+b <span class="op">=</span> <span class="nm">10</span>    <span class="cm"># 1 0 1 0</span>
+
+<span class="fn">print</span>(a <span class="op">&amp;</span> b)      <span class="cm"># 8   (1000) AND</span>
+<span class="fn">print</span>(a <span class="op">|</span> b)      <span class="cm"># 15  (1111) OR</span>
+<span class="fn">print</span>(a <span class="op">^</span> b)      <span class="cm"># 7   (0111) XOR</span>
+<span class="fn">print</span>(a <span class="op">&lt;&lt;</span> <span class="nm">1</span>)     <span class="cm"># 26  left shift × 2</span>
+<span class="fn">print</span>(a <span class="op">&gt;&gt;</span> <span class="nm">1</span>)     <span class="cm"># 6   right shift ÷ 2</span>
+
+<span class="cm"># Even/odd trick with AND</span>
+<span class="fn">print</span>(<span class="nm">7</span> <span class="op">&amp;</span> <span class="nm">1</span>)      <span class="cm"># 1 → odd</span>
+<span class="fn">print</span>(<span class="nm">8</span> <span class="op">&amp;</span> <span class="nm">1</span>)      <span class="cm"># 0 → even</span>
+</pre>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════ REFERENCES ══════════════════ -->
+  <div id="ref" class="chapter chref">
+    <div class="ch-header">
+      <div class="ch-badge">References</div>
+      <div class="ch-title">Quick Reference Tables</div>
+      <div class="ch-icon">📎</div>
+    </div>
+
+    <!-- Row 1: Built-in Functions + Python Keywords -->
+    <div class="ch-body" style="border-bottom:1px solid var(--border)">
+      <div>
+        <div class="section-label">Built-in Functions</div>
+        <table class="qr">
+          <tr><th>Function</th><th>What it does</th></tr>
+          <tr><td><code>print(x)</code></td>       <td>Display output to the screen</td></tr>
+          <tr><td><code>input(prompt)</code></td>  <td>Read text from the user</td></tr>
+          <tr><td><code>type(x)</code></td>        <td>Return the data type of x</td></tr>
+          <tr><td><code>int(x)</code></td>         <td>Convert x to integer</td></tr>
+          <tr><td><code>float(x)</code></td>       <td>Convert x to float</td></tr>
+          <tr><td><code>str(x)</code></td>         <td>Convert x to string</td></tr>
+          <tr><td><code>bool(x)</code></td>        <td>Convert x to boolean</td></tr>
+          <tr><td><code>len(x)</code></td>         <td>Number of items in x</td></tr>
+          <tr><td><code>range(a,b,s)</code></td>   <td>Generate a sequence of numbers</td></tr>
+          <tr><td><code>min(x)</code></td>         <td>Smallest value in x</td></tr>
+          <tr><td><code>max(x)</code></td>         <td>Largest value in x</td></tr>
+          <tr><td><code>sum(x)</code></td>         <td>Sum of all items in x</td></tr>
+          <tr><td><code>sorted(x)</code></td>      <td>Return sorted copy of x</td></tr>
+          <tr><td><code>abs(x)</code></td>         <td>Absolute value of x</td></tr>
+          <tr><td><code>round(x, n)</code></td>    <td>Round x to n decimal places</td></tr>
+          <tr><td><code>list(x)</code></td>        <td>Convert x to a list</td></tr>
+          <tr><td><code>set(x)</code></td>         <td>Convert x to a set</td></tr>
+          <tr><td><code>dict(x)</code></td>        <td>Create a dictionary</td></tr>
+          <tr><td><code>tuple(x)</code></td>       <td>Convert x to a tuple</td></tr>
+          <tr><td><code>open(f, mode)</code></td>  <td>Open a file</td></tr>
+          <tr><td><code>enumerate(x)</code></td>   <td>Index + value pairs for loops</td></tr>
+          <tr><td><code>zip(a, b)</code></td>      <td>Pair elements from two iterables</td></tr>
+          <tr><td><code>bin(x)</code></td>         <td>Decimal → binary string</td></tr>
+          <tr><td><code>int(s, 2)</code></td>      <td>Binary string → decimal</td></tr>
+        </table>
+      </div>
+      <div>
+        <div class="section-label">Python Keywords</div>
+        <table class="qr">
+          <tr><th>Keyword</th><th>Used For</th></tr>
+          <tr><td><code>if / elif / else</code></td><td>Conditional branching</td></tr>
+          <tr><td><code>for / while</code></td>    <td>Loops</td></tr>
+          <tr><td><code>break</code></td>          <td>Exit a loop early</td></tr>
+          <tr><td><code>continue</code></td>       <td>Skip to next loop iteration</td></tr>
+          <tr><td><code>def</code></td>            <td>Define a function</td></tr>
+          <tr><td><code>return</code></td>         <td>Return a value from a function</td></tr>
+          <tr><td><code>import</code></td>         <td>Import a module</td></tr>
+          <tr><td><code>from … import</code></td>  <td>Import specific item from module</td></tr>
+          <tr><td><code>in / not in</code></td>    <td>Membership test</td></tr>
+          <tr><td><code>and / or / not</code></td> <td>Logical operators</td></tr>
+          <tr><td><code>True / False</code></td>   <td>Boolean values</td></tr>
+          <tr><td><code>None</code></td>           <td>Represents no value</td></tr>
+          <tr><td><code>try / except</code></td>   <td>Exception handling</td></tr>
+          <tr><td><code>finally</code></td>        <td>Runs after try/except always</td></tr>
+          <tr><td><code>raise</code></td>          <td>Trigger an exception</td></tr>
+          <tr><td><code>with / as</code></td>      <td>Context manager (e.g. files)</td></tr>
+          <tr><td><code>del</code></td>            <td>Delete a variable or item</td></tr>
+          <tr><td><code>pass</code></td>           <td>Placeholder (do nothing)</td></tr>
+          <tr><td><code>lambda</code></td>         <td>Anonymous one-line function</td></tr>
+          <tr><td><code>global</code></td>         <td>Access global variable inside fn</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- Row 2: Comparison of Data Structures -->
+    <div style="padding:18px 22px; border-bottom:1px solid var(--border)">
+      <div class="section-label">Comparison of Data Structures</div>
+      <table class="qr">
+        <tr>
+          <th>Feature</th>
+          <th>List <code>[ ]</code></th>
+          <th>Tuple <code>( )</code></th>
+          <th>Set <code>{ }</code></th>
+          <th>Dictionary <code>{k:v}</code></th>
+        </tr>
+        <tr><td>Ordered</td>          <td>✅</td><td>✅</td><td>❌</td><td>✅ (3.7+)</td></tr>
+        <tr><td>Indexed (<code>[ ]</code>)</td><td>✅</td><td>✅</td><td>❌</td><td>✅ by key</td></tr>
+        <tr><td>Allows Duplicates</td><td>✅</td><td>✅</td><td>❌</td><td>Keys: ❌ · Values: ✅</td></tr>
+        <tr><td>Mutable</td>          <td>✅</td><td>❌</td><td>✅</td><td>✅</td></tr>
+        <tr><td>CRUD — Create</td>    <td>✅</td><td>✅</td><td>✅</td><td>✅</td></tr>
+        <tr><td>CRUD — Read</td>      <td>✅</td><td>✅</td><td>membership only</td><td>✅</td></tr>
+        <tr><td>CRUD — Update</td>    <td>✅</td><td>❌</td><td>✅ (add)</td><td>✅</td></tr>
+        <tr><td>CRUD — Delete</td>    <td>✅</td><td>❌</td><td>✅</td><td>✅</td></tr>
+        <tr><td>Best For</td>         <td>Ordered, changeable data</td><td>Fixed / constant data</td><td>Unique items, set math</td><td>Label → value lookups</td></tr>
+      </table>
+    </div>
+
+    <!-- Row 3: List + Tuple Methods -->
+    <div class="ch-body" style="border-bottom:1px solid var(--border)">
+      <div>
+        <div class="section-label">List Methods</div>
+        <table class="qr">
+          <tr><th>Method</th><th>What it does</th></tr>
+          <tr><td><code>.append(x)</code></td>    <td>Add x to the end</td></tr>
+          <tr><td><code>.insert(i, x)</code></td> <td>Insert x at index i</td></tr>
+          <tr><td><code>.extend(lst)</code></td>  <td>Add all items from lst</td></tr>
+          <tr><td><code>.remove(x)</code></td>    <td>Remove first occurrence of x</td></tr>
+          <tr><td><code>.pop()</code></td>        <td>Remove &amp; return last item</td></tr>
+          <tr><td><code>.pop(i)</code></td>       <td>Remove &amp; return item at index i</td></tr>
+          <tr><td><code>.clear()</code></td>      <td>Remove all items</td></tr>
+          <tr><td><code>.index(x)</code></td>     <td>Index of first occurrence of x</td></tr>
+          <tr><td><code>.count(x)</code></td>     <td>Count how many times x appears</td></tr>
+          <tr><td><code>.sort()</code></td>       <td>Sort in place (ascending)</td></tr>
+          <tr><td><code>.sort(reverse=True)</code></td><td>Sort descending</td></tr>
+          <tr><td><code>.reverse()</code></td>    <td>Reverse in place</td></tr>
+          <tr><td><code>.copy()</code></td>       <td>Return a shallow copy</td></tr>
+        </table>
+      </div>
+      <div>
+        <div class="section-label">Tuple Methods &nbsp;<span style="font-weight:400;font-size:11px;opacity:.6">(only 2 — tuples are immutable)</span></div>
+        <table class="qr">
+          <tr><th>Method</th><th>What it does</th></tr>
+          <tr><td><code>.index(x)</code></td>  <td>Index of first occurrence of x</td></tr>
+          <tr><td><code>.count(x)</code></td>  <td>Count how many times x appears</td></tr>
+        </table>
+        <div class="section-label" style="margin-top:16px">String Methods</div>
+        <table class="qr">
+          <tr><th>Method</th><th>What it does</th></tr>
+          <tr><td><code>.upper()</code></td>         <td>Return ALL CAPS version</td></tr>
+          <tr><td><code>.lower()</code></td>         <td>Return all lowercase version</td></tr>
+          <tr><td><code>.strip()</code></td>         <td>Remove leading/trailing whitespace</td></tr>
+          <tr><td><code>.lstrip() / .rstrip()</code></td><td>Strip left or right only</td></tr>
+          <tr><td><code>.split(sep)</code></td>      <td>Split into list by separator</td></tr>
+          <tr><td><code>.join(lst)</code></td>       <td>Join list into a string</td></tr>
+          <tr><td><code>.replace(a, b)</code></td>   <td>Replace all a with b</td></tr>
+          <tr><td><code>.find(s)</code></td>         <td>Index of s, or −1 if not found</td></tr>
+          <tr><td><code>.startswith(s)</code></td>   <td>True if string starts with s</td></tr>
+          <tr><td><code>.endswith(s)</code></td>     <td>True if string ends with s</td></tr>
+          <tr><td><code>.count(s)</code></td>        <td>Count occurrences of s</td></tr>
+          <tr><td><code>.isdigit()</code></td>       <td>True if all characters are digits</td></tr>
+          <tr><td><code>.isalpha()</code></td>       <td>True if all characters are letters</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- Row 4: Set + Dict Methods -->
+    <div class="ch-body">
+      <div>
+        <div class="section-label">Set Methods</div>
+        <table class="qr">
+          <tr><th>Method</th><th>What it does</th></tr>
+          <tr><td><code>.add(x)</code></td>               <td>Add x to the set</td></tr>
+          <tr><td><code>.remove(x)</code></td>            <td>Remove x (error if missing)</td></tr>
+          <tr><td><code>.discard(x)</code></td>           <td>Remove x (no error if missing)</td></tr>
+          <tr><td><code>.pop()</code></td>                <td>Remove &amp; return arbitrary item</td></tr>
+          <tr><td><code>.clear()</code></td>              <td>Remove all elements</td></tr>
+          <tr><td><code>.union(s)</code> or <code>|</code></td>        <td>All elements from both sets</td></tr>
+          <tr><td><code>.intersection(s)</code> or <code>&amp;</code></td><td>Elements in both sets</td></tr>
+          <tr><td><code>.difference(s)</code> or <code>-</code></td>   <td>In this set but not in s</td></tr>
+          <tr><td><code>.issubset(s)</code></td>          <td>True if all items are in s</td></tr>
+          <tr><td><code>.issuperset(s)</code></td>        <td>True if s is contained in this set</td></tr>
+          <tr><td><code>.copy()</code></td>               <td>Return a shallow copy</td></tr>
+        </table>
+      </div>
+      <div>
+        <div class="section-label">Dictionary Methods</div>
+        <table class="qr">
+          <tr><th>Method</th><th>What it does</th></tr>
+          <tr><td><code>.get(key, default)</code></td>  <td>Value for key, or default if missing</td></tr>
+          <tr><td><code>.keys()</code></td>             <td>View of all keys</td></tr>
+          <tr><td><code>.values()</code></td>           <td>View of all values</td></tr>
+          <tr><td><code>.items()</code></td>            <td>View of all (key, value) pairs</td></tr>
+          <tr><td><code>.update(d2)</code></td>         <td>Merge d2 into this dictionary</td></tr>
+          <tr><td><code>.pop(key)</code></td>           <td>Remove &amp; return value for key</td></tr>
+          <tr><td><code>.popitem()</code></td>          <td>Remove &amp; return last (key, val) pair</td></tr>
+          <tr><td><code>.clear()</code></td>            <td>Remove all key-value pairs</td></tr>
+          <tr><td><code>.copy()</code></td>             <td>Return a shallow copy</td></tr>
+          <tr><td><code>.setdefault(k, v)</code></td>  <td>Return key's value; set it to v if missing</td></tr>
+          <tr><td><code>key in d</code></td>           <td>True if key exists in dictionary</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    Python 101 · <a href="https://www.learnandhelp.com" target="_blank" style="color:var(--muted);text-decoration:none;">Learn and Help Program</a> · Week 26 Recap
+  </footer>
+</main>
+</body>
+</html>
