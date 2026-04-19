@@ -1,4 +1,4 @@
-# Week 25: Binary Conversions & Binary Math Operations
+# Week 26: Binary Conversions & Binary Math Operations
 
 ---
 
