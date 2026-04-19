@@ -1,4 +1,4 @@
-# 🐍 Python 101 — Final Project: Student Progress Report Generator
+# 🐍 Python 101 — Final Project: Python 101 Auto Grader
 
 **Learn and Help Program &nbsp;·&nbsp; [www.learnandhelp.com](https://www.learnandhelp.com)**
 
