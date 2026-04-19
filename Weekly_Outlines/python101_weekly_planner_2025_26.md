@@ -36,7 +36,7 @@
 | 23 | Mar 29, 2026 | Apr 4, 2026 | 9.1. Sets | Assignment 9 | Lab 23 | Quiz 23 |
 | 24 | Apr 5, 2026 | Apr 11, 2026 | 9.2. Dictionaries | | Lab 24 | Quiz 24 |
 | 25 | Apr 12, 2026 | Apr 18, 2026 | 10. Misc. topics (Binary, Decimal) | Assignment 10 | Lab 25 | Quiz 25 |
-| 26 | Apr 19, 2026 | Apr 25, 2026 | Final Project - Working Session - 1 & PCEP 1 | Final Project - Iteration 1 | | |
+| 26 | Apr 19, 2026 | Apr 25, 2026 | 10. Misc Topics (Binary Math), Final Project - Working Session - 1 & PCEP 1 | Final Project - Iteration 1 | | |
 | 27 | Apr 26, 2026 | May 2, 2026 | Final Project - Working Session - 2 & PCDP 2 | Final Project - Iteration 2 | | |
 | 28 | May 3, 2026 | May 9, 2026 | Final Project - Working Session - 3 & PCEP 3 | Final Project - Iteration 3 | | |
 | 29 | May 10, 2026 | May 16, 2026 | Final Project - Working Session - 4 & PCEP 4 | Final Project - Iteration 4 | | Final Test |
