@@ -89,7 +89,7 @@ This file has one row per student. Use the **student email** to match records be
 |--------|-------------|
 | `Last Name` | Student last name |
 | `First Name` | Student first name |
-| `Email Account` | Student email — **use this to link the two files** |
+| `Email` | Student email — **use this to link the two files** |
 | `Parent1 Last Name` | |
 | `Parent1 First Name` | |
 | `Parent1 Email` | |
