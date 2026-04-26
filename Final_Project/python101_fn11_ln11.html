@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='UTF-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <title>Python 101 - fn11 ln11</title>
+  <style>
+    body        { font-family: Arial, sans-serif; padding: 30px; max-width: 900px; margin: auto; background: #fafafa; }
+    h1          { color: #2c3e50; margin-bottom: 2px; }
+    .subtitle   { color: #555; margin-top: 4px; font-size: 15px; }
+    h2          { color: #444; font-size: 16px; margin-top: 28px; }
+    .info-box   { background: #f4f6f8; padding: 16px 20px; border-radius: 8px; border-left: 4px solid #2c3e50; margin-bottom: 24px; }
+    .info-box p { margin: 6px 0; font-size: 14px; }
+    .badge-ok   { background: #27ae60; color: white; padding: 2px 10px; border-radius: 10px; font-size: 13px; }
+    .badge-warn { background: #e74c3c; color: white; padding: 2px 10px; border-radius: 10px; font-size: 13px; }
+    table       { width: 100%; border-collapse: collapse; font-size: 13px; margin-top: 6px; }
+    th          { background: #2c3e50; color: white; padding: 10px 12px; text-align: left; }
+    td          { padding: 8px 12px; border-bottom: 1px solid #e0e0e0; }
+    tr:hover td { background: #f0f4f8; }
+    .missing-row td  { background: #fff0f0; color: #c0392b; font-weight: bold; }
+    .total-row  { background: #eaf4fb; font-weight: bold; }
+    .total-row td { border-top: 2px solid #2c3e50; }
+    .footer     { margin-top: 40px; font-size: 12px; color: #aaa; text-align: center; border-top: 1px solid #eee; padding-top: 14px; }
+    a           { color: #2980b9; }
+  </style>
+</head>
+<body>
+  <h1>Learn and Help</h1>
+  <p class='subtitle'><strong>Course:</strong> Python 101</p>
+  <div class='info-box'>
+    <p><strong>Student Name:</strong> fn11 ln11</p>
+    <p><strong>Student Email:</strong> <a href='mailto:fn11.ln11@learnandhelp.com'>fn11.ln11@learnandhelp.com</a></p>
+    <p><strong>Parent 1:</strong> P2FNameln11fn11 P1LName ln11fn11 &nbsp; <a href='mailto:P1_.fn11.ln11@learnandhelp.com'>P1_.fn11.ln11@learnandhelp.com</a></p>
+    
+    <p><strong>Missing Assignments:</strong> <span class="badge-warn">Missing: 19</span></p>
+  </div>
+  <h2>Assignment Status</h2>
+  <table>
+    <thead><tr>
+      <th>Assignment</th><th>Due Date</th><th>Score</th><th>Max Points</th>
+    </tr></thead>
+    <tbody>
+<tr><td>Lab 22 (More About Strings)</td><td>--</td><td>9</td><td>10</td></tr>
+<tr><td>Quiz 18 (slicing and unpacking)</td><td>--</td><td>9</td><td>10</td></tr>
+<tr><td>Lab 1</td><td>7-Sep-25</td><td>10</td><td>10</td></tr>
+<tr><td>Quiz 1 (Syllabus)</td><td>7-Sep-25</td><td>7</td><td>7</td></tr>
+<tr><td>Lab 2 (Variables and Data Types)</td><td>14-Sep-25</td><td>10</td><td>10</td></tr>
+<tr><td>Quiz 2 (Variables and Data Types)</td><td>14-Sep-25</td><td>10</td><td>10</td></tr>
+<tr><td>Lab 3</td><td>21-Sep-25</td><td>10</td><td>10</td></tr>
+<tr><td>Quiz 3 (print, input and arithmetic operators)</td><td>21-Sep-25</td><td>10</td><td>10</td></tr>
+<tr><td>Lab 4</td><td>28-Sep-25</td><td>10</td><td>10</td></tr>
+<tr><td>Quiz 4</td><td>28-Sep-25</td><td>8</td><td>8</td></tr>
+<tr><td>Assignment 1 (Chapter 2 problems 13 and 14)</td><td>4-Oct-25</td><td>27</td><td>30</td></tr>
+<tr><td>Lab 5 (Exploring Conditions and Boolean Logic)</td><td>5-Oct-25</td><td>10</td><td>10</td></tr>
+<tr><td>Quiz 5 (Boolean Logic and Conditions)</td><td>5-Oct-25</td><td>12</td><td>12</td></tr>
+<tr><td>Lab 6 (Conditions - CodingBat problem)</td><td>12-Oct-25</td><td>10</td><td>10</td></tr>
+<tr><td>Quiz 6 (conditions on conditionals, nested conditions)</td><td>12-Oct-25</td><td>10</td><td>10</td></tr>
+<tr><td>Assignment 2 (Roulette Wheel Colors)</td><td>18-Oct-25</td><td>25</td><td>25</td></tr>
+<tr><td>Lab 7 (while loops)</td><td>19-Oct-25</td><td>10</td><td>10</td></tr>
+<tr><td>Quiz 7 (Iterations #1)</td><td>19-Oct-25</td><td>10</td><td>10</td></tr>
+<tr><td>Lab 8</td><td>26-Oct-25</td><td>10</td><td>10</td></tr>
+<tr><td>Quiz 8 (for loops and range)</td><td>26-Oct-25</td><td>10</td><td>10</td></tr>
+<tr><td>Lab 9 (interactive play)</td><td>2-Nov-25</td><td>10</td><td>10</td></tr>
+<tr><td>Quiz 9 (Chapter 2, 3 and 4 Recaps)</td><td>2-Nov-25</td><td>20</td><td>20</td></tr>
+<tr class="missing-row"><td>Assignment 3 (for and while loops)</td><td>8-Nov-25</td><td>MISSING</td><td>25</td></tr>
+<tr class="missing-row"><td>Lab 10 (Functions - An Introduction)</td><td>9-Nov-25</td><td>MISSING</td><td>10</td></tr>
+<tr><td>Quiz 10 (Functions - Intro)</td><td>9-Nov-25</td><td>10</td><td>10</td></tr>
+<tr class="missing-row"><td>Quiz 11 (Positional, Keyword, Optional Arguments)</td><td>16-Nov-25</td><td>MISSING</td><td>12</td></tr>
+<tr class="missing-row"><td>Assignment 4 (Functions) (Auto-Tester)</td><td>21-Nov-25</td><td>MISSING</td><td>25</td></tr>
+<tr class="missing-row"><td>Lab 11: Functions - Positional, Keyword, Optional Arguments</td><td>21-Nov-25</td><td>MISSING</td><td>12</td></tr>
+<tr><td>Quiz 12 (Functions and Variable Scope)</td><td>7-Dec-25</td><td>11</td><td>12</td></tr>
+<tr class="missing-row"><td>Lab 12 (Functions and Variable Scope)</td><td>13-Dec-25</td><td>MISSING</td><td>10</td></tr>
+<tr><td>Python 101 - MIdTerm Test</td><td>10-Jan-26</td><td>66</td><td>80</td></tr>
+<tr class="missing-row"><td>Lab 14 (File I/O)</td><td>11-Jan-26</td><td>MISSING</td><td>10</td></tr>
+<tr><td>Week 14 Quiz (File I/O)</td><td>11-Jan-26</td><td>9</td><td>10</td></tr>
+<tr class="missing-row"><td>Lab 15 (Errors and Exceptions)</td><td>18-Jan-26</td><td>MISSING</td><td>10</td></tr>
+<tr><td>Quiz 15 (Errors and Exceptions)</td><td>18-Jan-26</td><td>9</td><td>11</td></tr>
+<tr class="missing-row"><td>Assignment 5 (File I/O)</td><td>24-Jan-26</td><td>MISSING</td><td>25</td></tr>
+<tr class="missing-row"><td>Lab 16 (Lists: An introduction)</td><td>25-Jan-26</td><td>MISSING</td><td>10</td></tr>
+<tr><td>Quiz 16 (Lists: An introduction)</td><td>25-Jan-26</td><td>10</td><td>10</td></tr>
+<tr class="missing-row"><td>Assignment 6 (Coding Bat - List-1 problems)</td><td>31-Jan-26</td><td>MISSING</td><td>25</td></tr>
+<tr><td>Lab 17 - Exploring List Traversals</td><td>1-Feb-26</td><td>9</td><td>10</td></tr>
+<tr><td>Quiz 17 (List Traversals, Map Filter Reduce)</td><td>1-Feb-26</td><td>10</td><td>10</td></tr>
+<tr class="missing-row"><td>Lab 18 (Unpacking and Slicing)</td><td>8-Feb-26</td><td>MISSING</td><td>10</td></tr>
+<tr class="missing-row"><td>Lab 19 (List Comprehension</td><td>15-Feb-26</td><td>MISSING</td><td>10</td></tr>
+<tr><td>Quiz 19 (List comprehension)</td><td>15-Feb-26</td><td>10</td><td>10</td></tr>
+<tr class="missing-row"><td>Lab 20 (Mixed, Nested, 2D Lists)</td><td>22-Feb-26</td><td>MISSING</td><td>10</td></tr>
+<tr><td>Quiz 20 (Mixed, Nested, 2D Lists)</td><td>22-Feb-26</td><td>8</td><td>10</td></tr>
+<tr><td>Lab 21 (Tuples)</td><td>1-Mar-26</td><td>10</td><td>10</td></tr>
+<tr><td>Quiz 21 (Tuples)</td><td>1-Mar-26</td><td>10</td><td>10</td></tr>
+<tr><td>Assignment (Attend a Seminar)</td><td>7-Mar-26</td><td>25</td><td>25</td></tr>
+<tr><td>Quiz 22 (More About Strings)</td><td>22-Mar-26</td><td>10</td><td>10</td></tr>
+<tr class="missing-row"><td>Lab 23 (Sets)</td><td>29-Mar-26</td><td>MISSING</td><td>10</td></tr>
+<tr><td>Quiz 23 (Sets)</td><td>29-Mar-26</td><td>10</td><td>10</td></tr>
+<tr class="missing-row"><td>Lab 24 (Dictionaries)</td><td>5-Apr-26</td><td>MISSING</td><td>10</td></tr>
+<tr><td>Quiz 24 (Dictionaries)</td><td>5-Apr-26</td><td>10</td><td>10</td></tr>
+<tr class="missing-row"><td>Assignment (Sets and Dictionary)</td><td>11-Apr-26</td><td>MISSING</td><td>25</td></tr>
+<tr class="missing-row"><td>Lab 25 (Binary and Decimal Conversions)</td><td>12-Apr-26</td><td>MISSING</td><td>10</td></tr>
+<tr><td>Quiz 25 (Binary and Decimal Conversions)</td><td>12-Apr-26</td><td>9</td><td>10</td></tr>
+<tr class="missing-row"><td>Lab 26 (Binary Operations)</td><td>19-Apr-26</td><td>MISSING</td><td>10</td></tr>
+<tr><td>Quiz 26 (Comprehensive Quiz)</td><td>19-Apr-26</td><td>9</td><td>10</td></tr>
+<tr><td>Assignment 7: Magic Square</td><td>6-Mar-27</td><td>24</td><td>25</td></tr>
+      <tr class='total-row'>
+        <td colspan='2'>TOTAL</td>
+        <td>526 pts</td>
+        <td>824 pts | 63.8%</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class='footer'>
+    Learn and Help Program - <a href='https://www.learnandhelp.com'>www.learnandhelp.com</a>
+  </div>
+</body>
+</html>

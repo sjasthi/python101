@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='UTF-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <title>Python 101 - Instructor Overview</title>
+  <style>
+    body         { font-family: Arial, sans-serif; padding: 30px; max-width: 1050px; margin: auto; background: #fafafa; }
+    h1           { color: #2c3e50; margin-bottom: 2px; }
+    h2           { color: #555; font-size: 16px; margin-top: 28px; }
+    .stats-grid  { display: flex; gap: 14px; flex-wrap: wrap; margin: 20px 0 28px; }
+    .stat-card   { background: white; border: 1px solid #ddd; border-radius: 8px; padding: 14px 20px; min-width: 150px; text-align: center; }
+    .stat-label  { font-size: 11px; color: #888; text-transform: uppercase; letter-spacing: 0.5px; }
+    .stat-value  { font-size: 26px; font-weight: bold; color: #2c3e50; margin-top: 4px; }
+    .stat-warn   { color: #e74c3c; }
+    .badge-ok    { background: #27ae60; color: white; padding: 2px 10px; border-radius: 10px; font-size: 12px; }
+    .badge-warn  { background: #e74c3c; color: white; padding: 2px 10px; border-radius: 10px; font-size: 12px; }
+    table        { width: 100%; border-collapse: collapse; font-size: 13px; }
+    th           { background: #2c3e50; color: white; padding: 10px 12px; text-align: left; }
+    td           { padding: 8px 12px; border-bottom: 1px solid #e0e0e0; }
+    tr:hover td  { background: #f0f4f8; }
+    .missing-row td { background: #fff0f0; }
+    .footer      { margin-top: 40px; font-size: 12px; color: #aaa; text-align: center; border-top: 1px solid #eee; padding-top: 14px; }
+    a            { color: #2980b9; }
+  </style>
+</head>
+<body>
+  <h1>Learn and Help - Python 101</h1>
+  <h2>Instructor Overview</h2>
+  <div class='stats-grid'>
+    <div class='stat-card'><div class='stat-label'>Total Students</div><div class='stat-value'>30</div></div>
+    <div class='stat-card'><div class='stat-label'>Assignments</div><div class='stat-value'>60</div></div>
+    <div class='stat-card'><div class='stat-label'>Points Possible</div><div class='stat-value'>824</div></div>
+    <div class='stat-card'><div class='stat-label'>Class Average</div><div class='stat-value'>325.2 pts</div></div>
+    <div class='stat-card'><div class='stat-label'>Class Avg %</div><div class='stat-value'>39.5%</div></div>
+    <div class='stat-card'><div class='stat-label'>Students w/ Missing</div><div class='stat-value stat-warn'>30</div></div>
+  </div>
+  <table>
+    <thead><tr>
+      <th>Student Name</th><th>Email</th><th>Points Earned</th>
+      <th>Points Possible</th><th>Percentage</th><th>Missing</th>
+    </tr></thead>
+    <tbody>
+<tr class="missing-row"><td>fn1 ln1</td><td>fn1.ln1@learnandhelp.com</td><td>147</td><td>824</td><td>17.8%</td><td><span class="badge-warn">Missing: 42</span></td></tr>
+<tr class="missing-row"><td>fn2 ln2</td><td>fn2.ln2@learnandhelp.com</td><td>350</td><td>824</td><td>42.5%</td><td><span class="badge-warn">Missing: 26</span></td></tr>
+<tr class="missing-row"><td>fn3 ln3</td><td>fn3.ln3@learnandhelp.com</td><td>339.5</td><td>824</td><td>41.2%</td><td><span class="badge-warn">Missing: 29</span></td></tr>
+<tr class="missing-row"><td>fn4 ln4</td><td>fn4.ln4@learnandhelp.com</td><td>462</td><td>824</td><td>56.1%</td><td><span class="badge-warn">Missing: 22</span></td></tr>
+<tr class="missing-row"><td>fn5</td><td>fn5.ln5@learnandhelp.com</td><td>341.5</td><td>824</td><td>41.4%</td><td><span class="badge-warn">Missing: 34</span></td></tr>
+<tr class="missing-row"><td>fn6 ln6</td><td>fn6.ln6@learnandhelp.com</td><td>505.5</td><td>824</td><td>61.3%</td><td><span class="badge-warn">Missing: 21</span></td></tr>
+<tr class="missing-row"><td>fn7 ln7</td><td>fn7.ln7@learnandhelp.com</td><td>526</td><td>824</td><td>63.8%</td><td><span class="badge-warn">Missing: 20</span></td></tr>
+<tr class="missing-row"><td>fn8 ln8</td><td>fn8.ln8@learnandhelp.com</td><td>269</td><td>824</td><td>32.6%</td><td><span class="badge-warn">Missing: 38</span></td></tr>
+<tr class="missing-row"><td>fn9 ln9</td><td>fn9.ln9@learnandhelp.com</td><td>195</td><td>824</td><td>23.7%</td><td><span class="badge-warn">Missing: 40</span></td></tr>
+<tr class="missing-row"><td>fn10 ln10</td><td>fn10.ln10@learnandhelp.com</td><td>246.5</td><td>824</td><td>29.9%</td><td><span class="badge-warn">Missing: 30</span></td></tr>
+<tr class="missing-row"><td>fn11 ln11</td><td>fn11.ln11@learnandhelp.com</td><td>526</td><td>824</td><td>63.8%</td><td><span class="badge-warn">Missing: 19</span></td></tr>
+<tr class="missing-row"><td>fn12 ln12</td><td>fn12.ln12@learnandhelp.com</td><td>145</td><td>824</td><td>17.6%</td><td><span class="badge-warn">Missing: 43</span></td></tr>
+<tr class="missing-row"><td>fn13 ln13</td><td>fn13.ln13@learnandhelp.com</td><td>472</td><td>824</td><td>57.3%</td><td><span class="badge-warn">Missing: 24</span></td></tr>
+<tr class="missing-row"><td>fn14 ln14</td><td>fn14.ln14@learnandhelp.com</td><td>231.5</td><td>824</td><td>28.1%</td><td><span class="badge-warn">Missing: 39</span></td></tr>
+<tr class="missing-row"><td>fn15 ln15</td><td>fn15.ln15@learnandhelp.com</td><td>220</td><td>824</td><td>26.7%</td><td><span class="badge-warn">Missing: 35</span></td></tr>
+<tr class="missing-row"><td>fn16 ln16</td><td>fn16.ln16@learnandhelp.com</td><td>362.5</td><td>824</td><td>44.0%</td><td><span class="badge-warn">Missing: 24</span></td></tr>
+<tr class="missing-row"><td>fn17 ln17</td><td>fn17.ln17@learnandhelp.com</td><td>208</td><td>824</td><td>25.2%</td><td><span class="badge-warn">Missing: 45</span></td></tr>
+<tr class="missing-row"><td>fn18 ln18</td><td>fn18.ln18@learnandhelp.com</td><td>236</td><td>824</td><td>28.6%</td><td><span class="badge-warn">Missing: 37</span></td></tr>
+<tr class="missing-row"><td>fn19 ln19</td><td>fn19.ln19@learnandhelp.com</td><td>423.5</td><td>824</td><td>51.4%</td><td><span class="badge-warn">Missing: 22</span></td></tr>
+<tr class="missing-row"><td>fn20</td><td>fn20.ln20@learnandhelp.com</td><td>391</td><td>824</td><td>47.5%</td><td><span class="badge-warn">Missing: 22</span></td></tr>
+<tr class="missing-row"><td>fn21 ln21</td><td>fn21.ln21@learnandhelp.com</td><td>444</td><td>824</td><td>53.9%</td><td><span class="badge-warn">Missing: 25</span></td></tr>
+<tr class="missing-row"><td>fn22 ln22</td><td>fn22.ln22@learnandhelp.com</td><td>131</td><td>824</td><td>15.9%</td><td><span class="badge-warn">Missing: 43</span></td></tr>
+<tr class="missing-row"><td>fn23 ln23</td><td>fn23.ln23@learnandhelp.com</td><td>117.8</td><td>824</td><td>14.3%</td><td><span class="badge-warn">Missing: 43</span></td></tr>
+<tr class="missing-row"><td>fn24 ln24</td><td>fn24.ln24@learnandhelp.com</td><td>374</td><td>824</td><td>45.4%</td><td><span class="badge-warn">Missing: 27</span></td></tr>
+<tr class="missing-row"><td>fn25 ln25</td><td>fn25.ln25@learnandhelp.com</td><td>273</td><td>824</td><td>33.1%</td><td><span class="badge-warn">Missing: 33</span></td></tr>
+<tr class="missing-row"><td>fn26 ln26</td><td>fn26.ln26@learnandhelp.com</td><td>335</td><td>824</td><td>40.7%</td><td><span class="badge-warn">Missing: 30</span></td></tr>
+<tr class="missing-row"><td>fn27 ln27</td><td>fn27.ln27@learnandhelp.com</td><td>338</td><td>824</td><td>41.0%</td><td><span class="badge-warn">Missing: 34</span></td></tr>
+<tr class="missing-row"><td>fn28 ln28</td><td>fn28.ln28@learnandhelp.com</td><td>317</td><td>824</td><td>38.5%</td><td><span class="badge-warn">Missing: 23</span></td></tr>
+<tr class="missing-row"><td>fn29 ln29</td><td>fn29.ln29@learnandhelp.com</td><td>222</td><td>824</td><td>26.9%</td><td><span class="badge-warn">Missing: 31</span></td></tr>
+<tr class="missing-row"><td>fn30 ln30</td><td>fn30.ln30@learnandhelp.com</td><td>607</td><td>824</td><td>73.7%</td><td><span class="badge-warn">Missing: 22</span></td></tr>
+    </tbody>
+  </table>
+  <div class='footer'>
+    Learn and Help Program - <a href='https://www.learnandhelp.com'>www.learnandhelp.com</a>
+  </div>
+</body>
+</html>
