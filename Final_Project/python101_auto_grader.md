@@ -150,6 +150,7 @@ Check each box before you submit:
 - [ ] Handles a missing Parent 2 without crashing
 - [ ] Derives the course name from the filename at runtime — **do not hardcode "Python 101"**
 - [ ] Derives assignment names, due dates, and max points from the file at runtime — **do not hardcode any of these**
+- [ ] Do not import any libraries for reading the files. You should use basic Python.
 - [ ] Generates one HTML file per student saved to `/content/`
 - [ ] Generates the instructor overview HTML saved to `/content/`
 - [ ] Uses **functions** — your code is broken into logical functions, not one giant block
@@ -170,7 +171,7 @@ Check each box before you submit:
 Organize your notebook into these cells. Each cell should have a heading comment:
 
 ```
-Cell 1:  # Step 1 — Import libraries
+Cell 1:  # Step 1 — Declare/Define the filename constants
 
 Cell 2:  # Step 2 — Parse the scores CSV
          def parse_scores(filename): ...
