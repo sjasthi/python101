@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Python 101 — Final Project Requirements Quiz</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg:        #0f1117;
+      --card:      #1a1d2e;
+      --border:    #2a2d42;
+      --teal:      #2dd4bf;
+      --teal-dim:  #14b8a6;
+      --orange:    #fb923c;
+      --amber:     #fbbf24;
+      --green:     #4ade80;
+      --red:       #f87171;
+      --text:      #e2e8f0;
+      --muted:     #94a3b8;
+      --code-bg:   #131720;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      padding: 24px 16px 60px;
+    }
+
+    /* ── Header ── */
+    .header {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+    .header .badge {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--teal), #0ea5e9);
+      color: #0f1117;
+      font-family: 'Fredoka One', cursive;
+      font-size: 13px;
+      letter-spacing: 1.5px;
+      padding: 4px 14px;
+      border-radius: 20px;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+    }
+    .header h1 {
+      font-family: 'Fredoka One', cursive;
+      font-size: clamp(22px, 5vw, 34px);
+      color: var(--teal);
+      line-height: 1.2;
+    }
+    .header p {
+      color: var(--muted);
+      font-size: 14px;
+      margin-top: 6px;
+    }
+
+    /* ── Progress dots ── */
+    .dots {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 28px;
+      flex-wrap: wrap;
+    }
+    .dot {
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      background: var(--border);
+      border: 2px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 11px; font-weight: 700; color: var(--muted);
+      transition: all .3s;
+    }
+    .dot.active  { border-color: var(--teal); color: var(--teal); background: rgba(45,212,191,.12); }
+    .dot.correct { background: var(--green); border-color: var(--green); color: #0f1117; }
+    .dot.wrong   { background: var(--red);   border-color: var(--red);   color: #0f1117; }
+
+    /* ── Question card ── */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      max-width: 720px;
+      margin: 0 auto 20px;
+      padding: 28px;
+      display: none;
+    }
+    .card.active { display: block; animation: fadeIn .35s ease; }
+
+    @keyframes fadeIn { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:translateY(0); } }
+
+    .q-number {
+      font-family: 'Fredoka One', cursive;
+      font-size: 12px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 8px;
+    }
+    .q-text {
+      font-size: 17px;
+      font-weight: 700;
+      line-height: 1.5;
+      margin-bottom: 20px;
+      color: var(--text);
+    }
+    .q-text code {
+      font-family: 'JetBrains Mono', monospace;
+      background: var(--code-bg);
+      color: var(--amber);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+
+    /* ── Options ── */
+    .options { display: flex; flex-direction: column; gap: 10px; }
+
+    .option {
+      background: var(--bg);
+      border: 2px solid var(--border);
+      border-radius: 10px;
+      padding: 13px 16px;
+      cursor: pointer;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text);
+      display: flex; align-items: flex-start; gap: 12px;
+      transition: border-color .2s, background .2s;
+      line-height: 1.4;
+    }
+    .option:hover:not(.locked) { border-color: var(--teal); background: rgba(45,212,191,.06); }
+
+    .option-letter {
+      font-family: 'Fredoka One', cursive;
+      font-size: 15px;
+      color: var(--muted);
+      min-width: 22px;
+      text-align: center;
+      margin-top: 1px;
+    }
+
+    .option.correct-pick { border-color: var(--green); background: rgba(74,222,128,.1); }
+    .option.correct-pick .option-letter { color: var(--green); }
+    .option.wrong-pick   { border-color: var(--red);   background: rgba(248,113,113,.1); }
+    .option.wrong-pick   .option-letter { color: var(--red); }
+    .option.reveal-correct { border-color: var(--green); background: rgba(74,222,128,.07); }
+
+    /* ── Feedback box ── */
+    .feedback {
+      margin-top: 16px;
+      padding: 12px 16px;
+      border-radius: 10px;
+      font-size: 14px;
+      font-weight: 600;
+      display: none;
+      line-height: 1.5;
+    }
+    .feedback.correct { background: rgba(74,222,128,.15); border: 1px solid var(--green); color: var(--green); display: block; }
+    .feedback.wrong   { background: rgba(248,113,113,.12); border: 1px solid var(--red);   color: var(--red);   display: block; }
+
+    /* ── Nav buttons ── */
+    .nav { display: flex; justify-content: flex-end; margin-top: 22px; }
+    .btn {
+      font-family: 'Fredoka One', cursive;
+      font-size: 15px;
+      padding: 10px 26px;
+      border-radius: 30px;
+      border: none;
+      cursor: pointer;
+      transition: transform .15s, opacity .15s;
+      letter-spacing: .5px;
+    }
+    .btn:hover { transform: scale(1.04); }
+    .btn:active { transform: scale(.97); }
+    .btn-next     { background: var(--teal); color: #0f1117; display: none; }
+    .btn-submit   { background: var(--orange); color: #0f1117; display: none; }
+
+    /* ── Score card ── */
+    #score-card {
+      display: none;
+      max-width: 720px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    #score-card.active { display: block; animation: fadeIn .4s ease; }
+
+    .score-ring {
+      width: 140px; height: 140px;
+      border-radius: 50%;
+      border: 6px solid var(--teal);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      margin: 0 auto 20px;
+      background: rgba(45,212,191,.07);
+    }
+    .score-big {
+      font-family: 'Fredoka One', cursive;
+      font-size: 42px;
+      color: var(--teal);
+      line-height: 1;
+    }
+    .score-lbl { font-size: 12px; color: var(--muted); letter-spacing: 1px; text-transform: uppercase; }
+
+    #score-card h2 {
+      font-family: 'Fredoka One', cursive;
+      font-size: 26px;
+      margin-bottom: 8px;
+    }
+    #score-card p { color: var(--muted); font-size: 14px; margin-bottom: 24px; line-height: 1.6; }
+
+    .breakdown {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px;
+      text-align: left;
+      margin-bottom: 24px;
+    }
+    .breakdown-row {
+      display: flex; align-items: flex-start; gap: 10px;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 13px;
+      line-height: 1.5;
+    }
+    .breakdown-row:last-child { border-bottom: none; }
+    .br-icon { font-size: 16px; min-width: 22px; margin-top: 1px; }
+    .br-text  { flex: 1; }
+    .br-text strong { color: var(--text); display: block; }
+    .br-text span   { color: var(--muted); }
+
+    .classroom-box {
+      background: linear-gradient(135deg, rgba(45,212,191,.15), rgba(251,146,60,.1));
+      border: 1px solid var(--teal);
+      border-radius: 14px;
+      padding: 20px 24px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.7;
+    }
+    .classroom-box .cam { font-size: 28px; margin-bottom: 8px; }
+    .classroom-box .step {
+      display: flex; align-items: flex-start; gap: 10px; margin-top: 8px; text-align: left;
+    }
+    .classroom-box .step-num {
+      background: var(--teal); color: #0f1117;
+      font-family: 'Fredoka One', cursive;
+      border-radius: 50%; width: 22px; height: 22px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px; flex-shrink: 0; margin-top: 2px;
+    }
+
+    .btn-restart {
+      background: transparent;
+      border: 2px solid var(--teal);
+      color: var(--teal);
+      margin-top: 12px;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Header -->
+<div class="header">
+  <div class="badge">🐍 Python 101 · Final Project</div>
+  <h1>Auto Grader — Project Requirements Quiz</h1>
+  <p>Metropolitan State University · Learn and Help Program</p>
+</div>
+
+<!-- Dots -->
+<div class="dots" id="dots"></div>
+
+<!-- Questions injected here -->
+<div id="quiz-area"></div>
+
+<!-- Score Card -->
+<div id="score-card">
+  <div class="score-ring">
+    <div class="score-big" id="score-num">0</div>
+    <div class="score-lbl">/ 12</div>
+  </div>
+  <h2 id="score-title"></h2>
+  <p id="score-msg"></p>
+  <div class="breakdown" id="breakdown"></div>
+  <div class="classroom-box">
+    <div class="cam">📸</div>
+    <strong style="font-size:15px;">Submit to Google Classroom</strong>
+    <div class="step"><div class="step-num">1</div><span>Take a <strong>screenshot</strong> showing your quiz score on this screen.</span></div>
+    <div class="step"><div class="step-num">2</div><span>Open <strong>Google Classroom</strong> and find the Final Project assignment.</span></div>
+    <div class="step"><div class="step-num">3</div><span>Attach your screenshot and click <strong>Turn In</strong>.</span></div>
+  </div>
+  <br>
+  <button class="btn btn-restart" onclick="restart()">🔄 Try Again</button>
+</div>
+
+<script>
+const questions = [
+  {
+    text: "Your instructor tests your program with a different CSV file — one with more students, fewer assignments, and different point values than the original. What should happen?",
+    options: ["The program crashes because it only knows about the original assignments", "The program works perfectly — it reads everything from the CSV file at runtime", "The program skips the extra students and only shows the original ones", "The program asks the user to type in the number of students and assignments"],
+    correct: 1,
+    feedback: "✅ Correct! Your program must NEVER hardcode the number of students, number of assignments, or point values. Everything must be read from the CSV file at runtime — so it works with any valid input file."
+  },
+  {
+    text: "What should you name your Colab notebook file?",
+    options: ["final_project.ipynb", "auto_grader.py", "python101_auto_grader.ipynb", "grades.ipynb"],
+    correct: 2,
+    feedback: "✅ Correct! The file must be named <code>python101_auto_grader.ipynb</code> exactly — your instructor will look for this name."
+  },
+  {
+    text: "How many CSV input files does your program read?",
+    options: ["One — just the scores file", "Two — a scores file and an emails file", "Three — scores, emails, and assignments", "None — all data is entered by the user"],
+    correct: 1,
+    feedback: "✅ Correct! Your program reads two CSV files: <code>python_101_scores.csv</code> (grades) and <code>python_101_emails.csv</code> (parent contact info)."
+  },
+  {
+    text: "The file <code>python_101_scores.csv</code> has a special header. How many rows make up that header before the student data begins?",
+    options: ["1 row — just column names", "2 rows — names and due dates", "3 rows — names, due dates, and max points", "4 rows — names, dates, points, and a blank row"],
+    correct: 2,
+    feedback: "✅ Correct! Row 1 = column names, Row 2 = due dates, Row 3 = max points. Student data starts on Row 4."
+  },
+  {
+    text: "A student's score cell in the CSV is blank (empty). How should your program handle it?",
+    options: ["Skip that assignment entirely", "Treat it as a perfect score (full points)", "Treat it as 0 AND mark it as 'Missing' in the report", "Ask the teacher what the score should be"],
+    correct: 2,
+    feedback: "✅ Correct! A blank score means the student did NOT submit. Treat it as 0 in calculations and flag it as Missing — and highlight it in red!"
+  },
+  {
+    text: "How does your program connect a student's score record to their parent contact information?",
+    options: ["By matching the student's first and last name", "By matching the student's email address", "By matching the row number in both files", "By matching the student ID number"],
+    correct: 1,
+    feedback: "✅ Correct! The student's email address appears in both files and is used as the key to link their scores to their parent information."
+  },
+  {
+    text: "What is the correct filename format for an individual student's HTML report?",
+    options: ["student_report.html", "python101_email.html", "python101_firstname_lastname.html", "report_studentid.html"],
+    correct: 2,
+    feedback: "✅ Correct! Example: <code>python101_ali_johnson.html</code>. One file is created per student, saved to <code>/content/</code>."
+  },
+  {
+    text: "What is the name of the HTML file generated for the instructor?",
+    options: ["instructor_report.html", "python101_all_scores.html", "teacher_overview.html", "class_summary.html"],
+    correct: 1,
+    feedback: "✅ Correct! <code>python101_all_scores.html</code> shows a summary table with every student's score, percentage, and missing assignment count."
+  },
+  {
+    text: "Which of the following is a graded Python code requirement (NOT just output formatting)?",
+    options: ["The HTML must use Arial font", "The course name must be hardcoded as 'Python 101'", "Code must use functions, meaningful variable names, and comments", "The report must show exactly 5 columns"],
+    correct: 2,
+    feedback: "✅ Correct! You earn 10 points for using functions, meaningful names, and comments. Your code must never hardcode 'Python 101' — derive it from the filename!"
+  },
+  {
+    text: "What file do you upload to Google Classroom to submit the Final Project?",
+    options: ["All the generated HTML files (.html)", "Your Colab notebook file (python101_auto_grader.ipynb)", "A PDF screenshot of your code", "The two input CSV files"],
+    correct: 1,
+    feedback: "✅ Correct! You submit <strong>one file</strong>: <code>python101_auto_grader.ipynb</code>. Make sure all cells have been run before submitting so your instructor can verify the outputs."
+  },
+  {
+    text: "Which of the following is the correct way to read a CSV file in this project?",
+    options: [
+      "import csv — then use csv.reader() to open the file",
+      "import pandas as pd — then use pd.read_csv()",
+      "Use open() and read the file line by line using basic Python — no libraries",
+      "import numpy as np — then use np.loadtxt()"
+    ],
+    correct: 2,
+    feedback: "✅ Correct! You must use basic Python only — <code>open()</code>, <code>.readlines()</code>, and <code>.split(',')</code>. Do NOT use <code>import csv</code>, <code>pandas</code>, or any other library to read the CSV files."
+  },
+  {
+    text: "A teacher at Learn and Help runs the same program for the Python DS class and the Python ML class — each with their own CSV files. What happens if the program was written correctly with no hardcoding?",
+    options: [
+      "It crashes — the program only works for Python 101",
+      "It works for Python DS but not Python ML because the assignments are different",
+      "It works correctly for all classes — the course name, assignments, and scores are all read from the CSV files",
+      "The teacher needs to edit the code and change the class name each time"
+    ],
+    correct: 2,
+    feedback: "✅ Correct! Because the course name comes from the filename and all assignment names, point values, and student data come from the CSV — the exact same program works for Python 101, Python DS, Python ML, or any other Learn and Help class without changing a single line of code!"
+  }
+];
+
+let current = 0;
+let score   = 0;
+let answers = Array(questions.length).fill(null); // null = unanswered, true/false
+
+// Build dots
+const dotsEl = document.getElementById('dots');
+questions.forEach((_, i) => {
+  const d = document.createElement('div');
+  d.className = 'dot' + (i === 0 ? ' active' : '');
+  d.id = 'dot-' + i;
+  d.textContent = i + 1;
+  dotsEl.appendChild(d);
+});
+
+// Build question cards
+const quizArea = document.getElementById('quiz-area');
+questions.forEach((q, qi) => {
+  const card = document.createElement('div');
+  card.className = 'card' + (qi === 0 ? ' active' : '');
+  card.id = 'card-' + qi;
+
+  const letters = ['A','B','C','D'];
+  const opts = q.options.map((o, oi) =>
+    `<div class="option" id="opt-${qi}-${oi}" onclick="choose(${qi},${oi})">
+       <span class="option-letter">${letters[oi]}</span>
+       <span>${o}</span>
+     </div>`
+  ).join('');
+
+  const isLast = qi === questions.length - 1;
+
+  card.innerHTML = `
+    <div class="q-number">Question ${qi + 1} of ${questions.length}</div>
+    <div class="q-text">${q.text}</div>
+    <div class="options">${opts}</div>
+    <div class="feedback" id="fb-${qi}"></div>
+    <div class="nav">
+      ${isLast
+        ? `<button class="btn btn-submit" id="btn-${qi}" onclick="submitQuiz()">See My Score 🎉</button>`
+        : `<button class="btn btn-next"   id="btn-${qi}" onclick="next(${qi})">Next →</button>`
+      }
+    </div>`;
+  quizArea.appendChild(card);
+});
+
+function choose(qi, oi) {
+  if (answers[qi] !== null) return; // already answered
+
+  const q = questions[qi];
+  const isCorrect = (oi === q.correct);
+  answers[qi] = isCorrect;
+  if (isCorrect) score++;
+
+  // Style options
+  for (let i = 0; i < q.options.length; i++) {
+    const el = document.getElementById(`opt-${qi}-${i}`);
+    el.classList.add('locked');
+    if (i === oi && isCorrect)  el.classList.add('correct-pick');
+    if (i === oi && !isCorrect) el.classList.add('wrong-pick');
+    if (i === q.correct && !isCorrect) el.classList.add('reveal-correct');
+  }
+
+  // Feedback
+  const fb = document.getElementById(`fb-${qi}`);
+  if (isCorrect) {
+    fb.className = 'feedback correct';
+    fb.innerHTML = q.feedback;
+  } else {
+    fb.className = 'feedback wrong';
+    fb.innerHTML = `❌ Not quite! The correct answer is <strong>${['A','B','C','D'][q.correct]}: ${q.options[q.correct]}</strong>.<br>${q.feedback}`;
+  }
+
+  // Update dot
+  const dot = document.getElementById('dot-' + qi);
+  dot.classList.remove('active');
+  dot.classList.add(isCorrect ? 'correct' : 'wrong');
+
+  // Show nav button
+  document.getElementById('btn-' + qi).style.display = 'inline-block';
+}
+
+function next(qi) {
+  document.getElementById('card-' + qi).classList.remove('active');
+  const nextIdx = qi + 1;
+  document.getElementById('card-' + nextIdx).classList.add('active');
+  document.getElementById('dot-' + nextIdx).classList.add('active');
+}
+
+function submitQuiz() {
+  document.getElementById('card-' + (questions.length - 1)).classList.remove('active');
+  document.getElementById('score-card').classList.add('active');
+
+  document.getElementById('score-num').textContent = score;
+
+  let title, msg;
+  if (score === 12) {
+    title = "🏆 Perfect Score!";
+    msg = "You have a crystal-clear understanding of the Auto Grader project requirements. You're ready to start coding!";
+  } else if (score >= 9) {
+    title = "🌟 Almost There!";
+    msg = "Great job! Review the questions you missed, then re-read those sections of the project spec before coding.";
+  } else if (score >= 7) {
+    title = "💡 Good Start!";
+    msg = "You understand the basics, but there are a few requirements to revisit. Re-read the project page carefully before you begin.";
+  } else {
+    title = "📚 Keep Studying!";
+    msg = "It looks like the project requirements need another careful read-through. Go back to the spec, then try the quiz again!";
+  }
+  document.getElementById('score-title').textContent = title;
+  document.getElementById('score-msg').textContent = msg;
+
+  // Breakdown
+  const bd = document.getElementById('breakdown');
+  const topics = [
+    "No hardcoding — works with any number of students, assignments, or point values",
+    "Notebook filename",
+    "Number of input CSV files",
+    "3-row header structure in scores.csv",
+    "Handling blank / missing scores",
+    "Linking students to parent info (by email)",
+    "Individual report filename format",
+    "Instructor overview filename",
+    "Python code quality requirements",
+    "What to submit to Google Classroom",
+    "Reading CSV files using basic Python only — no libraries",
+    "Reusability — same program works for Python DS and Python ML classes"
+  ];
+  bd.innerHTML = topics.map((t, i) => `
+    <div class="breakdown-row">
+      <span class="br-icon">${answers[i] ? '✅' : '❌'}</span>
+      <div class="br-text">
+        <strong>Q${i+1}: ${t}</strong>
+        <span>${answers[i] ? 'Correct' : 'Review needed'}</span>
+      </div>
+    </div>`).join('');
+}
+
+function restart() {
+  score = 0;
+  answers.fill(null);
+  // Reset dots
+  document.querySelectorAll('.dot').forEach((d, i) => {
+    d.className = 'dot' + (i === 0 ? ' active' : '');
+  });
+  // Reset cards
+  document.querySelectorAll('.card').forEach((c, i) => {
+    c.className = 'card' + (i === 0 ? ' active' : '');
+    // Reset options
+    c.querySelectorAll('.option').forEach(o => {
+      o.className = 'option';
+    });
+    // Hide feedback and buttons
+    c.querySelector('.feedback').className = 'feedback';
+    const nav = c.querySelector('.btn');
+    if (nav) nav.style.display = 'none';
+  });
+  // Hide score card
+  document.getElementById('score-card').classList.remove('active');
+}
+</script>
+</body>
+</html>
