@@ -1,0 +1,35 @@
+def process_emails(filename):
+
+1. read the file into a list of lines
+
+2. get rid of the first line throw slicing so that we only have list of student and parent emails.
+
+2.1. create "emails_lookup_tbl". It would be empty now
+
+3. then for each line, do the following
+
+3.1. split the line into tokens. split by comma.
+3.2. extract student's email into a variable. That would be our key
+3.3. create a temporary "parents_dict" variable.
+3.4. populate parents_dict with key value pairs  
+[ln1,fn1,fn1.ln1@learnandhelp.com,P1LName ln1fn1,P2FNameln1fn1,P1_.fn1.ln1@learnandhelp.com,P2LName ln1fn1,P2FNameln1fn1,P2_.fn1.ln1@learnandhelp.com]
+
+KEY: student_s email 
+VALUE: parents_dict {"p1_name" : "5thtoken + 4th token",
+                     "p1_email" : "6th token",
+                     "p2_name" : 7th token + 8th token,
+                     "p2_email" : 9th token}
+
+3.5. Add this KEY-VALUE pair to the temporary dictionary created in 2.1
+emails_lookup_tbl[students_email] = parents_dict
+
+4. return the emails_lookup_tbl
+
+
+
+====================
+
+# test the above methods
+emails_lookup_tbl = process_email(INPUT_EMAILS_FILE)
+for key, value in emails_lookup_tbl.items():
+   print(key, value)
