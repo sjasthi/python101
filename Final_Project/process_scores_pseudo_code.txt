@@ -1,0 +1,45 @@
+def process_scores(filename):
+
+1. read the file into a list of lines
+
+2. get rid of the first three lines throughslicing so that we only have list of student scores
+2.1 first line: assignment line; Split it into tokens and get the assignments list; Get rid of the first three lements
+2.2 second line: due date line; Split it into tokens and get the due dates list; Get rid of the first three elements
+2.3 third line: max_points line; Split it into tokens and get the max_points list; Get rid of the first three elements
+2.4. fourth line and up: those are student scores
+
+2.1. create "students_list". It would be empty now. We will be appending the students to this list  (student = a dictionary)
+
+3. then for each line, do the following
+3.0: create a empty student dictionary "student_dict = {}"
+
+3.1. split the line into tokens. split by comma.
+3.2. extract student's first name, last name and email into vriables. That would be our keys
+Put these keys and values into student_dict
+
+3.3. create a temporary "scores_dict" variable.
+3.4. populate scores_dict with key value pairs  
+KEY: assignment_name (in step 2.1)
+VALUE: split the line into tokens. Get rid of the first 3 elements. Rest of the elements are our scores.
+
+KEY: assignment_name  (Step 2.1)
+VALUE: Score (Step 3.4)
+
+3.5. Add this KEY-VALUE pair to the temporary dictionary created in 3.3 (scores_dict)
+
+3.6. Add scores_dict to student_dict
+students_dict[scores] = scores_dict
+
+3.7. Add this student into the master list
+students_list.append(students_dict)
+
+4. return the students_list
+
+
+
+====================
+
+# test the above methods
+students_list = process_scores(INPUT_SCORES_FILE)
+for student in students_list
+   print(student)
