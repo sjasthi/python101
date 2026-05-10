@@ -91,7 +91,7 @@ Be ready to walk through your code, explain your design choices, and think throu
 
 24. **Your program reads the CSV file once and processes all students from that data. What would be the downside of opening and re-reading the file inside a loop for every student?**
 
-25. **Imagine your school grows from 30 students to 3,000 students next year. Do you think your program would still work? What parts might slow down or break, and how would you improve them?**
+25. **Imagine your program grows from 30 students to 300 students next year. Do you think your program would still work? What parts might slow down or break, and how would you improve them?**
 
 ---
 
