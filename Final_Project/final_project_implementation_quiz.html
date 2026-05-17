@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Final Project Solution Quiz – Python 101 Auto-Grader</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:        #0f1117;
+    --surface:   #1a1d27;
+    --card:      #22263a;
+    --border:    #2e3354;
+    --teal:      #2dd4bf;
+    --teal-dim:  #1a8f80;
+    --orange:    #fb923c;
+    --amber:     #fbbf24;
+    --red:       #f87171;
+    --green:     #4ade80;
+    --text:      #e2e8f0;
+    --muted:     #8892b0;
+    --code-bg:   #12151f;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Nunito', sans-serif;
+    min-height: 100vh;
+    padding: 0 0 60px;
+  }
+
+  /* ── HEADER ── */
+  header {
+    background: linear-gradient(135deg, #0d1b2a 0%, #1a263a 100%);
+    border-bottom: 2px solid var(--teal);
+    padding: 28px 24px 22px;
+    text-align: center;
+  }
+  header .badge {
+    display: inline-block;
+    background: var(--teal-dim);
+    color: var(--bg);
+    font-family: 'Fredoka One', cursive;
+    font-size: .8rem;
+    letter-spacing: .08em;
+    padding: 3px 12px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+  }
+  header h1 {
+    font-family: 'Fredoka One', cursive;
+    font-size: 2rem;
+    color: var(--teal);
+    line-height: 1.15;
+  }
+  header p {
+    color: var(--muted);
+    font-size: .95rem;
+    margin-top: 6px;
+  }
+
+  /* ── LAYOUT ── */
+  .container { max-width: 860px; margin: 0 auto; padding: 30px 20px 0; }
+
+  /* ── PROGRESS ── */
+  .progress-wrap {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 14px 20px;
+    margin-bottom: 28px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .progress-label { font-size: .85rem; color: var(--muted); white-space: nowrap; }
+  .progress-bar-bg {
+    flex: 1;
+    height: 10px;
+    background: var(--border);
+    border-radius: 99px;
+    overflow: hidden;
+  }
+  .progress-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--teal), var(--amber));
+    border-radius: 99px;
+    transition: width .4s ease;
+    width: 0%;
+  }
+  .progress-pct { font-weight: 700; color: var(--teal); font-size: .9rem; white-space: nowrap; }
+
+  /* ── QUESTION CARD ── */
+  .q-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 26px 28px 22px;
+    margin-bottom: 22px;
+    transition: border-color .25s;
+  }
+  .q-card.answered  { border-color: var(--teal-dim); }
+  .q-card.incorrect { border-color: var(--red); }
+
+  .q-num {
+    font-family: 'Fredoka One', cursive;
+    font-size: .78rem;
+    color: var(--amber);
+    letter-spacing: .07em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .q-text {
+    font-size: 1.05rem;
+    font-weight: 700;
+    line-height: 1.55;
+    margin-bottom: 16px;
+  }
+  .q-text code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: .92em;
+    background: var(--code-bg);
+    color: var(--amber);
+    padding: 2px 7px;
+    border-radius: 5px;
+    border: 1px solid var(--border);
+  }
+
+  /* code block */
+  pre.code-block {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: .82rem;
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--teal);
+    border-radius: 8px;
+    padding: 14px 16px;
+    margin: 0 0 18px;
+    overflow-x: auto;
+    white-space: pre;
+    color: #cdd6f4;
+    line-height: 1.6;
+  }
+  pre.code-block .kw  { color: var(--teal);   font-weight: 700; }
+  pre.code-block .fn  { color: var(--amber); }
+  pre.code-block .st  { color: var(--green); }
+  pre.code-block .cm  { color: var(--muted); font-style: italic; }
+  pre.code-block .num { color: var(--orange); }
+
+  /* options */
+  .options { display: flex; flex-direction: column; gap: 10px; }
+  .option-btn {
+    background: var(--surface);
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    color: var(--text);
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-size: .97rem;
+    font-weight: 600;
+    padding: 11px 16px;
+    text-align: left;
+    transition: border-color .2s, background .2s;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .option-btn:hover:not(:disabled) {
+    border-color: var(--teal);
+    background: #1d2238;
+  }
+  .option-btn .opt-letter {
+    font-family: 'Fredoka One', cursive;
+    font-size: .95rem;
+    color: var(--teal);
+    min-width: 22px;
+  }
+  .option-btn code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: .88em;
+    background: var(--code-bg);
+    color: var(--amber);
+    padding: 1px 6px;
+    border-radius: 4px;
+  }
+  .option-btn.correct-ans {
+    border-color: var(--green);
+    background: rgba(74,222,128,.08);
+    color: var(--green);
+  }
+  .option-btn.wrong-ans {
+    border-color: var(--red);
+    background: rgba(248,113,113,.08);
+    color: var(--red);
+  }
+  .option-btn:disabled { cursor: default; }
+
+  /* feedback */
+  .feedback {
+    margin-top: 14px;
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-size: .92rem;
+    font-weight: 700;
+    display: none;
+  }
+  .feedback.show { display: block; }
+  .feedback.ok   { background: rgba(74,222,128,.12); border: 1px solid var(--green); color: var(--green); }
+  .feedback.no   { background: rgba(248,113,113,.12); border: 1px solid var(--red);   color: var(--red);   }
+
+  /* ── SCORE CARD ── */
+  #score-card {
+    display: none;
+    background: linear-gradient(135deg, var(--surface), var(--card));
+    border: 2px solid var(--teal);
+    border-radius: 20px;
+    padding: 40px 30px;
+    text-align: center;
+    margin-top: 10px;
+  }
+  #score-card h2 {
+    font-family: 'Fredoka One', cursive;
+    font-size: 2rem;
+    color: var(--teal);
+    margin-bottom: 6px;
+  }
+  #score-big {
+    font-family: 'Fredoka One', cursive;
+    font-size: 4rem;
+    color: var(--amber);
+    line-height: 1.1;
+  }
+  #score-pct {
+    font-size: 1.2rem;
+    color: var(--muted);
+    margin-bottom: 18px;
+  }
+  #score-message {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+  }
+  .submit-note {
+    background: var(--code-bg);
+    border: 1px dashed var(--amber);
+    border-radius: 10px;
+    color: var(--amber);
+    font-size: .92rem;
+    font-weight: 700;
+    padding: 14px 18px;
+    margin-top: 16px;
+  }
+  .submit-note span { color: var(--text); font-weight: 600; }
+
+  /* ── SUBMIT BTN ── */
+  #submit-btn {
+    display: block;
+    width: 100%;
+    max-width: 380px;
+    margin: 28px auto 0;
+    padding: 16px;
+    background: linear-gradient(135deg, var(--teal-dim), var(--teal));
+    border: none;
+    border-radius: 12px;
+    color: var(--bg);
+    cursor: pointer;
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.25rem;
+    letter-spacing: .04em;
+    transition: opacity .2s, transform .15s;
+  }
+  #submit-btn:hover { opacity: .88; transform: translateY(-2px); }
+  #submit-btn:disabled { opacity: .35; cursor: default; transform: none; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="badge">Python 101 · Final Project</div>
+  <h1>Auto-Grader Solution Quiz</h1>
+  <p>20 Questions · Read the code carefully · Submit your score screenshot to Google Classroom</p>
+</header>
+
+<div class="container">
+
+  <div class="progress-wrap">
+    <span class="progress-label">Progress</span>
+    <div class="progress-bar-bg"><div class="progress-bar-fill" id="prog-fill"></div></div>
+    <span class="progress-pct" id="prog-pct">0 / 20</span>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════ Q1 -->
+  <div class="q-card" id="qc1">
+    <div class="q-num">Question 1 of 20</div>
+    <div class="q-text">
+      In <strong>Step 1</strong>, the variable <code>COURSE_NAME</code> is built by splitting
+      <code>INPUT_SCORES_FILE_NAME</code> on <code>"_"</code>.
+      If the file is named <code>"python_101_scores.csv"</code>, what is the value stored in <code>COURSE_NAME</code>?
+    </div>
+    <div class="options" id="opts1">
+      <button class="option-btn" onclick="answer(1,'A')"><span class="opt-letter">A</span> <code>python_101</code></button>
+      <button class="option-btn" onclick="answer(1,'B')"><span class="opt-letter">B</span> <code>Python 101</code></button>
+      <button class="option-btn" onclick="answer(1,'C')"><span class="opt-letter">C</span> <code>PYTHON 101</code></button>
+      <button class="option-btn" onclick="answer(1,'D')"><span class="opt-letter">D</span> <code>Python_101</code></button>
+    </div>
+    <div class="feedback" id="fb1"></div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════ Q2 -->
+  <div class="q-card" id="qc2">
+    <div class="q-num">Question 2 of 20</div>
+    <div class="q-text">
+      Which Python method is used in <strong>Step 2</strong> to read the entire scores CSV file into a list of lines — <em>without</em> using <code>import csv</code>?
+    </div>
+    <div class="options" id="opts2">
+      <button class="option-btn" onclick="answer(2,'A')"><span class="opt-letter">A</span> <code>file_obj.read()</code></button>
+      <button class="option-btn" onclick="answer(2,'B')"><span class="opt-letter">B</span> <code>file_obj.readline()</code></button>
+      <button class="option-btn" onclick="answer(2,'C')"><span class="opt-letter">C</span> <code>file_obj.readlines()</code></button>
+      <button class="option-btn" onclick="answer(2,'D')"><span class="opt-letter">D</span> <code>csv.reader(file_obj)</code></button>
+    </div>
+    <div class="feedback" id="fb2"></div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════ Q3 -->
+  <div class="q-card" id="qc3">
+    <div class="q-num">Question 3 of 20</div>
+    <div class="q-text">
+      In the scores CSV, each row is split on <code>','</code>. Assignment names are found in <code>scores_lines[0]</code>.
+      Which slice is used to extract them (skipping the first three columns)?
+    </div>
+    <div class="options" id="opts3">
+      <button class="option-btn" onclick="answer(3,'A')"><span class="opt-letter">A</span> <code>scores_lines[0].split(',')[0:3]</code></button>
+      <button class="option-btn" onclick="answer(3,'B')"><span class="opt-letter">B</span> <code>scores_lines[0].split(',')[3:]</code></button>
+      <button class="option-btn" onclick="answer(3,'C')"><span class="opt-letter">C</span> <code>scores_lines[0].split(',')[1:]</code></button>
+      <button class="option-btn" onclick="answer(3,'D')"><span class="opt-letter">D</span> <code>scores_lines[0].split(',')[:3]</code></button>
+    </div>
+    <div class="feedback" id="fb3"></div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════ Q4 -->
+  <div class="q-card" id="qc4">
+    <div class="q-num">Question 4 of 20</div>
+    <div class="q-text">
+      Which row index in the CSV holds the <strong>max points</strong> for each assignment, and what conversion is applied to each value?
+    </div>
+    <div class="options" id="opts4">
+      <button class="option-btn" onclick="answer(4,'A')"><span class="opt-letter">A</span> Row index <strong>1</strong>, converted to <code>float</code></button>
+      <button class="option-btn" onclick="answer(4,'B')"><span class="opt-letter">B</span> Row index <strong>2</strong>, converted to <code>int</code></button>
+      <button class="option-btn" onclick="answer(4,'C')"><span class="opt-letter">C</span> Row index <strong>3</strong>, converted to <code>int</code></button>
+      <button class="option-btn" onclick="answer(4,'D')"><span class="opt-letter">D</span> Row index <strong>0</strong>, converted to <code>str</code></button>
+    </div>
+    <div class="feedback" id="fb4"></div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════ Q5 -->
+  <div class="q-card" id="qc5">
+    <div class="q-num">Question 5 of 20</div>
+    <div class="q-text">
+      The <code>assignments_list</code> is a list of <strong>dictionaries</strong>.
+      What are the three keys in each assignment dictionary?
+    </div>
+    <div class="options" id="opts5">
+      <button class="option-btn" onclick="answer(5,'A')"><span class="opt-letter">A</span> <code>name</code>, <code>date</code>, <code>points</code></button>
+      <button class="option-btn" onclick="answer(5,'B')"><span class="opt-letter">B</span> <code>assignment_name</code>, <code>due_date</code>, <code>max_points</code></button>
+      <button class="option-btn" onclick="answer(5,'C')"><span class="opt-letter">C</span> <code>title</code>, <code>deadline</code>, <code>total</code></button>
+      <button class="option-btn" onclick="answer(5,'D')"><span class="opt-letter">D</span> <code>assignment</code>, <code>due</code>, <code>max</code></button>
+    </div>
+    <div class="feedback" id="fb5"></div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════ Q6 -->
+  <div class="q-card" id="qc6">
+    <div class="q-num">Question 6 of 20</div>
+    <div class="q-text">
+      Student rows in the scores CSV start at which line index of <code>scores_lines</code>?
+    </div>
+    <div class="options" id="opts6">
+      <button class="option-btn" onclick="answer(6,'A')"><span class="opt-letter">A</span> Index <strong>0</strong></button>
+      <button class="option-btn" onclick="answer(6,'B')"><span class="opt-letter">B</span> Index <strong>1</strong></button>
+      <button class="option-btn" onclick="answer(6,'C')"><span class="opt-letter">C</span> Index <strong>2</strong></button>
+      <button class="option-btn" onclick="answer(6,'D')"><span class="opt-letter">D</span> Index <strong>3</strong></button>
+    </div>
+    <div class="feedback" id="fb6"></div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════ Q7 -->
+  <div class="q-card" id="qc7">
+    <div class="q-num">Question 7 of 20</div>
+    <div class="q-text">
+      When building <code>scores_dict</code>, what value is stored for an assignment if the student's score cell is <strong>blank</strong> in the CSV?
+    </div>
+    <div class="options" id="opts7">
+      <button class="option-btn" onclick="answer(7,'A')"><span class="opt-letter">A</span> <code>0</code></button>
+      <button class="option-btn" onclick="answer(7,'B')"><span class="opt-letter">B</span> <code>""</code> (empty string)</button>
+      <button class="option-btn" onclick="answer(7,'C')"><span class="opt-letter">C</span> <code>None</code></button>
+      <button class="option-btn" onclick="answer(7,'D')"><span class="opt-letter">D</span> <code>"MISSING"</code></button>
+    </div>
+    <div class="feedback" id="fb7"></div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════ Q8 -->
+  <div class="q-card" id="qc8">
+    <div class="q-num">Question 8 of 20</div>
+    <div class="q-text">
+      What are the three keys used for each student dictionary in <code>students_list</code>?
+      (Hint: think about what the code used to look up parent emails in Step 6.)
+    </div>
+    <div class="options" id="opts8">
+      <button class="option-btn" onclick="answer(8,'A')"><span class="opt-letter">A</span> <code>first_name</code>, <code>last_name</code>, <code>email</code></button>
+      <button class="option-btn" onclick="answer(8,'B')"><span class="opt-letter">B</span> <code>first</code>, <code>last</code>, <code>email</code></button>
+      <button class="option-btn" onclick="answer(8,'C')"><span class="opt-letter">C</span> <code>fname</code>, <code>lname</code>, <code>mail</code></button>
+      <button class="option-btn" onclick="answer(8,'D')"><span class="opt-letter">D</span> <code>given</code>, <code>family</code>, <code>address</code></button>
+    </div>
+    <div class="feedback" id="fb8"></div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════ Q9 -->
+  <div class="q-card" id="qc9">
+    <div class="q-num">Question 9 of 20</div>
+    <div class="q-text">
+      In <strong>Step 3</strong> (<code>parse_emails</code>), what data structure is returned — and what is used as the <strong>key</strong>?
+    </div>
+    <div class="options" id="opts9">
+      <button class="option-btn" onclick="answer(9,'A')"><span class="opt-letter">A</span> A <strong>list of lists</strong>, keyed by row number</button>
+      <button class="option-btn" onclick="answer(9,'B')"><span class="opt-letter">B</span> A <strong>dict</strong>, keyed by the student's <strong>email address</strong></button>
+      <button class="option-btn" onclick="answer(9,'C')"><span class="opt-letter">C</span> A <strong>dict</strong>, keyed by the student's <strong>last name</strong></button>
+      <button class="option-btn" onclick="answer(9,'D')"><span class="opt-letter">D</span> A <strong>tuple</strong> of parent name pairs</button>
+    </div>
+    <div class="feedback" id="fb9"></div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════ Q10 -->
+  <div class="q-card" id="qc10">
+    <div class="q-num">Question 10 of 20</div>
+    <div class="q-text">
+      In <code>parse_emails</code>, Parent 1's name is built by combining two tokens from the CSV row.
+      Which two are they?
+    </div>
+    <div class="options" id="opts10">
+      <button class="option-btn" onclick="answer(10,'A')"><span class="opt-letter">A</span> <code>row_tokens[0]</code> (student last) + <code>row_tokens[1]</code> (student first)</button>
+      <button class="option-btn" onclick="answer(10,'B')"><span class="opt-letter">B</span> <code>row_tokens[3]</code> (P1 last) + <code>row_tokens[4]</code> (P1 first)</button>
+      <button class="option-btn" onclick="answer(10,'C')"><span class="opt-letter">C</span> <code>row_tokens[4]</code> (P1 first) + <code>row_tokens[3]</code> (P1 last)</button>
+      <button class="option-btn" onclick="answer(10,'D')"><span class="opt-letter">D</span> <code>row_tokens[5]</code> (P1 email) + <code>row_tokens[6]</code> (P2 last)</button>
+    </div>
+    <div class="feedback" id="fb10"></div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════ Q11 -->
+  <div class="q-card" id="qc11">
+    <div class="q-num">Question 11 of 20</div>
+    <div class="q-text">
+      In <code>build_student_html</code> (Step 4), how is a student's <strong>total earned score</strong> calculated when some assignments are <code>None</code> (not submitted)?
+    </div>
+    <div class="options" id="opts11">
+      <button class="option-btn" onclick="answer(11,'A')"><span class="opt-letter">A</span> <code>None</code> values are skipped and not counted at all</button>
+      <button class="option-btn" onclick="answer(11,'B')"><span class="opt-letter">B</span> <code>None</code> values are treated as <code>0</code> using <code>score or 0</code></button>
+      <button class="option-btn" onclick="answer(11,'C')"><span class="opt-letter">C</span> <code>None</code> values cause a crash, so the student is skipped</button>
+      <button class="option-btn" onclick="answer(11,'D')"><span class="opt-letter">D</span> <code>None</code> values are replaced by the max points for that assignment</button>
+    </div>
+    <div class="feedback" id="fb11"></div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════ Q12 -->
+  <div class="q-card" id="qc12">
+    <div class="q-num">Question 12 of 20</div>
+    <div class="q-text">
+      In the HTML report table, what text is displayed in the score column when a student's score is <code>None</code>?
+    </div>
+    <div class="options" id="opts12">
+      <button class="option-btn" onclick="answer(12,'A')"><span class="opt-letter">A</span> <code>None</code></button>
+      <button class="option-btn" onclick="answer(12,'B')"><span class="opt-letter">B</span> <code>0</code></button>
+      <button class="option-btn" onclick="answer(12,'C')"><span class="opt-letter">C</span> <code>MISSING</code></button>
+      <button class="option-btn" onclick="answer(12,'D')"><span class="opt-letter">D</span> <code>N/A</code></button>
+    </div>
+    <div class="feedback" id="fb12"></div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════ Q13 -->
+  <div class="q-card" id="qc13">
+    <div class="q-num">Question 13 of 20</div>
+    <div class="q-text">
+      The <strong>Parent 2</strong> row is only added to a student's HTML report under a certain condition.
+      What is that condition?
+    </div>
+    <div class="options" id="opts13">
+      <button class="option-btn" onclick="answer(13,'A')"><span class="opt-letter">A</span> Always included, even if blank</button>
+      <button class="option-btn" onclick="answer(13,'B')"><span class="opt-letter">B</span> Only if both <code>p2_name</code> AND <code>p2_email</code> are non-empty</button>
+      <button class="option-btn" onclick="answer(13,'C')"><span class="opt-letter">C</span> If <code>p2_name</code> OR <code>p2_email</code> has any data</button>
+      <button class="option-btn" onclick="answer(13,'D')"><span class="opt-letter">D</span> Only if the student has missing assignments</button>
+    </div>
+    <div class="feedback" id="fb13"></div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════ Q14 -->
+  <div class="q-card" id="qc14">
+    <div class="q-num">Question 14 of 20</div>
+    <div class="q-text">
+      In both the student and instructor HTML reports, what CSS class is applied to a <code>&lt;tr&gt;</code> row that represents a <strong>missing</strong> assignment or student with missing work?
+    </div>
+    <div class="options" id="opts14">
+      <button class="option-btn" onclick="answer(14,'A')"><span class="opt-letter">A</span> <code>class="absent-row"</code></button>
+      <button class="option-btn" onclick="answer(14,'B')"><span class="opt-letter">B</span> <code>class="missing-row"</code></button>
+      <button class="option-btn" onclick="answer(14,'C')"><span class="opt-letter">C</span> <code>class="red-row"</code></button>
+      <button class="option-btn" onclick="answer(14,'D')"><span class="opt-letter">D</span> <code>class="warn-row"</code></button>
+    </div>
+    <div class="feedback" id="fb14"></div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════ Q15 -->
+  <div class="q-card" id="qc15">
+    <div class="q-num">Question 15 of 20</div>
+    <div class="q-text">
+      In <code>build_instructor_html</code> (Step 5), what four <strong>summary stat cards</strong> are shown at the top of the instructor overview page?
+    </div>
+    <div class="options" id="opts15">
+      <button class="option-btn" onclick="answer(15,'A')"><span class="opt-letter">A</span> Student count, assignment count, total possible points, class average %</button>
+      <button class="option-btn" onclick="answer(15,'B')"><span class="opt-letter">B</span> Highest score, lowest score, median score, standard deviation</button>
+      <button class="option-btn" onclick="answer(15,'C')"><span class="opt-letter">C</span> Student count, pass rate, fail rate, missing count</button>
+      <button class="option-btn" onclick="answer(15,'D')"><span class="opt-letter">D</span> Assignment count, due dates, instructor name, course name</button>
+    </div>
+    <div class="feedback" id="fb15"></div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════ Q16 -->
+  <div class="q-card" id="qc16">
+    <div class="q-num">Question 16 of 20</div>
+    <div class="q-text">
+      How is the <strong>class average percentage</strong> calculated in <code>build_instructor_html</code>?
+    </div>
+    <div class="options" id="opts16">
+      <button class="option-btn" onclick="answer(16,'A')"><span class="opt-letter">A</span> Sum of all earned scores ÷ (number of students × total possible points) × 100</button>
+      <button class="option-btn" onclick="answer(16,'B')"><span class="opt-letter">B</span> Average earned score ÷ total possible points × 100</button>
+      <button class="option-btn" onclick="answer(16,'C')"><span class="opt-letter">C</span> Number of passing students ÷ total students × 100</button>
+      <button class="option-btn" onclick="answer(16,'D')"><span class="opt-letter">D</span> Highest score ÷ lowest score × 100</button>
+    </div>
+    <div class="feedback" id="fb16"></div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════ Q17 -->
+  <div class="q-card" id="qc17">
+    <div class="q-num">Question 17 of 20</div>
+    <div class="q-text">
+      In <strong>Step 6</strong> (<code>main()</code>), in what order are the steps called?
+    </div>
+    <div class="options" id="opts17">
+      <button class="option-btn" onclick="answer(17,'A')"><span class="opt-letter">A</span> Parse emails → Parse scores → Build student reports → Build instructor report</button>
+      <button class="option-btn" onclick="answer(17,'B')"><span class="opt-letter">B</span> Parse scores → Parse emails → Build student reports → Build instructor report</button>
+      <button class="option-btn" onclick="answer(17,'C')"><span class="opt-letter">C</span> Build reports → Parse scores → Parse emails → Download files</button>
+      <button class="option-btn" onclick="answer(17,'D')"><span class="opt-letter">D</span> Parse scores → Build instructor report → Parse emails → Build student reports</button>
+    </div>
+    <div class="feedback" id="fb17"></div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════ Q18 -->
+  <div class="q-card" id="qc18">
+    <div class="q-num">Question 18 of 20</div>
+    <div class="q-text">
+      What is the naming format for each <strong>individual student HTML file</strong> generated in Step 6?
+      (e.g., for a student named <em>Ana Garcia</em>)
+    </div>
+    <div class="options" id="opts18">
+      <button class="option-btn" onclick="answer(18,'A')"><span class="opt-letter">A</span> <code>Ana_Garcia.html</code></button>
+      <button class="option-btn" onclick="answer(18,'B')"><span class="opt-letter">B</span> <code>python101_ana_garcia.html</code></button>
+      <button class="option-btn" onclick="answer(18,'C')"><span class="opt-letter">C</span> <code>report_ana_garcia.html</code></button>
+      <button class="option-btn" onclick="answer(18,'D')"><span class="opt-letter">D</span> <code>student_ana.html</code></button>
+    </div>
+    <div class="feedback" id="fb18"></div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════ Q19 -->
+  <div class="q-card" id="qc19">
+    <div class="q-num">Question 19 of 20</div>
+    <div class="q-text">
+      What is the exact filename of the <strong>instructor overview</strong> HTML file written in Step 6?
+    </div>
+    <div class="options" id="opts19">
+      <button class="option-btn" onclick="answer(19,'A')"><span class="opt-letter">A</span> <code>python101_instructor.html</code></button>
+      <button class="option-btn" onclick="answer(19,'B')"><span class="opt-letter">B</span> <code>overview.html</code></button>
+      <button class="option-btn" onclick="answer(19,'C')"><span class="opt-letter">C</span> <code>python101_all_scores.html</code></button>
+      <button class="option-btn" onclick="answer(19,'D')"><span class="opt-letter">D</span> <code>instructor_report.html</code></button>
+    </div>
+    <div class="feedback" id="fb19"></div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════ Q20 -->
+  <div class="q-card" id="qc20">
+    <div class="q-num">Question 20 of 20</div>
+    <div class="q-text">
+      In <strong>Step 7</strong>, what is the <em>only</em> <code>import</code> statement in the entire project — and why is it only used in this step?
+    </div>
+    <div class="options" id="opts20">
+      <button class="option-btn" onclick="answer(20,'A')"><span class="opt-letter">A</span> <code>import csv</code> — needed to download files from Colab</button>
+      <button class="option-btn" onclick="answer(20,'B')"><span class="opt-letter">B</span> <code>from google.colab import files</code> — it is a Colab-specific utility to trigger browser downloads; there is no pure-Python substitute</button>
+      <button class="option-btn" onclick="answer(20,'C')"><span class="opt-letter">C</span> <code>import os</code> — needed to list files in the directory</button>
+      <button class="option-btn" onclick="answer(20,'D')"><span class="opt-letter">D</span> <code>import pandas as pd</code> — needed to format the final output</button>
+    </div>
+    <div class="feedback" id="fb20"></div>
+  </div>
+
+  <!-- Submit -->
+  <button id="submit-btn" onclick="submitQuiz()" disabled>Submit Quiz</button>
+
+  <!-- Score card -->
+  <div id="score-card">
+    <h2>🎉 Quiz Complete!</h2>
+    <div id="score-big"></div>
+    <div id="score-pct"></div>
+    <div id="score-message"></div>
+    <div class="submit-note">
+      📸 <span>Take a screenshot of this score and submit it to</span> Google Classroom
+    </div>
+  </div>
+
+</div><!-- /container -->
+
+<script>
+const ANSWERS = {
+  1:'B', 2:'C', 3:'B', 4:'B', 5:'B',
+  6:'D', 7:'C', 8:'B', 9:'B', 10:'B',
+  11:'B', 12:'C', 13:'C', 14:'B', 15:'A',
+  16:'B', 17:'B', 18:'B', 19:'C', 20:'B'
+};
+
+const EXPLANATIONS = {
+  1:  "The file name splits into ['python','101','scores.csv']. tokens[0].title() gives 'Python' and tokens[1] gives '101', so COURSE_NAME = 'Python 101'.",
+  2:  "The solution uses file_obj.readlines() to load all lines at once into a list — no import csv needed.",
+  3:  "scores_lines[0].split(',')[3:] skips the first three columns (Last, First, Email) and grabs everything from index 3 onward.",
+  4:  "Row index 2 holds max points, and [int(a) for a in max_points] converts each string to an integer.",
+  5:  "Each assignment dict has exactly three keys: 'assignment_name', 'due_date', and 'max_points'.",
+  6:  "Rows 0, 1, and 2 are the header rows (names, dates, max points). Student data starts at index 3: student_rows = scores_lines[3:].",
+  7:  "scores_dict[key] = float(score_str) if score_str else None — a blank cell becomes None, not 0 or ''.",
+  8:  "The student dict uses the keys 'first', 'last', and 'email'. Using 'first_name' or 'last_name' would cause a KeyError in Steps 4 and 6.",
+  9:  "parse_emails() returns a dict (email_lookup_tbl) keyed by each student's email address string.",
+  10: "p1_name = row_tokens[3].strip() + ' ' + row_tokens[4].strip() — Last name first, then first name.",
+  11: "The expression 'student[\"scores\"].get(a[\"assignment_name\"]) or 0' converts None to 0 so arithmetic works correctly.",
+  12: "When is_missing is True, score_display = 'MISSING' is shown in the table cell.",
+  13: "if p2_name or p2_email: — the Parent 2 row appears if either field has any data.",
+  14: "row_class = ' class=\"missing-row\"' is applied to &lt;tr&gt; elements with missing assignments.",
+  15: "The four stat cards are: number of students, number of assignments, total possible points, and class average percentage.",
+  16: "class_avg = sum(all_earned_scores) / num_students; class_avg_pct = (class_avg / total_possible * 100).",
+  17: "main() calls: process_scores → parse_emails → build_student_html (loop) → build_instructor_html.",
+  18: "filename = 'python101_' + first.lower() + '_' + last.lower() + '.html', e.g. python101_ana_garcia.html.",
+  19: "The instructor overview is saved as 'python101_all_scores.html'.",
+  20: "from google.colab import files is the only import. It is a Colab-specific utility — there is no pure-Python substitute for triggering browser downloads."
+};
+
+let answered = 0;
+const total   = 20;
+let score     = 0;
+
+function answer(qNum, choice) {
+  const btns = document.querySelectorAll(`#opts${qNum} .option-btn`);
+  btns.forEach(b => b.disabled = true);
+
+  const correct = ANSWERS[qNum];
+  const isRight = (choice === correct);
+
+  btns.forEach(b => {
+    const letter = b.querySelector('.opt-letter').textContent.trim();
+    if (letter === correct)   b.classList.add('correct-ans');
+    if (letter === choice && !isRight) b.classList.add('wrong-ans');
+  });
+
+  const fb   = document.getElementById(`fb${qNum}`);
+  const card = document.getElementById(`qc${qNum}`);
+  fb.classList.add('show');
+
+  if (isRight) {
+    score++;
+    fb.classList.add('ok');
+    fb.textContent = '✅ Correct! ' + EXPLANATIONS[qNum];
+    card.classList.add('answered');
+  } else {
+    fb.classList.add('no');
+    fb.textContent = '❌ Not quite. ' + EXPLANATIONS[qNum];
+    card.classList.add('incorrect');
+  }
+
+  answered++;
+  updateProgress();
+  if (answered === total) document.getElementById('submit-btn').disabled = false;
+}
+
+function updateProgress() {
+  const pct = Math.round((answered / total) * 100);
+  document.getElementById('prog-fill').style.width = pct + '%';
+  document.getElementById('prog-pct').textContent  = answered + ' / ' + total;
+}
+
+function submitQuiz() {
+  document.getElementById('submit-btn').style.display = 'none';
+  const pct = Math.round((score / total) * 100);
+  const sc  = document.getElementById('score-card');
+  sc.style.display = 'block';
+  document.getElementById('score-big').textContent = score + ' / ' + total;
+  document.getElementById('score-pct').textContent = pct + '% — ' + getGrade(pct);
+
+  let msg = '';
+  if      (pct === 100) msg = '🏆 Perfect score! You nailed every detail of the Auto-Grader!';
+  else if (pct >= 85)   msg = '🌟 Excellent work! You understand the solution really well.';
+  else if (pct >= 70)   msg = '👍 Good job! Review the questions you missed and you\'ll be all set.';
+  else if (pct >= 50)   msg = '📖 Keep going! Re-read the notebook and try to trace through each step.';
+  else                   msg = '💡 Give the solution another read — focus on the data structures and function flow.';
+  document.getElementById('score-message').textContent = msg;
+}
+
+function getGrade(pct) {
+  if (pct >= 90) return 'A';
+  if (pct >= 80) return 'B';
+  if (pct >= 70) return 'C';
+  if (pct >= 60) return 'D';
+  return 'F';
+}
+</script>
+</body>
+</html>
