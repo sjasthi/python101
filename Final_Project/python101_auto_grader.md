@@ -391,17 +391,17 @@ See the **HTML Template B** section below for the complete starter code.
 **What to put here:** Define a function called `main()` that calls all the functions above in the right order and writes the HTML files to disk. Then call `main()` at the bottom of the cell.
 
 **Step-by-step plan:**
-0. Create a written_files list to keep track off all the files generated
-1. Call `process_scores(INPUT_SCORES_FILE_NAME)` → get `assignments` and `students`
-2. Call `parse_emails(INPUT_EMAILS_FILE_NAME)` → get `email_lookup`
-3. Loop through every student:
+1. Create a written_files list to keep track off all the files generated
+2. Call `process_scores(INPUT_SCORES_FILE_NAME)` → get `assignments` and `students`
+3. Call `parse_emails(INPUT_EMAILS_FILE_NAME)` → get `email_lookup`
+4. Loop through every student:
    - Look up their parents: `parents = email_lookup.get(student["email"], {})`
    - Call `build_student_html(student, assignments, parents, COURSE_NAME)` to get the HTML string
    - Build the output filename: `"python101_" + first + "_" + last + ".html"` (lowercase, underscores)
    - Write the HTML string to `/content/<filename>` using `open()` + `.write()`
    - Append the output filename to written_files list
-4. Call `build_instructor_html(students, assignments, COURSE_NAME)` and write it to `/content/python101_all_scores.html`. Append the output filename to written_files list
-5. Return the list of all written filepaths (return written_files)
+5. Call `build_instructor_html(students, assignments, COURSE_NAME)` and write it to `/content/python101_all_scores.html`. Append the output filename to written_files list
+6. Return the list of all written filepaths (return written_files)
 
 > 💡 **Why pass `{}` as the default in `.get(email, {})`?** If a student's email is not found in the email file, you get an empty dictionary. Then inside `build_student_html`, the `.get("p1_name", "Not on file")` calls handle it gracefully — no crash.
 
