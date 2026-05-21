@@ -1,0 +1,9 @@
+[1] Given a variable name, identify its style.
+
+kebab-case → user-profile
+camelCase → userProfile
+PascalCase → UserProfile
+pothole_case (aka snake_case) → user_profile
+
+
+[2] 
