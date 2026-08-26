@@ -8,6 +8,59 @@ The goal of this project is to decode an English-language message that has been 
 
 ---
 
+
+## What is a Substitution Cipher?
+
+A **substitution cipher** is a method of encoding a message by replacing each letter in the original message with another letter according to a fixed mapping.
+
+For example, suppose part of the mapping is:
+
+```text
+Original:  a  b  c  d  e
+Encoded:   q  w  e  r  t
+```
+
+Using this mapping, every `a` in the original message would be replaced with `q`, every `b` with `w`, every `c` with `e`, and so on.
+
+The important rule is **consistency**: the same plaintext letter is always replaced by the same encoded letter throughout the message.
+
+Although the letters are changed, many characteristics of the original English message remain visible:
+
+- Spaces between words
+- Word lengths
+- Repeated words
+- Repeated letter patterns
+- Frequency of letters
+- Common one-letter, two-letter, and three-letter word patterns
+
+These clues can be used to decode the message.
+
+For example, if the encoded word:
+
+```text
+gsc
+```
+
+appears frequently, you might hypothesize that it represents the common English word:
+
+```text
+the
+```
+
+If that assumption is correct, you have discovered three possible mappings:
+
+```text
+g -> t
+s -> h
+c -> e
+```
+
+You can then apply these mappings throughout the encoded message and examine the partially decoded text for additional clues.
+
+In this project, you will use this type of reasoning together with **character frequency analysis** and a Python **dictionary** to gradually determine the substitution mapping and recover the original message.
+
+---
+
 ## Encoded Message
 
 Use the following encoded message as the input to your program:
