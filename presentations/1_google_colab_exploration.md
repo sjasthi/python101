@@ -2,7 +2,7 @@
 ***Empowering Minds, Inspiring Generosity!***
 [**www.learnandhelp.com**](https://www.learnandhelp.com)
 
-# Day 1 Lab: Exploring Python with Google Colab
+# 1: Exploring Python with Google Colab
 
 Welcome to Python 101! 🎉 [www.learnandhelp.com](http://www.learnandhelp.com)
 
