@@ -1,3 +1,15 @@
+<p align="center">
+  <img src="https://www.learnandhelp.com/images/supported_by/learn_n_help_logo.png"
+       alt="Learn and Help Logo"
+       width="288">
+  <br>
+  <strong><em>Empowering Minds, Inspiring Generosity!</em></strong>
+  <br>
+  <a href="https://www.learnandhelp.com">
+    <strong>www.learnandhelp.com</strong>
+  </a>
+</p>
+
 # Day 1 Lab: Exploring Python with Python Tutor
 
 Welcome to Python 101! 🎉 www.learnandhelp.com
