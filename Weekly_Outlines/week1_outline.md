@@ -32,10 +32,14 @@ Available by appointment for additional support and clarification on course mate
 
 ### Google Colab
 Access online Python environment - Google search "colab"
+**Website:** [Google Colab - An Introduction]([http://www.pythontutor.com](https://github.com/sjasthi/python101/blob/main/presentations/1_google_colab_exploration.md))
 
 ### Python Tutor
 Visualize code execution step by step
+**Website:** [Python Tutor - An introduction][(http://www.pythontutor.com](https://github.com/sjasthi/python101/blob/main/presentations/1_python_tutor_exploration.md)
 **Website:** [www.pythontutor.com](http://www.pythontutor.com)
+
+
 
 ## 11. What is Due Today?
 - **Quiz 1**
