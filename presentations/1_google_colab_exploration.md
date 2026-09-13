@@ -1,6 +1,15 @@
-[![Learn and Help Logo](https://camo.githubusercontent.com/4e696aa0eed667371abb77976144886b839368a38d42b6358ab0a62501ae1bcc/68747470733a2f2f7777772e6c6561726e616e6468656c702e636f6d2f696d616765732f737570706f727465645f62792f6c6561726e5f6e5f68656c705f6c6f676f2e706e67)](https://camo.githubusercontent.com/4e696aa0eed667371abb77976144886b839368a38d42b6358ab0a62501ae1bcc/68747470733a2f2f7777772e6c6561726e616e6468656c702e636f6d2f696d616765732f737570706f727465645f62792f6c6561726e5f6e5f68656c705f6c6f676f2e706e67)
-***Empowering Minds, Inspiring Generosity!***
-[**www.learnandhelp.com**](https://www.learnandhelp.com)
+<p align="center">
+  <img src="https://www.learnandhelp.com/images/supported_by/learn_n_help_logo.png"
+       alt="Learn and Help Logo"
+       width="288">
+  <br>
+  <strong><em>Empowering Minds, Inspiring Generosity!</em></strong>
+  <br>
+  <a href="https://www.learnandhelp.com">
+    <strong>www.learnandhelp.com</strong>
+  </a>
+</p>
+
 
 # 1: Exploring Python with Google Colab
 
