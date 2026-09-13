@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Week 1: Python, PythonTutor & Colab</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #12181f;
+    --panel: #1a232d;
+    --panel-2: #212c38;
+    --border: #2c3947;
+    --text: #e7edf3;
+    --text-dim: #9fb0c0;
+    --teal: #2dd4bf;
+    --amber: #f5b942;
+    --orange: #ff8a4c;
+    --red: #ff6b6b;
+    --green: #4ade80;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family: 'Nunito', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    padding: 24px 14px;
+    display: flex;
+    justify-content: center;
+  }
+  .wrap { width: 100%; max-width: 880px; }
+  header {
+    text-align: center;
+    padding: 26px 20px 22px;
+    background: linear-gradient(135deg, #1b3b3a 0%, #17222c 100%);
+    border: 1px solid var(--border);
+    border-radius: 18px 18px 0 0;
+  }
+  header h1 {
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.9rem;
+    color: var(--teal);
+    letter-spacing: .5px;
+  }
+  header p { color: var(--text-dim); margin-top: 8px; font-size: 1.02rem; }
+
+  .tabs {
+    display: flex;
+    background: var(--panel-2);
+    border-left: 1px solid var(--border);
+    border-right: 1px solid var(--border);
+    overflow-x: auto;
+  }
+  .tab-btn {
+    flex: 1;
+    min-width: 140px;
+    padding: 15px 8px;
+    background: none;
+    border: none;
+    color: var(--text-dim);
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    font-size: 0.98rem;
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    transition: all .2s ease;
+    white-space: nowrap;
+  }
+  .tab-btn:hover { color: var(--text); background: rgba(255,255,255,0.03); }
+  .tab-btn.active { color: var(--teal); border-bottom-color: var(--teal); background: var(--panel); }
+
+  .panel {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-top: none;
+    border-radius: 0 0 18px 18px;
+    padding: 30px 28px 34px;
+    min-height: 420px;
+  }
+  .tab-content { display: none; animation: fadeIn .25s ease; }
+  .tab-content.active { display: block; }
+  @keyframes fadeIn { from{opacity:0; transform: translateY(6px);} to{opacity:1; transform:none;} }
+
+  .tab-content h2 {
+    font-family: 'Fredoka One', cursive;
+    color: var(--amber);
+    font-size: 1.5rem;
+    margin-bottom: 6px;
+  }
+  .tab-content .lead { color: var(--text-dim); margin-bottom: 22px; font-size: 1.02rem; }
+
+  .card-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: 16px; margin: 20px 0; }
+  .info-card {
+    background: var(--panel-2);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--teal);
+    border-radius: 12px;
+    padding: 16px 18px;
+  }
+  .info-card h4 { font-size: 1.02rem; margin-bottom: 6px; color: var(--text); }
+  .info-card p { color: var(--text-dim); font-size: 0.93rem; line-height: 1.5; }
+
+  pre, code {
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .code-block {
+    background: #0d1319;
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--orange);
+    border-radius: 10px;
+    padding: 16px 18px;
+    margin: 16px 0;
+    overflow-x: auto;
+  }
+  .code-block pre { white-space: pre; color: #d4e8e2; font-size: 0.95rem; }
+
+  .step-list { margin: 18px 0; padding-left: 0; list-style: none; counter-reset: step; }
+  .step-list li {
+    counter-increment: step;
+    position: relative;
+    padding: 10px 0 10px 44px;
+    color: var(--text-dim);
+    font-size: 0.98rem;
+    border-bottom: 1px dashed var(--border);
+  }
+  .step-list li:last-child { border-bottom: none; }
+  .step-list li::before {
+    content: counter(step);
+    position: absolute;
+    left: 0; top: 8px;
+    width: 28px; height: 28px;
+    background: var(--teal);
+    color: #0d1319;
+    font-weight: 800;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.9rem;
+  }
+  .step-list b { color: var(--text); }
+
+  .link-btn {
+    display: inline-block;
+    margin-top: 14px;
+    background: linear-gradient(135deg, var(--teal), #1aa89a);
+    color: #062824;
+    font-weight: 800;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 24px;
+    font-size: 0.95rem;
+  }
+
+  .nav-hint { text-align:center; margin-top: 26px; color: var(--text-dim); font-size: 0.92rem; }
+  .nav-hint b { color: var(--amber); }
+
+  /* Quiz styling */
+  .quiz-progress {
+    width: 100%; height: 8px; background: var(--panel-2);
+    border-radius: 4px; overflow: hidden; margin-bottom: 22px;
+  }
+  .quiz-progress-fill { height: 100%; background: var(--teal); width: 0%; transition: width .4s ease; }
+
+  .q-number {
+    display: inline-block;
+    background: var(--panel-2);
+    border: 1px solid var(--border);
+    color: var(--amber);
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    margin-bottom: 16px;
+  }
+  .q-text { font-size: 1.25rem; margin-bottom: 20px; line-height: 1.4; }
+  .q-code {
+    background: #0d1319;
+    border-left: 4px solid var(--teal);
+    border-radius: 10px;
+    padding: 16px 20px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.15rem;
+    margin-bottom: 20px;
+  }
+  .answers { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: 12px; }
+  .answer-btn {
+    background: var(--panel-2);
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 16px 18px;
+    border-radius: 12px;
+    font-size: 1.02rem;
+    font-weight: 700;
+    cursor: pointer;
+    text-align: left;
+    transition: all .2s ease;
+  }
+  .answer-btn:hover { border-color: var(--teal); transform: translateY(-2px); }
+  .answer-btn.correct { background: rgba(74,222,128,0.18); border-color: var(--green); color: var(--green); }
+  .answer-btn.incorrect { background: rgba(255,107,107,0.18); border-color: var(--red); color: var(--red); }
+  .answer-btn[disabled] { cursor: default; transform: none; }
+
+  .feedback {
+    margin-top: 20px; padding: 16px 18px; border-radius: 12px;
+    font-size: 0.98rem; display: none; line-height: 1.5;
+  }
+  .feedback.correct { display:block; background: rgba(74,222,128,0.12); border: 1px solid var(--green); color: #cdf7dc; }
+  .feedback.incorrect { display:block; background: rgba(255,107,107,0.12); border: 1px solid var(--red); color: #ffd9d9; }
+
+  .next-btn, .start-btn, .restart-btn {
+    margin-top: 22px;
+    background: var(--teal);
+    color: #062824;
+    border: none;
+    padding: 13px 28px;
+    border-radius: 24px;
+    font-weight: 800;
+    font-size: 1rem;
+    cursor: pointer;
+    display: none;
+  }
+  .start-btn, .restart-btn { display: inline-block; }
+  .next-btn:hover, .start-btn:hover, .restart-btn:hover { background: #24b6a4; }
+
+  .quiz-screen { display:none; }
+  .quiz-screen.active { display:block; }
+  .quiz-start { text-align:center; }
+  .quiz-start .badges { display:flex; flex-wrap:wrap; gap:10px; justify-content:center; margin: 18px 0 22px; }
+  .badge {
+    background: var(--panel-2); border: 1px solid var(--border);
+    padding: 8px 14px; border-radius: 18px; font-size: 0.88rem; color: var(--text-dim);
+  }
+
+  .result-screen { text-align: center; }
+  .score-display { font-family: 'Fredoka One', cursive; font-size: 3rem; color: var(--teal); margin: 14px 0; }
+  .score-msg { color: var(--text-dim); font-size: 1.1rem; margin-bottom: 20px; }
+  .submit-box {
+    background: rgba(245,185,66,0.1);
+    border: 1px solid var(--amber);
+    border-radius: 12px;
+    padding: 18px 20px;
+    margin-top: 22px;
+    color: #ffe4b0;
+    font-size: 0.98rem;
+    text-align: left;
+  }
+  .submit-box b { color: var(--amber); }
+
+  @media (max-width: 620px) {
+    header h1 { font-size: 1.5rem; }
+    .panel { padding: 22px 16px 28px; }
+    .tab-btn { font-size: 0.85rem; padding: 12px 6px; }
+    .q-text { font-size: 1.08rem; }
+    .score-display { font-size: 2.3rem; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <h1>🐍 Week 1: Python, PythonTutor &amp; Colab</h1>
+    <p>Your first playbook — learn the tools, then take the quiz!</p>
+  </header>
+
+  <div class="tabs">
+    <button class="tab-btn active" data-tab="python">🐍 Python</button>
+    <button class="tab-btn" data-tab="pythontutor">🔍 PythonTutor</button>
+    <button class="tab-btn" data-tab="colab">☁️ Colab</button>
+    <button class="tab-btn" data-tab="quiz">📝 Quiz</button>
+  </div>
+
+  <div class="panel">
+
+    <!-- TAB 1: PYTHON -->
+    <div class="tab-content active" id="tab-python">
+      <h2>What is Python?</h2>
+      <p class="lead">Welcome to your very first class! Let's meet the programming language we'll use all year.</p>
+
+      <div class="card-row">
+        <div class="info-card">
+          <h4>🗣️ It's a language</h4>
+          <p>Python is a way to give instructions to a computer, just like English is a way to talk to a person — except the computer needs very exact instructions.</p>
+        </div>
+        <div class="info-card">
+          <h4>😀 It's beginner-friendly</h4>
+          <p>Python reads almost like plain English, which is why it's one of the most popular first languages to learn — for kids and professionals alike!</p>
+        </div>
+        <div class="info-card">
+          <h4>🌍 It's everywhere</h4>
+          <p>Python powers apps like Instagram and Spotify, helps scientists analyze data, and is used to build AI like ChatGPT.</p>
+        </div>
+      </div>
+
+      <p class="lead" style="margin-top:24px;">Here is your very first line of Python code:</p>
+      <div class="code-block"><pre>print("Hello, World!")</pre></div>
+      <p class="lead">This line tells the computer: "Show the text Hello, World! on the screen." The word <code>print</code> is a command, and the text in quotes is what gets displayed.</p>
+
+      <div class="card-row">
+        <div class="info-card">
+          <h4>📄 .py files</h4>
+          <p>Python code is saved in files that end with <code>.py</code>, for example <code>myfirstprogram.py</code>.</p>
+        </div>
+        <div class="info-card">
+          <h4># Comments</h4>
+          <p>Anything after a <code>#</code> symbol is a note for humans — the computer ignores it. Example: <code># this prints a greeting</code></p>
+        </div>
+      </div>
+
+      <p class="nav-hint">Next up: two free tools we'll use to write and run Python — <b>PythonTutor</b> and <b>Google Colab</b>. Click the next tab! ➡️</p>
+    </div>
+
+    <!-- TAB 2: PYTHONTUTOR -->
+    <div class="tab-content" id="tab-pythontutor">
+      <h2>🔍 Meet PythonTutor.com</h2>
+      <p class="lead">PythonTutor is a free website that lets you <b>watch your code run, one step at a time</b> — like an X-ray for your program.</p>
+
+      <ol class="step-list">
+        <li>Go to <b>pythontutor.com</b> and choose "Start visualizing your code now."</li>
+        <li>Pick <b>Python</b> as the language.</li>
+        <li>Type in a few lines of code (or paste some in).</li>
+        <li>Click <b>Visualize Execution</b>.</li>
+        <li>Press <b>Next &gt;</b> to step through your code one line at a time and watch variables appear on the right side of the screen.</li>
+      </ol>
+
+      <div class="card-row">
+        <div class="info-card">
+          <h4>👀 See variables change</h4>
+          <p>As each line runs, you can watch values appear and change in real time — great for understanding what's actually happening.</p>
+        </div>
+        <div class="info-card">
+          <h4>🆓 No install needed</h4>
+          <p>It works right in your web browser. Nothing to download.</p>
+        </div>
+        <div class="info-card">
+          <h4>🐛 Great for finding bugs</h4>
+          <p>When code doesn't do what you expect, stepping through it slowly often reveals exactly where it went wrong.</p>
+        </div>
+      </div>
+
+      <a class="link-btn" href="https://pythontutor.com" target="_blank" rel="noopener">Open pythontutor.com ↗</a>
+
+      <p class="nav-hint">Next up: where we'll actually write and save our Python programs — <b>Google Colab</b>. ➡️</p>
+    </div>
+
+    <!-- TAB 3: COLAB -->
+    <div class="tab-content" id="tab-colab">
+      <h2>☁️ Meet Google Colab</h2>
+      <p class="lead">Google Colab (short for "Colaboratory") is a free tool from Google that lets you write and run Python code directly in your web browser — no installation required.</p>
+
+      <div class="card-row">
+        <div class="info-card">
+          <h4>🌐 Runs in the browser</h4>
+          <p>No software to install. If you can open a web page, you can run Python.</p>
+        </div>
+        <div class="info-card">
+          <h4>💾 Saves to Google Drive</h4>
+          <p>Your Colab notebooks (files ending in <code>.ipynb</code>) are automatically saved to your Google Drive.</p>
+        </div>
+        <div class="info-card">
+          <h4>🧩 Cells</h4>
+          <p>Colab notebooks are made of "cells." You type code into a cell and run just that piece of code.</p>
+        </div>
+      </div>
+
+      <ol class="step-list">
+        <li>Go to <b>colab.research.google.com</b> and sign in with your Google account.</li>
+        <li>Click <b>New notebook</b>.</li>
+        <li>Click inside the first gray box (a "code cell") and type: <code>print("Hello, World!")</code></li>
+        <li>Press <b>Shift + Enter</b> (or click the ▶ Play button) to run the cell.</li>
+        <li>Your output appears right below the cell!</li>
+      </ol>
+
+      <a class="link-btn" href="https://colab.research.google.com" target="_blank" rel="noopener">Open Google Colab ↗</a>
+
+      <p class="nav-hint">Ready to check what you've learned? Click the <b>Quiz</b> tab! ➡️</p>
+    </div>
+
+    <!-- TAB 4: QUIZ -->
+    <div class="tab-content" id="tab-quiz">
+
+      <div class="quiz-screen active" id="quizStart">
+        <div class="quiz-start">
+          <h2>📝 Week 1 Quiz</h2>
+          <p class="lead">10 quick questions on Python, PythonTutor, and Colab.</p>
+          <div class="badges">
+            <span class="badge">📝 10 questions</span>
+            <span class="badge">🎯 No time limit</span>
+            <span class="badge">📸 Screenshot your score</span>
+          </div>
+          <button class="start-btn" onclick="startQuiz()">🚀 Start Quiz</button>
+        </div>
+      </div>
+
+      <div class="quiz-screen" id="quizQuestion">
+        <div class="quiz-progress"><div class="quiz-progress-fill" id="progressFill"></div></div>
+        <div class="q-number" id="qNumber">Question 1 of 10</div>
+        <div class="q-text" id="qText"></div>
+        <div class="answers" id="answers"></div>
+        <div class="feedback" id="feedback"></div>
+        <button class="next-btn" id="nextBtn" onclick="nextQuestion()">Next Question →</button>
+      </div>
+
+      <div class="quiz-screen" id="quizResult">
+        <div class="result-screen">
+          <h2>🎉 Quiz Complete!</h2>
+          <div class="score-display" id="scoreDisplay">0/10</div>
+          <div class="score-msg" id="scoreMsg"></div>
+          <button class="restart-btn" onclick="restartQuiz()">🔄 Try Again</button>
+          <div class="submit-box">
+            📸 <b>Submission:</b> Take a screenshot of this results screen showing your score, and submit it to <b>Google Classroom</b> for Week 1.
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+<script>
+  // Tab switching
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+    });
+  });
+
+  // Quiz data
+  const questions = [
+    {
+      q: "What is Python?",
+      options: ["A type of snake only", "A programming language", "A web browser", "A video game"],
+      correct: 1,
+      explain: "Python is a programming language — a way to give instructions to a computer."
+    },
+    {
+      q: "What file extension do Python files use?",
+      options: [".py", ".doc", ".exe", ".html"],
+      correct: 0,
+      explain: "Python files end in .py, for example hello.py."
+    },
+    {
+      q: "What command displays text on the screen in Python?",
+      options: ["show()", "print()", "display()", "output()"],
+      correct: 1,
+      explain: "print() is the command used to display text or values on the screen."
+    },
+    {
+      q: "What symbol starts a comment in Python (a note the computer ignores)?",
+      options: ["//", "#", "**", "<!--"],
+      correct: 1,
+      explain: "In Python, anything after a # is a comment meant for humans, not the computer."
+    },
+    {
+      q: "What is PythonTutor.com mainly used for?",
+      options: [
+        "Buying Python textbooks",
+        "Visualizing code execution step by step",
+        "Editing photos",
+        "Sending emails"
+      ],
+      correct: 1,
+      explain: "PythonTutor.com lets you step through code one line at a time and watch variables change."
+    },
+    {
+      q: "On PythonTutor, what do you click to move through your code one line at a time?",
+      options: ["Delete", "Next >", "Save", "Print"],
+      correct: 1,
+      explain: "Clicking Next > steps through the code one line at a time."
+    },
+    {
+      q: "What is Google Colab?",
+      options: [
+        "A tool to run Python code in your browser, no install needed",
+        "A social media app",
+        "A physical computer lab",
+        "A programming language"
+      ],
+      correct: 0,
+      explain: "Google Colab lets you write and run Python code directly in your browser without installing anything."
+    },
+    {
+      q: "Where are Google Colab notebooks automatically saved?",
+      options: ["On a USB drive", "Google Drive", "Nowhere, they disappear", "Your printer"],
+      correct: 1,
+      explain: "Colab notebooks (.ipynb files) are saved automatically to your Google Drive."
+    },
+    {
+      q: "How do you run a code cell in Google Colab?",
+      options: [
+        "Press Shift + Enter or click the ▶ Play button",
+        "Close the browser",
+        "Restart your computer",
+        "Right-click and print"
+      ],
+      correct: 0,
+      explain: "Pressing Shift + Enter (or clicking the Play button) runs the current code cell."
+    },
+    {
+      q: "True or False: You must install Python on your own computer before you can use Google Colab.",
+      options: ["True", "False"],
+      correct: 1,
+      explain: "False! Colab runs in the browser and needs no installation at all."
+    }
+  ];
+
+  let current = 0;
+  let score = 0;
+
+  function showScreen(id) {
+    document.querySelectorAll('.quiz-screen').forEach(s => s.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+  }
+
+  function startQuiz() {
+    current = 0;
+    score = 0;
+    showScreen('quizQuestion');
+    showQuestion();
+  }
+
+  function showQuestion() {
+    const item = questions[current];
+    document.getElementById('progressFill').style.width = (current / questions.length * 100) + '%';
+    document.getElementById('qNumber').textContent = `Question ${current + 1} of ${questions.length}`;
+    document.getElementById('qText').textContent = item.q;
+
+    const answersDiv = document.getElementById('answers');
+    answersDiv.innerHTML = '';
+    item.options.forEach((opt, i) => {
+      const btn = document.createElement('button');
+      btn.className = 'answer-btn';
+      btn.textContent = opt;
+      btn.onclick = () => selectAnswer(i);
+      answersDiv.appendChild(btn);
+    });
+
+    document.getElementById('feedback').style.display = 'none';
+    document.getElementById('nextBtn').style.display = 'none';
+  }
+
+  function selectAnswer(i) {
+    const item = questions[current];
+    const buttons = document.querySelectorAll('.answer-btn');
+    buttons.forEach(b => b.disabled = true);
+
+    const feedback = document.getElementById('feedback');
+    if (i === item.correct) {
+      score++;
+      buttons[i].classList.add('correct');
+      feedback.className = 'feedback correct';
+      feedback.innerHTML = `<strong>Correct! 🎉</strong><br>${item.explain}`;
+    } else {
+      buttons[i].classList.add('incorrect');
+      buttons[item.correct].classList.add('correct');
+      feedback.className = 'feedback incorrect';
+      feedback.innerHTML = `<strong>Not quite. 🤔</strong> The correct answer was <b>${item.options[item.correct]}</b>.<br>${item.explain}`;
+    }
+    feedback.style.display = 'block';
+    document.getElementById('nextBtn').style.display = 'inline-block';
+  }
+
+  function nextQuestion() {
+    current++;
+    if (current >= questions.length) {
+      showResults();
+    } else {
+      showQuestion();
+    }
+  }
+
+  function showResults() {
+    document.getElementById('progressFill').style.width = '100%';
+    showScreen('quizResult');
+    document.getElementById('scoreDisplay').textContent = `${score}/${questions.length}`;
+    let msg;
+    if (score >= 9) msg = "Outstanding! You're ready to start coding! 🏆";
+    else if (score >= 7) msg = "Great job! You've got the basics down. 🎯";
+    else if (score >= 5) msg = "Good start — review the tabs and try again! 📚";
+    else msg = "No worries — revisit the Python, PythonTutor, and Colab tabs, then retake it! 💪";
+    document.getElementById('scoreMsg').textContent = msg;
+  }
+
+  function restartQuiz() {
+    showScreen('quizStart');
+  }
+</script>
+</body>
+</html>
