@@ -10,7 +10,7 @@
   </a>
 </p>
 
-# Day 1 Lab: Exploring Python with Python Tutor
+# 1: Exploring Python with Python Tutor
 
 Welcome to Python 101! 🎉 www.learnandhelp.com
 
