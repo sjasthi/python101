@@ -6,8 +6,8 @@
 | ---- | ------------ | ------------ | -------------------------------------------------------------------------------------------------------------- | ---------------------------- | ------ | ------------- |
 | 1    | Sep 13, 2026 | Sep 19, 2026 | 1. python: introduction                                                                                      |                              | Lab 1  | Quiz 1        |
 | 2    | Sep 20, 2026 | Sep 26, 2026 | 2.1. data types, variables                                                                                    |                              | Lab 2  | Quiz 2        |
-| 3    | Sep 27, 2026 | Oct 3, 2026  | 2.2. arithmetic operators                                                                                     |                              | Lab 3  | Quiz 3        |
-| 4    | Oct 4, 2026  | Oct 10, 2026 | 2.3. print and input                                                                                          | Assignment 1                 | Lab 4  | Quiz 4        |
+| 3    | Sep 27, 2026 | Oct 3, 2026  | 2.2. print, input and type 2.3. arithmetic operators                                                                                   |                              | Lab 3  | Quiz 3        |
+| 4    | Oct 4, 2026  | Oct 10, 2026 | 2.4. Input, Processing, and Output (IPO) Summary                                                                                          | Assignment 1                 | Lab 4  | Quiz 4        |
 | 5    | Oct 11, 2026 | Oct 17, 2026 | 3.1. Boolean logic and or not; 3.2. conditions                                                                |                              | Lab 5  | Quiz 5        |
 | 6    | Oct 18, 2026 | Oct 24, 2026 | 3.2. conditions (contd.) 3.3. Short Circuit Evaluation                                                        | Assignment 2                 | Lab 6  | Quiz 6        |
 | 7    | Oct 25, 2026 | Oct 31, 2026 | 4.1. iterations, random number generation, while                                                              |                              | Lab 7  | Quiz 7        |
