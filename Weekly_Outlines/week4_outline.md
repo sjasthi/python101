@@ -4,9 +4,13 @@
 
 ### [1] Chapter 2 Concepts Google Colab Notebook
 - **Link:** [ch2_concepts_input_processing_output.ipynb](https://github.com/sjasthi/python101/blob/main/ch2_concepts_input_processing_output.ipynb)
-- **Description:** Core concepts covering inputs, processing, and output in Python
+- **Description:** Core concepts covering inputs, processing, and output
 
-### [2] Chapter 2 Presentations
+### [1] Chapter 2 Skeleton: Programming Exercises Notebook
+- **Link:** [ch2_skeleton_input_processing_output.ipynb](https://github.com/sjasthi/python101/blob/main/ch2_skeleton_input_processing_output.ipynb)
+- **Description:** Programming exercises covering inputs, processing, and output
+- 
+### [3] Chapter 2 Presentations
 - **Location:** [presentations/](https://github.com/sjasthi/python101/tree/main/presentations)
 - **Focus:** All presentations starting with the number 2
 - **Content:** Comprehensive slides covering Chapter 2 topics
@@ -37,6 +41,7 @@ https://github.com/sjasthi/python101/blob/main/Labs/4_input_processing_output.ip
 
 ### Due by End of Week (Saturday 10/10)
 - 📝 **Assignment 1 (Programming Assignments 13 and 14)**
+- - **Link:** [ch2_skeleton_input_processing_output.ipynb](https://github.com/sjasthi/python101/blob/main/ch2_skeleton_input_processing_output.ipynb)
 
 ## 🎯 Learning Objectives
 By the end of this week, students should be able to:
@@ -48,3 +53,4 @@ By the end of this week, students should be able to:
 ---
 
 **Note:** Make sure to review all materials and complete practice problems before attempting the assignments.
+Watch this video on how to submit the assignment to google classroom https://www.youtube.com/watch?v=HQbTjH0lu-4&t=12s  
