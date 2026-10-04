@@ -1,56 +1,56 @@
-# Week 4: Chapter 2 (Inputs, Processing, Output)
+# Week 4 Outline - Python 101
 
-## 📚 Review Materials
+**Topic:** Chapter 2: Input, Processing, and Output
 
-### [1] Chapter 2 Concepts Google Colab Notebook
-- **Link:** [ch2_concepts_input_processing_output.ipynb](https://github.com/sjasthi/python101/blob/main/ch2_concepts_input_processing_output.ipynb)
-- **Description:** Core concepts covering inputs, processing, and output
+## 1. Review Materials
 
-### [1] Chapter 2 Skeleton: Programming Exercises Notebook
-- **Link:** [ch2_skeleton_input_processing_output.ipynb](https://github.com/sjasthi/python101/blob/main/ch2_skeleton_input_processing_output.ipynb)
-- **Description:** Programming exercises covering inputs, processing, and output
-- 
-### [3] Chapter 2 Presentations
-- **Location:** [presentations/](https://github.com/sjasthi/python101/tree/main/presentations)
-- **Focus:** All presentations starting with the number 2
-- **Content:** Comprehensive slides covering Chapter 2 topics
+### Concepts Notebook
 
-## 💻 Practice
+- **Link:** [Chapter 2: Input, Processing, and Output](https://github.com/sjasthi/python101/blob/main/colab_notebooks/ch2_concepts_input_processing_output.ipynb)
+- **Description:** Review the core concepts of input, processing, and output.
 
-### Programming Assignments
-- **Main Notebook:** [ch2_skeleton_programming_exercises.ipynb](https://github.com/sjasthi/python101/blob/main/skeletons_programming_assignments/ch2_skeleton_programming_exercises.ipynb)
+### Programming Exercises Notebook
 
-#### In-Class Activities
-- **Problems 1-9:** Practice exercises to be completed during class
-- **Problem 10:Lab 4**
-- **Problems 11 and 12:** Instructor demonstration
+- **Link:** [Chapter 2: Programming Exercises](https://github.com/sjasthi/python101/blob/main/skeletons_programming_assignments/ch2_skeleton_programming_exercises.ipynb)
+- **Description:** Use this notebook for the practice exercises and Assignment 1.
 
+### Presentations
 
+- **Location:** [Presentations folder](https://github.com/sjasthi/python101/tree/main/presentations)
+- **Focus:** Review the Chapter 2 presentations (filenames beginning with `2_`).
 
-#### Individual Assignments
-- **Problems 13 & 14: Assignment 1** Individual problem-solving exercises
+## 2. Practice and Programming Assignments
 
-## 📅 Due Dates
+Use the [Chapter 2 Programming Exercises notebook](https://github.com/sjasthi/python101/blob/main/skeletons_programming_assignments/ch2_skeleton_programming_exercises.ipynb) for the following activities.
 
-###[3] Quiz (10/4)
+### In-Class Activities
 
-https://github.com/sjasthi/python101/blob/main/Quizzes/2_4_what_would_python_print_quiz.html
+- **Problems 1–9:** Complete these practice exercises during class.
+- **Problem 10:** Practice for Lab 4.
+- **Problems 11 and 12:** Follow the instructor's demonstration.
 
-### [4] Lab (10/10)
-https://github.com/sjasthi/python101/blob/main/Labs/4_input_processing_output.ipynb
+### Individual Assignment
 
-### Due by End of Week (Saturday 10/10)
-- 📝 **Assignment 1 (Programming Assignments 13 and 14)**
-- - **Link:** [ch2_skeleton_input_processing_output.ipynb](https://github.com/sjasthi/python101/blob/main/ch2_skeleton_input_processing_output.ipynb)
+- **Assignment 1 — Problems 13 and 14:** Complete these problems individually.
 
-## 🎯 Learning Objectives
+## 3. Due Dates
+
+| Activity | Due Date | Resource |
+| --- | --- | --- |
+| Quiz 4: What Would Python Print? | October 4 | [Quiz 4](https://github.com/sjasthi/python101/blob/main/Quizzes/2_4_what_would_python_print_quiz.html) |
+| Lab 4: Input, Processing, and Output | October 10 | [Lab 4 notebook](https://github.com/sjasthi/python101/blob/main/Labs/4_input_processing_output.ipynb) |
+| Assignment 1: Problems 13 and 14 | Saturday, October 10 (end of week) | [Chapter 2 Programming Exercises notebook](https://github.com/sjasthi/python101/blob/main/skeletons_programming_assignments/ch2_skeleton_programming_exercises.ipynb) |
+
+## 4. Learning Objectives
+
 By the end of this week, students should be able to:
-- Understand the fundamental concepts of input, processing, and output
-- Implement basic input/output operations in Python
-- Apply processing techniques to manipulate data
-- Complete programming exercises demonstrating these concepts
 
----
+- Explain the roles of input, processing, and output in a Python program.
+- Use basic input and output operations in Python.
+- Apply arithmetic operations to process data.
+- Write programs that combine input, processing, and output.
 
-**Note:** Make sure to review all materials and complete practice problems before attempting the assignments.
-Watch this video on how to submit the assignment to google classroom https://www.youtube.com/watch?v=HQbTjH0lu-4&t=12s  
+## 5. Reminders
+
+- Review the materials and complete the practice problems before attempting Assignment 1.
+- Watch [How to Submit an Assignment to Google Classroom](https://www.youtube.com/watch?v=HQbTjH0lu-4&t=12s) for submission instructions.
