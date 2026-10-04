@@ -17,22 +17,25 @@
 - **Main Notebook:** [ch2_skeleton_programming_exercises.ipynb](https://github.com/sjasthi/python101/blob/main/skeletons_programming_assignments/ch2_skeleton_programming_exercises.ipynb)
 
 #### In-Class Activities
-- **Problems 1-10:** Practice exercises to be completed during class
-- **Programming Assignment 11:** Instructor demonstration
+- **Problems 1-9:** Practice exercises to be completed during class
+- **Problem 10:Lab 4**
+- **Problems 11 and 12:** Instructor demonstration
 
-#### Lab Assignment
-- **Programming Assignment 12:** Lab 4 (student completion)
+
 
 #### Individual Assignments
-- **Programming Assignments 13 & 14:** Individual problem-solving exercises
+- **Problems 13 & 14: Assignment 1** Individual problem-solving exercises
 
 ## 📅 Due Dates
 
-### Due Today
-- ✅ **Lab 4** (Programming Assignment 12)
-- ✅ **Quiz 4**
+###[3] Quiz (10/4)
 
-### Due by End of Week (Saturday 10/4)
+https://github.com/sjasthi/python101/blob/main/Quizzes/2_4_what_would_python_print_quiz.html
+
+### [4] Lab (10/10)
+https://github.com/sjasthi/python101/blob/main/Labs/4_input_processing_output.ipynb
+
+### Due by End of Week (Saturday 10/10)
 - 📝 **Assignment 1 (Programming Assignments 13 and 14)**
 
 ## 🎯 Learning Objectives
