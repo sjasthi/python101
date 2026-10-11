@@ -49,7 +49,7 @@
 
 ### 6. Chapter 3 Concepts Notebook
 📘 **Conditions & Boolean Logic Concepts**  
-[ch3_concepts_conditions_boolean_logic.ipynb](https://github.com/sjasthi/python101/blob/main/ch3_concepts_conditions_boolean_logic.ipynb)
+[ch3_concepts_conditions_boolean_logic.ipynb](https://github.com/sjasthi/python101/blob/main/colab_notebooks/ch3_concepts_conditions_boolean_logic.ipynb)
 
 ### 7. Chapter 3 Skeleton Notebook
 📝 **Programming Exercises**  
