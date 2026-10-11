@@ -40,8 +40,8 @@
 ### 5. Chapter 3: Presentation
 📊 **Boolean Logic (and, or, not)**  
 [3_1_boolean_logic_and_or_not.pdf](https://github.com/sjasthi/python101/blob/main/presentations/3_1_boolean_logic_and_or_not.pdf)
-[3_2 short circuit evaluations.pdf] (https://github.com/sjasthi/python101/blob/main/presentations/3_2_adv_short_circuit_evaluation.pdf)
-[3_3_conditions.pdf] (https://github.com/sjasthi/python101/blob/main/presentations/3_3_conditions.pdf)
+[3_2 short circuit evaluations.pdf](https://github.com/sjasthi/python101/blob/main/presentations/3_2_adv_short_circuit_evaluation.pdf)
+[3_3_conditions.pdf](https://github.com/sjasthi/python101/blob/main/presentations/3_3_conditions.pdf)
 
 ### 6. Chapter 3 Concepts Notebook
 📘 **Conditions & Boolean Logic Concepts**  
