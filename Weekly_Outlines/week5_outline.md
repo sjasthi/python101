@@ -1,7 +1,5 @@
 # Week 5 Outline - Learn and Help Python 101
 
-**Date:** October 5, 2025
-
 ---
 
 ## Recap
@@ -56,11 +54,11 @@
 ## What is Due Today?
 
 ### 8. Quiz 5 (Conditions)
-- **Due Date:** October 5, 2025 ⏰
+- **Due Date:** October 11, 2026 ⏰
 - **Topic:** Boolean logic and conditional statements
 
 ### 9. Lab 5 (Conditions)
-- **Due Date:** October 5, 2025 ⏰
+- **Due Date:** October 17, 2026 ⏰
 - **Focus:** Hands-on practice with if/else statements
 
 ---
@@ -68,7 +66,7 @@
 ## What is Due Next Week?
 
 ### 10. Assignment 2 (Roulette Wheel Colors)
-- **Due Date:** October 18, 2025 📅
+- **Due Date:** October 24, 2025 📅
 - **Description:** Apply conditional logic to determine roulette wheel colors
 
 ---
