@@ -62,10 +62,12 @@
 ### 8. Quiz 5 (Conditions)
 - **Due Date:** October 11, 2026 ⏰
 - **Topic:** Boolean logic and conditional statements
+- [Quiz 5](https://github.com/sjasthi/python101/blob/main/Quizzes/3_1_exploring_conditions_playbook_and_quiz.html)
 
 ### 9. Lab 5 (Conditions)
 - **Due Date:** October 17, 2026 ⏰
 - **Focus:** Hands-on practice with if/else statements
+- [Lab 5](https://github.com/sjasthi/python101/blob/main/Labs/lab5_exploring_boolean_logic_and_conditions.ipynb)
 
 ---
 
