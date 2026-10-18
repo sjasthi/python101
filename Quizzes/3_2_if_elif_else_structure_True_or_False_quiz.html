@@ -273,14 +273,108 @@
                 box-shadow: none;
             }
         }
+
+        [hidden] { display: none !important; }
+        .tabs { display:flex; gap:10px; margin-bottom:24px; }
+        .tab-btn { flex:1; padding:14px; border:2px solid #667eea; border-radius:8px; background:white; color:#424c9b; font:inherit; font-weight:600; cursor:pointer; }
+        .tab-btn[aria-selected="true"] { background:#667eea; color:white; }
+        button:focus-visible, input:focus-visible { outline:3px solid #d97706; outline-offset:3px; }
+        .lesson h2, .lesson h3 { color:#424c9b; margin:20px 0 12px; }
+        .lesson p, .lesson li { line-height:1.7; color:#333; }
+        .lesson ul { padding-left:22px; margin:12px 0; }
+        .structure-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin:20px 0; }
+        .structure-card { padding:16px; border-radius:10px; background:#eef0ff; border-top:4px solid #667eea; }
+        .structure-card strong { display:block; margin-bottom:8px; }
+        .lesson pre { background:#192239; color:#f5f7ff; padding:18px; border-radius:10px; overflow-x:auto; line-height:1.7; margin:14px 0; }
+        .flowchart { width:100%; height:auto; display:block; background:#f8f9ff; border-radius:12px; margin:16px 0; }
+        .trace { padding:20px; background:#eef7f1; border-radius:10px; margin:20px 0; }
+        .trace input { width:90px; padding:8px; font:inherit; margin:8px; }
+        #traceResult { margin-top:12px; }
+        @media (max-width:600px) {
+            body { padding:8px; }
+            .container { padding:20px; margin:0; }
+            .header h1 { font-size:1.6em; }
+            .structure-grid { grid-template-columns:1fr; }
+            .tabs { flex-direction:column; }
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <h1>🐍 Python 101 Quiz</h1>
+            <h1>🐍 Python 101: Conditions</h1>
             <h2>If/Elif/Else Statement Structure</h2>
         </div>
+
+
+        <div class="tabs" role="tablist" aria-label="Lesson and quiz">
+            <button class="tab-btn" id="structureTab" role="tab" aria-selected="true" aria-controls="structurePanel" onclick="showTab('structure')">Structure of Conditions</button>
+            <button class="tab-btn" id="quizTab" role="tab" aria-selected="false" aria-controls="quizPanel" tabindex="-1" onclick="showTab('quiz')">Quiz</button>
+        </div>
+        <section class="lesson" id="structurePanel" role="tabpanel" aria-labelledby="structureTab">
+            <h2>How does Python choose what to do?</h2>
+            <p>A condition is an expression that evaluates to <strong>True</strong> or <strong>False</strong>. Python checks an <code>if / elif / else</code> chain from top to bottom and runs only the <strong>first matching branch</strong>.</p>
+            <div class="structure-grid">
+                <div class="structure-card"><strong>1. if — start here</strong><p>Required. Check the first condition.</p></div>
+                <div class="structure-card"><strong>2. elif — another chance</strong><p>Optional. Use zero or more. Check only if all earlier conditions were False.</p></div>
+                <div class="structure-card"><strong>3. else — the fallback</strong><p>Optional. Use at most one, always last. It has no condition.</p></div>
+            </div>
+            <h3>Follow the decisions</h3>
+            <p>Example: choose a message based on a student's score.</p>
+            <svg class="flowchart" viewBox="0 0 660 480" role="img" aria-labelledby="flowTitle flowDesc">
+                <title id="flowTitle">Flow of an if, elif, else chain</title>
+                <desc id="flowDesc">Check score greater than or equal to 90. If True, print Excellent and continue after the chain. If False, check score greater than or equal to 70. If True, print Good job and continue. Otherwise, print Keep practicing. All paths continue after the chain.</desc>
+                <defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8" fill="#465179"/></marker></defs>
+                <g fill="none" stroke="#465179" stroke-width="2" marker-end="url(#arrow)">
+                    <path d="M210 100 H430"/><path d="M150 135 V210"/><path d="M210 245 H430"/>
+                    <path d="M150 280 V345"/><path d="M520 125 V435 H325"/><path d="M520 270 V435"/>
+                    <path d="M150 395 V435 H305"/>
+                </g>
+                <g font-family="Segoe UI, sans-serif" font-size="17" text-anchor="middle">
+                    <path d="M150 30 L260 100 L150 170 L40 100 Z" fill="#e8eaff" stroke="#667eea" stroke-width="2"/>
+                    <text x="150" y="94">if</text><text x="150" y="117">score &gt;= 90?</text>
+                    <path d="M150 175 L260 245 L150 315 L40 245 Z" fill="#e8eaff" stroke="#667eea" stroke-width="2"/>
+                    <text x="150" y="239">elif</text><text x="150" y="262">score &gt;= 70?</text>
+                    <rect x="430" y="75" width="180" height="50" rx="10" fill="#d4edda" stroke="#288345"/>
+                    <text x="520" y="106">print("Excellent!")</text>
+                    <rect x="430" y="220" width="180" height="50" rx="10" fill="#d4edda" stroke="#288345"/>
+                    <text x="520" y="251">print("Good job!")</text>
+                    <rect x="30" y="345" width="240" height="50" rx="10" fill="#fff3cd" stroke="#a47c10"/>
+                    <text x="150" y="366">else:</text><text x="150" y="386">print("Keep practicing!")</text>
+                    <rect x="235" y="415" width="190" height="45" rx="10" fill="#e8eaff" stroke="#667eea"/>
+                    <text x="330" y="443">Continue after chain</text>
+                    <text x="335" y="88">True →</text><text x="335" y="233">True →</text>
+                    <text x="188" y="184">False</text><text x="188" y="334">False</text>
+                </g>
+            </svg>
+            <pre><code>score = 85
+
+if score &gt;= 90:
+    print("Excellent!")
+elif score &gt;= 70:
+    print("Good job!")
+else:
+    print("Keep practicing!")
+
+print("Done!")</code></pre>
+            <div class="trace">
+                <h3>Try a score</h3>
+                <label for="exampleScore">Score (0–100):</label>
+                <input id="exampleScore" type="number" min="0" max="100" value="85" oninput="traceScore()">
+                <p id="traceResult" role="status" aria-live="polite"></p>
+            </div>
+            <h3>Structure rules to remember</h3>
+            <ul>
+                <li>Start with one <code>if</code>, then any <code>elif</code> branches, then an optional <code>else</code>.</li>
+                <li>Put a colon <code>:</code> at the end of each branch header. Align <code>if</code>, <code>elif</code>, and <code>else</code>; indent their bodies consistently (usually four spaces).</li>
+                <li>Once a condition is True, run its body and skip the remaining branches, even if another condition would also be True.</li>
+                <li>Without <code>else</code>, no branch runs when all conditions are False. Execution still continues after the chain.</li>
+                <li>Valid forms: <code>if</code> alone; <code>if / else</code>; <code>if / elif</code>; <code>if / elif / else</code>.</li>
+                <li>You can nest a new <code>if</code> inside a branch. Separate <code>if</code> statements each check their own condition; they do not share the one-branch rule.</li>
+            </ul>
+            <button class="tab-btn" onclick="showTab('quiz'); document.getElementById('quizTab').focus()">Ready? Go to Quiz →</button>
+        </section>
+        <section id="quizPanel" role="tabpanel" aria-labelledby="quizTab" hidden>
 
         <div class="instructions">
             <h3>📋 Instructions:</h3>
@@ -311,9 +405,44 @@
                 <li>Upload the screenshot to <strong>Google Classroom</strong></li>
             </ul>
         </div>
+        </section>
     </div>
 
     <script>
+
+        function showTab(name) {
+            ['structure', 'quiz'].forEach(tab => {
+                const active = tab === name;
+                document.getElementById(tab + 'Panel').hidden = !active;
+                const button = document.getElementById(tab + 'Tab');
+                button.setAttribute('aria-selected', String(active));
+                button.tabIndex = active ? 0 : -1;
+            });
+        }
+        document.querySelector('[role="tablist"]').addEventListener('keydown', event => {
+            if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
+            event.preventDefault();
+            const current = document.getElementById('structureTab').getAttribute('aria-selected') === 'true';
+            const name = event.key === 'Home' ? 'structure' : event.key === 'End' ? 'quiz' : current ? 'quiz' : 'structure';
+            showTab(name);
+            document.getElementById(name + 'Tab').focus();
+        });
+        function traceScore() {
+            const input = document.getElementById('exampleScore');
+            const result = document.getElementById('traceResult');
+            if (input.value === '' || !input.validity.valid) {
+                result.textContent = 'Enter a score from 0 to 100.';
+                return;
+            }
+            const score = Number(input.value);
+            result.textContent = score >= 90
+                ? 'if: True → Excellent! Skip elif and else. Then print Done!'
+                : score >= 70
+                ? 'if: False → elif: True → Good job! Skip else. Then print Done!'
+                : 'if: False → elif: False → else → Keep practicing! Then print Done!';
+        }
+        traceScore();
+
         const questions = [
             {
                 id: 1,
