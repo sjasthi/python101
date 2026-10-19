@@ -52,11 +52,11 @@
 
 ### Chapter 3 Concepts Notebook
 📘 **Conditions & Boolean Logic Concepts**  
-[ch3_concepts_conditions_boolean_logic.ipynb](https://github.com/sjasthi/python101/blob/main/ch3_concepts_conditions_boolean_logic.ipynb)
+[ch3_concepts_conditions_boolean_logic.ipynb](https://github.com/sjasthi/python101/blob/main/colab_notebooks/ch3_concepts_conditions_boolean_logic.ipynb)
 
 ### Chapter 3 Skeleton Notebook
 📝 **Programming Exercises**  
-[ch3_skeleton_conditions_programming_exercises.ipynb](https://github.com/sjasthi/python101/blob/main/skeletons_programming_assignments/ch3_skeleton_conditions_programming_exercises.ipynb)
+[ch3_skeleton_conditions_programming_exercises.ipynb](https://github.com/sjasthi/python101/blob/main/colab_notebooks/skeletons_programming_assignments/ch3_skeleton_conditions_programming_exercises.ipynb)
 
 ---
 
