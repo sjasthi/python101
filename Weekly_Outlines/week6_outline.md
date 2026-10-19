@@ -56,7 +56,7 @@
 
 ### Chapter 3 Skeleton Notebook
 📝 **Programming Exercises**  
-[ch3_skeleton_conditions_programming_exercises.ipynb](https://github.com/sjasthi/python101/blob/main/colab_notebooks/skeletons_programming_assignments/ch3_skeleton_conditions_programming_exercises.ipynb)
+[ch3_skeleton_conditions_programming_exercises.ipynb](https://github.com/sjasthi/python101/blob/main/colab_notebooks/ch3_skeleton_conditions_programming_exercises.ipynb)
 
 ---
 
