@@ -1,6 +1,6 @@
 # Week 6  Outline - Learn and Help Python 101
 
-**Date:** October 18, 2025
+**Date:** October 18, 2026
 
 ---
 
