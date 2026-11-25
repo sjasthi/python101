@@ -1,12 +1,22 @@
 name: Branding check
 
-# Runs on every push and pull request. Fails if a new or renamed file
-# doesn't follow BRANDING.md. To make GitHub *reject* such changes, turn on
-# branch protection for main and require this check (see BRANDING.md, section 9).
+# Runs on every push and pull request and fails if a new or renamed file
+# doesn't follow BRANDING.md.
+#
+# On a push to main that fails the check, the push is undone automatically:
+# a commit restoring main to its state before the push is added, and a
+# comment on the offending commit explains what to fix.
 
 on:
   push:
   pull_request:
+
+permissions:
+  contents: write   # to push the revert commit and comment on commits
+
+concurrency:
+  group: branding-${{ github.ref }}
+  cancel-in-progress: false
 
 jobs:
   branding:
@@ -39,4 +49,58 @@ jobs:
           echo "ref=$base" >> "$GITHUB_OUTPUT"
 
       - name: Check new files against BRANDING.md
-        run: python tools/check_branding.py --base "${{ steps.base.outputs.ref }}"
+        id: check
+        run: |
+          set -o pipefail
+          python tools/check_branding.py --base "${{ steps.base.outputs.ref }}" | tee branding_report.txt
+
+      - name: Undo the push to main
+        id: revert
+        if: failure() && steps.check.outcome == 'failure' && github.event_name == 'push' && github.ref == 'refs/heads/main'
+        env:
+          BEFORE: ${{ github.event.before }}
+          AFTER: ${{ github.sha }}
+          PUSHER: ${{ github.actor }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          # Restore main's files to exactly what they were before this push.
+          git diff --binary "$AFTER" "$BEFORE" | git apply --index
+          git commit -m "Revert push by @$PUSHER: files don't follow BRANDING.md" \
+                     -m "Undone automatically by the Branding check. See the comment on ${AFTER:0:7} for what to fix."
+          if git push origin HEAD:main; then
+            echo "result=reverted" >> "$GITHUB_OUTPUT"
+          else
+            echo "result=push-failed" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Explain on the commit
+        if: failure() && steps.revert.outcome != 'skipped'
+        uses: actions/github-script@v7
+        env:
+          RESULT: ${{ steps.revert.outputs.result }}
+        with:
+          script: |
+            const fs = require('fs');
+            const report = fs.existsSync('branding_report.txt') ? fs.readFileSync('branding_report.txt', 'utf8') : '';
+            const undone = process.env.RESULT === 'reverted';
+            const body = [
+              undone
+                ? '❌ **This push was undone automatically** because some files don\'t follow [BRANDING.md](../blob/main/BRANDING.md).'
+                : '❌ **These files don\'t follow [BRANDING.md](../blob/main/BRANDING.md)**, and the automatic undo failed (main changed in the meantime). Please fix or revert this by hand.',
+              '',
+              '```',
+              report.trim(),
+              '```',
+              '',
+              undone
+                ? 'Your work is not lost: it is still in this commit. To get it back, run `git pull`, then `git revert HEAD` (brings your files back), fix the names listed above, and push again.'
+                : '',
+              'Tip: turn on the local check once with `git config core.hooksPath .githooks` to catch this before you push.'
+            ].join('\n');
+            await github.rest.repos.createCommitComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              commit_sha: context.sha,
+              body
+            });
