@@ -64,22 +64,22 @@ By the end of this week, you will be able to:
 ## 📚 Resources
 
 ### Core Materials
-- **Presentation**: [File I/O Basics](https://github.com/sjasthi/python101/blob/main/presentations/6_1_File_IO_basics.pdf)
+- **Presentation**: [File I/O Basics](https://github.com/sjasthi/python101/blob/main/presentations/06_1_file_io_basics_slides.pdf)
   - Complete overview of file operations
   - Visual examples and syntax
   - Best practices and common pitfalls
 
-- **Interactive Notebook**: [File I/O Concepts](https://github.com/sjasthi/python101/blob/main/colab_notebooks/ch6_1_concepts_files_and_exceptions.ipynb)
+- **Interactive Notebook**: [File I/O Concepts](https://github.com/sjasthi/python101/blob/main/colab_notebooks/06_1_files_exceptions_concepts.ipynb)
   - Hands-on code examples
   - Practice exercises
   - Interactive demonstrations
 
 ### Practice & Assessment
-- **Quiz 14**: [File I/O Playbook Quiz](https://github.com/sjasthi/python101/blob/main/Quizzes/python_file_io_playbook_quiz.html)
+- **Quiz 14**: [File I/O Playbook Quiz](https://github.com/sjasthi/python101/blob/main/Quizzes/06_1_file_io_playbook_quiz.html)
   - Test your understanding
   - Multiple choice and coding questions
 
-- **Lab 14**: [File Reading Practice](https://github.com/sjasthi/python101/blob/main/Labs/python101_lab14_file_reading.ipynb)
+- **Lab 14**: [File Reading Practice](https://github.com/sjasthi/python101/blob/main/Labs/06_1_file_reading_lab.ipynb)
   - Hands-on file reading exercises
   - Real-world scenarios
   - Auto-graded assignments
@@ -148,13 +148,13 @@ Create a program that reads and displays the first N lines of a file (like the `
 ## 📝 Assignments
 
 ### Quiz 14: File I/O Playbook Quiz
-- **Link**: [python_file_io_playbook_quiz.html](https://github.com/sjasthi/python101/blob/main/Quizzes/python_file_io_playbook_quiz.html)
+- **Link**: [06_1_file_io_playbook_quiz.html](https://github.com/sjasthi/python101/blob/main/Quizzes/06_1_file_io_playbook_quiz.html)
 - **Topics**: All file reading methods, `with` statement, best practices
 - **Time**: 20-30 minutes
 - **Due**: End of week
 
 ### Lab 14: File Reading Practice
-- **Link**: [python101_lab14_file_reading.ipynb](https://github.com/sjasthi/python101/blob/main/Labs/python101_lab14_file_reading.ipynb)
+- **Link**: [06_1_file_reading_lab.ipynb](https://github.com/sjasthi/python101/blob/main/Labs/06_1_file_reading_lab.ipynb)
 - **Description**: Hands-on exercises with various file reading scenarios
 - **Skills Practiced**: 
   - Using all four reading methods

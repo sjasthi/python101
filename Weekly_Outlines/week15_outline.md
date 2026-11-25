@@ -9,17 +9,17 @@ Understanding different types of errors in Python and how to handle exceptions p
 
 ### 1. **Presentation**
 - **Topic:** Errors and Exceptions (Syntax, Logical, Runtime)
-- **Link:** [View Presentation](https://github.com/sjasthi/python101/blob/main/presentations/6_2_Errors_n_Exceptions_Syntax_Logical_Runtime.pdf)
+- **Link:** [View Presentation](https://github.com/sjasthi/python101/blob/main/presentations/06_2_errors_exceptions_slides.pdf)
 - **What to do:** Review the presentation to understand the three main types of errors
 
 ### 2. **Concept Notebook**
 - **Topic:** Syntax, Logical, and Runtime Errors & Exceptions
-- **Link:** [Open in Google Colab](https://github.com/sjasthi/python101/blob/main/colab_notebooks/ch6_2_concepts_Syntax_Logical_Runtime_Errors_n_Exceptions.ipynb)
+- **Link:** [Open in Google Colab](https://github.com/sjasthi/python101/blob/main/colab_notebooks/06_2_errors_exceptions_concepts.ipynb)
 - **What to do:** Work through the notebook examples and run all code cells
 
 ### 3. **Interactive Playbook**
 - **Topic:** Errors and Exceptions Practice
-- **Link:** [Open Playbook](https://github.com/sjasthi/python101/blob/main/Play/python_errors_exceptions_playbook.html)
+- **Link:** [Open Playbook](https://github.com/sjasthi/python101/blob/main/Play/06_2_errors_exceptions_playbook.html)
 - **What to do:** Practice with the interactive examples in your browser
 
 ---
@@ -27,21 +27,21 @@ Understanding different types of errors in Python and how to handle exceptions p
 ## ✅ Assessments & Assignments
 
 ### 4. **Quiz**
-- **Link:** [Take Quiz](https://github.com/sjasthi/python101/blob/main/Quizzes/python101_errors_and_exceptions_quiz.html)
+- **Link:** [Take Quiz](https://github.com/sjasthi/python101/blob/main/Quizzes/06_2_errors_exceptions_quiz.html)
 - **Instructions:**
   1. Complete the quiz
   2. Take a screenshot of your final score
   3. **Submit screenshot to Google Classroom**
 
 ### 5. **Lab**
-- **Link:** [Open Lab Notebook](https://github.com/sjasthi/python101/blob/main/Labs/python101_errors_exceptions_lab.ipynb)
+- **Link:** [Open Lab Notebook](https://github.com/sjasthi/python101/blob/main/Labs/06_2_errors_exceptions_lab.ipynb)
 - **Instructions:**
   1. Complete all exercises in the lab notebook
   2. **Submit the completed lab to Google Classroom**
 
 ### 6. **Programming Assignment**
 - **Topic:** File I/O Assignment
-- **Link:** [Open Assignment](https://github.com/sjasthi/python101/blob/main/skeletons_programming_assignments/python101_ch6_file_io_assignment.ipynb)
+- **Link:** [Open Assignment](https://github.com/sjasthi/python101/blob/main/assignments/06_1_file_io_assignment.ipynb)
 - **Instructions:**
   1. Complete the programming assignment
   2. **Submit to Google Classroom**

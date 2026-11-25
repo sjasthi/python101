@@ -12,6 +12,7 @@ This guide makes every Python 101 file look like it came from the same class. It
 6. [Word list](#6-word-list)
 7. [Templates](#7-templates)
 8. [Rolling it out](#8-rolling-it-out)
+9. [Automatic checks](#9-automatic-checks)
 
 ---
 
@@ -22,7 +23,7 @@ This guide makes every Python 101 file look like it came from the same class. It
 | 1 | How files are numbered | By **topic** (chapter + section, e.g. `07_6`), not by week | Week numbers shift every year with holidays; topic numbers already appear in the weekly planner and never change |
 | 2 | Visual style for HTML pages | The **purple gradient** style (Segoe UI font) | About 22 of the 37 HTML pages already use it, including the newest quizzes |
 | 3 | Tagline | **"Empowering Minds, Inspiring Generosity."** | Already used in the footer of the newest quizzes |
-| 4 | When existing files are renamed | Once, **during the summer break**, with a script that also fixes every link | GitHub does not redirect renamed files, so links in outlines and Google Classroom would break mid-year |
+| 4 | When existing files are renamed | **Now**, in one go, with a script that also fixes every link inside the repo. Folder names stay as they are for now | Old links in Google Classroom break and must be updated by hand from `tools/rename_map.csv` (GitHub does not redirect renamed files) |
 
 ---
 
@@ -54,14 +55,15 @@ This guide makes every Python 101 file look like it came from the same class. It
 | Type | What it is | Ext | Folder |
 |---|---|---|---|
 | `slides` | Lecture deck | `.pdf` / `.pptx` | `presentations/` |
-| `notes` | Lecture notes in Markdown | `.md` | `presentations/` |
+| `notes` | Lecture notes | `.md` (preferred) / `.html` (allowed for backward compatibility) | `presentations/` |
+| `one_pager` | One-page visual summary of a topic | `.png` | `presentations/` |
 | `playbook` | Interactive page for exploring, no graded quiz | `.html` | `playbooks/` |
 | `playbook_quiz` | Interactive page **with** a graded quiz | `.html` | `quizzes/` |
-| `quiz` | Quiz only | `.html` / `.pdf` | `quizzes/` |
-| `lab` | In-class lab | `.ipynb` / `.md` / `.html` | `labs/` |
+| `quiz` | Quiz only | `.html` | `quizzes/` |
+| `lab` | In-class lab | `.md` / `.ipynb` | `labs/` |
 | `concepts` | Colab notebook that teaches the topic | `.ipynb` | `notebooks/` |
 | `skeleton` | Starter notebook for programming exercises | `.ipynb` | `notebooks/` |
-| `assignment` | Graded programming assignment | `.ipynb` / `.md` | `assignments/` |
+| `assignment` | Graded programming assignment | `.md` / `.ipynb` | `assignments/` |
 
 ### Examples (current name → new name)
 
@@ -71,7 +73,8 @@ This guide makes every Python 101 file look like it came from the same class. It
 | `Quizzes/functions_intro_interactive_play_and_quiz.html` | `quizzes/05_1_functions_intro_playbook_quiz.html` |
 | `Labs/Lab1_Typing_and_Running_Python_Code.ipynb` | `labs/01_0_typing_and_running_code_lab.ipynb` |
 | `Labs/lab20_mixed_nested_2d_lists.ipynb` | `labs/07_6_lists_mixed_nested_2d_lab.ipynb` |
-| `Labs/pet_shelter_solution.py` | `labs/10_0_oop_pet_shelter_lab_solution.py` |
+| `Labs/pet_shelter_lab.html` | `labs/10_0_oop_pet_shelter_lab.ipynb` (labs are `.md` or `.ipynb`) |
+| `Quizzes/python101_WWPP_comprehensive_quiz.pdf` | `quizzes/00_0_what_would_python_print_quiz.html` (quizzes are `.html` only) |
 | `presentations/8_1_More_About_Strings.pdf` | `presentations/08_1_more_about_strings_slides.pdf` |
 | `presentations/7_6_python_mixed_and_nested_lists.md` | `presentations/07_6_lists_mixed_nested_notes.md` |
 | `colab_notebooks/ch5_1_concepts_functions_introduction.ipynb` | `notebooks/05_1_functions_intro_concepts.ipynb` |
@@ -82,7 +85,7 @@ This guide makes every Python 101 file look like it came from the same class. It
 
 | Item | Pattern | Example |
 |---|---|---|
-| Weekly outline | `week_<WW>_outline.md` (two digits) | `week_01_outline.md`, `week_20_outline.md` |
+| Weekly outline | `week<N>_outline.md` (unchanged from today) | `week1_outline.md`, `week20_outline.md` |
 | Weekly planner | `weekly_planner_<YYYY>_<YY>.md` | `weekly_planner_2026_27.md` |
 | Course-wide item | `00_0_<topic>_<type>` | `00_0_colab_basics_slides.pdf`, `00_0_comprehensive_quiz.html` |
 | Final project | Lives in `final_project/`, no chapter number | `final_project/auto_grader_design_slides.pdf` |
@@ -96,7 +99,7 @@ All folder names are lowercase.
 
 | Folder | Holds | Replaces |
 |---|---|---|
-| `presentations/` | `slides`, `notes`, images | `presentations/` |
+| `presentations/` | `slides`, `notes`, `one_pager`, images for decks | `presentations/` |
 | `playbooks/` | `playbook` | `Play/` |
 | `quizzes/` | `quiz`, `playbook_quiz` | `Quizzes/` |
 | `labs/` | `lab`, `lab_solution` | `Labs/` |
@@ -151,7 +154,7 @@ and ends with this footer:
 *Python 101 · Learn and Help · www.learnandhelp.com*
 ```
 
-For weekly outlines, the title is `Week <N> Outline` (no zero padding in the heading itself: `Week 7 Outline`).
+For weekly outlines, the title is `Week <N> Outline`, e.g. `# 🐍 Python 101 — Week 7 Outline`.
 
 ### Notebooks (`.ipynb`)
 
@@ -223,6 +226,7 @@ Use these words consistently, in file names, titles and outlines.
 | **Slides** | presentation, PPT, deck | Lecture slides |
 | **Notes** | lecture notes, summary | Markdown version of a lecture |
 | **Weekly Outline** | week plan, week summary | The one-page plan for a class week |
+| **One Pager** (title) / `one_pager` (file) | cheat sheet, summary card, infographic | A one-page `.png` visual summary of a topic |
 | **Weekly Planner** | syllabus, schedule | The full-year schedule |
 | **Help Session** | office hours, homework help | Wednesday support session |
 
@@ -250,6 +254,50 @@ How to use them:
 | Step | When | What |
 |---|---|---|
 | 1 | Now | Approve this guide. New files follow it from then on. |
-| 2 | Now | Add an automatic check that flags non-conforming file names, titles and footers whenever something is checked in. |
-| 3 | Now | Remove clutter (`foo.txt` placeholders, duplicate notebooks, `week7_outline_v2.md`). |
-| 4 | Summer break | Rename existing files and folders in one go with a script that also rewrites every link in the outlines. Update links in Google Classroom at the same time. |
+| 2 | Now | Automatic checks reject new files that break this guide (see section 9). New files go in the **current** folders (`Quizzes/`, `Labs/`, `Play/`…). |
+| 3 | Done | Existing files renamed with `tools/apply_renames.py`; links inside the repo were rewritten. The full old → new list is in `tools/rename_map.csv`. |
+| 4 | Now | Update Google Classroom links using `tools/rename_map.csv`. |
+| 5 | Later | Rebrand the contents of existing files (titles, headers, footers, colours); rename folders to lowercase; merge the duplicate notebooks in `colab_notebooks/` and `skeletons_programming_assignments/`; remove `week7_outline_v2.md`. |
+
+---
+
+## 9. Automatic checks
+
+Every **new** file is fully checked against this guide. A **renamed** file gets the name check only, because its contents are rebranded separately (section 8, step 5).
+
+### What is checked
+
+| File | Checks |
+|---|---|
+| Every new file | Lowercase name with `_` between words, no spaces, no `python101_` prefix, no `_v2`/`_final` suffixes, right folder for its type, right extension for its type |
+| Weekly outlines | Named `week<N>_outline.md` |
+| HTML pages | `<title>` starts with `Python 101 · ` and has no week or quiz number; brand strip; footer with tagline; brand font; brand gradient; no Google Fonts |
+| Markdown files | Standard header (first lines) and footer (last line) |
+| Notebooks | First cell has the standard header; last cell has the footer |
+
+Not checked: `data/`, `templates/`, `tools/`, `.github/`, `README.md`, `BRANDING.md`, `LICENSE`. Final project files get the name check only.
+
+### Where it runs
+
+| Layer | When | What happens to a non-conforming file |
+|---|---|---|
+| **Commit hook** (`.githooks/pre-commit`) | On `git commit`, on your own machine | The commit is refused, with a list of what to fix |
+| **GitHub Action** (`.github/workflows/branding-check.yml`) | On every push and pull request | The check turns red on GitHub. With branch protection on (below), the change can't be merged into `main` |
+
+**One-time setup for each person who clones the repo** (turns on the commit hook):
+
+```
+git config core.hooksPath .githooks
+```
+
+**One-time setup for the repo owner** (makes GitHub reject non-conforming changes):
+
+1. Go to **Settings → Branches → Add branch protection rule** for `main`.
+2. Tick **Require a pull request before merging**.
+3. Tick **Require status checks to pass before merging** and select **Branding check**.
+
+**Run the check yourself on any file:**
+
+```
+python tools/check_branding.py Quizzes/07_6_lists_mixed_nested_2d_playbook_quiz.html
+```

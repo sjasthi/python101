@@ -108,14 +108,14 @@ By the end of this week, students will be able to:
 ---
 
 - **Materials**:
-  - Presentation: [7_2_and_7_3_python_lists_map_filter_reduce_plus.md](https://github.com/sjasthi/python101/blob/main/presentations/7_2_and_7_3_python_lists_map_filter_reduce_plus.md)
-  - Colab Notebook: [ch7_concepts_list_intro_1.ipynb](https://github.com/sjasthi/python101/blob/main/colab_notebooks/ch7_concepts_list_intro_1.ipynb)
+  - Presentation: [07_2_lists_map_filter_reduce_notes.md](https://github.com/sjasthi/python101/blob/main/presentations/07_2_lists_map_filter_reduce_notes.md)
+  - Colab Notebook: [07_1_lists_intro_concepts.ipynb](https://github.com/sjasthi/python101/blob/main/colab_notebooks/07_1_lists_intro_concepts.ipynb)
   
-  - Interactive Playbook & Quiz:  [Interactive Playbook & Quiz](https://github.com/sjasthi/python101/blob/main/Quizzes/lists_map_filter_reduce_traversals_playbook_and_quiz.html)
+  - Interactive Playbook & Quiz:  [Interactive Playbook & Quiz](https://github.com/sjasthi/python101/blob/main/Quizzes/07_2_lists_map_filter_reduce_playbook_quiz.html)
 
-  - Lab Assignment: [python101_map_filter_reduce_list_traversals.ipynb](https://github.com/sjasthi/python101/blob/main/Labs/python101_map_filter_reduce_list_traversals.ipynb)
+  - Lab Assignment: [07_2_lists_map_filter_reduce_lab.ipynb](https://github.com/sjasthi/python101/blob/main/Labs/07_2_lists_map_filter_reduce_lab.ipynb)
 
-  - Assignment: [Programming Assignment 6](https://github.com/sjasthi/python101/blob/main/Labs/python101_lists_intro_assignment_6.md)
+  - Assignment: [Programming Assignment 6](https://github.com/sjasthi/python101/blob/main/assignments/07_1_lists_intro_assignment.md)
 ---
 
 ## 🤔 Key Concepts to Remember

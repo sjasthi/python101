@@ -8,22 +8,22 @@ Metropolitan State University | Learn and Help Program
 
 | # | Type | Resource | Points |
 |---|------|----------|--------|
-| 1 | 📊 Presentation | [7.8 Python Tuples](https://github.com/sjasthi/python101/blob/main/presentations/7_8_python_tuples.md) | — |
-| 2 | 🎮 Playbook & Quiz | [Tuples Interactive Playbook & Quiz](https://github.com/sjasthi/python101/blob/main/Quizzes/7_8_python_tuples_playbook_quiz.html) | — |
-| 3 | 🧪 Lab 21 | [python101_lab21_tuples.ipynb](https://github.com/sjasthi/python101/blob/main/Labs/python101_lab21_tuples.ipynb) | 10 pts |
+| 1 | 📊 Presentation | [7.8 Python Tuples](https://github.com/sjasthi/python101/blob/main/presentations/07_8_tuples_notes.md) | — |
+| 2 | 🎮 Playbook & Quiz | [Tuples Interactive Playbook & Quiz](https://github.com/sjasthi/python101/blob/main/Quizzes/07_8_tuples_playbook_quiz.html) | — |
+| 3 | 🧪 Lab 21 | [07_8_tuples_lab.ipynb](https://github.com/sjasthi/python101/blob/main/Labs/07_8_tuples_lab.ipynb) | 10 pts |
 | 4 | 🎤 Assignment | Guest Speaker Seminar — *A Day in the Life of a Data Scientist* | 25 pts |
 
 ---
 
 ## 📊 Presentation
 
-**[7.8 Python Tuples →](https://github.com/sjasthi/python101/blob/main/presentations/7_8_python_tuples.md)**
+**[7.8 Python Tuples →](https://github.com/sjasthi/python101/blob/main/presentations/07_8_tuples_notes.md)**
 
 ---
 
 ## 🎮 Interactive Playbook & Quiz
 
-**[Tuples Playbook & Quiz →](https://github.com/sjasthi/python101/blob/main/Quizzes/7_8_python_tuples_playbook_quiz.html)**
+**[Tuples Playbook & Quiz →](https://github.com/sjasthi/python101/blob/main/Quizzes/07_8_tuples_playbook_quiz.html)**
 
 Three tabs — Concept, Examples, and Quiz (10 questions). Submit a screenshot of your final score to Google Classroom.
 
@@ -31,7 +31,7 @@ Three tabs — Concept, Examples, and Quiz (10 questions). Submit a screenshot o
 
 ## 🧪 Lab 21 — Tuples *(10 points)*
 
-**[python101_lab21_tuples.ipynb →](https://github.com/sjasthi/python101/blob/main/Labs/python101_lab21_tuples.ipynb)**
+**[07_8_tuples_lab.ipynb →](https://github.com/sjasthi/python101/blob/main/Labs/07_8_tuples_lab.ipynb)**
 
 4 coding questions, 2.5 points each. Download the `.ipynb` file and upload your completed notebook to Google Classroom.
 

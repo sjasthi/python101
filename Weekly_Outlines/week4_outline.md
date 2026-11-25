@@ -6,12 +6,12 @@
 
 ### Concepts Notebook
 
-- **Link:** [Chapter 2: Input, Processing, and Output](https://github.com/sjasthi/python101/blob/main/colab_notebooks/ch2_concepts_input_processing_output.ipynb)
+- **Link:** [Chapter 2: Input, Processing, and Output](https://github.com/sjasthi/python101/blob/main/colab_notebooks/02_0_input_processing_output_concepts.ipynb)
 - **Description:** Review the core concepts of input, processing, and output.
 
 ### Programming Exercises Notebook
 
-- **Link:** [Chapter 2: Programming Exercises](https://github.com/sjasthi/python101/blob/main/skeletons_programming_assignments/ch2_skeleton_programming_exercises.ipynb)
+- **Link:** [Chapter 2: Programming Exercises](https://github.com/sjasthi/python101/blob/main/skeletons_programming_assignments/02_0_input_processing_output_skeleton.ipynb)
 - **Description:** Use this notebook for the practice exercises and Assignment 1.
 
 ### Presentations
@@ -21,7 +21,7 @@
 
 ## 2. Practice and Programming Assignments
 
-Use the [Chapter 2 Programming Exercises notebook](https://github.com/sjasthi/python101/blob/main/skeletons_programming_assignments/ch2_skeleton_programming_exercises.ipynb) for the following activities.
+Use the [Chapter 2 Programming Exercises notebook](https://github.com/sjasthi/python101/blob/main/skeletons_programming_assignments/02_0_input_processing_output_skeleton.ipynb) for the following activities.
 
 ### In-Class Activities
 
@@ -37,9 +37,9 @@ Use the [Chapter 2 Programming Exercises notebook](https://github.com/sjasthi/py
 
 | Activity | Due Date | Resource |
 | --- | --- | --- |
-| Quiz 4: What Would Python Print? | October 4 | [Quiz 4](https://github.com/sjasthi/python101/blob/main/Quizzes/2_4_what_would_python_print_quiz.html) |
-| Lab 4: Input, Processing, and Output | October 10 | [Lab 4 notebook](https://github.com/sjasthi/python101/blob/main/Labs/4_input_processing_output.ipynb) |
-| Assignment 1: Problems 13 and 14 | Saturday, October 10 (end of week) | [Chapter 2 Programming Exercises notebook](https://github.com/sjasthi/python101/blob/main/skeletons_programming_assignments/ch2_skeleton_programming_exercises.ipynb) |
+| Quiz 4: What Would Python Print? | October 4 | [Quiz 4](https://github.com/sjasthi/python101/blob/main/Quizzes/02_4_what_would_python_print_quiz.html) |
+| Lab 4: Input, Processing, and Output | October 10 | [Lab 4 notebook](https://github.com/sjasthi/python101/blob/main/Labs/02_4_input_processing_output_lab.ipynb) |
+| Assignment 1: Problems 13 and 14 | Saturday, October 10 (end of week) | [Chapter 2 Programming Exercises notebook](https://github.com/sjasthi/python101/blob/main/skeletons_programming_assignments/02_0_input_processing_output_skeleton.ipynb) |
 
 ## 4. Learning Objectives
 

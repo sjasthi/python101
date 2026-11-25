@@ -16,15 +16,15 @@ This week we introduce **Python Lists** - one of the most important and versatil
 
 ### 1️⃣ Presentation
 **Topic:** Introduction to Python Lists  
-**Link:** [7_1_python_lists_introduction.pdf](https://github.com/sjasthi/python101/blob/main/presentations/7_1_python_lists_introduction.pdf)
+**Link:** [07_1_lists_intro_slides.pdf](https://github.com/sjasthi/python101/blob/main/presentations/07_1_lists_intro_slides.pdf)
 
 ### 2️⃣ Colab Notebook
 **Topic:** Chapter 7 - List Concepts and Introduction  
-**Link:** [ch7_concepts_list_intro_1.ipynb](https://github.com/sjasthi/python101/blob/main/colab_notebooks/ch7_concepts_list_intro_1.ipynb)
+**Link:** [07_1_lists_intro_concepts.ipynb](https://github.com/sjasthi/python101/blob/main/colab_notebooks/07_1_lists_intro_concepts.ipynb)
 
 ### 3️⃣ Interactive Playbook and Quiz
 **Topic:** List Methods - Visual Learning + Quiz  
-**Link:** [python_list_methods_playbook_and_quiz.html](https://github.com/sjasthi/python101/blob/main/Quizzes/python_list_methods_playbook_and_quiz.html)
+**Link:** [07_1_list_methods_playbook_quiz.html](https://github.com/sjasthi/python101/blob/main/Quizzes/07_1_list_methods_playbook_quiz.html)
 - 📖 Introduction Tab - Understanding Functions vs Methods
 - 📚 List Methods Tab - Visual demonstrations with shapes
 - 💻 Example Set 2 Tab - Real code with numbers and strings
@@ -33,12 +33,12 @@ This week we introduce **Python Lists** - one of the most important and versatil
 ### 4️⃣ Lab Assignment
 **Topic:** Hands-on Practice with List Operations  
 **Points:** 10 points  
-**Link:** [python101_lists_an_introduction_lab.ipynb](https://github.com/sjasthi/python101/blob/main/Labs/python101_lists_an_introduction_lab.ipynb)
+**Link:** [07_1_lists_intro_lab.ipynb](https://github.com/sjasthi/python101/blob/main/Labs/07_1_lists_intro_lab.ipynb)
 
 ### 5️⃣ Assignment 6
 **Topic:** CodingBat List-1 Problems  
 **Points:** 25 points  
-**Link:** [python101_lists_intro_assignment_6.md](https://github.com/sjasthi/python101/blob/main/Labs/python101_lists_intro_assignment_6.md)
+**Link:** [07_1_lists_intro_assignment.md](https://github.com/sjasthi/python101/blob/main/assignments/07_1_lists_intro_assignment.md)
 
 ---
 

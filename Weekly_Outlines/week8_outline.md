@@ -68,13 +68,13 @@ These concepts will be built upon in this week's material!
 ## 📚 Resources
 
 ### Presentation
-[4_1_Iterations_while_for_loops.pdf](https://github.com/sjasthi/python101/blob/main/presentations/4_1_Iterations_while_for_loops.pdf)
+[04_1_iterations_while_for_loops_slides.pdf](https://github.com/sjasthi/python101/blob/main/presentations/04_1_iterations_while_for_loops_slides.pdf)
 
 ### Colab Notebook (Concepts)
-[Chapter 4 Concepts: Random, Range Function, While and For Loops](https://github.com/sjasthi/python101/blob/main/colab_notebooks/ch4_concepts_random_range_function_while_and_for_loops.ipynb)
+[Chapter 4 Concepts: Random, Range Function, While and For Loops](https://github.com/sjasthi/python101/blob/main/colab_notebooks/04_0_loops_random_range_concepts.ipynb)
 
 ### Colab Notebook (Programming Assignments)
-[Chapter 4 Skeleton: Programming Assignments](https://github.com/sjasthi/python101/blob/main/colab_notebooks/ch4_skeleton_random_range_function_while_and_for_loops.ipynb)
+[Chapter 4 Skeleton: Programming Assignments](https://github.com/sjasthi/python101/blob/main/colab_notebooks/04_0_loops_random_range_skeleton.ipynb)
 
 ---
 
@@ -87,7 +87,7 @@ These concepts will be built upon in this week's material!
 - **Note:** Complete the quiz after reviewing the presentation and notebook
 
 ### Lab 8: For Loops and Nested Loops
-- **Assignment:** [Lab 8: For Loops](https://github.com/sjasthi/python101/blob/main/Labs/lab8_for_loops.ipynb)
+- **Assignment:** [Lab 8: For Loops](https://github.com/sjasthi/python101/blob/main/Labs/04_2_for_loops_lab.ipynb)
 - **Points:** 10
 - **Focus:** Practice implementing for loops, working with the `range()` function, and creating nested loop structures
 - **Location:** Submit to Google Classroom → Week 8 folder

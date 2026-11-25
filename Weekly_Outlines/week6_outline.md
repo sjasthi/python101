@@ -42,21 +42,21 @@
 
 ### Chapter 3: Presentation 
 📊 **Boolean Logic (and, or, not)**  
-[3_1_boolean_logic_and_or_not.pdf](https://github.com/sjasthi/python101/blob/main/presentations/3_1_boolean_logic_and_or_not.pdf)
+[03_1_boolean_logic_slides.pdf](https://github.com/sjasthi/python101/blob/main/presentations/03_1_boolean_logic_slides.pdf)
 
 📊 **Short Circuit Evaluations** 
-[3_2 short circuit evaluations.pdf](https://github.com/sjasthi/python101/blob/main/presentations/3_2_adv_short_circuit_evaluation.pdf)
+[3_2 short circuit evaluations.pdf](https://github.com/sjasthi/python101/blob/main/presentations/03_2_short_circuit_evaluation_slides.pdf)
 
 📊 **Conditions (if, if--else, if--elif-elif-else)** 
-[3_3_conditions.pdf](https://github.com/sjasthi/python101/blob/main/presentations/3_3_conditions.pdf)
+[03_3_conditions_slides.pdf](https://github.com/sjasthi/python101/blob/main/presentations/03_3_conditions_slides.pdf)
 
 ### Chapter 3 Concepts Notebook
 📘 **Conditions & Boolean Logic Concepts**  
-[ch3_concepts_conditions_boolean_logic.ipynb](https://github.com/sjasthi/python101/blob/main/colab_notebooks/ch3_concepts_conditions_boolean_logic.ipynb)
+[03_0_conditions_boolean_logic_concepts.ipynb](https://github.com/sjasthi/python101/blob/main/colab_notebooks/03_0_conditions_boolean_logic_concepts.ipynb)
 
 ### Chapter 3 Skeleton Notebook
 📝 **Programming Exercises**  
-[ch3_skeleton_conditions_programming_exercises.ipynb](https://github.com/sjasthi/python101/blob/main/colab_notebooks/ch3_skeleton_conditions_programming_exercises.ipynb)
+[03_0_conditions_skeleton.ipynb](https://github.com/sjasthi/python101/blob/main/colab_notebooks/03_0_conditions_skeleton.ipynb)
 
 ---
 

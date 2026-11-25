@@ -1,0 +1,42 @@
+name: Branding check
+
+# Runs on every push and pull request. Fails if a new or renamed file
+# doesn't follow BRANDING.md. To make GitHub *reject* such changes, turn on
+# branch protection for main and require this check (see BRANDING.md, section 9).
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  branding:
+    name: Branding check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Work out what to compare against
+        id: base
+        env:
+          EVENT: ${{ github.event_name }}
+          PR_BASE: ${{ github.event.pull_request.base.sha }}
+          BEFORE: ${{ github.event.before }}
+        run: |
+          if [ "$EVENT" = "pull_request" ]; then
+            base="$PR_BASE"
+          elif [ -n "$BEFORE" ] && [ "$BEFORE" != "0000000000000000000000000000000000000000" ] && git cat-file -e "$BEFORE^{commit}" 2>/dev/null; then
+            base="$BEFORE"
+          else
+            # New branch or force push: compare with main.
+            base="$(git merge-base origin/main HEAD)"
+          fi
+          echo "ref=$base" >> "$GITHUB_OUTPUT"
+
+      - name: Check new files against BRANDING.md
+        run: python tools/check_branding.py --base "${{ steps.base.outputs.ref }}"

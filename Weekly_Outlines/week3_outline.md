@@ -2,21 +2,21 @@
 
 ## 1. Presentations
 
-- [Print, Input, and Type Functions](https://github.com/sjasthi/python101/blob/main/presentations/2_2_print_and_input.pdf)
-- [Arithmetic Operators](https://github.com/sjasthi/python101/blob/main/presentations/2_3_arithmetic_python_operators.pdf)
+- [Print, Input, and Type Functions](https://github.com/sjasthi/python101/blob/main/presentations/02_2_print_input_slides.pdf)
+- [Arithmetic Operators](https://github.com/sjasthi/python101/blob/main/presentations/02_3_arithmetic_operators_slides.pdf)
 
 ## 2. Colab Notebook
 
-- [Chapter 2: Input, Processing, and Output](https://github.com/sjasthi/python101/blob/main/colab_notebooks/ch2_concepts_input_processing_output.ipynb)
+- [Chapter 2: Input, Processing, and Output](https://github.com/sjasthi/python101/blob/main/colab_notebooks/02_0_input_processing_output_concepts.ipynb)
 
 ## 3. Quizzes (Due today)
 
-- [Quiz 3.1: Print, Input, and Type Functions](https://github.com/sjasthi/python101/blob/main/Quizzes/2_2_print_input_type_playbook_and_quiz.html)
-- [Quiz 3.2: Arithmetic Operators](https://github.com/sjasthi/python101/blob/main/Quizzes/2_3_arithmetic_operators_playbook_and_quiz.html)
+- [Quiz 3.1: Print, Input, and Type Functions](https://github.com/sjasthi/python101/blob/main/Quizzes/02_2_print_input_type_playbook_quiz.html)
+- [Quiz 3.2: Arithmetic Operators](https://github.com/sjasthi/python101/blob/main/Quizzes/02_3_arithmetic_operators_playbook_quiz.html)
 
 ## 4. Lab (Due this week)
 
-- [Lab 3: Arithmetic Operators](https://github.com/sjasthi/python101/blob/main/Labs/3_take_inputs_and_apply_all_arithmetic_operators.ipynb)
+- [Lab 3: Arithmetic Operators](https://github.com/sjasthi/python101/blob/main/Labs/02_3_arithmetic_operators_inputs_lab.ipynb)
 
 ## 5. Coming Up Next Week
 

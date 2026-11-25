@@ -22,23 +22,23 @@
 
 ### Presentations
 
-- [List Comprehension (Markdown)](https://github.com/sjasthi/python101/blob/main/presentations/7_5_python_list_comprehension.md)
-- [List Comprehension (PDF)](https://github.com/sjasthi/python101/blob/main/presentations/7_5_python_list_comprehension.pdf)
+- [List Comprehension (Markdown)](https://github.com/sjasthi/python101/blob/main/presentations/07_5_list_comprehension_notes.md)
+- [List Comprehension (PDF)](https://github.com/sjasthi/python101/blob/main/presentations/07_5_list_comprehension_slides.pdf)
 
 ### Colab Notebooks
 
-- [Ch7 – Lists: Concepts & Examples](https://github.com/sjasthi/python101/blob/main/colab_notebooks/ch7_concepts_list_intro_1.ipynb)
-- [Ch7 – Lists: Programming Exercises](https://github.com/sjasthi/python101/blob/main/colab_notebooks/ch7_skeleton_lists_exercises.ipynb)
+- [Ch7 – Lists: Concepts & Examples](https://github.com/sjasthi/python101/blob/main/colab_notebooks/07_1_lists_intro_concepts.ipynb)
+- [Ch7 – Lists: Programming Exercises](https://github.com/sjasthi/python101/blob/main/colab_notebooks/07_0_lists_skeleton.ipynb)
 
 ### Interactive Playbook & Quiz
 
-- [List Comprehension Playbook and Quiz] (https://github.com/sjasthi/python101/blob/main/Quizzes/7_5_list_comprehension_playbook_and_quiz.html)
+- [List Comprehension Playbook and Quiz] (https://github.com/sjasthi/python101/blob/main/Quizzes/07_5_list_comprehension_playbook_quiz.html)
 
 ---
 
 ## Lab
 
-**[Lab 19: List Comprehension](https://github.com/sjasthi/python101/blob/main/Labs/python101_lab19_list_comprehension.ipynb)** (10 points)
+**[Lab 19: List Comprehension](https://github.com/sjasthi/python101/blob/main/Labs/07_5_list_comprehension_lab.ipynb)** (10 points)
 
 Two problems — each solved two ways:
 

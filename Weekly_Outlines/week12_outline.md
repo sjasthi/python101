@@ -54,17 +54,17 @@ By the end of this week, students will be able to:
 ## Resources
 
 ### Presentations
-📊 [Functions: Variable Args and Kwargs](https://github.com/sjasthi/python101/blob/main/presentations/5_3_functions_variable_args_and_variable_kwargs.pdf)
+📊 [Functions: Variable Args and Kwargs](https://github.com/sjasthi/python101/blob/main/presentations/05_3_functions_variable_args_kwargs_slides.pdf)
 
-📊 [Functions and Variable Scope](https://github.com/sjasthi/python101/blob/main/presentations/5_4_functions_and_variable_scope.pdf)
+📊 [Functions and Variable Scope](https://github.com/sjasthi/python101/blob/main/presentations/05_4_functions_variable_scope_slides.pdf)
 
 ### Colab Notebooks
-💻 [Functions: Variable Scope Concepts](https://github.com/sjasthi/python101/blob/main/colab_notebooks/ch5_2_concepts_functions_variable_scope.ipynb)
+💻 [Functions: Variable Scope Concepts](https://github.com/sjasthi/python101/blob/main/colab_notebooks/05_4_functions_variable_scope_concepts.ipynb)
 
-💻 [Functions Programming Assignments](https://github.com/sjasthi/python101/blob/main/colab_notebooks/ch5_skeleton_functions_programming_assignments.ipynb)
+💻 [Functions Programming Assignments](https://github.com/sjasthi/python101/blob/main/colab_notebooks/05_0_functions_skeleton.ipynb)
 
 ### Quizzes
-🎯 [Variable Scope Interactive Quiz](https://github.com/sjasthi/python101/blob/main/Quizzes/functions_variable_scope_quiz.html)
+🎯 [Variable Scope Interactive Quiz](https://github.com/sjasthi/python101/blob/main/Quizzes/05_4_functions_variable_scope_quiz.html)
 - **Instructions:** Review the 6 Variable Scope Rules on the first page, complete all 12 quiz questions, and submit a screenshot of your final score to Google Classroom.
 
 ## Key Concepts to Remember

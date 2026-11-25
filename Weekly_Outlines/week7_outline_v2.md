@@ -66,13 +66,13 @@ We will continue our exploration of iterations with:
 ## 📚 Resources
 
 ### Presentation
-[4_1_Iterations_while_for_loops.pdf](https://github.com/sjasthi/python101/blob/main/presentations/4_1_Iterations_while_for_loops.pdf)
+[04_1_iterations_while_for_loops_slides.pdf](https://github.com/sjasthi/python101/blob/main/presentations/04_1_iterations_while_for_loops_slides.pdf)
 
 ### Colab Notebook (Concepts)
-[Chapter 4 Concepts: Random, Range Function, While and For Loops](https://github.com/sjasthi/python101/blob/main/colab_notebooks/ch4_concepts_random_range_function_while_and_for_loops.ipynb)
+[Chapter 4 Concepts: Random, Range Function, While and For Loops](https://github.com/sjasthi/python101/blob/main/colab_notebooks/04_0_loops_random_range_concepts.ipynb)
 
 ### Colab Notebook (Programming Assignments)
-[Chapter 4 Skeleton: Programming Assignments](https://github.com/sjasthi/python101/blob/main/colab_notebooks/ch4_skeleton_random_range_function_while_and_for_loops.ipynb)
+[Chapter 4 Skeleton: Programming Assignments](https://github.com/sjasthi/python101/blob/main/colab_notebooks/04_0_loops_random_range_skeleton.ipynb)
 
 ---
 
@@ -85,7 +85,7 @@ We will continue our exploration of iterations with:
 - **Note:** Complete the quiz after reviewing the presentation and notebook
 
 ### Lab 7: While Loops
-- **Assignment:** [python101_lab7_while_loops.ipynb](https://github.com/sjasthi/python101/blob/main/Labs/python101_lab7_while_loops.ipynb)
+- **Assignment:** [04_1_while_loops_lab.ipynb](https://github.com/sjasthi/python101/blob/main/Labs/04_1_while_loops_lab.ipynb)
 - **Points:** 10 points
 - **Topics Tested:**
   - Basic while loops

@@ -39,21 +39,21 @@
 
 ### 5. Chapter 3: Presentation
 📊 **Boolean Logic (and, or, not)**  
-[3_1_boolean_logic_and_or_not.pdf](https://github.com/sjasthi/python101/blob/main/presentations/3_1_boolean_logic_and_or_not.pdf)
+[03_1_boolean_logic_slides.pdf](https://github.com/sjasthi/python101/blob/main/presentations/03_1_boolean_logic_slides.pdf)
 
 📊 **Short Circuit Evaluations** 
-[3_2 short circuit evaluations.pdf](https://github.com/sjasthi/python101/blob/main/presentations/3_2_adv_short_circuit_evaluation.pdf)
+[3_2 short circuit evaluations.pdf](https://github.com/sjasthi/python101/blob/main/presentations/03_2_short_circuit_evaluation_slides.pdf)
 
 📊 **Conditions (if, if--else, if--elif-elif-else)** 
-[3_3_conditions.pdf](https://github.com/sjasthi/python101/blob/main/presentations/3_3_conditions.pdf)
+[03_3_conditions_slides.pdf](https://github.com/sjasthi/python101/blob/main/presentations/03_3_conditions_slides.pdf)
 
 ### 6. Chapter 3 Concepts Notebook
 📘 **Conditions & Boolean Logic Concepts**  
-[ch3_concepts_conditions_boolean_logic.ipynb](https://github.com/sjasthi/python101/blob/main/colab_notebooks/ch3_concepts_conditions_boolean_logic.ipynb)
+[03_0_conditions_boolean_logic_concepts.ipynb](https://github.com/sjasthi/python101/blob/main/colab_notebooks/03_0_conditions_boolean_logic_concepts.ipynb)
 
 ### 7. Chapter 3 Skeleton Notebook
 📝 **Programming Exercises**  
-[ch3_skeleton_conditions_programming_exercises.ipynb](https://github.com/sjasthi/python101/blob/main/skeletons_programming_assignments/ch3_skeleton_conditions_programming_exercises.ipynb)
+[03_0_conditions_skeleton.ipynb](https://github.com/sjasthi/python101/blob/main/skeletons_programming_assignments/03_0_conditions_skeleton.ipynb)
 
 ---
 
@@ -62,12 +62,12 @@
 ### 8. Quiz 5 (Conditions)
 - **Due Date:** October 11, 2026 ⏰
 - **Topic:** Boolean logic and conditional statements
-- [Quiz 5](https://github.com/sjasthi/python101/blob/main/Quizzes/3_1_exploring_conditions_playbook_and_quiz.html)
+- [Quiz 5](https://github.com/sjasthi/python101/blob/main/Quizzes/03_1_exploring_conditions_playbook_quiz.html)
 
 ### 9. Lab 5 (Conditions)
 - **Due Date:** October 17, 2026 ⏰
 - **Focus:** Hands-on practice with if/else statements
-- [Lab 5](https://github.com/sjasthi/python101/blob/main/Labs/lab5_exploring_boolean_logic_and_conditions.ipynb)
+- [Lab 5](https://github.com/sjasthi/python101/blob/main/Labs/03_1_boolean_logic_conditions_lab.ipynb)
 
 ---
 

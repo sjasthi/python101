@@ -103,7 +103,7 @@ This week serves as a comprehensive recap of the foundational Python concepts co
     - **Conditions Practice:** Work through the interactive indentation exercises for if/elif/else  
       [Python Conditions - Play with the indentation](https://github.com/sjasthi/python101/blob/main/Play/python_conditions_play_with_indentation.html)
     - **Loops Practice:** Work through the interactive indentation exercises for while and for loops  
-      [Python Loops - Play with the indentation](https://github.com/sjasthi/python101/blob/main/Play/python_loops_play_with_indentation.html)
+      [Python Loops - Play with the indentation](https://github.com/sjasthi/python101/blob/main/Play/04_2_loops_indentation_playbook.html)
     - Focus on understanding proper code block structure
 - Complete Quiz 9 (due today)
 - Instructor available for questions

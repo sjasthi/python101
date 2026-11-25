@@ -21,26 +21,26 @@
 ### Presentations
 
 **Markdown Presentation:**  
-https://github.com/sjasthi/python101/blob/main/presentations/7_4_python_lists_unpacking_and_slicing.md
+https://github.com/sjasthi/python101/blob/main/presentations/07_4_lists_unpacking_slicing_notes.md
 
 **PDF Presentation:**  
-https://github.com/sjasthi/python101/blob/main/presentations/7_4_python_lists_Unpacking_and_Slicing.pdf
+https://github.com/sjasthi/python101/blob/main/presentations/07_4_lists_unpacking_slicing_slides.pdf
 
 ### Google Colab Notebooks
 
 **Concepts Notebook:**  
-https://github.com/sjasthi/python101/blob/main/colab_notebooks/ch7_concepts_list_intro_1.ipynb
+https://github.com/sjasthi/python101/blob/main/colab_notebooks/07_1_lists_intro_concepts.ipynb
 
 **Exercises Skeleton:**  
-https://github.com/sjasthi/python101/blob/main/colab_notebooks/ch7_skeleton_lists_exercises.ipynb
+https://github.com/sjasthi/python101/blob/main/colab_notebooks/07_0_lists_skeleton.ipynb
 
 ### Interactive Learning
 
 **Playbook and Quiz:**  
-https://github.com/sjasthi/python101/blob/main/Quizzes/python_lists_unpacking_and_slicing_playbook_and_quiz.html
+https://github.com/sjasthi/python101/blob/main/Quizzes/07_4_lists_unpacking_slicing_playbook_quiz.html
 
 **Lab 18 (Unpacking and Slicing):**  
-https://github.com/sjasthi/python101/blob/main/Labs/python101_unpacking_slicing_lab18.ipynb
+https://github.com/sjasthi/python101/blob/main/Labs/07_4_lists_unpacking_slicing_lab.ipynb
 
 ---
 

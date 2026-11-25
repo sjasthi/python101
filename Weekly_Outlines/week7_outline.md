@@ -103,8 +103,8 @@ Apply comparisons, Boolean values, and conditions to determine whether squirrels
 - Pay special attention to the boundary temperatures: **59, 60, 90, 91, 100, and 101**.
 - The checker has **ten groups worth one point each**.
 
-**Notebook:** [Lab 7: Squirrels at Play](https://github.com/sjasthi/python101/blob/main/Labs/lab7_squirrels.ipynb)  
-**Open directly:** [Open Lab 7 in Colab](https://colab.research.google.com/github/sjasthi/python101/blob/main/Labs/lab7_squirrels.ipynb)
+**Notebook:** [Lab 7: Squirrels at Play](https://github.com/sjasthi/python101/blob/main/Labs/03_2_squirrel_play_lab.ipynb)  
+**Open directly:** [Open Lab 7 in Colab](https://colab.research.google.com/github/sjasthi/python101/blob/main/Labs/03_2_squirrel_play_lab.ipynb)
 
 You do not need to learn functions today. Keep the supplied wrapper, input/display code, and checker; complete only the marked student-work section.
 
@@ -115,7 +115,7 @@ You do not need to learn functions today. Keep the supplied wrapper, input/displ
 - Submit the **`.ipynb` notebook to Google Classroom**, as before.
 - Follow the due date listed in Google Classroom.
 
-**Earlier practice:** Revisit [Lab 6: Birthday Speed Check](https://github.com/sjasthi/python101/blob/main/Labs/lab6_birthday_speed_check.ipynb) if you need a refresher on the same lab format.
+**Earlier practice:** Revisit [Lab 6: Birthday Speed Check](https://github.com/sjasthi/python101/blob/main/Labs/03_2_birthday_speed_check_lab.ipynb) if you need a refresher on the same lab format.
 
 ---
 

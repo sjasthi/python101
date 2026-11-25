@@ -60,20 +60,20 @@ By the end of this week, students will be able to:
 ## Resources to Review
 
 ### All Presentations
-📊 [Functions Basics](https://github.com/sjasthi/python101/blob/main/presentations/5_1_functions_basics.pdf)
+📊 [Functions Basics](https://github.com/sjasthi/python101/blob/main/presentations/05_1_functions_basics_slides.pdf)
 
-📊 [Positional, Keyword, and Optional Arguments](https://github.com/sjasthi/python101/blob/main/presentations/5_2_functions_positional_keyword_optional_args.pdf)
+📊 [Positional, Keyword, and Optional Arguments](https://github.com/sjasthi/python101/blob/main/presentations/05_2_functions_positional_keyword_optional_slides.pdf)
 
-📊 [Variable Args and Kwargs](https://github.com/sjasthi/python101/blob/main/presentations/5_3_functions_variable_args_and_variable_kwargs.pdf)
+📊 [Variable Args and Kwargs](https://github.com/sjasthi/python101/blob/main/presentations/05_3_functions_variable_args_kwargs_slides.pdf)
 
-📊 [Functions and Variable Scope](https://github.com/sjasthi/python101/blob/main/presentations/5_4_functions_and_variable_scope.pdf)
+📊 [Functions and Variable Scope](https://github.com/sjasthi/python101/blob/main/presentations/05_4_functions_variable_scope_slides.pdf)
 
 ### All Colab Notebooks
-💻 [Functions Introduction - Concepts](https://github.com/sjasthi/python101/blob/main/colab_notebooks/ch5_1_concepts_functions_introduction.ipynb)
+💻 [Functions Introduction - Concepts](https://github.com/sjasthi/python101/blob/main/colab_notebooks/05_1_functions_intro_concepts.ipynb)
 
-💻 [Functions: Variable Scope Concepts](https://github.com/sjasthi/python101/blob/main/colab_notebooks/ch5_2_concepts_functions_variable_scope.ipynb)
+💻 [Functions: Variable Scope Concepts](https://github.com/sjasthi/python101/blob/main/colab_notebooks/05_4_functions_variable_scope_concepts.ipynb)
 
-💻 [Functions Programming Assignments](https://github.com/sjasthi/python101/blob/main/colab_notebooks/ch5_skeleton_functions_programming_assignments.ipynb)
+💻 [Functions Programming Assignments](https://github.com/sjasthi/python101/blob/main/colab_notebooks/05_0_functions_skeleton.ipynb)
 
 ## Quick Reference Guide
 
@@ -208,7 +208,7 @@ Build a scoring system:
 ## Programming Assignments
 
 Complete the comprehensive programming assignments in the Colab notebook:
-💻 [Functions Programming Assignments](https://github.com/sjasthi/python101/blob/main/colab_notebooks/ch5_skeleton_functions_programming_assignments.ipynb)
+💻 [Functions Programming Assignments](https://github.com/sjasthi/python101/blob/main/colab_notebooks/05_0_functions_skeleton.ipynb)
 
 ### Assignment Guidelines
 1. **Read carefully:** Understand what each function should do

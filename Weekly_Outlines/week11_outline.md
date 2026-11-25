@@ -51,22 +51,22 @@ By the end of this week, students will be able to:
 ## Resources
 
 ### Presentation
-📊 [Functions: Positional, Keyword, and Optional Arguments](https://github.com/sjasthi/python101/blob/main/presentations/5_2_functions_positional_keyword_optional_args.pdf)
+📊 [Functions: Positional, Keyword, and Optional Arguments](https://github.com/sjasthi/python101/blob/main/presentations/05_2_functions_positional_keyword_optional_slides.pdf)
 
 ### Colab Notebooks
-💻 [Functions Introduction - Concepts and Practice](https://github.com/sjasthi/python101/blob/main/colab_notebooks/ch5_1_concepts_functions_introduction.ipynb)
+💻 [Functions Introduction - Concepts and Practice](https://github.com/sjasthi/python101/blob/main/colab_notebooks/05_1_functions_intro_concepts.ipynb)
 
-💻 [Functions Programming Assignments](https://github.com/sjasthi/python101/blob/main/colab_notebooks/ch5_skeleton_functions_programming_assignments.ipynb)
+💻 [Functions Programming Assignments](https://github.com/sjasthi/python101/blob/main/colab_notebooks/05_0_functions_skeleton.ipynb)
 
 ### Interactive Playbook
-🎮 [Play with Positional, Keyword and Optional Arguments](https://github.com/sjasthi/python101/blob/main/Quizzes/functions_positional_keyword_optional_arguments_interactive_playbook.html)
+🎮 [Play with Positional, Keyword and Optional Arguments](https://github.com/sjasthi/python101/blob/main/Quizzes/05_2_functions_positional_keyword_optional_playbook_quiz.html)
 
 ### Quiz 11 (10 points; due today)
 📝 Take the Quiz and submit the screenshot of your final score  
-[Quiz 11 - Functions: Positional, Keyword, and Optional Arguments](https://github.com/sjasthi/python101/blob/main/Quizzes/functions_positional_keyword_optional_arguments_interactive_playbook.html)
+[Quiz 11 - Functions: Positional, Keyword, and Optional Arguments](https://github.com/sjasthi/python101/blob/main/Quizzes/05_2_functions_positional_keyword_optional_playbook_quiz.html)
 
 ### Lab 11 (10 points; due 22 Nov)
-🔬 [Lab 11 - Function Arguments Experimentation](https://github.com/sjasthi/python101/blob/main/Labs/python101_lab11_functions_positional_keyword_optional_arguments.ipynb)
+🔬 [Lab 11 - Function Arguments Experimentation](https://github.com/sjasthi/python101/blob/main/Labs/05_2_functions_positional_keyword_optional_lab.ipynb)
 
 ## Key Concepts to Remember
 

@@ -64,10 +64,10 @@ By the end of this week, students will be able to:
 ## Resources
 
 ### Presentation
-📊 [Functions Basics Presentation](https://github.com/sjasthi/python101/blob/main/presentations/5_1_functions_basics.pdf)
+📊 [Functions Basics Presentation](https://github.com/sjasthi/python101/blob/main/presentations/05_1_functions_basics_slides.pdf)
 
 ### Colab Notebook
-💻 [Functions Introduction - Concepts and Practice](https://github.com/sjasthi/python101/blob/main/colab_notebooks/ch5_1_concepts_functions_introduction.ipynb)
+💻 [Functions Introduction - Concepts and Practice](https://github.com/sjasthi/python101/blob/main/colab_notebooks/05_1_functions_intro_concepts.ipynb)
 
 ## Key Concepts to Remember
 
